@@ -2,10 +2,7 @@ package com.example.prc.entities;
 
 import io.smallrye.common.constraint.NotNull;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class TipoPrescricao {
@@ -13,6 +10,7 @@ public class TipoPrescricao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @NotNull
+    @Column(unique=true)
     private String name;
 
     public TipoPrescricao() {

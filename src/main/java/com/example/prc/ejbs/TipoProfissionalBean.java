@@ -1,2 +1,52 @@
-package com.example.prc.ejbs;public class TipoProfissionalBean {
+package com.example.prc.ejbs;
+
+import com.example.prc.entities.Admin;
+import com.example.prc.entities.TipoProfissional;
+import com.example.prc.exceptions.MyConstraintViolationException;
+import com.example.prc.exceptions.MyEntityExistsException;
+import com.example.prc.exceptions.MyEntityNotFoundException;
+
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.LockModeType;
+import javax.persistence.PersistenceContext;
+import javax.validation.ConstraintViolationException;
+
+@Stateless
+public class TipoProfissionalBean {
+    @PersistenceContext
+    EntityManager em;
+
+    public void create(String name)
+            throws MyConstraintViolationException {
+        try {
+            TipoProfissional tipoProfissional = new TipoProfissional(name);
+            em.persist(tipoProfissional);
+        } catch (
+                ConstraintViolationException e) {
+            throw new MyConstraintViolationException(e);
+        }
+    }
+
+    public void update(int id, String name)
+            throws MyEntityNotFoundException, MyConstraintViolationException {
+        TipoProfissional tipoProfissional = em.find(TipoProfissional.class, id);
+        if(tipoProfissional == null){
+            throw new MyEntityNotFoundException("No TipoProfissional with the name: " + name);
+        }
+
+        try {
+            em.lock(tipoProfissional, LockModeType.OPTIMISTIC); //ou usar PESSIMISTIC_WRITE ???
+            tipoProfissional.setName(name);
+            em.persist(tipoProfissional);
+        } catch (
+                ConstraintViolationException e) {
+            throw new MyConstraintViolationException(e);
+        }
+    }
+
+    public void remove(TipoProfissional tipoProfissional) {
+        TipoProfissional tipoProfissionalMerged = em.merge(tipoProfissional);
+        em.remove(tipoProfissionalMerged);
+    }
 }
