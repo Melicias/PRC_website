@@ -1,7 +1,6 @@
 package com.example.prc.ejbs;
 
 import com.example.prc.entities.Admin;
-import com.example.prc.entities.TipoProfissional;
 import com.example.prc.exceptions.MyConstraintViolationException;
 import com.example.prc.exceptions.MyEntityExistsException;
 import com.example.prc.exceptions.MyEntityNotFoundException;

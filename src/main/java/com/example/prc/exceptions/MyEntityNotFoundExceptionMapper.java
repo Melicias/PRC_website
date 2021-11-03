@@ -7,11 +7,11 @@ import java.util.logging.Logger;
 
 @Provider
 public class MyEntityNotFoundExceptionMapper implements
-        ExceptionMapper<com.example.academics.exceptions.MyEntityNotFoundException> {
+        ExceptionMapper<MyEntityNotFoundException> {
     private static final Logger logger =
             Logger.getLogger("exceptions.MyEntityNotFoundExceptionMapper");
     @Override
-    public Response toResponse(com.example.academics.exceptions.MyEntityNotFoundException e) {
+    public Response toResponse(MyEntityNotFoundException e) {
         String errorMsg = e.getMessage();
         logger.warning("ERROR: " + errorMsg);
         return

@@ -2,10 +2,7 @@ package com.example.prc.entities;
 
 import io.smallrye.common.constraint.NotNull;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class TipoDadosBiometricos {
@@ -14,8 +11,6 @@ public class TipoDadosBiometricos {
     //vai preencher o min max
     public static int QUALITATIVO = 2;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
     @NotNull
     private String name;
     @NotNull
@@ -39,14 +34,6 @@ public class TipoDadosBiometricos {
         this.name = name;
         this.quantitativo = quantitativo;
         this.type = QUANTITATIVO;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {

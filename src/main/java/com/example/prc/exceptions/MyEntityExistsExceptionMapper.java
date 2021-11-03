@@ -7,11 +7,11 @@ import java.util.logging.Logger;
 
 @Provider
 public class MyEntityExistsExceptionMapper
-        implements ExceptionMapper<com.example.academics.exceptions.MyEntityExistsException> {
+        implements ExceptionMapper<MyEntityExistsException> {
     private static final Logger logger =
             Logger.getLogger("exceptions.MyEntityExistsExceptionMapper");
     @Override
-    public Response toResponse(com.example.academics.exceptions.MyEntityExistsException e) {
+    public Response toResponse(MyEntityExistsException e) {
         String errorMsg = e.getMessage();
         logger.warning("ERROR: " + errorMsg);
         return Response.status(Response.Status.CONFLICT).entity(errorMsg).build();

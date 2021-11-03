@@ -5,13 +5,9 @@ import io.smallrye.common.constraint.NotNull;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "tipoprofissional")
 public class TipoProfissional {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
     @NotNull
-    @Column(unique=true)
     private String name;
 
     public TipoProfissional() {
@@ -20,14 +16,6 @@ public class TipoProfissional {
 
     public TipoProfissional(String name) {
         this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
