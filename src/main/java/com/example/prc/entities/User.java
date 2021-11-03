@@ -8,12 +8,8 @@ import java.io.Serializable;
 @Entity
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-
-
 public class User implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
     @Email
     @NotNull
     @Column(unique=true)
@@ -33,10 +29,6 @@ public class User implements Serializable {
         this.password = password;
         this.name = name;
         this.email = email;
-    }
-
-    public int getId(){
-        return id;
     }
 
     public String getPassword() {

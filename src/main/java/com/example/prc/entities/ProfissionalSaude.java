@@ -54,4 +54,8 @@ public class ProfissionalSaude extends User{
     public void removerrUtente(int index){
         this.utentes.remove(index);
     }
+
+    public void addUtente(Utente utente) {
+        utentes.add(utente);
+    }
 }

@@ -2,10 +2,7 @@ package com.example.prc.entities;
 
 import io.smallrye.common.constraint.NotNull;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,6 +12,8 @@ public class Utente extends User{
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataNasc;
+    @ManyToOne
+    private ProfissionalSaude profissionalSaude;
     @OneToMany
     private List<UtenteDadosBiometricos> dadosBiometricos;
     @OneToMany
@@ -26,9 +25,10 @@ public class Utente extends User{
         this.prescricoes = new ArrayList<>();
     }
 
-    public Utente(String password, String name, String email, Date dataNasc) {
+    public Utente(String password, String name, String email, Date dataNasc, ProfissionalSaude profissionalSaude) {
         super(password, name, email);
         this.dataNasc = dataNasc;
+        this.profissionalSaude = profissionalSaude;
         this.dadosBiometricos = new ArrayList<>();
         this.prescricoes = new ArrayList<>();
     }
