@@ -18,8 +18,8 @@ public class UtenteBean {
         ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class, emailProfissionalSaude);
         if (utente == null && profissionalSaude != null) {
             Utente newUtente = new Utente(password,name,email,dataNasc,profissionalSaude);
-            profissionalSaude.addUtente(utente);
-            em.persist(utente);
+            profissionalSaude.addUtente(newUtente);
+            em.persist(newUtente);
         }
     }
 }
