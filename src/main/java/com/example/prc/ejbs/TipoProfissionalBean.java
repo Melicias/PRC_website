@@ -1,9 +1,7 @@
 package com.example.prc.ejbs;
 
-import com.example.prc.entities.Admin;
 import com.example.prc.entities.TipoProfissional;
 import com.example.prc.exceptions.MyConstraintViolationException;
-import com.example.prc.exceptions.MyEntityExistsException;
 import com.example.prc.exceptions.MyEntityNotFoundException;
 
 import javax.ejb.Stateless;
@@ -31,9 +29,8 @@ public class TipoProfissionalBean {
     public void update(int id, String name)
             throws MyEntityNotFoundException, MyConstraintViolationException {
         TipoProfissional tipoProfissional = em.find(TipoProfissional.class, id);
-        if(tipoProfissional == null){
-            throw new MyEntityNotFoundException("No TipoProfissional with the name: " + name);
-        }
+        if(tipoProfissional == null)
+            throw new MyEntityNotFoundException("No TipoProfissional with the id: " + id);
 
         try {
             em.lock(tipoProfissional, LockModeType.OPTIMISTIC); //ou usar PESSIMISTIC_WRITE ???

@@ -20,15 +20,12 @@ public class AdminBean {
     public void create(String password, String name, String email)
             throws MyEntityExistsException, MyConstraintViolationException {
         Admin admin = em.find(Admin.class, email);
-        if(admin != null){
+        if(admin != null)
             throw new MyEntityExistsException("Email already in use for admin: " + email);
-        }
-
         try {
             admin = new Admin(password, name, email);
             em.persist(admin);
-        } catch (
-        ConstraintViolationException e) {
+        } catch (ConstraintViolationException e) {
             throw new MyConstraintViolationException(e);
         }
     }
@@ -45,8 +42,7 @@ public class AdminBean {
             admin.setName(name);
             admin.setPassword(password);
             em.persist(admin);
-        } catch (
-                ConstraintViolationException e) {
+        } catch (ConstraintViolationException e) {
             throw new MyConstraintViolationException(e);
         }
     }

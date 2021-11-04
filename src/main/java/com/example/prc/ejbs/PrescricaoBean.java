@@ -1,10 +1,8 @@
 package com.example.prc.ejbs;
 
-import com.example.prc.entities.Admin;
 import com.example.prc.entities.Prescricao;
 import com.example.prc.entities.TipoPrescricao;
 import com.example.prc.exceptions.MyConstraintViolationException;
-import com.example.prc.exceptions.MyEntityExistsException;
 import com.example.prc.exceptions.MyEntityNotFoundException;
 
 import javax.ejb.Stateless;
@@ -31,7 +29,6 @@ public class PrescricaoBean {
             }else{
                 prescricao = new Prescricao(descricao,validade,tipoPrescricao);
             }
-
             em.persist(prescricao);
         } catch (
                 ConstraintViolationException e) {

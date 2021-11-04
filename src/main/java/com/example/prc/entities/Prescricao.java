@@ -22,11 +22,16 @@ public class Prescricao {
     private Date validade;
 
     @ManyToOne
+    @JoinColumn(name = "tipoprescricao_id")
     @NotNull
     private TipoPrescricao tipoPrescricao;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date deleted_at;
+
+    @NotNull
+    @OneToOne
+    private Utente utente;
 
     public Prescricao() {
 
@@ -91,5 +96,13 @@ public class Prescricao {
 
     public void setDeleted_at(Date deleted_at) {
         this.deleted_at = deleted_at;
+    }
+
+    public Utente getUtente() {
+        return utente;
+    }
+
+    public void setUtente(Utente utente) {
+        this.utente = utente;
     }
 }

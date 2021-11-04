@@ -3,6 +3,7 @@ package com.example.prc.entities;
 import io.smallrye.common.constraint.NotNull;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.List;
 @Entity
 public class ProfissionalSaude extends User{
     @NotNull
+    @JoinColumn(name = "tipoprofissional_id")
     @ManyToOne
     private TipoProfissional tipoProfissional;
     @OneToMany

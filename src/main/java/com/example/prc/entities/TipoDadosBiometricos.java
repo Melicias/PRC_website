@@ -11,7 +11,10 @@ public class TipoDadosBiometricos {
     //vai preencher o min max
     public static int QUALITATIVO = 2;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     @NotNull
+    @Column(unique=true)
     private String name;
     @NotNull
     private int type;
@@ -34,6 +37,14 @@ public class TipoDadosBiometricos {
         this.name = name;
         this.quantitativo = quantitativo;
         this.type = QUANTITATIVO;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

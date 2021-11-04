@@ -12,6 +12,7 @@ public class UtenteDadosBiometricos {
     private int id;
 
     @NotNull
+    @JoinColumn(name = "tidadosbiometricos_id")
     @ManyToOne
     private TipoDadosBiometricos tipoDadosBiometricos;
 

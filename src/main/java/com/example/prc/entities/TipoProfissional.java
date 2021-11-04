@@ -7,6 +7,8 @@ import javax.persistence.*;
 @Entity
 public class TipoProfissional {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     @NotNull
     private String name;
 
@@ -16,6 +18,14 @@ public class TipoProfissional {
 
     public TipoProfissional(String name) {
         this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

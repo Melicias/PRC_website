@@ -17,11 +17,11 @@ public class TipoPrescricaoBean {
 
     public void create(String name)
             throws MyEntityExistsException, MyConstraintViolationException {
-        TipoPrescricao tipoPrescricao = em.find(TipoPrescricao.class, name);
-        if(tipoPrescricao != null){
+        /*TipoPrescricao tipoPrescricao = em.find(TipoPrescricao.class, name);
+        if(tipoPrescricao != null)
             throw new MyEntityExistsException("Name already in use: " + name);
-        }
-
+        */
+        TipoPrescricao tipoPrescricao;
         try {
             tipoPrescricao = new TipoPrescricao(name);
             em.persist(tipoPrescricao);
