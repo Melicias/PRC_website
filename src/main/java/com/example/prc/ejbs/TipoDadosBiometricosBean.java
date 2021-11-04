@@ -17,12 +17,8 @@ public class TipoDadosBiometricosBean {
 
     public void create(String name, int min, int max, String quantitativo)
             throws MyEntityExistsException, MyConstraintViolationException {
-        /*TipoDadosBiometricos tipoDadoBiometrico = em.find(TipoDadosBiometricos.class, name);
-        if(tipoDadoBiometrico != null)
-            throw new MyEntityExistsException("Name already in use: " + name);
-        */
-        TipoDadosBiometricos tipoDadoBiometrico;
         try {
+            TipoDadosBiometricos tipoDadoBiometrico;
             if(quantitativo == null) {
                 tipoDadoBiometrico = new TipoDadosBiometricos(name, min, max);
             }else{

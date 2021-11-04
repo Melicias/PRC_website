@@ -38,7 +38,7 @@ public class AdminBean {
         }
 
         try {
-            em.lock(admin, LockModeType.OPTIMISTIC); //ou usar PESSIMISTIC_WRITE ???
+            em.lock(admin, LockModeType.OPTIMISTIC);
             admin.setName(name);
             admin.setPassword(password);
             em.persist(admin);
@@ -47,8 +47,12 @@ public class AdminBean {
         }
     }
 
-    public Admin findAdmin(String email) { // deveria usar throws MyEntityNotFoundException ???
-        return em.find(Admin.class, email);
+    public Admin findAdmin(String email)
+            throws MyEntityNotFoundException{
+        Admin admin = em.find(Admin.class, email);
+        if(admin == null)
+            throw new MyEntityNotFoundException();
+        return admin;
     }
 
     public void remove(Admin admin) {

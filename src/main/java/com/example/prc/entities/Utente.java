@@ -80,4 +80,12 @@ public class Utente extends User{
     public void removerPrescricao(Prescricao dados){
         this.dadosBiometricos.remove(dados);
     }
+
+    public ProfissionalSaude getProfissionalSaude() {
+        return profissionalSaude;
+    }
+
+    public void setProfissionalSaude(ProfissionalSaude profissionalSaude) {
+        this.profissionalSaude = profissionalSaude;
+    }
 }

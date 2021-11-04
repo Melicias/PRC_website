@@ -20,8 +20,7 @@ public class TipoProfissionalBean {
         try {
             TipoProfissional tipoProfissional = new TipoProfissional(name);
             em.persist(tipoProfissional);
-        } catch (
-                ConstraintViolationException e) {
+        } catch (ConstraintViolationException e) {
             throw new MyConstraintViolationException(e);
         }
     }
