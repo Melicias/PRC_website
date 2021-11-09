@@ -28,8 +28,7 @@ public class ProfissionalSaudeBean {
         try {
             ProfissionalSaude newprofissional= new ProfissionalSaude(password,name,email,tipoProfissional);
             em.persist(newprofissional);
-        } catch (
-                ConstraintViolationException e) {
+        } catch (ConstraintViolationException e) {
             throw new MyConstraintViolationException(e);
         }
     }
