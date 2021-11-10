@@ -12,8 +12,8 @@ public class Utente extends User{
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataNasc;
-    @ManyToOne
-    private ProfissionalSaude profissionalSaude;
+    @ManyToMany
+    private List<ProfissionalSaude> profissionalSaude;
     @OneToMany
     private List<UtenteDadosBiometricos> dadosBiometricos;
     @OneToMany
@@ -21,14 +21,15 @@ public class Utente extends User{
 
     public Utente() {
         super();
+        this.profissionalSaude = new ArrayList<>();
         this.dadosBiometricos = new ArrayList<>();
         this.prescricoes = new ArrayList<>();
     }
 
-    public Utente(String password, String name, String email, Date dataNasc, ProfissionalSaude profissionalSaude) {
+    public Utente(String password, String name, String email, Date dataNasc) {
         super(password, name, email);
         this.dataNasc = dataNasc;
-        this.profissionalSaude = profissionalSaude;
+        this.profissionalSaude = new ArrayList<>();
         this.dadosBiometricos = new ArrayList<>();
         this.prescricoes = new ArrayList<>();
     }
@@ -81,11 +82,12 @@ public class Utente extends User{
         this.dadosBiometricos.remove(dados);
     }
 
-    public ProfissionalSaude getProfissionalSaude() {
+    public List<ProfissionalSaude> getProfissionalSaude() {
         return profissionalSaude;
     }
 
-    public void setProfissionalSaude(ProfissionalSaude profissionalSaude) {
+    public void setProfissionalSaude(List<ProfissionalSaude> profissionalSaude) {
         this.profissionalSaude = profissionalSaude;
     }
+
 }

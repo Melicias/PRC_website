@@ -25,7 +25,7 @@ public class UtenteBean {
         if(profissionalSaude == null)
             throw new MyEntityExistsException();
         try {
-            Utente newUtente = new Utente(password, name, email, dataNasc, profissionalSaude);
+            Utente newUtente = new Utente(password, name, email, dataNasc);
             profissionalSaude.addUtente(newUtente);
             em.persist(newUtente);
         }catch (ConstraintViolationException e) {

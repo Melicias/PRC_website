@@ -28,7 +28,7 @@ public class UtenteDadosBiometricosBean {
             throw new MyEntityNotFoundException("Tipo Dados Biometricos : "+ idTipoDadosBiometricos +" não foi encontrado");
 
         try{
-            UtenteDadosBiometricos newutenteDadosBiometricos = new UtenteDadosBiometricos(tipoDadosBiometricos,data_observacao,valor);
+            UtenteDadosBiometricos newutenteDadosBiometricos = new UtenteDadosBiometricos(tipoDadosBiometricos,data_observacao,valor, utente);
             utente.addDadosBiometricos(newutenteDadosBiometricos);
             em.persist(newutenteDadosBiometricos);
         } catch (ConstraintViolationException e) {

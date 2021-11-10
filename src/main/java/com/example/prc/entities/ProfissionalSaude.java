@@ -2,10 +2,7 @@ package com.example.prc.entities;
 
 import io.smallrye.common.constraint.NotNull;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +13,11 @@ public class ProfissionalSaude extends User{
     @JoinColumn(name = "tipoprofissional_id")
     @ManyToOne
     private TipoProfissional tipoProfissional;
-    @OneToMany
+
+    @ManyToMany
+    @JoinTable(name = "UTENTES_PROFISSIONAL_SAUDE",
+            joinColumns = @JoinColumn(name = "EMAIL_UTENTE", referencedColumnName = "EMAIL"),
+            inverseJoinColumns = @JoinColumn(name = "EMAIL_PROFISSIONAL_SAUDE", referencedColumnName = "EMAIL"))
     private List<Utente> utentes;
 
     public ProfissionalSaude() {
@@ -49,11 +50,11 @@ public class ProfissionalSaude extends User{
         this.utentes.add(utente);
     }
 
-    public void removerrUtente(Utente utente){
+    public void removerUtente(Utente utente){
         this.utentes.remove(utente);
     }
 
-    public void removerrUtente(int index){
+    public void removerUtente(int index){
         this.utentes.remove(index);
     }
 

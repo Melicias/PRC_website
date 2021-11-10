@@ -4,6 +4,8 @@ import io.smallrye.common.constraint.NotNull;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 @Entity
 public class UtenteDadosBiometricos {
@@ -15,6 +17,11 @@ public class UtenteDadosBiometricos {
     @JoinColumn(name = "tidadosbiometricos_id")
     @ManyToOne
     private TipoDadosBiometricos tipoDadosBiometricos;
+
+    @ManyToOne
+    @JoinColumn(name = "COURSE_CODE")
+    @NotNull
+    private Utente utente;
 
     @NotNull
     private Date data_observacao;
@@ -28,14 +35,14 @@ public class UtenteDadosBiometricos {
     private Date created_at;
 
     public UtenteDadosBiometricos() {
-
     }
 
-    public UtenteDadosBiometricos(TipoDadosBiometricos tipoDadosBiometricos, Date data_observacao, String valor) {
+    public UtenteDadosBiometricos(TipoDadosBiometricos tipoDadosBiometricos, Date data_observacao, String valor, Utente utente) {
         this.tipoDadosBiometricos = tipoDadosBiometricos;
         this.data_observacao = data_observacao;
         this.valor = valor;
         this.created_at = new Date();
+        this.utente = utente;
     }
 
     public int getId() {
