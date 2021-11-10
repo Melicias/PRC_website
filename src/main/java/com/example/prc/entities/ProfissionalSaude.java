@@ -15,9 +15,9 @@ public class ProfissionalSaude extends User{
     private TipoProfissional tipoProfissional;
 
     @ManyToMany
-    @JoinTable(name = "UTENTES_PROFISSIONAL_SAUDE",
+    @JoinTable(name = "UTENTE_PROFISSIONALSAUDE",
             joinColumns = @JoinColumn(name = "EMAIL_UTENTE", referencedColumnName = "EMAIL"),
-            inverseJoinColumns = @JoinColumn(name = "EMAIL_PROFISSIONAL_SAUDE", referencedColumnName = "EMAIL"))
+            inverseJoinColumns = @JoinColumn(name = "EMAIL_PROFISSIONALSAUDE", referencedColumnName = "EMAIL"))
     private List<Utente> utentes;
 
     public ProfissionalSaude() {

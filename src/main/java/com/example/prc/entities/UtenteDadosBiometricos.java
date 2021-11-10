@@ -19,7 +19,7 @@ public class UtenteDadosBiometricos {
     private TipoDadosBiometricos tipoDadosBiometricos;
 
     @ManyToOne
-    @JoinColumn(name = "COURSE_CODE")
+    @JoinColumn(name = "EMAIL_UTENTE")
     @NotNull
     private Utente utente;
 
@@ -91,5 +91,13 @@ public class UtenteDadosBiometricos {
 
     public void setCreated_at(Date created_at) {
         this.created_at = created_at;
+    }
+
+    public Utente getUtente() {
+        return utente;
+    }
+
+    public void setUtente(Utente utente) {
+        this.utente = utente;
     }
 }

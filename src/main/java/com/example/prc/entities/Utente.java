@@ -12,7 +12,7 @@ public class Utente extends User{
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataNasc;
-    @ManyToMany
+    @ManyToMany(mappedBy = "utentes")
     private List<ProfissionalSaude> profissionalSaude;
     @OneToMany
     private List<UtenteDadosBiometricos> dadosBiometricos;
