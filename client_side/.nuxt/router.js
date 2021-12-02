@@ -4,11 +4,7 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _74738caa = () => interopDefault(import('../pages/create.vue' /* webpackChunkName: "pages/create" */))
-const _4bf52fc9 = () => interopDefault(import('../pages/students/index.vue' /* webpackChunkName: "pages/students/index" */))
-const _6aab74a2 = () => interopDefault(import('../pages/students/_username/index.vue' /* webpackChunkName: "pages/students/_username/index" */))
-const _24504fec = () => interopDefault(import('../pages/students/_username/send-email.vue' /* webpackChunkName: "pages/students/_username/send-email" */))
-const _f2ca5ed8 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _319db6b5 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
 
@@ -22,24 +18,8 @@ export const routerOptions = {
   scrollBehavior,
 
   routes: [{
-    path: "/create",
-    component: _74738caa,
-    name: "create"
-  }, {
-    path: "/students",
-    component: _4bf52fc9,
-    name: "students"
-  }, {
-    path: "/students/:username",
-    component: _6aab74a2,
-    name: "students-username"
-  }, {
-    path: "/students/:username/send-email",
-    component: _24504fec,
-    name: "students-username-send-email"
-  }, {
     path: "/",
-    component: _f2ca5ed8,
+    component: _319db6b5,
     name: "index"
   }],
 
