@@ -13,11 +13,14 @@ com/example/prc/ejbs/AdminBean.class
 com/example/prc/entities/Admin.class
 com/example/prc/ejbs/ConfigBean.class
 com/example/prc/exceptions/MyIllegalArgumentException.class
+com/example/prc/dtos/ProfissionaSaudeDTO.class
 com/example/prc/entities/Utente.class
 com/example/prc/ejbs/TipoDadosBiometricosBean.class
+com/example/prc/ws/TipoProfissionalService.class
 com/example/prc/exceptions/MyEntityNotFoundException.class
 com/example/prc/exceptions/MyEntityExistsException.class
 com/example/prc/exceptions/MyConstraintViolationException.class
+com/example/prc/dtos/TipoProfissionalDTO.class
 com/example/prc/entities/TipoProfissional.class
 com/example/prc/entities/Prescricao.class
 com/example/prc/HelloApplication.class

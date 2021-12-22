@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.LockModeType;
 import javax.persistence.PersistenceContext;
 import javax.validation.ConstraintViolationException;
+import java.util.List;
 
 @Stateless
 public class TipoProfissionalBean {
@@ -44,5 +45,9 @@ public class TipoProfissionalBean {
     public void remove(TipoProfissional tipoProfissional) {
         TipoProfissional tipoProfissionalMerged = em.merge(tipoProfissional);
         em.remove(tipoProfissionalMerged);
+    }
+
+    public List<TipoProfissional> getAllTipoProfissional() {
+        return (List<TipoProfissional>) em.createNamedQuery("getAllTipoProfisiional").getResultList();
     }
 }
