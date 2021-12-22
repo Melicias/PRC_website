@@ -66,6 +66,10 @@ public class Utente extends User{
         this.prescricoes.add(dados);
     }
 
+    public void addProfissionalSaude(ProfissionalSaude profissionalSaude){
+        this.profissionalSaude.add(profissionalSaude);
+    }
+
     public void removerDadosBiometricos(int index){
         this.dadosBiometricos.remove(index);
     }

@@ -38,6 +38,7 @@ public class UtenteBean {
         try {
             Utente newUtente = new Utente(password, name, email, dataNasc);
             profissionalSaude.addUtente(newUtente);
+            newUtente.addProfissionalSaude(profissionalSaude);
             em.persist(newUtente);
             em.flush();
         }catch (ConstraintViolationException e) {
