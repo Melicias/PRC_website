@@ -25,6 +25,7 @@ public class TipoDadosBiometricosBean {
                 tipoDadoBiometrico = new TipoDadosBiometricos(name, quantitativo);
             }
             em.persist(tipoDadoBiometrico);
+            em.flush();
         } catch (ConstraintViolationException e) {
             throw new MyConstraintViolationException(e);
         }

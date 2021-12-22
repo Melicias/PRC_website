@@ -12,6 +12,7 @@ com/example/prc/jwt/Jwt.class
 com/example/prc/ejbs/AdminBean.class
 com/example/prc/entities/Admin.class
 com/example/prc/ejbs/ConfigBean.class
+com/example/prc/dtos/AuthDTO.class
 com/example/prc/exceptions/MyIllegalArgumentException.class
 com/example/prc/dtos/ProfissionaSaudeDTO.class
 com/example/prc/entities/Utente.class

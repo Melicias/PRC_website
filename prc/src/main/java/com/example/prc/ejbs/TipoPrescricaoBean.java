@@ -20,6 +20,7 @@ public class TipoPrescricaoBean {
         try {
             TipoPrescricao tipoPrescricao = new TipoPrescricao(name);
             em.persist(tipoPrescricao);
+            em.flush();
         } catch (ConstraintViolationException e) {
             throw new MyConstraintViolationException(e);
         }

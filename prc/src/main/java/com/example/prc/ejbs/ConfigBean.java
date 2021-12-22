@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,6 +26,10 @@ public class ConfigBean {
     PrescricaoBean prescricaoBean;
     @EJB
     AdminBean adminBean;
+    @EJB
+    UtenteBean utenteBean;
+    @EJB
+    ProfissionalSaudeBean profissionalSaudeBean;
 
     @PostConstruct
     public void populateDB() {
@@ -32,6 +37,7 @@ public class ConfigBean {
         System.out.println("Hello Java EE!");
 
         try{
+
             tipoPrescricao.create("Exercicio Fisico");
             tipoPrescricao.create("Comer para emagrecer");
             tipoPrescricao.create("Comer para engordar");
@@ -44,10 +50,14 @@ public class ConfigBean {
             tipoDadosBiometricos.create("colestrol",5,10,null);
             tipoDadosBiometricos.create("obesidade",0, 0,"cenas que nao vou criar ja mas possivelmente criado em json");
 
+            adminBean.create("teste123","admin teste", "admin@admin.com");
 
+            profissionalSaudeBean.create("teste123","profissional teste", "profissional@profissional.com",1);
+
+            utenteBean.create("teste123","utente teste", "utente@utente.com", new Date("29/06/1999"),"profissional@profissional.com");
 
         } catch (Exception e) {
-            logger.log(Level.SEVERE, e.getMessage());
+            logger.log(Level.SEVERE, e.toString());
         }
     }
 }

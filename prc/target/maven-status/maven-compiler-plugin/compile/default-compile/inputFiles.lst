@@ -10,6 +10,7 @@
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/entities/UtenteDadosBiometricos.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/ejbs/PrescricaoBean.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/exceptions/MyEntityExistsExceptionMapper.java
+/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/dtos/AuthDTO.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/entities/Prescricao.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/ejbs/ConfigBean.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/entities/Utente.java

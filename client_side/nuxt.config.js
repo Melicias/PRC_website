@@ -38,6 +38,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/toast',
+    '@nuxtjs/auth'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -57,5 +58,37 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
+  },
+  ssr: false, // Disable Server Side rendering
+  // Auth module configuration (https://auth.nuxtjs.org/)
+  auth: {
+    redirect: {
+      login: '/auth/login',
+      logout: '/',
+      home: '/'
+    },
+    watchLoggedIn: true,
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: '/api/auth/login',
+            method: 'post',
+            propertyName: 'token'
+          },
+          logout: false,
+          user: {
+            url: '/api/auth/user',
+            method: 'get',
+            propertyName: ''
+          }
+        },
+      }
+    }
+  },
+  router: {
+    middleware: [
+      'auth'
+    ]
+  },
 }

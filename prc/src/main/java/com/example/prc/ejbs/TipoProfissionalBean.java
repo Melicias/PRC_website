@@ -21,6 +21,7 @@ public class TipoProfissionalBean {
         try {
             TipoProfissional tipoProfissional = new TipoProfissional(name);
             em.persist(tipoProfissional);
+            em.flush();
         } catch (ConstraintViolationException e) {
             throw new MyConstraintViolationException(e);
         }

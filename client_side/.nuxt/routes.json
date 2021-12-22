@@ -3,12 +3,21 @@
     "name": "tipoProfissional",
     "path": "/tipoProfissional",
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/tipoProfissional/index.vue",
-    "chunkName": "pages/tipoProfissional/index"
+    "chunkName": "pages/tipoProfissional/index",
+    "_name": "_7b685732"
+  },
+  {
+    "name": "auth-login",
+    "path": "/auth/login",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/auth/login.vue",
+    "chunkName": "pages/auth/login",
+    "_name": "_50aad86f"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_319db6b5"
   }
 ]

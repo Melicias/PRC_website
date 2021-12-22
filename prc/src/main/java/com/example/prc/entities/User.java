@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 @Entity
 @Table(name = "users")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User implements Serializable {
     @Id
     @Email

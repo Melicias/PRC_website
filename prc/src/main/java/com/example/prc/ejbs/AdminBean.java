@@ -1,6 +1,7 @@
 package com.example.prc.ejbs;
 
 import com.example.prc.entities.Admin;
+import com.example.prc.entities.Utente;
 import com.example.prc.exceptions.MyConstraintViolationException;
 import com.example.prc.exceptions.MyEntityExistsException;
 import com.example.prc.exceptions.MyEntityNotFoundException;
@@ -16,6 +17,15 @@ public class AdminBean {
     @PersistenceContext
     EntityManager em;
 
+    public Admin authenticate(final String email, final String password) throws
+            Exception {
+        Admin admin = em.find(Admin.class, email);
+        if (admin != null && admin.getPassword().equals(Admin.hashPassword(password))) {
+            return admin;
+        }
+        throw new Exception("Failed logging in with the email  '" + email + "': unknown email or wrong password");
+    }
+
     //https://www.javatpoint.com/how-to-encrypt-password-in-java
     public void create(String password, String name, String email)
             throws MyEntityExistsException, MyConstraintViolationException {
@@ -25,6 +35,7 @@ public class AdminBean {
         try {
             admin = new Admin(password, name, email);
             em.persist(admin);
+            em.flush();
         } catch (ConstraintViolationException e) {
             throw new MyConstraintViolationException(e);
         }
