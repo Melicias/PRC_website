@@ -3,14 +3,12 @@
     "name": "tipoProfissional",
     "path": "/tipoProfissional",
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/tipoProfissional/index.vue",
-    "chunkName": "pages/tipoProfissional/index",
-    "_name": "_7b685732"
+    "chunkName": "pages/tipoProfissional/index"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_319db6b5"
+    "chunkName": "pages/index"
   }
 ]
