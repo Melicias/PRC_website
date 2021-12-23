@@ -54,4 +54,10 @@ public class TipoDadosBiometricosService {
         return tipoDadosBiometricos.stream().map(this::toDTO).collect(Collectors.toList());
     }
 
+    @GET
+    @Path("{name}")
+    public Response getTipoDadoBiometricoDetails(@PathParam("name") String name) throws MyEntityExistsException, MyEntityNotFoundException {
+        TipoDadosBiometricos tipoDadosBiometricos = tipoDadosBiometricosBean.findTipoDadoBiometrico(name);
+        return Response.ok(toDTO(tipoDadosBiometricos)).build();
+    }
 }

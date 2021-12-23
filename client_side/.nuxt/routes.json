@@ -3,36 +3,49 @@
     "name": "admin",
     "path": "/admin",
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/index.vue",
-    "chunkName": "pages/admin/index"
+    "chunkName": "pages/admin/index",
+    "_name": "_01017896"
   },
   {
     "name": "tipoProfissional",
     "path": "/tipoProfissional",
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/tipoProfissional/index.vue",
-    "chunkName": "pages/tipoProfissional/index"
+    "chunkName": "pages/tipoProfissional/index",
+    "_name": "_7b685732"
   },
   {
     "name": "admin-biometricdata",
     "path": "/admin/biometricdata",
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/biometricdata/index.vue",
-    "chunkName": "pages/admin/biometricdata/index"
+    "chunkName": "pages/admin/biometricdata/index",
+    "_name": "_b0c991f0"
   },
   {
     "name": "admin-patients",
     "path": "/admin/patients",
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/patients/index.vue",
-    "chunkName": "pages/admin/patients/index"
+    "chunkName": "pages/admin/patients/index",
+    "_name": "_b7807284"
   },
   {
     "name": "auth-login",
     "path": "/auth/login",
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/auth/login.vue",
-    "chunkName": "pages/auth/login"
+    "chunkName": "pages/auth/login",
+    "_name": "_50aad86f"
+  },
+  {
+    "name": "admin-biometricdata-name",
+    "path": "/admin/biometricdata/:name",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/biometricdata/_name.vue",
+    "chunkName": "pages/admin/biometricdata/_name",
+    "_name": "_4ad735a0"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_319db6b5"
   }
 ]

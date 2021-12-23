@@ -9,6 +9,7 @@ const _7b685732 = () => interopDefault(import('../pages/tipoProfissional/index.v
 const _b0c991f0 = () => interopDefault(import('../pages/admin/biometricdata/index.vue' /* webpackChunkName: "pages/admin/biometricdata/index" */))
 const _b7807284 = () => interopDefault(import('../pages/admin/patients/index.vue' /* webpackChunkName: "pages/admin/patients/index" */))
 const _50aad86f = () => interopDefault(import('../pages/auth/login.vue' /* webpackChunkName: "pages/auth/login" */))
+const _4ad735a0 = () => interopDefault(import('../pages/admin/biometricdata/_name.vue' /* webpackChunkName: "pages/admin/biometricdata/_name" */))
 const _319db6b5 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
@@ -42,6 +43,10 @@ export const routerOptions = {
     path: "/auth/login",
     component: _50aad86f,
     name: "auth-login"
+  }, {
+    path: "/admin/biometricdata/:name",
+    component: _4ad735a0,
+    name: "admin-biometricdata-name"
   }, {
     path: "/",
     component: _319db6b5,

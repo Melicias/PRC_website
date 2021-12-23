@@ -35,4 +35,8 @@ public class TipoDadosBiometricosBean {
     public List<TipoDadosBiometricos> getAllTipoDadosBiometricos() {
         return (List<TipoDadosBiometricos>) em.createNamedQuery("getAllTipoDadosBiometricos").getResultList();
     }
+
+    public TipoDadosBiometricos findTipoDadoBiometrico(String name) {
+        return em.find(TipoDadosBiometricos.class, name);
+    }
 }

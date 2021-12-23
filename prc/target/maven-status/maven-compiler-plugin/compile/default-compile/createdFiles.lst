@@ -13,7 +13,6 @@ com/example/prc/exceptions/MyEntityNotFoundExceptionMapper.class
 com/example/prc/jwt/Jwt.class
 com/example/prc/ejbs/AdminBean.class
 com/example/prc/entities/Admin.class
-com/example/prc/entities/PRC.class
 com/example/prc/ws/TipoDadosBiometricosService.class
 com/example/prc/ejbs/ConfigBean.class
 com/example/prc/dtos/AuthDTO.class
@@ -24,6 +23,7 @@ com/example/prc/ejbs/TipoDadosBiometricosBean.class
 com/example/prc/ws/TipoProfissionalService.class
 com/example/prc/exceptions/MyEntityNotFoundException.class
 com/example/prc/exceptions/MyEntityExistsException.class
+com/example/prc/entities/Prc.class
 com/example/prc/exceptions/MyConstraintViolationException.class
 com/example/prc/dtos/TipoProfissionalDTO.class
 com/example/prc/entities/TipoProfissional.class

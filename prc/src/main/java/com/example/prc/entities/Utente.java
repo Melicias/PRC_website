@@ -18,7 +18,7 @@ public class Utente extends User{
     private List<UtenteDadosBiometricos> dadosBiometricos;
 
     @OneToMany
-    private List<PRC> prcs;
+    private List<Prc> prcs;
 
 
     public Utente() {
@@ -52,11 +52,11 @@ public class Utente extends User{
         this.dadosBiometricos = dadosBiometricos;
     }
 
-    public List<PRC> getPrcs() {
+    public List<Prc> getPrcs() {
         return prcs;
     }
 
-    public void setPrcs(List<PRC> prcs) {
+    public void setPrcs(List<Prc> prcs) {
         this.prcs = prcs;
     }
 
@@ -64,7 +64,7 @@ public class Utente extends User{
         this.dadosBiometricos.add(dados);
     }
 
-    public void addPrc(PRC dados){
+    public void addPrc(Prc dados){
         this.prcs.add(dados);
     }
 
@@ -84,7 +84,7 @@ public class Utente extends User{
         this.prcs.remove(index);
     }
 
-    public void removerPrc(PRC dados){
+    public void removerPrc(Prc dados){
         this.prcs.remove(dados);
     }
 

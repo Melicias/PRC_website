@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-public class PRC {
+public class Prc {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -36,11 +36,11 @@ public class PRC {
     @OneToMany
     private List<Prescricao> prescricoes;
 
-    public PRC() {
+    public Prc() {
 
     }
 
-    public PRC(Utente utente, ProfissionalSaude profissionalSaude, String doenca, Date validade) {
+    public Prc(Utente utente, ProfissionalSaude profissionalSaude, String doenca, Date validade) {
         this.utente = utente;
         this.profissionalSaude = profissionalSaude;
         this.doenca = doenca;
