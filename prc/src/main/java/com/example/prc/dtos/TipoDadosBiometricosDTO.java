@@ -1,50 +1,35 @@
-package com.example.prc.entities;
+package com.example.prc.dtos;
 
+import com.example.prc.entities.UtenteDadosBiometricos;
 import io.smallrye.common.constraint.NotNull;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
-@Entity
-
-@NamedQueries({
-        @NamedQuery(
-                name = "getAllTipoDadosBiometricos",
-                query = "SELECT tdb FROM TipoDadosBiometricos tdb ORDER BY tdb.name" // JPQL
-        )
-})
-
-public class TipoDadosBiometricos {
+public class TipoDadosBiometricosDTO {
     //vai preencher a string
     public static int QUANTITATIVO = 1;
     //vai preencher o min max
     public static int QUALITATIVO = 2;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @NotNull
-    @Column(unique=true)
     private String name;
-    @NotNull
     private int type;
     private double min;
     private double max;
     private String quantitativo;
-    @Temporal(TemporalType.TIMESTAMP)
     private Date deleted_at;
 
-    public TipoDadosBiometricos() {
-
-    }
-
-    public TipoDadosBiometricos(String name, double min, double max) {
+    public TipoDadosBiometricosDTO(int id,String name, double min, double max) {
+        this.id = id;
         this.name = name;
         this.min = min;
         this.max = max;
         this.type = QUALITATIVO;
     }
 
-    public TipoDadosBiometricos(String name, String quantitativo) {
+    public TipoDadosBiometricosDTO(int id, String name, String quantitativo) {
+        this.id = id;
         this.name = name;
         this.quantitativo = quantitativo;
         this.type = QUANTITATIVO;
@@ -96,5 +81,13 @@ public class TipoDadosBiometricos {
 
     public void setQuantitativo(String quantitativo) {
         this.quantitativo = quantitativo;
+    }
+
+    public Date getDeleted_at() {
+        return deleted_at;
+    }
+
+    public void setDeleted_at(Date deleted_at) {
+        this.deleted_at = deleted_at;
     }
 }

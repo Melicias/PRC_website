@@ -1,10 +1,12 @@
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/ejbs/ProfissionalSaudeBean.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/dtos/TipoProfissionalDTO.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/ejbs/TipoProfissionalBean.java
+/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/dtos/TipoDadosBiometricosDTO.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/entities/Admin.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/jwt/Jwt.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/ejbs/UtenteBean.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/ejbs/UtenteDadosBiometricosBean.java
+/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/dtos/UtenteDTO.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/ejbs/UserBean.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/ws/TipoProfissionalService.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/entities/UtenteDadosBiometricos.java
@@ -22,6 +24,8 @@
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/ejbs/JwtBean.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/entities/TipoPrescricao.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/entities/ProfissionalSaude.java
+/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/entities/PRC.java
+/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/ws/TipoDadosBiometricosService.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/HelloApplication.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/exceptions/MyEntityExistsException.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/dtos/ProfissionaSaudeDTO.java

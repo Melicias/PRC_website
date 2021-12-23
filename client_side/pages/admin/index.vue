@@ -14,7 +14,7 @@
         <p>Healthcare specialists management</p>
       </div>
     </nuxt-link>
-    <nuxt-link :to="'/admin/Biometricdata'">
+    <nuxt-link :to="'/admin/biometricdata'">
       <div class="img-with-text">
         <img width="100" height="100" src="../../img/blood-test.png" alt="Image not loaded" />
         <p>Biometric data management</p>

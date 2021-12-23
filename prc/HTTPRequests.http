@@ -1,0 +1,3 @@
+##### Students
+GET http://localhost:8080/academics/api/students
+Accept: application/json

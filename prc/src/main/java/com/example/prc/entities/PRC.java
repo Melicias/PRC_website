@@ -6,9 +6,15 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+@Entity
 public class PRC {
-    @NotNull
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
     @ManyToOne
+    @JoinColumn(name = "EMAIL_UTENTE")
+    @NotNull
     private Utente utente;
 
     @NotNull
@@ -30,12 +36,25 @@ public class PRC {
     @OneToMany
     private List<Prescricao> prescricoes;
 
+    public PRC() {
+
+    }
+
     public PRC(Utente utente, ProfissionalSaude profissionalSaude, String doenca, Date validade) {
         this.utente = utente;
         this.profissionalSaude = profissionalSaude;
         this.doenca = doenca;
         this.validade = validade;
         this.created_at = new Date();
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Utente getUtente() {
