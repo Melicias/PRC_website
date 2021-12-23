@@ -7,6 +7,9 @@
         <nuxt-link
           class="btn btn-link"
           :to="`biometricdata/${row.item.name}`">Details</nuxt-link>
+        <button @click.prevent="deleteTipo(`${row.item.id}`)">
+          del
+        </button>
       </template>
     </b-table>
     <nuxt-link to="/admin">Back</nuxt-link>
@@ -26,6 +29,19 @@ export default {
         this.tipoDadosBiometricos = tipoDadosBiometricos
         console.log(this.tipoDadosBiometricos);
       })
-  } }
+  },
+  methods: {
+    deleteTipo(id) {
+      console.log(id);
+      this.$axios.$delete(`/api/tipoDadosBiometricos/${id}`)
+        .then(msg => {
+          this.$toast.success(msg).goAway(1500)
+        })
+        .catch(error => {
+          this.$toast.error('error sending the e-mail').goAway(3000)
+        })
+    }
+  }
+}
 </script>
 <style></style>

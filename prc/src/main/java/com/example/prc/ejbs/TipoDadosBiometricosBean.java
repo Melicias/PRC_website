@@ -9,6 +9,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.validation.ConstraintViolationException;
+import java.util.Date;
 import java.util.List;
 
 @Stateless
@@ -37,6 +38,20 @@ public class TipoDadosBiometricosBean {
     }
 
     public TipoDadosBiometricos findTipoDadoBiometrico(String name) {
-        return em.find(TipoDadosBiometricos.class, name);
+        return (TipoDadosBiometricos) em.createNamedQuery("getTipoDadosBiometricosByName").setParameter("name", name).getSingleResult();
+    }
+
+    public TipoDadosBiometricos deleteTipoDadoBiometrico(int id){
+        TipoDadosBiometricos tdb = em.find(TipoDadosBiometricos.class,id);
+        if(tdb != null){
+            if(tdb.getDeleted_at() == null){
+                tdb.setDeleted_at(new Date());
+            }else{
+                tdb.setDeleted_at(null);
+            }
+            em.persist(tdb);
+            em.flush();
+        }
+        return tdb;
     }
 }

@@ -26,5 +26,6 @@ export default {
     this.$axios.$get(`/api/tipoDadosBiometricos/${this.name}`)
       .then((tipoDadoBiometrico) => {
         this.tipoDadoBiometrico = tipoDadoBiometrico || {} })
-  }, }
+  },
+}
 </script>

@@ -11,6 +11,10 @@ import java.util.Date;
         @NamedQuery(
                 name = "getAllTipoDadosBiometricos",
                 query = "SELECT tdb FROM TipoDadosBiometricos tdb ORDER BY tdb.name" // JPQL
+        ),
+        @NamedQuery(
+                name = "getTipoDadosBiometricosByName",
+                query = "SELECT tdb FROM TipoDadosBiometricos tdb where tdb.name = :name" // JPQL
         )
 })
 
@@ -96,5 +100,13 @@ public class TipoDadosBiometricos {
 
     public void setQuantitativo(String quantitativo) {
         this.quantitativo = quantitativo;
+    }
+
+    public Date getDeleted_at() {
+        return deleted_at;
+    }
+
+    public void setDeleted_at(Date deleted_at) {
+        this.deleted_at = deleted_at;
     }
 }
