@@ -1,57 +1,35 @@
-package com.example.prc.entities;
+package com.example.prc.dtos;
 
-import io.smallrye.common.constraint.NotNull;
-
-import javax.persistence.*;
 import java.util.Date;
 
-@Entity
-
-@NamedQueries({
-        @NamedQuery(
-                name = "getAllTipoDadosBiometricos",
-                query = "SELECT tdb FROM TipoDadosBiometricos tdb ORDER BY tdb.name" // JPQL
-        ),
-        @NamedQuery(
-                name = "getTipoDadosBiometricosByName",
-                query = "SELECT tdb FROM TipoDadosBiometricos tdb where tdb.name = :name" // JPQL
-        )
-})
-
-public class TipoDadosBiometricos {
+public class TipoDadosBiometricosDTO {
     //vai preencher a string
     public static int QUANTITATIVO = 1;
     //vai preencher o min max
     public static int QUALITATIVO = 2;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @NotNull
-    @Column(unique=true)
     private String name;
-    @NotNull
     private int type;
     private double min;
     private double max;
     private String quantitativo;
-    @Temporal(TemporalType.TIMESTAMP)
     private Date deleted_at;
 
-    public TipoDadosBiometricos() {
-
-    }
-
-    public TipoDadosBiometricos(String name, double min, double max) {
+    public TipoDadosBiometricosDTO(int id,String name, double min, double max, Date deleted_at) {
+        this.id = id;
         this.name = name;
         this.min = min;
         this.max = max;
         this.type = QUALITATIVO;
+        this.deleted_at = deleted_at;
     }
 
-    public TipoDadosBiometricos(String name, String quantitativo) {
+    public TipoDadosBiometricosDTO(int id, String name, String quantitativo, Date deleted_at) {
+        this.id = id;
         this.name = name;
         this.quantitativo = quantitativo;
         this.type = QUANTITATIVO;
+        this.deleted_at = deleted_at;
     }
 
     public int getId() {

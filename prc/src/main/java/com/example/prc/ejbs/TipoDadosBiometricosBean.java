@@ -1,7 +1,7 @@
 package com.example.prc.ejbs;
 
-import com.example.prc.entities.Admin;
 import com.example.prc.entities.TipoDadosBiometricos;
+import com.example.prc.entities.TipoProfissional;
 import com.example.prc.exceptions.MyConstraintViolationException;
 import com.example.prc.exceptions.MyEntityExistsException;
 
@@ -9,6 +9,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.validation.ConstraintViolationException;
+import java.util.Date;
+import java.util.List;
 
 @Stateless
 public class TipoDadosBiometricosBean {
@@ -29,5 +31,27 @@ public class TipoDadosBiometricosBean {
         } catch (ConstraintViolationException e) {
             throw new MyConstraintViolationException(e);
         }
+    }
+
+    public List<TipoDadosBiometricos> getAllTipoDadosBiometricos() {
+        return (List<TipoDadosBiometricos>) em.createNamedQuery("getAllTipoDadosBiometricos").getResultList();
+    }
+
+    public TipoDadosBiometricos findTipoDadoBiometrico(String name) {
+        return (TipoDadosBiometricos) em.createNamedQuery("getTipoDadosBiometricosByName").setParameter("name", name).getSingleResult();
+    }
+
+    public TipoDadosBiometricos deleteTipoDadoBiometrico(int id){
+        TipoDadosBiometricos tdb = em.find(TipoDadosBiometricos.class,id);
+        if(tdb != null){
+            if(tdb.getDeleted_at() == null){
+                tdb.setDeleted_at(new Date());
+            }else{
+                tdb.setDeleted_at(null);
+            }
+            em.persist(tdb);
+            em.flush();
+        }
+        return tdb;
     }
 }

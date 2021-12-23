@@ -10,6 +10,7 @@ import java.nio.CharBuffer;
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,6 +27,11 @@ public class User implements Serializable {
     private String password;
     @NotNull
     private String name;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date deleted_at;
+    @NotNull
+    @Column(columnDefinition = "integer default 0")
+    private int blocked;
 
     @Version private int version;
 

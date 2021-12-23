@@ -4,12 +4,14 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
+
 const _3bae8b5f = () => interopDefault(import('..\\pages\\tipoProfissional\\index.vue' /* webpackChunkName: "pages/tipoProfissional/index" */))
 const _15cc8525 = () => interopDefault(import('..\\pages\\auth\\login.vue' /* webpackChunkName: "pages/auth/login" */))
 const _c5ab0de0 = () => interopDefault(import('..\\pages\\profissionalSaude\\createUser.vue' /* webpackChunkName: "pages/profissionalSaude/createUser" */))
 const _760f83a2 = () => interopDefault(import('..\\pages\\profissionalSaude\\main.vue' /* webpackChunkName: "pages/profissionalSaude/main" */))
 const _fcee5ddc = () => interopDefault(import('..\\pages\\profissionalSaude\\usersManagement.vue' /* webpackChunkName: "pages/profissionalSaude/usersManagement" */))
 const _0369bd36 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
+
 
 const emptyFn = () => {}
 
@@ -23,14 +25,31 @@ export const routerOptions = {
   scrollBehavior,
 
   routes: [{
+    path: "/admin",
+    component: _01017896,
+    name: "admin"
+  }, {
     path: "/tipoProfissional",
     component: _3bae8b5f,
     name: "tipoProfissional"
+  }, {
+    path: "/admin/biometricdata",
+    component: _b0c991f0,
+    name: "admin-biometricdata"
+  }, {
+    path: "/admin/patients",
+    component: _b7807284,
+    name: "admin-patients"
   }, {
     path: "/auth/login",
     component: _15cc8525,
     name: "auth-login"
   }, {
+
+    path: "/admin/biometricdata/:name",
+    component: _4ad735a0,
+    name: "admin-biometricdata-name"
+
     path: "/profissionalSaude/createUser",
     component: _c5ab0de0,
     name: "profissionalSaude-createUser"
@@ -42,6 +61,7 @@ export const routerOptions = {
     path: "/profissionalSaude/usersManagement",
     component: _fcee5ddc,
     name: "profissionalSaude-usersManagement"
+
   }, {
     path: "/",
     component: _0369bd36,

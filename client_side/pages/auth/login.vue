@@ -49,7 +49,7 @@ export default {
         if (this.$auth.user.groups.includes('Utente')) {
           //this.$router.push('/students')
         } else if (this.$auth.user.groups.includes('Admin')) {
-          //this.$router.push('/students/' + this.username)
+          this.$router.push('/admin')
         } if (this.$auth.user.groups.includes('ProfissionalSaude')) {
           //this.$router.push('/students/' + this.username)
         }
