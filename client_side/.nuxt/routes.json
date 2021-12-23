@@ -9,9 +9,8 @@
   {
     "name": "tipoProfissional",
     "path": "/tipoProfissional",
-    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/tipoProfissional/index.vue",
-    "chunkName": "pages/tipoProfissional/index",
-    "_name": "_7b685732"
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\tipoProfissional\\\\index.vue",
+    "chunkName": "pages/tipoProfissional/index"
   },
   {
     "name": "admin-biometricdata",
@@ -30,9 +29,26 @@
   {
     "name": "auth-login",
     "path": "/auth/login",
-    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/auth/login.vue",
-    "chunkName": "pages/auth/login",
-    "_name": "_50aad86f"
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\auth\\\\login.vue",
+    "chunkName": "pages/auth/login"
+  },
+  {
+    "name": "profissionalSaude-createUser",
+    "path": "/profissionalSaude/createUser",
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\profissionalSaude\\\\createUser.vue",
+    "chunkName": "pages/profissionalSaude/createUser"
+  },
+  {
+    "name": "profissionalSaude-main",
+    "path": "/profissionalSaude/main",
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\profissionalSaude\\\\main.vue",
+    "chunkName": "pages/profissionalSaude/main"
+  },
+  {
+    "name": "profissionalSaude-usersManagement",
+    "path": "/profissionalSaude/usersManagement",
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\profissionalSaude\\\\usersManagement.vue",
+    "chunkName": "pages/profissionalSaude/usersManagement"
   },
   {
     "name": "admin-biometricdata-name",
@@ -44,8 +60,7 @@
   {
     "name": "index",
     "path": "/",
-    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_319db6b5"
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\index.vue",
+    "chunkName": "pages/index"
   }
 ]
