@@ -16,6 +16,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
+import java.util.Locale;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -41,13 +42,15 @@ public class TipoDadosBiometricosService {
                     tipoDadosBiometricos.getId(),
                     tipoDadosBiometricos.getName(),
                     tipoDadosBiometricos.getMin(),
-                    tipoDadosBiometricos.getMax()
+                    tipoDadosBiometricos.getMax(),
+                    tipoDadosBiometricos.getDeleted_at()
             );
         }else{
             tdb = new TipoDadosBiometricosDTO(
                     tipoDadosBiometricos.getId(),
                     tipoDadosBiometricos.getName(),
-                    tipoDadosBiometricos.getQuantitativo()
+                    tipoDadosBiometricos.getQuantitativo(),
+                    tipoDadosBiometricos.getDeleted_at()
             );
         }
         return tdb;

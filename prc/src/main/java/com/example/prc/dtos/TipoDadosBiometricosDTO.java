@@ -1,11 +1,6 @@
 package com.example.prc.dtos;
 
-import com.example.prc.entities.UtenteDadosBiometricos;
-import io.smallrye.common.constraint.NotNull;
-
-import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 public class TipoDadosBiometricosDTO {
     //vai preencher a string
@@ -20,19 +15,21 @@ public class TipoDadosBiometricosDTO {
     private String quantitativo;
     private Date deleted_at;
 
-    public TipoDadosBiometricosDTO(int id,String name, double min, double max) {
+    public TipoDadosBiometricosDTO(int id,String name, double min, double max, Date deleted_at) {
         this.id = id;
         this.name = name;
         this.min = min;
         this.max = max;
         this.type = QUALITATIVO;
+        this.deleted_at = deleted_at;
     }
 
-    public TipoDadosBiometricosDTO(int id, String name, String quantitativo) {
+    public TipoDadosBiometricosDTO(int id, String name, String quantitativo, Date deleted_at) {
         this.id = id;
         this.name = name;
         this.quantitativo = quantitativo;
         this.type = QUANTITATIVO;
+        this.deleted_at = deleted_at;
     }
 
     public int getId() {
