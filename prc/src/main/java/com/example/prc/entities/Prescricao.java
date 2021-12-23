@@ -13,13 +13,13 @@ public class Prescricao {
     private int id;
 
     @NotNull
+    private String name;
+
+    @NotNull
     private String descricao;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date created_at;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date validade;
 
     @ManyToOne
     @JoinColumn(name = "tipoprescricao_id")
@@ -29,23 +29,13 @@ public class Prescricao {
     @Temporal(TemporalType.TIMESTAMP)
     private Date deleted_at;
 
-    @NotNull
-    @OneToOne
-    private Utente utente;
-
     public Prescricao() {
 
     }
 
-    public Prescricao(String descricao, Date validade, TipoPrescricao tipoPrescricao) {
+    public Prescricao(String descricao, String name, TipoPrescricao tipoPrescricao) {
         this.descricao = descricao;
-        this.validade = validade;
-        this.tipoPrescricao = tipoPrescricao;
-        this.created_at = new Date();
-    }
-
-    public Prescricao(String descricao, TipoPrescricao tipoPrescricao) {
-        this.descricao = descricao;
+        this.name = name;
         this.tipoPrescricao = tipoPrescricao;
         this.created_at = new Date();
     }
@@ -74,14 +64,6 @@ public class Prescricao {
         this.created_at = created_at;
     }
 
-    public Date getValidade() {
-        return validade;
-    }
-
-    public void setValidade(Date validade) {
-        this.validade = validade;
-    }
-
     public TipoPrescricao getTipoPrescricao() {
         return tipoPrescricao;
     }
@@ -98,11 +80,11 @@ public class Prescricao {
         this.deleted_at = deleted_at;
     }
 
-    public Utente getUtente() {
-        return utente;
+    public String getName() {
+        return name;
     }
 
-    public void setUtente(Utente utente) {
-        this.utente = utente;
+    public void setName(String name) {
+        this.name = name;
     }
 }

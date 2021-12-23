@@ -21,6 +21,7 @@ public class TipoDadosBiometricos {
     private double min;
     private double max;
     private String quantitativo;
+    
 
     public TipoDadosBiometricos() {
 

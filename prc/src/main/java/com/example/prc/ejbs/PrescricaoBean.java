@@ -17,24 +17,15 @@ public class PrescricaoBean {
     @PersistenceContext
     EntityManager em;
 
-    public void create(String descricao, Date validade, String emailUtente, int idTipoPrescricao)
+    public void create(String descricao, String name, int idTipoPrescricao)
             throws MyEntityNotFoundException, MyConstraintViolationException {
         TipoPrescricao tipoPrescricao = em.find(TipoPrescricao.class,idTipoPrescricao);
         if(tipoPrescricao == null)
             throw new MyEntityNotFoundException("TipoPrescricao with code: " + idTipoPrescricao + " not found.");
-
         try {
-            Prescricao prescricao;
-            if(validade == null){
-                prescricao = new Prescricao(descricao,tipoPrescricao);
-            }else{
-                prescricao = new Prescricao(descricao,validade,tipoPrescricao);
-            }
-            Utente utente = em.find(Utente.class,emailUtente);
-            if(utente != null)
-                throw new MyEntityNotFoundException();
-            utente.addPrecricoes(prescricao);
+            Prescricao prescricao = new Prescricao(descricao,name,tipoPrescricao);
             em.persist(prescricao);
+            em.flush();
         } catch (ConstraintViolationException e) {
             throw new MyConstraintViolationException(e);
         }
