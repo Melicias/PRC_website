@@ -1,6 +1,7 @@
 package com.example.prc.ejbs;
 
 import com.example.prc.entities.ProfissionalSaude;
+import com.example.prc.entities.TipoDadosBiometricos;
 import com.example.prc.entities.TipoProfissional;
 import com.example.prc.exceptions.MyConstraintViolationException;
 import com.example.prc.exceptions.MyEntityExistsException;
@@ -10,6 +11,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.validation.ConstraintViolationException;
+import java.util.List;
 
 @Stateless
 public class ProfissionalSaudeBean {
@@ -32,5 +34,8 @@ public class ProfissionalSaudeBean {
         } catch (ConstraintViolationException e) {
             throw new MyConstraintViolationException(e);
         }
+    }
+    public List<ProfissionalSaude> getAllProfissionalSaude() {
+        return (List<ProfissionalSaude>) em.createNamedQuery("getAllProfissionalSaude").getResultList();
     }
 }

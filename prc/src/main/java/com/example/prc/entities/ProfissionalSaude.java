@@ -8,6 +8,12 @@ import java.util.List;
 
 
 @Entity
+@NamedQueries({
+        @NamedQuery(
+                name = "getAllProfissionalSaude",
+                query = "SELECT ps FROM ProfissionalSaude ps ORDER BY ps.name" // JPQL
+        )
+})
 public class ProfissionalSaude extends User{
     @NotNull
     @JoinColumn(name = "tipoprofissional_id")

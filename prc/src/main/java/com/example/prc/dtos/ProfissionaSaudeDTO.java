@@ -12,10 +12,10 @@ public class ProfissionaSaudeDTO {
     private String name;
     private Date deleted_at;
     private int blocked;
-    private TipoProfissionalDTO tipoProfissional;
+    private TipoProfissional tipoProfissional;
     private List<Utente> utentes;
 
-    public ProfissionaSaudeDTO(String email, String password, String name, Date deleted_at, int blocked, TipoProfissionalDTO tipoProfissional, List<Utente> utentes) {
+    public ProfissionaSaudeDTO(String email, String password, String name, Date deleted_at, int blocked, TipoProfissional tipoProfissional, List<Utente> utentes) {
         this.email = email;
         this.password = password;
         this.name = name;
@@ -65,11 +65,11 @@ public class ProfissionaSaudeDTO {
         this.blocked = blocked;
     }
 
-    public TipoProfissionalDTO getTipoProfissional() {
+    public TipoProfissional getTipoProfissional() {
         return tipoProfissional;
     }
 
-    public void setTipoProfissional(TipoProfissionalDTO tipoProfissional) {
+    public void setTipoProfissional(TipoProfissional tipoProfissional) {
         this.tipoProfissional = tipoProfissional;
     }
 
