@@ -3,16 +3,26 @@
     <h1>Type of Biometric data Management</h1>
     <br><br>
     <b-table striped over :items="tipoDadosBiometricos" :fields="fields" ref="table">
-      <template #cell(deleted_at)="data">
-        <b class="text-info">{{data.item.deleted_at == null ? "" : "deleted"}}</b>
+      <template #cell(min)="data">
+        {{data.item.quantitativo == null ? data.item.min : ""}}
+      </template>
+      <template #cell(max)="data">
+        {{data.item.quantitativo == null ? data.item.max : ""}}
+      </template>
+      <template #cell(deleted)="data">
+        <div v-if="data.item.deleted_at == null">
+          <b-button variant="danger" @click.prevent="deleteTipo(`${data.item.id}`, `${data.index}`)">delete</b-button>
+        </div>
+        <div v-else>
+          <b-button variant="success"  @click.prevent="deleteTipo(`${data.item.id}`, `${data.index}`)">undo</b-button>
+        </div>
       </template>
       <template v-slot:cell(actions)="row">
         <nuxt-link
-          class="btn btn-link"
-          :to="`biometricdata/${row.item.name}`">Details</nuxt-link>
-        <button @click.prevent="deleteTipo(`${row.item.id}`, `${row.index}`)">
-          del
-        </button>
+          tag="img" style="cursor: pointer"
+          :src="require('~/img/view-details.png')"
+          :to="`biometricdata/${row.item.name}`">
+        </nuxt-link>
       </template>
     </b-table>
     <nuxt-link to="/admin">Back</nuxt-link>
@@ -22,7 +32,7 @@
 export default {
   data () {
     return {
-      fields: ['name', 'min', 'max', 'quantitativo', 'deleted_at', 'actions'],
+      fields: ['name', 'min', 'max', 'quantitativo', 'deleted', 'actions'],
       tipoDadosBiometricos: []
     }
   },
