@@ -1,7 +1,9 @@
 package com.example.prc.ejbs;
 
+import com.example.prc.entities.TipoDadosBiometricos;
 import com.example.prc.entities.TipoProfissional;
 import com.example.prc.exceptions.MyConstraintViolationException;
+import com.example.prc.exceptions.MyEntityExistsException;
 import com.example.prc.exceptions.MyEntityNotFoundException;
 
 import javax.ejb.Stateless;
@@ -16,12 +18,15 @@ public class TipoProfissionalBean {
     @PersistenceContext
     EntityManager em;
 
-    public void create(String name)
-            throws MyConstraintViolationException {
+    public String create(String name)
+            throws MyConstraintViolationException, MyEntityExistsException {
+        TipoProfissional tp = findTipoProfissional(name);
+        if(tp != null) throw new MyEntityExistsException("Name already in use!");
         try {
             TipoProfissional tipoProfissional = new TipoProfissional(name);
             em.persist(tipoProfissional);
             em.flush();
+            return tipoProfissional.getId() + "";
         } catch (ConstraintViolationException e) {
             throw new MyConstraintViolationException(e);
         }
@@ -50,5 +55,13 @@ public class TipoProfissionalBean {
 
     public List<TipoProfissional> getAllTipoProfissional() {
         return (List<TipoProfissional>) em.createNamedQuery("getAllTipoProfisiional").getResultList();
+    }
+
+    public TipoProfissional findTipoProfissional(String name) {
+        try{
+            return (TipoProfissional) em.createNamedQuery("getTipoProfissionalByName").setParameter("name", name).getSingleResult();
+        }catch (Exception e){
+            return null;
+        }
     }
 }

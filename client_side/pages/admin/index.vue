@@ -20,6 +20,12 @@
         <p>Biometric data management</p>
       </div>
     </nuxt-link>
+    <nuxt-link :to="'/admin/professionaltype'">
+      <div class="img-with-text">
+        <img width="100" height="100" src="../../img/hematologist.png" alt="Image not loaded" />
+        <p>Professional type management</p>
+      </div>
+    </nuxt-link>
 
   </b-container>
 </template>
