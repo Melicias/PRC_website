@@ -27,6 +27,7 @@ public class ProfissionalSaudeDTO {
         this.name = name;
         this.deleted_at = deleted_at;
         this.blocked = blocked;
+        this.tipoProfissional = tipoProfissional;
         this.utentes = new ArrayList<>();
         this.prcs = new ArrayList<>();
     }
