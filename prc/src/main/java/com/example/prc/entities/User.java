@@ -83,6 +83,7 @@ public class User implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+
     public Date getDeleted_at() {
         return deleted_at;
     }

@@ -4,6 +4,7 @@ import io.smallrye.common.constraint.NotNull;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -26,14 +27,19 @@ public class ProfissionalSaude extends User{
             inverseJoinColumns = @JoinColumn(name = "EMAIL_PROFISSIONALSAUDE", referencedColumnName = "EMAIL"))
     private List<Utente> utentes;
 
+    @OneToMany
+    private List<Prc> prcs;
+
     public ProfissionalSaude() {
         this.utentes = new ArrayList<>();
+        this.prcs = new ArrayList<>();
     }
 
     public ProfissionalSaude(String password, String name, String email, TipoProfissional tipoProfissional) {
         super(password, name, email);
         this.tipoProfissional = tipoProfissional;
         this.utentes = new ArrayList<>();
+        this.prcs = new ArrayList<>();
     }
 
     public TipoProfissional getTipoProfissional() {
@@ -66,5 +72,13 @@ public class ProfissionalSaude extends User{
 
     public void addUtente(Utente utente) {
         utentes.add(utente);
+    }
+
+    public List<Prc> getPrcs() {
+        return prcs;
+    }
+
+    public void setPrcs(List<Prc> prcs) {
+        this.prcs = prcs;
     }
 }

@@ -1,6 +1,6 @@
 package com.example.prc.ws;
 
-import com.example.prc.dtos.ProfissionaSaudeDTO;
+import com.example.prc.dtos.ProfissionalSaudeDTO;
 import com.example.prc.dtos.TipoDadosBiometricosDTO;
 import com.example.prc.dtos.TipoProfissionalDTO;
 import com.example.prc.ejbs.ProfissionalSaudeBean;
@@ -25,24 +25,23 @@ public class ProfissionalSaudeService {
 
     @GET
     @Path("/")
-    public List<ProfissionaSaudeDTO> getTipoProfissionalWS() {
+    public List<ProfissionalSaudeDTO> getTipoProfissionalWS() {
         return toDTOs(profissionalSaudeBean.getAllProfissionalSaude());
     }
 
-    private ProfissionaSaudeDTO toDTO(ProfissionalSaude profissionalSaude) {
-        ProfissionaSaudeDTO profissionaSaudeDTO = new ProfissionaSaudeDTO(
+    private ProfissionalSaudeDTO toDTO(ProfissionalSaude profissionalSaude) {
+        ProfissionalSaudeDTO profissionaSaudeDTO = new ProfissionalSaudeDTO(
                 profissionalSaude.getEmail(),
                 profissionalSaude.getPassword(),
                 profissionalSaude.getName(),
                 profissionalSaude.getDeleted_at(),
                 profissionalSaude.getVersion(),
-                profissionalSaude.getTipoProfissional(),
-                profissionalSaude.getUtentes()
+                profissionalSaude.getTipoProfissional()
         );
         return profissionaSaudeDTO;
     }
 
-    private List<ProfissionaSaudeDTO> toDTOs(List<ProfissionalSaude> profissionalSaude) {
+    private List<ProfissionalSaudeDTO> toDTOs(List<ProfissionalSaude> profissionalSaude) {
         return profissionalSaude.stream().map(this::toDTO).collect(Collectors.toList());
     }
 }

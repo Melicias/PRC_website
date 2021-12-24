@@ -9,6 +9,7 @@ const _7b685732 = () => interopDefault(import('../pages/tipoProfissional/index.v
 const _b0c991f0 = () => interopDefault(import('../pages/admin/biometricdata/index.vue' /* webpackChunkName: "pages/admin/biometricdata/index" */))
 const _b7807284 = () => interopDefault(import('../pages/admin/patients/index.vue' /* webpackChunkName: "pages/admin/patients/index" */))
 const _1343c1d1 = () => interopDefault(import('../pages/admin/professionaltype/index.vue' /* webpackChunkName: "pages/admin/professionaltype/index" */))
+const _68ec52c8 = () => interopDefault(import('../pages/admin/specialists/index.vue' /* webpackChunkName: "pages/admin/specialists/index" */))
 const _50aad86f = () => interopDefault(import('../pages/auth/login.vue' /* webpackChunkName: "pages/auth/login" */))
 const _0b2acc44 = () => interopDefault(import('../pages/profissionalSaude/createUser.vue' /* webpackChunkName: "pages/profissionalSaude/createUser" */))
 const _4af3d6f0 = () => interopDefault(import('../pages/profissionalSaude/main.vue' /* webpackChunkName: "pages/profissionalSaude/main" */))
@@ -49,6 +50,10 @@ export const routerOptions = {
     path: "/admin/professionaltype",
     component: _1343c1d1,
     name: "admin-professionaltype"
+  }, {
+    path: "/admin/specialists",
+    component: _68ec52c8,
+    name: "admin-specialists"
   }, {
     path: "/auth/login",
     component: _50aad86f,
