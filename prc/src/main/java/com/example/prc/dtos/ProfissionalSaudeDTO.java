@@ -1,28 +1,35 @@
 package com.example.prc.dtos;
 
-import com.example.prc.entities.TipoProfissional;
-import com.example.prc.entities.Utente;
 
+import com.example.prc.entities.TipoProfissional;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ProfissionaSaudeDTO {
+public class ProfissionalSaudeDTO {
     private String email;
     private String password;
     private String name;
     private Date deleted_at;
     private int blocked;
     private TipoProfissional tipoProfissional;
-    private List<Utente> utentes;
+    private List<UtenteDTO> utentes;
+    private List<PrcDTO> prcs;
 
-    public ProfissionaSaudeDTO(String email, String password, String name, Date deleted_at, int blocked, TipoProfissional tipoProfissional, List<Utente> utentes) {
+    public ProfissionalSaudeDTO() {
+
+    }
+
+    public ProfissionalSaudeDTO(String email, String password, String name, Date deleted_at, int blocked,TipoProfissional tipoProfissional) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.deleted_at = deleted_at;
         this.blocked = blocked;
         this.tipoProfissional = tipoProfissional;
-        this.utentes = utentes;
+        this.utentes = new ArrayList<>();
+        this.prcs = new ArrayList<>();
     }
 
     public String getEmail() {
@@ -65,6 +72,14 @@ public class ProfissionaSaudeDTO {
         this.blocked = blocked;
     }
 
+    public List<UtenteDTO> getUtentes() {
+        return utentes;
+    }
+
+    public void setUtentes(List<UtenteDTO> utentes) {
+        this.utentes = utentes;
+    }
+
     public TipoProfissional getTipoProfissional() {
         return tipoProfissional;
     }
@@ -73,11 +88,11 @@ public class ProfissionaSaudeDTO {
         this.tipoProfissional = tipoProfissional;
     }
 
-    public List<Utente> getUtentes() {
-        return utentes;
+    public List<PrcDTO> getPrcs() {
+        return prcs;
     }
 
-    public void setUtentes(List<Utente> utentes) {
-        this.utentes = utentes;
+    public void setPrcs(List<PrcDTO> prcs) {
+        this.prcs = prcs;
     }
 }

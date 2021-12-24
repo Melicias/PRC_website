@@ -15,7 +15,19 @@ public class TipoDadosBiometricosDTO {
     private String quantitativo;
     private Date deleted_at;
 
-    public TipoDadosBiometricosDTO(int id,String name, double min, double max, Date deleted_at) {
+    public TipoDadosBiometricosDTO(String name, double min, double max,int type, String quantitativo) {
+        this.name = name;
+        this.min = min;
+        this.max = max;
+        this.type = type;
+        this.quantitativo = quantitativo;
+    }
+
+    public TipoDadosBiometricosDTO() {
+
+    }
+
+    public TipoDadosBiometricosDTO(int id, String name, double min, double max, Date deleted_at) {
         this.id = id;
         this.name = name;
         this.min = min;

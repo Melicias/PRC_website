@@ -1,7 +1,9 @@
 package com.example.prc.ejbs;
 
+import com.example.prc.entities.TipoDadosBiometricos;
 import com.example.prc.entities.TipoProfissional;
 import com.example.prc.exceptions.MyConstraintViolationException;
+import com.example.prc.exceptions.MyEntityExistsException;
 import com.example.prc.exceptions.MyEntityNotFoundException;
 
 import javax.ejb.Stateless;
@@ -9,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.LockModeType;
 import javax.persistence.PersistenceContext;
 import javax.validation.ConstraintViolationException;
+import java.util.Date;
 import java.util.List;
 
 @Stateless
@@ -16,12 +19,15 @@ public class TipoProfissionalBean {
     @PersistenceContext
     EntityManager em;
 
-    public void create(String name)
-            throws MyConstraintViolationException {
+    public String create(String name)
+            throws MyConstraintViolationException, MyEntityExistsException {
+        TipoProfissional tp = findTipoProfissional(name);
+        if(tp != null) throw new MyEntityExistsException("Name already in use!");
         try {
             TipoProfissional tipoProfissional = new TipoProfissional(name);
             em.persist(tipoProfissional);
             em.flush();
+            return tipoProfissional.getId() + "";
         } catch (ConstraintViolationException e) {
             throw new MyConstraintViolationException(e);
         }
@@ -43,6 +49,20 @@ public class TipoProfissionalBean {
         }
     }
 
+    public TipoProfissional deleteTipoProfissional(int id){
+        TipoProfissional tdb = em.find(TipoProfissional.class,id);
+        if(tdb != null){
+            if(tdb.getDeleted_at() == null){
+                tdb.setDeleted_at(new Date());
+            }else{
+                tdb.setDeleted_at(null);
+            }
+            em.persist(tdb);
+            em.flush();
+        }
+        return tdb;
+    }
+
     public void remove(TipoProfissional tipoProfissional) {
         TipoProfissional tipoProfissionalMerged = em.merge(tipoProfissional);
         em.remove(tipoProfissionalMerged);
@@ -50,5 +70,13 @@ public class TipoProfissionalBean {
 
     public List<TipoProfissional> getAllTipoProfissional() {
         return (List<TipoProfissional>) em.createNamedQuery("getAllTipoProfisiional").getResultList();
+    }
+
+    public TipoProfissional findTipoProfissional(String name) {
+        try{
+            return (TipoProfissional) em.createNamedQuery("getTipoProfissionalByName").setParameter("name", name).getSingleResult();
+        }catch (Exception e){
+            return null;
+        }
     }
 }

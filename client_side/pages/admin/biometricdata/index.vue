@@ -1,13 +1,16 @@
 <template>
   <b-container>
     <h1>Type of Biometric data Management</h1>
+    <br>
+    <b-button v-b-toggle.collapse-1 variant="primary" href="/admin">Back</b-button>
+    <b-button v-b-toggle.collapse-1 variant="primary" href="/admin/biometricdata/create">Create New</b-button>
     <br><br>
     <b-table striped over :items="tipoDadosBiometricos" :fields="fields" ref="table">
       <template #cell(min)="data">
-        {{data.item.quantitativo == null ? data.item.min : ""}}
+        {{data.item.type == 2 ? data.item.min : ""}}
       </template>
       <template #cell(max)="data">
-        {{data.item.quantitativo == null ? data.item.max : ""}}
+        {{data.item.type == 2 ? data.item.max : ""}}
       </template>
       <template #cell(deleted)="data">
         <div v-if="data.item.deleted_at == null">
@@ -25,7 +28,6 @@
         </nuxt-link>
       </template>
     </b-table>
-    <nuxt-link to="/admin">Back</nuxt-link>
   </b-container>
 </template>
 <script>
@@ -33,7 +35,7 @@ export default {
   data () {
     return {
       fields: ['name', 'min', 'max', 'quantitativo', 'deleted', 'actions'],
-      tipoDadosBiometricos: []
+      tipoDadosBiometricos: [],
     }
   },
   created () {

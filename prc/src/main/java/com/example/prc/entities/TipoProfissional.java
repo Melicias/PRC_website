@@ -3,6 +3,7 @@ package com.example.prc.entities;
 import io.smallrye.common.constraint.NotNull;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 
@@ -10,6 +11,10 @@ import javax.persistence.*;
         @NamedQuery(
                 name = "getAllTipoProfisiional",
                 query = "SELECT tp FROM TipoProfissional tp ORDER BY tp.name" // JPQL
+        ),
+        @NamedQuery(
+                name = "getTipoProfissionalByName",
+                query = "SELECT tp FROM TipoProfissional tp where tp.name = :name" // JPQL
         )
 })
 
@@ -19,7 +24,10 @@ public class TipoProfissional {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @NotNull
+    @Column(unique=true)
     private String name;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date deleted_at;
 
     public TipoProfissional() {
 
@@ -43,5 +51,13 @@ public class TipoProfissional {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Date getDeleted_at() {
+        return deleted_at;
+    }
+
+    public void setDeleted_at(Date deleted_at) {
+        this.deleted_at = deleted_at;
     }
 }
