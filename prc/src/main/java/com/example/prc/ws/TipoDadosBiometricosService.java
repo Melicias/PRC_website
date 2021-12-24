@@ -60,6 +60,42 @@ public class TipoDadosBiometricosService {
         return tipoDadosBiometricos.stream().map(this::toDTO).collect(Collectors.toList());
     }
 
+    @POST
+    @Path("/")
+    public Response createNewTipoDadoBiometrico (TipoDadosBiometricosDTO tipoDadosBiometricosDTO)
+            throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException {
+        TipoDadosBiometricos tipoDadosBiometricos = tipoDadosBiometricosBean.findTipoDadoBiometrico(tipoDadosBiometricosDTO.getName());
+        if(tipoDadosBiometricos != null){
+            return Response.status(400).entity("Name already in use!").build();
+        }
+        try{
+            tipoDadosBiometricosBean.create(
+                    tipoDadosBiometricosDTO.getName(),
+                    tipoDadosBiometricosDTO.getMin(),
+                    tipoDadosBiometricosDTO.getMax(),
+                    tipoDadosBiometricosDTO.getType() == TipoDadosBiometricos.QUALITATIVO ? null : tipoDadosBiometricosDTO.getQuantitativo());
+        }catch (Exception e){
+            return Response.status(400).entity(e.getMessage()).build();
+        }
+        return Response.ok(tipoDadosBiometricosDTO).build();
+    }
+
+    @PUT
+    @Path("/")
+    public Response putTipoDadoBiometrico (TipoDadosBiometricosDTO tipoDadosBiometricosDTO)
+            throws MyEntityNotFoundException, MyConstraintViolationException {
+        try{
+            tipoDadosBiometricosBean.update(
+                    tipoDadosBiometricosDTO.getId(),
+                    tipoDadosBiometricosDTO.getMin(),
+                    tipoDadosBiometricosDTO.getMax(),
+                    tipoDadosBiometricosDTO.getQuantitativo());
+        }catch (Exception e){
+            return Response.status(400).entity(e.getMessage()).build();
+        }
+        return Response.ok(tipoDadosBiometricosDTO).build();
+    }
+
     @GET
     @Path("{name}")
     public Response getTipoDadoBiometricoDetails(@PathParam("name") String name) throws MyEntityExistsException, MyEntityNotFoundException {

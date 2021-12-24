@@ -17,7 +17,7 @@ public class TipoDadosBiometricosBean {
     @PersistenceContext
     EntityManager em;
 
-    public void create(String name, int min, int max, String quantitativo)
+    public void create(String name, double min, double max, String quantitativo)
             throws MyEntityExistsException, MyConstraintViolationException {
         try {
             TipoDadosBiometricos tipoDadoBiometrico;
@@ -27,6 +27,23 @@ public class TipoDadosBiometricosBean {
                 tipoDadoBiometrico = new TipoDadosBiometricos(name, quantitativo);
             }
             em.persist(tipoDadoBiometrico);
+            em.flush();
+        } catch (ConstraintViolationException e) {
+            throw new MyConstraintViolationException(e);
+        }
+    }
+
+    public void update(int id, double min, double max, String quantitativo)
+            throws MyEntityExistsException, MyConstraintViolationException {
+        try {
+            TipoDadosBiometricos tdb = em.find(TipoDadosBiometricos.class,id);
+            if(tdb.getType() == 2) {
+                tdb.setMin(min);
+                tdb.setMax(max);
+            }else{
+                tdb.setQuantitativo(quantitativo);
+            }
+            em.persist(tdb);
             em.flush();
         } catch (ConstraintViolationException e) {
             throw new MyConstraintViolationException(e);
