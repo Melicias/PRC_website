@@ -8,7 +8,7 @@
         <p>Patients management</p>
       </div>
     </nuxt-link>
-    <nuxt-link :to="'/admin/medicosAKAFAZER'">
+    <nuxt-link :to="'/admin/specialists'">
       <div class="img-with-text">
         <img width="100" height="100" src="../../img/doctor.png" alt="Image not loaded" />
         <p>Healthcare specialists management</p>

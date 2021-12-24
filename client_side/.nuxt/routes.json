@@ -35,6 +35,13 @@
     "_name": "_1343c1d1"
   },
   {
+    "name": "admin-specialists",
+    "path": "/admin/specialists",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/specialists/index.vue",
+    "chunkName": "pages/admin/specialists/index",
+    "_name": "_68ec52c8"
+  },
+  {
     "name": "auth-login",
     "path": "/auth/login",
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/auth/login.vue",
