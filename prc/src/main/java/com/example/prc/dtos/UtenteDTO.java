@@ -15,12 +15,12 @@ public class UtenteDTO {
     private Date deleted_at;
     private int blocked;
     private Date dataNasc;
-    private List<ProfissionaSaudeDTO> profissionalSaude;
+    private List<ProfissionalSaude> profissionalSaude;
     private List<UtenteDadosBiometricos> dadosBiometricos;
     private List<Prc> prescricoes;
 
 
-    public UtenteDTO(String email, String password, String name, Date deleted_at, int blocked, Date dataNasc, List<ProfissionaSaudeDTO> profissionalSaude, List<UtenteDadosBiometricos> dadosBiometricos, List<Prc> prescricoes) {
+    public UtenteDTO(String email, String password, String name, Date deleted_at, int blocked, Date dataNasc, List<ProfissionalSaude> profissionalSaude, List<UtenteDadosBiometricos> dadosBiometricos, List<Prc> prescricoes) {
         this.email = email;
         this.password = password;
         this.name = name;
@@ -80,11 +80,11 @@ public class UtenteDTO {
         this.dataNasc = dataNasc;
     }
 
-    public List<ProfissionaSaudeDTO> getProfissionalSaude() {
+    public List<ProfissionalSaude> getProfissionalSaude() {
         return profissionalSaude;
     }
 
-    public void setProfissionalSaude(List<ProfissionaSaudeDTO> profissionalSaude) {
+    public void setProfissionalSaude(List<ProfissionalSaude> profissionalSaude) {
         this.profissionalSaude = profissionalSaude;
     }
 
