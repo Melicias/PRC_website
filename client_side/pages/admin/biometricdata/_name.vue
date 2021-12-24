@@ -57,6 +57,7 @@
       </b-form>
       <p>{{ tipoDadoBiometrico.deleted_at == null ? "" : "Deleted!" }}</p>
     </b-card>
+    <br>
     <b-button v-b-toggle.collapse-1 variant="primary" href="/admin/biometricdata">Back</b-button>
   </b-container>
 </template>
