@@ -27,6 +27,10 @@ public class UtenteBean {
         throw new Exception("Failed logging in with the email  '" + email + "': unknown email or wrong password");
     }
 
+    public Utente findUtente(String email){
+        return em.find(Utente.class, email);
+    }
+
     public void create(String password, String name, String email, Date dataNasc, String emailProfissionalSaude)
             throws MyEntityExistsException, MyConstraintViolationException, MyEntityNotFoundException {
         Utente utente = em.find(Utente.class, email);
@@ -45,4 +49,5 @@ public class UtenteBean {
             throw new MyConstraintViolationException(e);
         }
     }
+
 }
