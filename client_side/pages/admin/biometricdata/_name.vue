@@ -97,7 +97,7 @@ export default {
   methods: {
     onSubmit(event) {
       event.preventDefault()
-      if(this.form.type == 2 && this.form.max <= this.form.min){
+      if(this.tipoDadoBiometrico.type == 2 && this.form.max <= this.form.min){
         this.$toast.error("the maximum value should be higher than minimum)").goAway(3000)
         return;
       }

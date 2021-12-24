@@ -3,6 +3,7 @@ package com.example.prc.ws;
 
 import com.example.prc.dtos.TipoProfissionalDTO;
 import com.example.prc.ejbs.TipoProfissionalBean;
+import com.example.prc.entities.TipoDadosBiometricos;
 import com.example.prc.entities.TipoProfissional;
 import com.example.prc.exceptions.MyConstraintViolationException;
 import com.example.prc.exceptions.MyEntityExistsException;
@@ -42,10 +43,15 @@ public class TipoProfissionalService {
 
     @POST
     @Path("/")
-    public Response createNewTipoPrescricao (TipoProfissionalDTO tipoProfissionalDTO)
-            throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException {
-        tipoProfissionalBean.create(
-                tipoProfissionalDTO.getName());
-        return Response.status(Response.Status.CREATED).build();
+    public Response createNewTipoProfissional (TipoProfissionalDTO tipoProfissionalDTO)
+            throws MyEntityExistsException, MyConstraintViolationException {
+        try{
+            String id = tipoProfissionalBean.create(
+                    tipoProfissionalDTO.getName());
+            tipoProfissionalDTO.setId(Integer.parseInt(id));
+        }catch (Exception e){
+            return Response.status(400).entity(e.getMessage()).build();
+        }
+        return Response.ok(tipoProfissionalDTO).build();
     }
 }

@@ -28,6 +28,13 @@
     "_name": "_b7807284"
   },
   {
+    "name": "admin-professionaltype",
+    "path": "/admin/professionaltype",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/professionaltype/index.vue",
+    "chunkName": "pages/admin/professionaltype/index",
+    "_name": "_1343c1d1"
+  },
+  {
     "name": "auth-login",
     "path": "/auth/login",
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/auth/login.vue",

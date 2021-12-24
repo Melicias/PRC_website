@@ -55,7 +55,11 @@ public class TipoDadosBiometricosBean {
     }
 
     public TipoDadosBiometricos findTipoDadoBiometrico(String name) {
-        return (TipoDadosBiometricos) em.createNamedQuery("getTipoDadosBiometricosByName").setParameter("name", name).getSingleResult();
+        try{
+            return (TipoDadosBiometricos) em.createNamedQuery("getTipoDadosBiometricosByName").setParameter("name", name).getSingleResult();
+        }catch (Exception e){
+            return null;
+        }
     }
 
     public TipoDadosBiometricos deleteTipoDadoBiometrico(int id){
