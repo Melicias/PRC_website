@@ -32,7 +32,8 @@ public class TipoProfissionalService {
     private TipoProfissionalDTO toDTO(TipoProfissional tipoProfissional) {
         TipoProfissionalDTO tp = new TipoProfissionalDTO(
                 tipoProfissional.getId(),
-                tipoProfissional.getName()
+                tipoProfissional.getName(),
+                tipoProfissional.getDeleted_at()
         );
         return tp;
     }
@@ -53,5 +54,12 @@ public class TipoProfissionalService {
             return Response.status(400).entity(e.getMessage()).build();
         }
         return Response.ok(tipoProfissionalDTO).build();
+    }
+
+    @DELETE
+    @Path("{id}")
+    public Response deleteTipoProfissional(@PathParam("id") int id) throws MyEntityExistsException, MyEntityNotFoundException {
+        TipoProfissional tipoProfissional = tipoProfissionalBean.deleteTipoProfissional(id);
+        return Response.ok(toDTO(tipoProfissional)).build();
     }
 }

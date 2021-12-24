@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.LockModeType;
 import javax.persistence.PersistenceContext;
 import javax.validation.ConstraintViolationException;
+import java.util.Date;
 import java.util.List;
 
 @Stateless
@@ -46,6 +47,20 @@ public class TipoProfissionalBean {
                 ConstraintViolationException e) {
             throw new MyConstraintViolationException(e);
         }
+    }
+
+    public TipoProfissional deleteTipoProfissional(int id){
+        TipoProfissional tdb = em.find(TipoProfissional.class,id);
+        if(tdb != null){
+            if(tdb.getDeleted_at() == null){
+                tdb.setDeleted_at(new Date());
+            }else{
+                tdb.setDeleted_at(null);
+            }
+            em.persist(tdb);
+            em.flush();
+        }
+        return tdb;
     }
 
     public void remove(TipoProfissional tipoProfissional) {

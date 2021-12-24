@@ -1,30 +1,10 @@
 <template>
   <b-container>
     <h1>Professional type data Management</h1>
-    <br><br>
-    <div>
-      <b-button v-b-toggle.collapse-1 variant="primary">Create new</b-button>
-      <b-collapse id="collapse-1" class="mt-2">
-        <b-card class="mt-3" header="Create new Type of Biometric data Management">
-          <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-            <b-form-group id="input-group-1" label="Name: " label-for="input-1">
-              <b-form-input
-                id="input-1"
-                v-model="form.name"
-                type="text"
-                placeholder="Enter name"
-                required
-              ></b-form-input>
-            </b-form-group>
-            <b-button type="submit" variant="primary">Create</b-button>
-            <b-button type="reset" variant="danger">Reset</b-button>
-          </b-form>
-        </b-card>
-      </b-collapse>
-    </div>
     <br>
     <b-button v-b-toggle.collapse-1 variant="primary" href="/admin">Back</b-button>
-
+    <b-button v-b-toggle.collapse-1 variant="primary" href="/admin/professionaltype/create">Create New</b-button>
+    <br><br>
     <b-table striped over :items="tipoprofissional" :fields="fields" ref="table">
 
       <template v-slot:cell(actions)="row">
@@ -56,51 +36,21 @@ export default {
     this.$axios.$get('/api/tipoprofissional')
       .then((tipoprofissional) => {
         this.tipoprofissional = tipoprofissional
+        console.log(this.tipoprofissional);
       })
   },
   methods: {
     deleteTipo(id, index) {
       console.log(id);
-      this.$axios.$delete(`/api/tipoDadosBiometricos/${id}`)
+      this.$axios.$delete(`/api/tipoprofissional/${id}`)
         .then(msg => {
-          this.$toast.success("Biometric data deleted with success").goAway(1500)
-          this.tipoDadosBiometricos[index].deleted_at = msg.deleted_at;
+          this.$toast.success("Professional type data deleted with success").goAway(1500)
+          this.tipoprofissional[index].deleted_at = msg.deleted_at;
           this.$refs.table.refresh();
         })
         .catch(error => {
           this.$toast.error('error while deleting').goAway(3000)
         })
-    },
-    onSubmit(event) {
-      event.preventDefault()
-      this.$axios.$post('/api/tipoprofissional', {
-        name: this.form.name
-      })
-        .then(msg => {
-          this.tipoprofissional.push(msg);
-          this.$refs.table.refresh();
-          this.$toast.success("Professiona type created with success").goAway(1500)
-          console.log(msg)
-          this.form.name = ''
-          // Trick to reset/clear native browser form validation state
-          this.show = false
-          this.$nextTick(() => {
-            this.show = true
-          })
-        })
-        .catch(error => {
-          this.$toast.error(error.response.data).goAway(3000)
-        })
-    },
-    onReset(event) {
-      event.preventDefault()
-      // Reset our form values
-      this.form.name = ''
-      // Trick to reset/clear native browser form validation state
-      this.show = false
-      this.$nextTick(() => {
-        this.show = true
-      })
     }
   }
 }
