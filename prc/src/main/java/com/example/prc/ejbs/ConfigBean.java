@@ -45,6 +45,10 @@ public class ConfigBean {
             tipoProfissional.create("Cardiologista");
             tipoProfissional.create("Cirurgião");
             tipoProfissional.create("Clínico geral");
+            tipoProfissional.create("Oftalmologia");
+            tipoProfissional.create("Dermatologista");
+            tipoProfissional.create("Genecologista");
+            tipoProfissional.create("Urologista");
 
             tipoDadosBiometricos.create("bpm",60,100,null);
             tipoDadosBiometricos.create("colestrol",5,10,null);
@@ -52,9 +56,18 @@ public class ConfigBean {
 
             adminBean.create("teste123","admin teste", "admin@admin.com");
 
-            profissionalSaudeBean.create("teste123","profissional teste", "profissional@profissional.com",1);
+            profissionalSaudeBean.create("teste123","Grayson Arnold", "profissional1@profissional.com",1);
+            profissionalSaudeBean.create("teste123","Maria das cruzes", "profissional2@profissional.com",2);
+            profissionalSaudeBean.create("teste123","Joaquim Alberto", "profissional3@profissional.com",3);
+            profissionalSaudeBean.create("teste123","Kye Amin", "profissional4@profissional.com",4);
+            profissionalSaudeBean.create("teste123","Jamaal Gibbons", "profissional5@profissional.com",5);
+            profissionalSaudeBean.create("teste123","Odin Booth", "profissional6@profissional.com",2);
+            profissionalSaudeBean.create("teste123","Mollie Goff", "profissional7@profissional.com",5);
+            profissionalSaudeBean.create("teste123","Sophia Rooney", "profissional8@profissional.com",1);
+            profissionalSaudeBean.create("teste123","Joel Tate", "profissional9@profissional.com",1);
+            profissionalSaudeBean.create("teste123","Luna Ray", "profissional10@profissional.com",2);
 
-            utenteBean.create("teste123","utente teste", "utente@utente.com", new Date("29/06/1999"),"profissional@profissional.com");
+            utenteBean.create("teste123","utente teste", "utente@utente.com", new Date("29/06/1999"),"profissional1@profissional.com");
 
         } catch (Exception e) {
             logger.log(Level.SEVERE, e.toString());
