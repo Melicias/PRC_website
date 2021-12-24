@@ -14,19 +14,23 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 @Path("profissionalsaude")
 @Produces({MediaType.APPLICATION_JSON}) // injects header “Content-Type: application/json”
 @Consumes({MediaType.APPLICATION_JSON}) // injects header “Accept: application/json”
 public class ProfissionalSaudeService {
+    private static final Logger log =
+            Logger.getLogger(LoginService.class.getName());
     @EJB
     private ProfissionalSaudeBean profissionalSaudeBean;
 
     @GET
     @Path("/")
     public List<ProfissionalSaudeDTO> getTipoProfissionalWS() {
-        return toDTOs(profissionalSaudeBean.getAllProfissionalSaude());
+        List<ProfissionalSaudeDTO> l = toDTOs(profissionalSaudeBean.getAllProfissionalSaude());
+        return l;
     }
 
     private ProfissionalSaudeDTO toDTO(ProfissionalSaude profissionalSaude) {
@@ -35,7 +39,7 @@ public class ProfissionalSaudeService {
                 profissionalSaude.getPassword(),
                 profissionalSaude.getName(),
                 profissionalSaude.getDeleted_at(),
-                profissionalSaude.getVersion(),
+                profissionalSaude.getBlocked(),
                 profissionalSaude.getTipoProfissional()
         );
         return profissionaSaudeDTO;

@@ -1,7 +1,9 @@
 com/example/prc/entities/UtenteDadosBiometricos.class
 com/example/prc/ejbs/ProfissionalSaudeBean.class
 com/example/prc/ejbs/TipoPrescricaoBean.class
+com/example/prc/dtos/PrescricaoDTO.class
 com/example/prc/dtos/TipoDadosBiometricosDTO.class
+com/example/prc/dtos/PrcDTO.class
 com/example/prc/ws/ProfissionalSaudeService.class
 com/example/prc/ws/LoginService.class
 com/example/prc/exceptions/CatchAllExceptionMapper.class
@@ -9,6 +11,7 @@ com/example/prc/exceptions/MyEntityExistsExceptionMapper.class
 com/example/prc/dtos/UtenteDTO.class
 com/example/prc/ejbs/UtenteDadosBiometricosBean.class
 com/example/prc/entities/User.class
+com/example/prc/dtos/TipoPrescricaoDTO.class
 com/example/prc/ws/UtenteService.class
 com/example/prc/ejbs/JwtBean.class
 com/example/prc/exceptions/MyEntityNotFoundExceptionMapper.class
@@ -19,9 +22,9 @@ com/example/prc/ws/TipoDadosBiometricosService.class
 com/example/prc/ejbs/ConfigBean.class
 com/example/prc/dtos/AuthDTO.class
 com/example/prc/exceptions/MyIllegalArgumentException.class
-com/example/prc/dtos/ProfissionaSaudeDTO.class
 com/example/prc/entities/Utente.class
 com/example/prc/ejbs/TipoDadosBiometricosBean.class
+com/example/prc/dtos/ProfissionalSaudeDTO.class
 com/example/prc/ws/TipoProfissionalService.class
 com/example/prc/exceptions/MyEntityNotFoundException.class
 com/example/prc/exceptions/MyEntityExistsException.class
