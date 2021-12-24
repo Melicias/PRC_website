@@ -18,6 +18,7 @@ public class UtenteDTO {
     private List<ProfissionalSaudeDTO> profissionalSaude;
     private List<UtenteDadosBiometricos> dadosBiometricos;
     private List<Prc> prescricoes;
+    private String emailProfissionalSaude;
 
 
     public UtenteDTO(String email, String password, String name, Date deleted_at, int blocked, Date dataNasc, List<ProfissionalSaudeDTO> profissionalSaude, List<UtenteDadosBiometricos> dadosBiometricos, List<Prc> prescricoes) {
@@ -102,5 +103,13 @@ public class UtenteDTO {
 
     public void setPrescricoes(List<Prc> prescricoes) {
         this.prescricoes = prescricoes;
+    }
+
+    public String getEmailProfissionalSaude() {
+        return emailProfissionalSaude;
+    }
+
+    public void setEmailProfissionalSaude(String emailProfissionalSaude) {
+        this.emailProfissionalSaude = emailProfissionalSaude;
     }
 }

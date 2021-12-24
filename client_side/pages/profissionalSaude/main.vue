@@ -1,9 +1,10 @@
 <template>
     <div>
         <b-container>
-            <nuxt-link to="/profissionalSaude/createUser">Create new user</nuxt-link>
-            <nuxt-link to="/profissionalSaude/usersManagement">Manage users</nuxt-link>
-            <nuxt-link to="/">Logout</nuxt-link>
+            <h2>Profissional de Saúde</h2>
+            <b-button to="/profissionalSaude/createUser">Create new user</b-button>
+            <b-button to="/profissionalSaude/usersManagement">Manage users</b-button>
+            <b-button to="/">Logout</b-button>
         </b-container>
     </div>
 </template>
