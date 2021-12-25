@@ -16,6 +16,7 @@ const _4af3d6f0 = () => interopDefault(import('../pages/profissionalSaude/main.v
 const _66e30104 = () => interopDefault(import('../pages/profissionalSaude/usersManagement.vue' /* webpackChunkName: "pages/profissionalSaude/usersManagement" */))
 const _737ff4b6 = () => interopDefault(import('../pages/admin/biometricdata/create.vue' /* webpackChunkName: "pages/admin/biometricdata/create" */))
 const _7ce8c30d = () => interopDefault(import('../pages/admin/professionaltype/create.vue' /* webpackChunkName: "pages/admin/professionaltype/create" */))
+const _475b5e14 = () => interopDefault(import('../pages/admin/specialists/create.vue' /* webpackChunkName: "pages/admin/specialists/create" */))
 const _4ad735a0 = () => interopDefault(import('../pages/admin/biometricdata/_name.vue' /* webpackChunkName: "pages/admin/biometricdata/_name" */))
 const _9f4cb3d2 = () => interopDefault(import('../pages/admin/specialists/_email.vue' /* webpackChunkName: "pages/admin/specialists/_email" */))
 const _319db6b5 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
@@ -79,6 +80,10 @@ export const routerOptions = {
     path: "/admin/professionaltype/create",
     component: _7ce8c30d,
     name: "admin-professionaltype-create"
+  }, {
+    path: "/admin/specialists/create",
+    component: _475b5e14,
+    name: "admin-specialists-create"
   }, {
     path: "/admin/biometricdata/:name",
     component: _4ad735a0,

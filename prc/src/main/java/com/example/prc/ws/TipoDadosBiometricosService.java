@@ -64,10 +64,6 @@ public class TipoDadosBiometricosService {
     @Path("/")
     public Response createNewTipoDadoBiometrico (TipoDadosBiometricosDTO tipoDadosBiometricosDTO)
             throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException {
-        TipoDadosBiometricos tipoDadosBiometricos = tipoDadosBiometricosBean.findTipoDadoBiometrico(tipoDadosBiometricosDTO.getName());
-        if(tipoDadosBiometricos != null){
-            return Response.status(400).entity("Name already in use!").build();
-        }
         try{
             tipoDadosBiometricosBean.create(
                     tipoDadosBiometricosDTO.getName(),

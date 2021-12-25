@@ -84,6 +84,13 @@
     "_name": "_7ce8c30d"
   },
   {
+    "name": "admin-specialists-create",
+    "path": "/admin/specialists/create",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/specialists/create.vue",
+    "chunkName": "pages/admin/specialists/create",
+    "_name": "_475b5e14"
+  },
+  {
     "name": "admin-biometricdata-name",
     "path": "/admin/biometricdata/:name",
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/biometricdata/_name.vue",

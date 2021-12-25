@@ -23,12 +23,10 @@ public class ProfissionalSaudeBean {
     public void create(String password, String name, String email, int idTipoProfissional)
             throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException {
         ProfissionalSaude profissionalSaude=em.find(ProfissionalSaude.class,email);
-        if(profissionalSaude!=null)
-            throw new MyEntityExistsException("Profissional with email: "+email+" already exist");
+        if(profissionalSaude!=null) throw new MyEntityExistsException("Profissional with email: "+email+" already exist");
 
         TipoProfissional tipoProfissional = em.find(TipoProfissional.class,idTipoProfissional);
-        if(tipoProfissional==null)
-            throw new MyEntityNotFoundException("Tipo Profissional with the code: "+idTipoProfissional+ " not found");
+        if(tipoProfissional==null) throw new MyEntityNotFoundException("Tipo Profissional with the code: "+idTipoProfissional+ " not found");
         try {
             ProfissionalSaude newprofissional= new ProfissionalSaude(password,name,email,tipoProfissional);
             em.persist(newprofissional);
@@ -62,7 +60,7 @@ public class ProfissionalSaudeBean {
             em.lock(profissionalSaude, LockModeType.OPTIMISTIC);
             profissionalSaude.setName(name);
             if(password != null)
-                profissionalSaude.setPassword(name);
+                profissionalSaude.setPassword(password);
             profissionalSaude.setTipoProfissional(tipoProfissional);
             em.persist(profissionalSaude);
         } catch (

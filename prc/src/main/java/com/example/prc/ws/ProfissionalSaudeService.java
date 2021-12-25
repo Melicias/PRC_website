@@ -68,6 +68,22 @@ public class ProfissionalSaudeService {
         return Response.ok(toDTO(profissionalSaude)).build();
     }
 
+    @POST
+    @Path("/")
+    public Response createProfissionalSaude (ProfissionalSaude profissionalSaude)
+            throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException {
+        try{
+            profissionalSaudeBean.create(
+                    profissionalSaude.getPassword(),
+                    profissionalSaude.getName(),
+                    profissionalSaude.getEmail(),
+                    profissionalSaude.getTipoProfissional().getId());
+        }catch (Exception e){
+            return Response.status(400).entity(e.getMessage()).build();
+        }
+        return Response.ok(profissionalSaude).build();
+    }
+
     private ProfissionalSaudeDTO toDTOComplete(ProfissionalSaude profissionalSaude) {
         ProfissionalSaudeDTO profissionaSaudeDTO = new ProfissionalSaudeDTO(
                 profissionalSaude.getEmail(),
