@@ -17,6 +17,7 @@ const _66e30104 = () => interopDefault(import('../pages/profissionalSaude/usersM
 const _737ff4b6 = () => interopDefault(import('../pages/admin/biometricdata/create.vue' /* webpackChunkName: "pages/admin/biometricdata/create" */))
 const _7ce8c30d = () => interopDefault(import('../pages/admin/professionaltype/create.vue' /* webpackChunkName: "pages/admin/professionaltype/create" */))
 const _4ad735a0 = () => interopDefault(import('../pages/admin/biometricdata/_name.vue' /* webpackChunkName: "pages/admin/biometricdata/_name" */))
+const _9f4cb3d2 = () => interopDefault(import('../pages/admin/specialists/_email.vue' /* webpackChunkName: "pages/admin/specialists/_email" */))
 const _319db6b5 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
@@ -82,6 +83,10 @@ export const routerOptions = {
     path: "/admin/biometricdata/:name",
     component: _4ad735a0,
     name: "admin-biometricdata-name"
+  }, {
+    path: "/admin/specialists/:email",
+    component: _9f4cb3d2,
+    name: "admin-specialists-email"
   }, {
     path: "/",
     component: _319db6b5,
