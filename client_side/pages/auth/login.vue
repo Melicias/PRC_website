@@ -46,7 +46,7 @@ export default {
         // TODO redirect based on the user role
         // eg:
         if (this.$auth.user.groups.includes('Utente')) {
-          //this.$router.push('/students')
+          this.$router.push('/utente')
         } else if (this.$auth.user.groups.includes('Admin')) {
           this.$router.push('/admin')
         } if (this.$auth.user.groups.includes('ProfissionalSaude')) {

@@ -15,6 +15,8 @@ import javax.validation.ConstraintViolationException;
 import java.util.Date;
 import java.util.List;
 
+import static io.smallrye.config.ConfigLogging.log;
+
 @Stateless
 public class UtenteBean {
     @PersistenceContext
@@ -34,7 +36,7 @@ public class UtenteBean {
     }
 
     public Utente findUtente(String email){
-        return em.find(Utente.class, email);
+        return (Utente) em.createNamedQuery("getUtente").setParameter("email",email).getSingleResult();
     }
 
     public void create(String password, String name, String email, Date dataNasc, String emailProfissionalSaude)

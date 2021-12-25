@@ -5,6 +5,7 @@ import com.example.prc.entities.Prescricao;
 import com.example.prc.entities.ProfissionalSaude;
 import com.example.prc.entities.UtenteDadosBiometricos;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -21,14 +22,14 @@ public class UtenteDTO {
     private String emailProfissionalSaude;
 
 
-    public UtenteDTO(String email, String password, String name, Date deleted_at, int blocked, Date dataNasc, List<ProfissionalSaudeDTO> profissionalSaude, List<UtenteDadosBiometricos> dadosBiometricos, List<Prc> prescricoes) {
+    public UtenteDTO(String email, String password, String name, Date deleted_at, int blocked, Date dataNasc, List<UtenteDadosBiometricos> dadosBiometricos, List<Prc> prescricoes) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.deleted_at = deleted_at;
         this.blocked = blocked;
         this.dataNasc = dataNasc;
-        this.profissionalSaude = profissionalSaude;
+        this.profissionalSaude = new ArrayList<>();
         this.dadosBiometricos = dadosBiometricos;
         this.prescricoes = prescricoes;
     }

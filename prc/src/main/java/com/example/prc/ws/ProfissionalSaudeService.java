@@ -45,7 +45,9 @@ public class ProfissionalSaudeService {
         return profissionaSaudeDTO;
     }
 
-    private List<ProfissionalSaudeDTO> toDTOs(List<ProfissionalSaude> profissionalSaude) {
+    public List<ProfissionalSaudeDTO> toDTOs(List<ProfissionalSaude> profissionalSaude) {
         return profissionalSaude.stream().map(this::toDTO).collect(Collectors.toList());
     }
+
+
 }
