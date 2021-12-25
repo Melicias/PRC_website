@@ -8,6 +8,12 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(
+                name = "getUtente",
+                query = "SELECT ut FROM Utente ut where ut.email= :email" // JPQL
+        )
+})
 public class Utente extends User{
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)

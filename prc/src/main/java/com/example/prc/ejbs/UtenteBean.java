@@ -1,6 +1,7 @@
 package com.example.prc.ejbs;
 
 import com.example.prc.entities.ProfissionalSaude;
+import com.example.prc.entities.TipoDadosBiometricos;
 import com.example.prc.entities.User;
 import com.example.prc.entities.Utente;
 import com.example.prc.exceptions.MyConstraintViolationException;
@@ -12,11 +13,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.validation.ConstraintViolationException;
 import java.util.Date;
+import java.util.List;
 
 @Stateless
 public class UtenteBean {
     @PersistenceContext
     EntityManager em;
+
 
     public Utente authenticate(final String email, final String password) throws
             Exception {
@@ -25,6 +28,9 @@ public class UtenteBean {
             return utente;
         }
         throw new Exception("Failed logging in with the email  '" + email + "': unknown email or wrong password");
+    }
+    public List<Utente> getAllUtentes() {
+        return (List<Utente>) em.createNamedQuery("getAllUtentes").getResultList();
     }
 
     public Utente findUtente(String email){
