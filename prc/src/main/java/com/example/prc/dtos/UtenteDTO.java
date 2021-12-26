@@ -21,6 +21,19 @@ public class UtenteDTO {
     private List<Prc> prescricoes;
     private String emailProfissionalSaude;
 
+    public UtenteDTO() {
+        this.profissionalSaude = new ArrayList<>();
+        this.dadosBiometricos = new ArrayList<>();
+        this.prescricoes = new ArrayList<>();
+    }
+
+    public UtenteDTO(String email) {
+        this.email = email;
+        this.profissionalSaude = new ArrayList<>();
+        this.dadosBiometricos = new ArrayList<>();
+        this.prescricoes = new ArrayList<>();
+    }
+
     public UtenteDTO(String email, String password, String name, Date deleted_at, int blocked, Date dataNasc) {
         this.email = email;
         this.password = password;

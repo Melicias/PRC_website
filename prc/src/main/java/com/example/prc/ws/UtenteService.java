@@ -4,8 +4,10 @@ import com.example.prc.dtos.TipoProfissionalDTO;
 import com.example.prc.dtos.UtenteDTO;
 import com.example.prc.ejbs.TipoProfissionalBean;
 import com.example.prc.ejbs.UtenteBean;
+import com.example.prc.entities.ProfissionalSaude;
 import com.example.prc.entities.User;
 import com.example.prc.entities.Utente;
+import com.example.prc.exceptions.MyEntityNotFoundException;
 import com.example.prc.jwt.Jwt;
 
 import javax.ejb.EJB;
@@ -41,6 +43,18 @@ public class UtenteService {
             log.info(e.getMessage());
         }
         return Response.status(Response.Status.UNAUTHORIZED).build();
+    }
+
+    @GET
+    @Path("/semprofissional/{profissionalEmail}")
+    public Response getUtenteSemProfissionalSaude(@PathParam("profissionalEmail") String profissionalEmail) throws MyEntityNotFoundException {
+        List<Utente> utentes;
+        try{
+            utentes = utenteBean.getUtentesSemProfissionalSaude(profissionalEmail);
+        }catch (Exception e){
+            return Response.status(400).entity(e.getMessage()).build();
+        }
+        return Response.ok(toDTOs(utentes)).build();
     }
 
     private UtenteDTO toDTO(Utente utente) {

@@ -1,8 +1,10 @@
 package com.example.prc.ejbs;
 
+import com.example.prc.dtos.UtenteDTO;
 import com.example.prc.entities.ProfissionalSaude;
 import com.example.prc.entities.TipoDadosBiometricos;
 import com.example.prc.entities.TipoProfissional;
+import com.example.prc.entities.Utente;
 import com.example.prc.exceptions.MyConstraintViolationException;
 import com.example.prc.exceptions.MyEntityExistsException;
 import com.example.prc.exceptions.MyEntityNotFoundException;
@@ -95,5 +97,45 @@ public class ProfissionalSaudeBean {
             em.flush();
         }
         return ps;
+    }
+
+    public Utente addUtente(String emailprofissional, UtenteDTO utenteDTO)
+            throws MyEntityNotFoundException, MyConstraintViolationException {
+        ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class,emailprofissional);
+        if(profissionalSaude == null)
+            throw new MyEntityNotFoundException("The Healthcare specialist was not found..");
+        Utente utente = em.find(Utente.class,utenteDTO.getEmail());
+        if(utente == null)
+            throw new MyEntityNotFoundException("The Pacient was not found..");
+        try {
+            profissionalSaude.addUtente(utente);
+            utente.addProfissionalSaude(profissionalSaude);
+            em.merge(utente);
+            em.merge(profissionalSaude);
+            return utente;
+        } catch (
+                ConstraintViolationException e) {
+            throw new MyConstraintViolationException(e);
+        }
+    }
+
+    public Utente removeUtente(String emailprofissional, UtenteDTO utenteDTO)
+            throws MyEntityNotFoundException, MyConstraintViolationException {
+        ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class,emailprofissional);
+        if(profissionalSaude == null)
+            throw new MyEntityNotFoundException("The Healthcare specialist was not found..");
+        Utente utente = em.find(Utente.class,utenteDTO.getEmail());
+        if(utente == null)
+            throw new MyEntityNotFoundException("The Pacient was not found..");
+        try {
+            profissionalSaude.removerUtente(utente);
+            utente.removeProfissionalSaude(profissionalSaude);
+            em.merge(utente);
+            em.merge(profissionalSaude);
+            return utente;
+        } catch (
+                ConstraintViolationException e) {
+            throw new MyConstraintViolationException(e);
+        }
     }
 }

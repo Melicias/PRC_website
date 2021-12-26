@@ -27,8 +27,8 @@ public class ProfissionalSaude extends User{
 
     @ManyToMany
     @JoinTable(name = "UTENTE_PROFISSIONALSAUDE",
-            joinColumns = @JoinColumn(name = "EMAIL_UTENTE", referencedColumnName = "EMAIL"),
-            inverseJoinColumns = @JoinColumn(name = "EMAIL_PROFISSIONALSAUDE", referencedColumnName = "EMAIL"))
+            joinColumns = @JoinColumn(name = "EMAIL_PROFISSIONALSAUDE", referencedColumnName = "EMAIL"),
+            inverseJoinColumns = @JoinColumn(name = "EMAIL_UTENTE", referencedColumnName = "EMAIL"))
     private List<Utente> utentes;
 
     @OneToMany
