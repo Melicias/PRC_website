@@ -65,7 +65,7 @@ public class User implements Serializable {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = User.hashPassword(password);
     }
 
     public String getName() {

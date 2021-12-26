@@ -1,14 +1,16 @@
 package com.example.prc.ws;
 
+import com.example.prc.dtos.ProfissionalSaudeDTO;
 import com.example.prc.dtos.TipoProfissionalDTO;
 import com.example.prc.dtos.UtenteDTO;
 import com.example.prc.ejbs.PrescricaoBean;
 import com.example.prc.ejbs.ProfissionalSaudeBean;
 import com.example.prc.ejbs.TipoProfissionalBean;
 import com.example.prc.ejbs.UtenteBean;
-import com.example.prc.entities.TipoDadosBiometricos;
+import com.example.prc.entities.ProfissionalSaude
 import com.example.prc.entities.User;
 import com.example.prc.entities.Utente;
+import com.example.prc.exceptions.MyEntityNotFoundException;
 import com.example.prc.jwt.Jwt;
 
 import javax.ejb.EJB;
@@ -85,20 +87,54 @@ public class UtenteService {
         return  Response.ok(utenteDTO).build();
     }*/
 
+    @GET
+    @Path("{email}")
+    public  Response getUtente(@PathParam("email") String email){
+        Utente utente= utenteBean.findUtente(email);
+        log.info(utente.getName());
+        return Response.ok(toDTO(utente)).build();
+    }
+
+    @GET
+    @Path("/")
+    public List<UtenteDTO> getUtenteWS() {
+        return toDTOs(utenteBean.getAllUtentes());
+    }
+
+    @GET
+    @Path("/semprofissional/{profissionalEmail}")
+    public Response getUtenteSemProfissionalSaude(@PathParam("profissionalEmail") String profissionalEmail) throws MyEntityNotFoundException {
+        List<Utente> utentes;
+        try{
+            utentes = utenteBean.getUtentesSemProfissionalSaude(profissionalEmail);
+        }catch (Exception e){
+            return Response.status(400).entity(e.getMessage()).build();
+        }
+        return Response.ok(toDTOs(utentes)).build();
+
+    }
+
     private UtenteDTO toDTO(Utente utente) {
-        UtenteDTO ut = new UtenteDTO(
+        UtenteDTO utenteDTO = new UtenteDTO(
                 utente.getEmail(),
                 utente.getPassword(),
                 utente.getName(),
                 utente.getDeleted_at(),
                 utente.getBlocked(),
-                utente.getDataNasc(),
-                utente.getProfissionalSaude()
+                utente.getDataNasc()
         );
-        return ut;
+        List<ProfissionalSaudeDTO> profissionalSaudeDTOS= ToDTOProfissionalSaude(utente.getProfissionalSaude());
+        utenteDTO.setProfissionalSaude(profissionalSaudeDTOS);
+        return utenteDTO;
     }
 
-    private List<UtenteDTO> toDTOs(List<Utente> utentes) {
+    private List<ProfissionalSaudeDTO> ToDTOProfissionalSaude(List<ProfissionalSaude> profissionalSaude) {
+        ProfissionalSaudeService profissionalSaudeService=new ProfissionalSaudeService();
+        List<ProfissionalSaudeDTO>profissionalSaudeDTOS= profissionalSaudeService.toDTOs(profissionalSaude);
+        return  profissionalSaudeDTOS;
+    }
+
+    public List<UtenteDTO> toDTOs(List<Utente> utentes) {
         return utentes.stream().map(this::toDTO).collect(Collectors.toList());
     }
 }

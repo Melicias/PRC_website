@@ -10,8 +10,16 @@ import java.util.List;
 @Entity
 @NamedQueries({
         @NamedQuery(
-                name = "getAllUtente",
-                query = "SELECT ut FROM Utente ut ORDER BY ut.name" // JPQL
+                name = "getUtenteSemProfissional",
+                query = "SELECT u FROM Utente u left join u.profissionalSaude ps where (ps.email != :email or ps.email is null) and u.deleted_at is null" // JPQL
+        ),
+        @NamedQuery(      
+                name = "getAllUtentes",
+                query = "select  ut FROM Utente ut order by  ut.email"
+        ),
+        @NamedQuery(
+                name = "getUtente",
+                query = "SELECT ut FROM Utente ut where ut.email= :email" // JPQL
         )
 })
 public class Utente extends User{
@@ -78,6 +86,10 @@ public class Utente extends User{
         this.profissionalSaude.add(profissionalSaude);
     }
 
+    public void removeProfissionalSaude(ProfissionalSaude profissionalSaude){
+        this.profissionalSaude.remove(profissionalSaude);
+    }
+
     public void removerDadosBiometricos(int index){
         this.dadosBiometricos.remove(index);
     }
@@ -101,5 +113,7 @@ public class Utente extends User{
     public void setProfissionalSaude(List<ProfissionalSaude> profissionalSaude) {
         this.profissionalSaude = profissionalSaude;
     }
+
+
 
 }

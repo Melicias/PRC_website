@@ -46,15 +46,15 @@ export default {
         // TODO redirect based on the user role
         // eg:
         if (this.$auth.user.groups.includes('Utente')) {
-          //this.$router.push('/students')
+          this.$router.push('/utente')
         } else if (this.$auth.user.groups.includes('Admin')) {
           this.$router.push('/admin')
         } if (this.$auth.user.groups.includes('ProfissionalSaude')) {
           //this.$router.push('/students/' + this.username)
         }
       })
-      promise.catch(() => {
-        this.$toast.error('Sorry, you cant login. Ensure your credentials are correct').goAway(3000)
+      promise.catch((error) => {
+        this.$toast.error(error.response.data).goAway(3000)
       })
     },
     onReset() {
