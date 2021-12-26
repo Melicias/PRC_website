@@ -11,6 +11,10 @@ import java.util.List;
 
 @NamedQueries({
         @NamedQuery(
+                name = "getUtenteSemProfissional",
+                query = "SELECT u FROM Utente u left join u.profissionalSaude ps where (ps.email != :email or ps.email is null) and u.deleted_at is null" // JPQL
+        ),
+        @NamedQuery(      
                 name = "getAllUtentes",
                 query = "select  ut FROM Utente ut order by  ut.email"
         ),
