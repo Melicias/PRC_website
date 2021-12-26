@@ -62,6 +62,7 @@ public class UtenteService {
     @Path("/")
     public List<UtenteDTO> getUtenteWS() {
         return toDTOs(utenteBean.getAllUtentes());
+    }
 
     @GET
     @Path("/semprofissional/{profissionalEmail}")
@@ -83,11 +84,7 @@ public class UtenteService {
                 utente.getName(),
                 utente.getDeleted_at(),
                 utente.getBlocked(),
-                utente.getDataNasc(),
-                utente.getDadosBiometricos(),
-                utente.getPrcs()
                 utente.getDataNasc()
-
         );
         List<ProfissionalSaudeDTO> profissionalSaudeDTOS= ToDTOProfissionalSaude(utente.getProfissionalSaude());
         utenteDTO.setProfissionalSaude(profissionalSaudeDTOS);
