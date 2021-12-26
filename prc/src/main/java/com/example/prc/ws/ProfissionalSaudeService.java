@@ -170,7 +170,7 @@ public class ProfissionalSaudeService {
         return prcs.stream().map(this::toDTOPrc).collect(Collectors.toList());
     }
 
-    private List<ProfissionalSaudeDTO> toDTOs(List<ProfissionalSaude> profissionalSaude) {
+    public List<ProfissionalSaudeDTO> toDTOs(List<ProfissionalSaude> profissionalSaude) {
         return profissionalSaude.stream().map(this::toDTO).collect(Collectors.toList());
     }
 
