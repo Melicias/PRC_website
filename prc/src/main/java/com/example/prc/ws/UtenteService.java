@@ -50,10 +50,7 @@ public class UtenteService {
                 utente.getName(),
                 utente.getDeleted_at(),
                 utente.getBlocked(),
-                utente.getDataNasc(),
-                utente.getProfissionalSaude(),
-                utente.getDadosBiometricos(),
-                utente.getPrcs()
+                utente.getDataNasc()
         );
         return ut;
     }

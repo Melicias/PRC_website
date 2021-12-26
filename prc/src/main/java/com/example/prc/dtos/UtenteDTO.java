@@ -97,14 +97,6 @@ public class UtenteDTO {
         this.dadosBiometricos = dadosBiometricos;
     }
 
-    public List<PrcDTO> getPrescricoes() {
-        return prescricoes;
-    }
-
-    public void setPrescricoes(List<PrcDTO> prescricoes) {
-        this.prescricoes = prescricoes;
-    }
-
     public String getEmailProfissionalSaude() {
         return emailProfissionalSaude;
     }
