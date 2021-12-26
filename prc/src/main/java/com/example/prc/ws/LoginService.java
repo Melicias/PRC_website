@@ -39,6 +39,11 @@ public class LoginService {
                 if (user.getEmail() != null) {
                     log.info("Generating JWT for user " + user.getEmail());
                 }
+                if(user.getBlocked() == 1)
+                    return Response.status(401).entity("This user is blocked! if yout think this is a mistake please contact our support").build();
+                if(user.getDeleted_at() != null)
+                    return Response.status(401).entity("Authorized, somthing is wrong with username or password!").build();
+
                 String token = jwtBean.createJwt(user.getEmail(), new
                         String[]{user.getClass().getSimpleName()});
                 log.info(user.getClass().getSimpleName());
@@ -47,7 +52,7 @@ public class LoginService {
         } catch (Exception e) {
             log.info(e.getMessage());
         }
-        return Response.status(Response.Status.UNAUTHORIZED).build();
+        return Response.status(401).entity("Authorized, somthing is wrong with username or password!").build();
     }
 
     @POST

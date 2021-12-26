@@ -13,6 +13,10 @@ import java.util.List;
         @NamedQuery(
                 name = "getAllProfissionalSaude",
                 query = "SELECT ps FROM ProfissionalSaude ps ORDER BY ps.name" // JPQL
+        ),
+        @NamedQuery(
+                name = "getProfissionalSaude",
+                query = "SELECT ps FROM ProfissionalSaude ps WHERE ps.email = :email ORDER BY ps.name" // JPQL
         )
 })
 public class ProfissionalSaude extends User{
