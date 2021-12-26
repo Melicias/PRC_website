@@ -9,6 +9,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.validation.ConstraintViolationException;
+import javax.ws.rs.core.Response;
 import java.util.Date;
 import java.util.List;
 
@@ -19,6 +20,8 @@ public class TipoDadosBiometricosBean {
 
     public void create(String name, double min, double max, String quantitativo)
             throws MyEntityExistsException, MyConstraintViolationException {
+        TipoDadosBiometricos tipoDadosBiometricos = findTipoDadoBiometrico(name);
+        if(tipoDadosBiometricos != null) throw new MyEntityExistsException("Name already in use!");
         try {
             TipoDadosBiometricos tipoDadoBiometrico;
             if(quantitativo == null) {

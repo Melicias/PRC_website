@@ -15,7 +15,11 @@ import javax.validation.ConstraintViolationException;
 import java.util.Date;
 import java.util.List;
 
+
 import static io.smallrye.config.ConfigLogging.log;
+
+import java.util.Locale;
+
 
 @Stateless
 public class UtenteBean {
@@ -58,4 +62,29 @@ public class UtenteBean {
         }
     }
 
+    public void create(String password, String name, String email, Date dataNasc)
+            throws MyEntityExistsException, MyConstraintViolationException, MyEntityNotFoundException {
+        Utente utente = em.find(Utente.class, email);
+        if(utente != null)
+            throw new MyEntityExistsException();
+        try {
+            Utente newUtente = new Utente(password, name, email, dataNasc);
+            em.persist(newUtente);
+            em.flush();
+        }catch (ConstraintViolationException e) {
+            throw new MyConstraintViolationException(e);
+        }
+    }
+
+    public List<Utente> getUtentesSemProfissionalSaude(String profissionalEmail)
+            throws MyEntityNotFoundException {
+        try{
+            ProfissionalSaude ps = em.find(ProfissionalSaude.class, profissionalEmail);
+            if(ps == null)
+                throw new MyEntityNotFoundException();
+            return (List<Utente>) em.createNamedQuery("getUtenteSemProfissional").setParameter("email",profissionalEmail).getResultList();
+        }catch (Exception e){
+            return null;
+        }
+    }
 }

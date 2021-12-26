@@ -13,6 +13,10 @@ import java.util.List;
         @NamedQuery(
                 name = "getAllProfissionalSaude",
                 query = "SELECT ps FROM ProfissionalSaude ps ORDER BY ps.name" // JPQL
+        ),
+        @NamedQuery(
+                name = "getProfissionalSaude",
+                query = "SELECT ps FROM ProfissionalSaude ps WHERE ps.email = :email ORDER BY ps.name" // JPQL
         )
 })
 public class ProfissionalSaude extends User{
@@ -23,8 +27,8 @@ public class ProfissionalSaude extends User{
 
     @ManyToMany
     @JoinTable(name = "UTENTE_PROFISSIONALSAUDE",
-            joinColumns = @JoinColumn(name = "EMAIL_UTENTE", referencedColumnName = "EMAIL"),
-            inverseJoinColumns = @JoinColumn(name = "EMAIL_PROFISSIONALSAUDE", referencedColumnName = "EMAIL"))
+            joinColumns = @JoinColumn(name = "EMAIL_PROFISSIONALSAUDE", referencedColumnName = "EMAIL"),
+            inverseJoinColumns = @JoinColumn(name = "EMAIL_UTENTE", referencedColumnName = "EMAIL"))
     private List<Utente> utentes;
 
     @OneToMany

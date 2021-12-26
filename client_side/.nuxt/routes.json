@@ -91,11 +91,25 @@
     "_name": "_412e5640"
   },
   {
+    "name": "admin-specialists-create",
+    "path": "/admin/specialists/create",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/specialists/create.vue",
+    "chunkName": "pages/admin/specialists/create",
+    "_name": "_475b5e14"
+  },
+  {
     "name": "admin-biometricdata-name",
     "path": "/admin/biometricdata/:name",
     "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\admin\\\\biometricdata\\\\_name.vue",
     "chunkName": "pages/admin/biometricdata/_name",
     "_name": "_25d44e2b"
+  },
+  {
+    "name": "admin-specialists-email",
+    "path": "/admin/specialists/:email",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/specialists/_email.vue",
+    "chunkName": "pages/admin/specialists/_email",
+    "_name": "_9f4cb3d2"
   },
   {
     "name": "index",

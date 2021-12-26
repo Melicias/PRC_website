@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+
 @NamedQueries({
         @NamedQuery(
                 name = "getAllUtentes",
@@ -18,6 +19,7 @@ import java.util.List;
                 query = "SELECT ut FROM Utente ut where ut.email= :email" // JPQL
         )
 })
+
 public class Utente extends User{
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
@@ -82,6 +84,10 @@ public class Utente extends User{
         this.profissionalSaude.add(profissionalSaude);
     }
 
+    public void removeProfissionalSaude(ProfissionalSaude profissionalSaude){
+        this.profissionalSaude.remove(profissionalSaude);
+    }
+
     public void removerDadosBiometricos(int index){
         this.dadosBiometricos.remove(index);
     }
@@ -105,5 +111,7 @@ public class Utente extends User{
     public void setProfissionalSaude(List<ProfissionalSaude> profissionalSaude) {
         this.profissionalSaude = profissionalSaude;
     }
+
+
 
 }

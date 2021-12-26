@@ -21,8 +21,14 @@ public class UtenteDTO {
     private List<Prc> prescricoes;
     private String emailProfissionalSaude;
 
+    public UtenteDTO() {
+        this.profissionalSaude = new ArrayList<>();
+        this.dadosBiometricos = new ArrayList<>();
+        this.prescricoes = new ArrayList<>();
+    }
 
-    public UtenteDTO(String email, String password, String name, Date deleted_at, int blocked, Date dataNasc, List<UtenteDadosBiometricos> dadosBiometricos, List<Prc> prescricoes) {
+
+    public UtenteDTO(String email, String password, String name, Date deleted_at, int blocked, Date dataNasc) {
         this.email = email;
         this.password = password;
         this.name = name;
@@ -30,8 +36,9 @@ public class UtenteDTO {
         this.blocked = blocked;
         this.dataNasc = dataNasc;
         this.profissionalSaude = new ArrayList<>();
-        this.dadosBiometricos = dadosBiometricos;
-        this.prescricoes = prescricoes;
+        this.dadosBiometricos = new ArrayList<>();
+        this.prescricoes = new ArrayList<>();
+
     }
 
     public String getEmail() {
@@ -96,14 +103,6 @@ public class UtenteDTO {
 
     public void setDadosBiometricos(List<UtenteDadosBiometricos> dadosBiometricos) {
         this.dadosBiometricos = dadosBiometricos;
-    }
-
-    public List<Prc> getPrescricoes() {
-        return prescricoes;
-    }
-
-    public void setPrescricoes(List<Prc> prescricoes) {
-        this.prescricoes = prescricoes;
     }
 
     public String getEmailProfissionalSaude() {

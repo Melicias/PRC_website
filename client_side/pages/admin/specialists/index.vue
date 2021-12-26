@@ -8,18 +8,18 @@
     <b-table striped over :items="specialist" :fields="fields" ref="table">
       <template #cell(blocked)="data">
         <div v-if="data.item.blocked == 0">
-          <b-button variant="danger" @click.prevent="blockSpecialist(`${data.item.id}`, `${data.index}`)">Block</b-button>
+          <b-button variant="danger" @click.prevent="blockSpecialist(`${data.item.email}`, `${data.index}`)">Block</b-button>
         </div>
         <div v-else>
-          <b-button variant="success"  @click.prevent="blockSpecialist(`${data.item.id}`, `${data.index}`)">Unblock</b-button>
+          <b-button variant="success"  @click.prevent="blockSpecialist(`${data.item.email}`, `${data.index}`)">Unblock</b-button>
         </div>
       </template>
       <template #cell(deleted)="data">
         <div v-if="data.item.deleted_at == null">
-          <b-button variant="danger" @click.prevent="deleteSpecialist(`${data.item.id}`, `${data.index}`)">delete</b-button>
+          <b-button variant="danger" @click.prevent="deleteSpecialist(`${data.item.email}`, `${data.index}`)">delete</b-button>
         </div>
         <div v-else>
-          <b-button variant="success"  @click.prevent="deleteSpecialist(`${data.item.id}`, `${data.index}`)">undo</b-button>
+          <b-button variant="success"  @click.prevent="deleteSpecialist(`${data.item.email}`, `${data.index}`)">undo</b-button>
         </div>
       </template>
       <template #cell(type)="data">
@@ -52,12 +52,22 @@ export default {
       })
   },
   methods: {
-    deleteTipo(id, index) {
-      console.log(id);
-      this.$axios.$delete(`/api/specialist/${id}`)
+    deleteSpecialist(email, index) {
+      this.$axios.$delete(`/api/profissionalsaude/${email}`)
         .then(msg => {
           this.$toast.success("Specialist deleted with success").goAway(1500)
-          this.tipoDadosBiometricos[index].deleted_at = msg.deleted_at;
+          this.specialist[index].deleted_at = msg.deleted_at;
+          this.$refs.table.refresh();
+        })
+        .catch(error => {
+          this.$toast.error('error while deleting').goAway(3000)
+        })
+    },
+    blockSpecialist(email, index) {
+      this.$axios.put(`/api/profissionalsaude/block/${email}`)
+        .then(msg => {
+          this.$toast.success("Specialist deleted with success").goAway(1500)
+          this.specialist[index].blocked = msg.data.blocked
           this.$refs.table.refresh();
         })
         .catch(error => {
