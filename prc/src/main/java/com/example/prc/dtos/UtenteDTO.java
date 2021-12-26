@@ -16,7 +16,7 @@ public class UtenteDTO {
     private Date deleted_at;
     private int blocked;
     private Date dataNasc;
-    private List<ProfissionalSaude> profissionalSaude;
+    private List<ProfissionalSaudeDTO> profissionalSaude;
     private List<UtenteDadosBiometricos> dadosBiometricos;
     private List<Prescricao> prescricoes;
     private String emailProfissionalSaude;
@@ -88,11 +88,11 @@ public class UtenteDTO {
         this.dataNasc = dataNasc;
     }
 
-    public List<ProfissionalSaude> getProfissionalSaude() {
+    public List<ProfissionalSaudeDTO> getProfissionalSaude() {
         return profissionalSaude;
     }
 
-    public void setProfissionalSaude(List<ProfissionalSaude> profissionalSaude) {
+    public void setProfissionalSaude(List<ProfissionalSaudeDTO> profissionalSaude) {
         this.profissionalSaude = profissionalSaude;
     }
 

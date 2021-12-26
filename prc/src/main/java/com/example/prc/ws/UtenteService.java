@@ -7,7 +7,7 @@ import com.example.prc.ejbs.PrescricaoBean;
 import com.example.prc.ejbs.ProfissionalSaudeBean;
 import com.example.prc.ejbs.TipoProfissionalBean;
 import com.example.prc.ejbs.UtenteBean;
-import com.example.prc.entities.ProfissionalSaude
+import com.example.prc.entities.ProfissionalSaude;
 import com.example.prc.entities.User;
 import com.example.prc.entities.Utente;
 import com.example.prc.exceptions.MyEntityNotFoundException;
@@ -37,8 +37,8 @@ public class UtenteService {
     @GET
     @Path("/")
     public List<UtenteDTO> getTipoProfissionalWS() {
-        System.out.println("AQUI GET"+toDTOs(utenteBean.getAllUtente())+"vamos");
-        return toDTOs(utenteBean.getAllUtente());
+        System.out.println("AQUI GET"+toDTOs(utenteBean.getAllUtentes())+"vamos");
+        return toDTOs(utenteBean.getAllUtentes());
     }
 
     @POST
@@ -65,8 +65,7 @@ public class UtenteService {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addProfissionalSaudeToUtente(UtenteDTO utenteDTO){
         try {
-            utenteBean.addProfissionalSaude(utenteDTO.getEmail(), utenteDTO.getEmailProfissionalSaude());
-            profissionalSaudeBean.addUtente(utenteDTO.getEmailProfissionalSaude(), utenteDTO.getEmail());
+            profissionalSaudeBean.addUtente(utenteDTO.getEmailProfissionalSaude(), utenteDTO);
         } catch (Exception e) {
             return Response.status(400).entity(e.getMessage()+"Entrou catch").build();
         }
