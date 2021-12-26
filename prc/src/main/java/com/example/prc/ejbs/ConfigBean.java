@@ -53,6 +53,7 @@ public class ConfigBean {
             adminBean.create("teste123","admin teste", "admin@admin.com");
 
             profissionalSaudeBean.create("teste123","profissional teste", "profissional@profissional.com",1);
+            profissionalSaudeBean.create("teste123","profissional teste1", "profissional1@profissional1.com",1);
 
             utenteBean.create("teste123","utente teste", "utente@utente.com", new Date("29/06/1999"),"profissional@profissional.com");
 

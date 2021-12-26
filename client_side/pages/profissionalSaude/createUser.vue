@@ -55,14 +55,13 @@
     </div>
 </template>
 <script>
+import moment from 'moment';
 export default {
   data() {
       return {
         form: {
           email: '',
           name: '',
-          food: null,
-          checked: [],
           password: '',
           date: '',
         },
@@ -70,9 +69,35 @@ export default {
       }
     },
     methods: {
-      onSubmit(event) {
-        event.preventDefault()
-      },
+      /* format (value) {
+        return moment(value).format('YYYY-MM-DDThh:mm:ss')
+      }, */
+        onSubmit(event) {
+          event.preventDefault()
+          this.$axios.$post('/api/utente', {
+            email: this.form.email,
+            name: this.form.name,
+            password: this.form.password,
+            dataNasc: this.form.date,
+            emailProfissionalSaude: "profissional@profissional.com"
+          })
+            .then(msg => {
+              this.$toast.success("User created with success").goAway(1500)
+              this.form.name = ''
+              this.form.email = ''
+              this.form.password = ''
+              this.form.date = ''
+              // Trick to reset/clear native browser form validation state
+              this.show = false
+              this.$nextTick(() => {
+                this.show = true
+              })
+            })
+            .catch(error => {
+              console.log(error.response.data)
+              this.$toast.error(error.response.data).goAway(3000)
+            })
+        },
       onReset(event) {
         event.preventDefault()
         // Reset our form values

@@ -8,6 +8,12 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(
+                name = "getAllUtente",
+                query = "SELECT ut FROM Utente ut ORDER BY ut.name" // JPQL
+        )
+})
 public class Utente extends User{
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
@@ -18,14 +24,14 @@ public class Utente extends User{
     private List<UtenteDadosBiometricos> dadosBiometricos;
 
     @OneToMany
-    private List<Prc> prcs;
+    private List<Prescricao> prescricoes;
 
 
     public Utente() {
         super();
         this.profissionalSaude = new ArrayList<>();
         this.dadosBiometricos = new ArrayList<>();
-        this.prcs = new ArrayList<>();
+        this.prescricoes = new ArrayList<>();
     }
 
     public Utente(String password, String name, String email, Date dataNasc) {
@@ -33,7 +39,7 @@ public class Utente extends User{
         this.dataNasc = dataNasc;
         this.profissionalSaude = new ArrayList<>();
         this.dadosBiometricos = new ArrayList<>();
-        this.prcs = new ArrayList<>();
+        this.prescricoes = new ArrayList<>();
     }
 
     public Date getDataNasc() {
@@ -52,20 +58,20 @@ public class Utente extends User{
         this.dadosBiometricos = dadosBiometricos;
     }
 
-    public List<Prc> getPrcs() {
-        return prcs;
+    public List<Prescricao> getPrcs() {
+        return prescricoes;
     }
 
-    public void setPrcs(List<Prc> prcs) {
-        this.prcs = prcs;
+    public void setPrcs(List<Prescricao> prescricoes) {
+        this.prescricoes = prescricoes;
     }
 
     public void addDadosBiometricos(UtenteDadosBiometricos dados){
         this.dadosBiometricos.add(dados);
     }
 
-    public void addPrc(Prc dados){
-        this.prcs.add(dados);
+    public void addPrc(Prescricao dados){
+        this.prescricoes.add(dados);
     }
 
     public void addProfissionalSaude(ProfissionalSaude profissionalSaude){
@@ -81,11 +87,11 @@ public class Utente extends User{
     }
 
     public void removerPrc(int index){
-        this.prcs.remove(index);
+        this.prescricoes.remove(index);
     }
 
     public void removerPrc(Prc dados){
-        this.prcs.remove(dados);
+        this.prescricoes.remove(dados);
     }
 
     public List<ProfissionalSaude> getProfissionalSaude() {

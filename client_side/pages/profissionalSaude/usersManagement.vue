@@ -2,7 +2,7 @@
     <div>
         <b-container>
             <h2>Users Management</h2>
-            <b-table striped over :items="tiposProfissionais" :fields="fields">
+            <b-table striped over :items="utentes" :fields="fields">
                 <template v-slot:cell(actions)="row">
                     <nuxt-link
                         class="btn btn-link"
@@ -18,14 +18,15 @@
 export default {
   data () {
     return {
-      fields: ['id', 'name'],
-      tiposProfissionais: []
+      fields: ['name', 'email', 'dataNasc', 'dadosBiometricos', 'prescricoes', 'profissionalSaude', 'blocked'],
+      utentes: []
     }
   },
   created () {
-    this.$axios.$get('/api/tipoprofissional')
-      .then((tiposProfissionais) => {
-        this.tiposProfissionais = tiposProfissionais
+    this.$axios.$get('/api/utente')
+      .then((utentes) => {
+        console.log(utentes)
+        this.utentes = utentes
       })
 } }
 </script>

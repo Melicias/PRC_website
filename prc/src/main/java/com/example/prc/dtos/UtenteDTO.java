@@ -5,6 +5,7 @@ import com.example.prc.entities.Prescricao;
 import com.example.prc.entities.ProfissionalSaude;
 import com.example.prc.entities.UtenteDadosBiometricos;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,13 +16,12 @@ public class UtenteDTO {
     private Date deleted_at;
     private int blocked;
     private Date dataNasc;
-    private List<ProfissionalSaudeDTO> profissionalSaude;
+    private List<ProfissionalSaude> profissionalSaude;
     private List<UtenteDadosBiometricos> dadosBiometricos;
-    private List<Prc> prescricoes;
+    private List<Prescricao> prescricoes;
     private String emailProfissionalSaude;
 
-
-    public UtenteDTO(String email, String password, String name, Date deleted_at, int blocked, Date dataNasc, List<ProfissionalSaudeDTO> profissionalSaude, List<UtenteDadosBiometricos> dadosBiometricos, List<Prc> prescricoes) {
+    public UtenteDTO(String email, String password, String name, Date deleted_at, int blocked, Date dataNasc, List<ProfissionalSaude> profissionalSaude) {
         this.email = email;
         this.password = password;
         this.name = name;
@@ -29,8 +29,12 @@ public class UtenteDTO {
         this.blocked = blocked;
         this.dataNasc = dataNasc;
         this.profissionalSaude = profissionalSaude;
-        this.dadosBiometricos = dadosBiometricos;
-        this.prescricoes = prescricoes;
+        this.dadosBiometricos = new ArrayList<>();
+        this.prescricoes = new ArrayList<>();
+    }
+
+    public UtenteDTO(){
+
     }
 
     public String getEmail() {
@@ -81,11 +85,11 @@ public class UtenteDTO {
         this.dataNasc = dataNasc;
     }
 
-    public List<ProfissionalSaudeDTO> getProfissionalSaude() {
+    public List<ProfissionalSaude> getProfissionalSaude() {
         return profissionalSaude;
     }
 
-    public void setProfissionalSaude(List<ProfissionalSaudeDTO> profissionalSaude) {
+    public void setProfissionalSaude(List<ProfissionalSaude> profissionalSaude) {
         this.profissionalSaude = profissionalSaude;
     }
 
@@ -97,11 +101,11 @@ public class UtenteDTO {
         this.dadosBiometricos = dadosBiometricos;
     }
 
-    public List<Prc> getPrescricoes() {
+    public List<Prescricao> getPrescricoes() {
         return prescricoes;
     }
 
-    public void setPrescricoes(List<Prc> prescricoes) {
+    public void setPrescricoes(List<Prescricao> prescricoes) {
         this.prescricoes = prescricoes;
     }
 
