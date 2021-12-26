@@ -4,7 +4,6 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-
 const _01017896 = () => interopDefault(import('../pages/admin/index.vue' /* webpackChunkName: "pages/admin/index" */))
 const _7b685732 = () => interopDefault(import('../pages/tipoProfissional/index.vue' /* webpackChunkName: "pages/tipoProfissional/index" */))
 const _b0c991f0 = () => interopDefault(import('../pages/admin/biometricdata/index.vue' /* webpackChunkName: "pages/admin/biometricdata/index" */))
@@ -73,6 +72,10 @@ export const routerOptions = {
     path: "/profissionalSaude/main",
     component: _12bd3bdc,
     name: "profissionalSaude-main"
+  }, {
+    path: "/profissionalSaude/passPrescription",
+    component: _25963e34,
+    name: "profissionalSaude-passPrescription"
   }, {
     path: "/profissionalSaude/usersManagement",
     component: _17788ca2,

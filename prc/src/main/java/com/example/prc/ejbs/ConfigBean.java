@@ -55,7 +55,8 @@ public class ConfigBean {
             tipoDadosBiometricos.create("obesidade",0, 0,"cenas que nao vou criar ja mas possivelmente criado em json");
 
             adminBean.create("teste123","admin teste", "admin@admin.com");
-
+          
+            profissionalSaudeBean.create("teste123","profissional teste", "profissional@profissional.com",1);
             profissionalSaudeBean.create("teste123","Grayson Arnold", "profissional1@profissional.com",1);
             profissionalSaudeBean.create("teste123","Maria das cruzes", "profissional2@profissional.com",2);
             profissionalSaudeBean.create("teste123","Joaquim Alberto", "profissional3@profissional.com",3);

@@ -19,6 +19,7 @@ import nuxt_plugin_toast_a7e18646 from 'nuxt_plugin_toast_a7e18646' // Source: .
 import nuxt_plugin_axios_40421fa4 from 'nuxt_plugin_axios_40421fa4' // Source: .\\axios.js (mode: 'all')
 import nuxt_plugin_plugin_0779855d from 'nuxt_plugin_plugin_0779855d' // Source: .\\auth\\plugin.js (mode: 'all')
 
+
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
 

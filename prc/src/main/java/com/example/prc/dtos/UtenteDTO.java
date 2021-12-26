@@ -16,9 +16,9 @@ public class UtenteDTO {
     private Date deleted_at;
     private int blocked;
     private Date dataNasc;
-    private List<ProfissionalSaudeDTO> profissionalSaude;
+    private List<ProfissionalSaude> profissionalSaude;
     private List<UtenteDadosBiometricos> dadosBiometricos;
-    private List<Prc> prescricoes;
+    private List<Prescricao> prescricoes;
     private String emailProfissionalSaude;
 
     public UtenteDTO() {
@@ -38,7 +38,6 @@ public class UtenteDTO {
         this.profissionalSaude = new ArrayList<>();
         this.dadosBiometricos = new ArrayList<>();
         this.prescricoes = new ArrayList<>();
-
     }
 
     public String getEmail() {
@@ -89,11 +88,11 @@ public class UtenteDTO {
         this.dataNasc = dataNasc;
     }
 
-    public List<ProfissionalSaudeDTO> getProfissionalSaude() {
+    public List<ProfissionalSaude> getProfissionalSaude() {
         return profissionalSaude;
     }
 
-    public void setProfissionalSaude(List<ProfissionalSaudeDTO> profissionalSaude) {
+    public void setProfissionalSaude(List<ProfissionalSaude> profissionalSaude) {
         this.profissionalSaude = profissionalSaude;
     }
 
@@ -103,6 +102,14 @@ public class UtenteDTO {
 
     public void setDadosBiometricos(List<UtenteDadosBiometricos> dadosBiometricos) {
         this.dadosBiometricos = dadosBiometricos;
+    }
+
+    public List<Prescricao> getPrescricoes() {
+        return prescricoes;
+    }
+
+    public void setPrescricoes(List<Prescricao> prescricoes) {
+        this.prescricoes = prescricoes;
     }
 
     public String getEmailProfissionalSaude() {
