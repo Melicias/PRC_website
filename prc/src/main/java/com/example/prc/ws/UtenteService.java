@@ -51,6 +51,7 @@ public class UtenteService {
     @Path("{email}")
     public  Response getUtente(@PathParam("email") String email){
         Utente utente= utenteBean.findUtente(email);
+        log.info(utente.getName());
         return Response.ok(toDTO(utente)).build();
     }
 
