@@ -1,6 +1,7 @@
 package com.example.prc.ejbs;
 
 import com.example.prc.entities.ProfissionalSaude;
+import com.example.prc.entities.TipoDadosBiometricos;
 import com.example.prc.entities.User;
 import com.example.prc.entities.Utente;
 import com.example.prc.exceptions.MyConstraintViolationException;
@@ -13,12 +14,18 @@ import javax.persistence.PersistenceContext;
 import javax.validation.ConstraintViolationException;
 import java.util.Date;
 import java.util.List;
+
+
+import static io.smallrye.config.ConfigLogging.log;
+
 import java.util.Locale;
+
 
 @Stateless
 public class UtenteBean {
     @PersistenceContext
     EntityManager em;
+
 
     public Utente authenticate(final String email, final String password) throws
             Exception {
@@ -28,9 +35,12 @@ public class UtenteBean {
         }
         throw new Exception("Failed logging in with the email  '" + email + "': unknown email or wrong password");
     }
+    public List<Utente> getAllUtentes() {
+        return (List<Utente>) em.createNamedQuery("getAllUtentes").getResultList();
+    }
 
     public Utente findUtente(String email){
-        return em.find(Utente.class, email);
+        return (Utente) em.createNamedQuery("getUtente").setParameter("email",email).getSingleResult();
     }
 
     public void create(String password, String name, String email, Date dataNasc, String emailProfissionalSaude)
