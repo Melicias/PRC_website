@@ -1,5 +1,6 @@
 package com.example.prc.ws;
 
+import com.example.prc.dtos.ProfissionalSaudeDTO;
 import com.example.prc.dtos.TipoProfissionalDTO;
 import com.example.prc.dtos.UtenteDTO;
 import com.example.prc.ejbs.TipoProfissionalBean;
@@ -36,6 +37,7 @@ public class UtenteService {
             Utente utente = utenteBean.findUtente(utenteDTO.getEmail());
             if (utente == null)
                 return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+
             return Response.status(Response.Status.CREATED)
                     .entity(toDTO(utente))
                     .build();
@@ -44,6 +46,22 @@ public class UtenteService {
         }
         return Response.status(Response.Status.UNAUTHORIZED).build();
     }
+
+
+    @GET
+    @Path("{email}")
+    public  Response getUtente(@PathParam("email") String email){
+        Utente utente= utenteBean.findUtente(email);
+        log.info(utente.getName());
+        return Response.ok(toDTO(utente)).build();
+    }
+
+
+
+    @GET
+    @Path("/")
+    public List<UtenteDTO> getUtenteWS() {
+        return toDTOs(utenteBean.getAllUtentes());
 
     @GET
     @Path("/semprofissional/{profissionalEmail}")
@@ -55,21 +73,34 @@ public class UtenteService {
             return Response.status(400).entity(e.getMessage()).build();
         }
         return Response.ok(toDTOs(utentes)).build();
+
     }
 
     private UtenteDTO toDTO(Utente utente) {
-        UtenteDTO ut = new UtenteDTO(
+        UtenteDTO utenteDTO = new UtenteDTO(
                 utente.getEmail(),
                 utente.getPassword(),
                 utente.getName(),
                 utente.getDeleted_at(),
                 utente.getBlocked(),
+                utente.getDataNasc(),
+                utente.getDadosBiometricos(),
+                utente.getPrcs()
                 utente.getDataNasc()
+
         );
-        return ut;
+        List<ProfissionalSaudeDTO> profissionalSaudeDTOS= ToDTOProfissionalSaude(utente.getProfissionalSaude());
+        utenteDTO.setProfissionalSaude(profissionalSaudeDTOS);
+        return utenteDTO;
     }
 
-    private List<UtenteDTO> toDTOs(List<Utente> utentes) {
+    private List<ProfissionalSaudeDTO> ToDTOProfissionalSaude(List<ProfissionalSaude> profissionalSaude) {
+        ProfissionalSaudeService profissionalSaudeService=new ProfissionalSaudeService();
+        List<ProfissionalSaudeDTO>profissionalSaudeDTOS= profissionalSaudeService.toDTOs(profissionalSaude);
+        return  profissionalSaudeDTOS;
+    }
+
+    public List<UtenteDTO> toDTOs(List<Utente> utentes) {
         return utentes.stream().map(this::toDTO).collect(Collectors.toList());
     }
 }

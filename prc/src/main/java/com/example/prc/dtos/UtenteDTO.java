@@ -27,12 +27,6 @@ public class UtenteDTO {
         this.prescricoes = new ArrayList<>();
     }
 
-    public UtenteDTO(String email) {
-        this.email = email;
-        this.profissionalSaude = new ArrayList<>();
-        this.dadosBiometricos = new ArrayList<>();
-        this.prescricoes = new ArrayList<>();
-    }
 
     public UtenteDTO(String email, String password, String name, Date deleted_at, int blocked, Date dataNasc) {
         this.email = email;
@@ -44,6 +38,7 @@ public class UtenteDTO {
         this.profissionalSaude = new ArrayList<>();
         this.dadosBiometricos = new ArrayList<>();
         this.prescricoes = new ArrayList<>();
+
     }
 
     public String getEmail() {

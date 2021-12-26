@@ -138,6 +138,7 @@ public class ProfissionalSaudeService {
         return profissionaSaudeDTO;
     }
 
+
     private UtenteDTO toDTOUtente(Utente utente) {
         return new UtenteDTO(
                 utente.getEmail(),
@@ -172,4 +173,6 @@ public class ProfissionalSaudeService {
     private List<ProfissionalSaudeDTO> toDTOs(List<ProfissionalSaude> profissionalSaude) {
         return profissionalSaude.stream().map(this::toDTO).collect(Collectors.toList());
     }
+
+
 }
