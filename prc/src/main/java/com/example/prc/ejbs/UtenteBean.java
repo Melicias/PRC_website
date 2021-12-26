@@ -45,4 +45,18 @@ public class UtenteBean {
             throw new MyConstraintViolationException(e);
         }
     }
+
+    public void create(String password, String name, String email, Date dataNasc)
+            throws MyEntityExistsException, MyConstraintViolationException, MyEntityNotFoundException {
+        Utente utente = em.find(Utente.class, email);
+        if(utente != null)
+            throw new MyEntityExistsException();
+        try {
+            Utente newUtente = new Utente(password, name, email, dataNasc);
+            em.persist(newUtente);
+            em.flush();
+        }catch (ConstraintViolationException e) {
+            throw new MyConstraintViolationException(e);
+        }
+    }
 }

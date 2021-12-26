@@ -67,7 +67,28 @@ public class ConfigBean {
             profissionalSaudeBean.create("teste123","Joel Tate", "profissional9@profissional.com",1);
             profissionalSaudeBean.create("teste123","Luna Ray", "profissional10@profissional.com",2);
 
-            utenteBean.create("teste123","utente teste", "utente@utente.com", new Date("29/06/1999"),"profissional1@profissional.com");
+            utenteBean.create("teste123","Sameer Cabrera", "utente@utente.com", new Date("29/06/1999"),"profissional1@profissional.com");
+            utenteBean.create("teste123","Kaydee Hodson", "utente2@utente.com", new Date("20/03/1990"),"profissional2@profissional.com");
+            utenteBean.create("teste123","Ana Taylor", "utente3@utente.com", new Date("19/08/1989"));
+            utenteBean.create("teste123","Jorden Churchill", "utente4@utente.com", new Date("9/10/1979"));
+            utenteBean.create("teste123","Peter Barrera", "utente5@utente.com", new Date("2/11/1969"),"profissional9@profissional.com");
+            utenteBean.create("teste123","Amina Rivera", "utente6@utente.com", new Date("4/10/1995"));
+            utenteBean.create("teste123","Cian Ellis", "utent72@utente.com", new Date("8/01/1984"),"profissional10@profissional.com");
+            utenteBean.create("teste123","Delia Walsh", "utente8@utente.com", new Date("18/02/1978"),"profissional1@profissional.com");
+            utenteBean.create("teste123","Benjamin Holder", "utente9@utente.com", new Date("24/12/1984"),"profissional2@profissional.com");
+            utenteBean.create("teste123","Ari Rosario", "utente10@utente.com", new Date("23/04/19956"),"profissional4@profissional.com");
+            utenteBean.create("teste123","Marcia House", "utente11@utente.com", new Date("15/07/1990"));
+            utenteBean.create("teste123","Kelan Barrett", "utente12@utente.com", new Date("29/06/2002"),"profissional1@profissional.com");
+            utenteBean.create("teste123","Shanna Wilkinson", "utente13@utente.com", new Date("21/04/1978"));
+            utenteBean.create("teste123","Jibril Dotson", "utente14@utente.com", new Date("26/03/1969"),"profissional2@profissional.com");
+            utenteBean.create("teste123","Killian Higgins", "utente15@utente.com", new Date("11/09/1943"));
+            utenteBean.create("teste123","Roman Morgan", "utente16@utente.com", new Date("5/11/1994"),"profissional5@profissional.com");
+            utenteBean.create("teste123","Luna Kearney", "utente17@utente.com", new Date("2/12/1998"),"profissional3@profissional.com");
+            utenteBean.create("teste123","Weronika Orozco", "utente18@utente.com", new Date("30/05/1980"));
+            utenteBean.create("teste123","Duke Magana", "utente19@utente.com", new Date("24/06/1970"),"profissional4@profissional.com");
+            utenteBean.create("teste123","Ami Pennington", "utente20@utente.com", new Date("16/08/1975"),"profissional9@profissional.com");
+            utenteBean.create("teste123","Adele Farmer", "utente21@utente.com", new Date("22/05/1980"),"profissional10@profissional.com");
+            utenteBean.create("teste123","Jordi Greene", "utente22@utente.com", new Date("20/10/1990"));
 
         } catch (Exception e) {
             logger.log(Level.SEVERE, e.toString());
