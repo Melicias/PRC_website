@@ -100,13 +100,19 @@ public class ProfissionalSaudeBean {
     }
 
     public Utente addUtente(String emailprofissional, UtenteDTO utenteDTO)
-            throws MyEntityNotFoundException, MyConstraintViolationException {
+            throws MyEntityNotFoundException, MyConstraintViolationException, MyEntityExistsException {
         ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class,emailprofissional);
         if(profissionalSaude == null)
             throw new MyEntityNotFoundException("The Healthcare specialist was not found..");
         Utente utente = em.find(Utente.class,utenteDTO.getEmail());
         if(utente == null)
             throw new MyEntityNotFoundException("The Pacient was not found..");
+        List<ProfissionalSaude> ps = utente.getProfissionalSaude();
+        for(int i = 0; i <ps.size();i++){
+            if(ps.get(i).getEmail() == emailprofissional){
+                throw new MyEntityExistsException("This connection already exists...");
+            }
+        }
         try {
             profissionalSaude.addUtente(utente);
             utente.addProfissionalSaude(profissionalSaude);
@@ -136,6 +142,18 @@ public class ProfissionalSaudeBean {
         } catch (
                 ConstraintViolationException e) {
             throw new MyConstraintViolationException(e);
+        }
+    }
+
+    public List<ProfissionalSaude> getProfissionaisSemUtente(String emailUtente)
+            throws MyEntityNotFoundException {
+        try{
+            Utente u = em.find(Utente.class, emailUtente);
+            if(u == null)
+                throw new MyEntityNotFoundException();
+            return (List<ProfissionalSaude>) em.createNamedQuery("getProfissionaisSemEsteUtente").setParameter("email",emailUtente).getResultList();
+        }catch (Exception e){
+            return null;
         }
     }
 }
