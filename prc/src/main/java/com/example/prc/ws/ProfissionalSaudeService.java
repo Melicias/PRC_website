@@ -70,7 +70,7 @@ public class ProfissionalSaudeService {
 
     @POST
     @Path("/")
-    public Response createProfissionalSaude (ProfissionalSaude profissionalSaude)
+    public Response createProfissionalSaude (ProfissionalSaudeDTO profissionalSaude)
             throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException {
         try{
             profissionalSaudeBean.create(
@@ -82,6 +82,32 @@ public class ProfissionalSaudeService {
             return Response.status(400).entity(e.getMessage()).build();
         }
         return Response.ok(profissionalSaude).build();
+    }
+
+    @POST
+    @Path("/addUtente/{emailprofissional}")
+    public Response addUtenteToProfissionalSaude (@PathParam("emailprofissional") String emailprofissional,UtenteDTO utenteDTO)
+            throws MyEntityNotFoundException, MyConstraintViolationException {
+        Utente utente;
+        try{
+            utente = profissionalSaudeBean.addUtente(emailprofissional, utenteDTO);
+        }catch (Exception e){
+            return Response.status(400).entity(e.getMessage()).build();
+        }
+        return Response.ok(toDTOUtente(utente)).build();
+    }
+
+    @POST
+    @Path("/removeUtente/{emailprofissional}")
+    public Response removeUtenteToProfissionalSaude (@PathParam("emailprofissional") String emailprofissional,UtenteDTO utenteDTO)
+            throws MyEntityNotFoundException, MyConstraintViolationException {
+        Utente utente;
+        try{
+            utente = profissionalSaudeBean.removeUtente(emailprofissional, utenteDTO);
+        }catch (Exception e){
+            return Response.status(400).entity(e.getMessage()).build();
+        }
+        return Response.ok(toDTOUtente(utente)).build();
     }
 
     private ProfissionalSaudeDTO toDTOComplete(ProfissionalSaude profissionalSaude) {

@@ -12,6 +12,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.validation.ConstraintViolationException;
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 @Stateless
 public class UtenteBean {
@@ -61,6 +63,18 @@ public class UtenteBean {
             em.flush();
         }catch (ConstraintViolationException e) {
             throw new MyConstraintViolationException(e);
+        }
+    }
+
+    public List<Utente> getUtentesSemProfissionalSaude(String profissionalEmail)
+            throws MyEntityNotFoundException {
+        try{
+            ProfissionalSaude ps = em.find(ProfissionalSaude.class, profissionalEmail);
+            if(ps == null)
+                throw new MyEntityNotFoundException();
+            return (List<Utente>) em.createNamedQuery("getUtenteSemProfissional").setParameter("email",profissionalEmail).getResultList();
+        }catch (Exception e){
+            return null;
         }
     }
 }

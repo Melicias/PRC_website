@@ -73,7 +73,7 @@ public class ConfigBean {
             utenteBean.create("teste123","Jorden Churchill", "utente4@utente.com", new Date("9/10/1979"));
             utenteBean.create("teste123","Peter Barrera", "utente5@utente.com", new Date("2/11/1969"),"profissional9@profissional.com");
             utenteBean.create("teste123","Amina Rivera", "utente6@utente.com", new Date("4/10/1995"));
-            utenteBean.create("teste123","Cian Ellis", "utent72@utente.com", new Date("8/01/1984"),"profissional10@profissional.com");
+            utenteBean.create("teste123","Cian Ellis", "utente7@utente.com", new Date("8/01/1984"),"profissional10@profissional.com");
             utenteBean.create("teste123","Delia Walsh", "utente8@utente.com", new Date("18/02/1978"),"profissional1@profissional.com");
             utenteBean.create("teste123","Benjamin Holder", "utente9@utente.com", new Date("24/12/1984"),"profissional2@profissional.com");
             utenteBean.create("teste123","Ari Rosario", "utente10@utente.com", new Date("23/04/19956"),"profissional4@profissional.com");
