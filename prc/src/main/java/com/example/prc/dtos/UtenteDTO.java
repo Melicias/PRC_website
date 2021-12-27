@@ -28,13 +28,13 @@ public class UtenteDTO {
     }
 
 
-    public UtenteDTO(String email, String password, String name, Date deleted_at, int blocked, Date dataNasc) {
+    public UtenteDTO(String email, String password, String name,Date dataNasc, Date deleted_at, int blocked) {
         this.email = email;
         this.password = password;
         this.name = name;
+        this.dataNasc = dataNasc;
         this.deleted_at = deleted_at;
         this.blocked = blocked;
-        this.dataNasc = dataNasc;
         this.profissionalSaude = new ArrayList<>();
         this.dadosBiometricos = new ArrayList<>();
         this.prescricoes = new ArrayList<>();

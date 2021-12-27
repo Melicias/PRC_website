@@ -1,10 +1,41 @@
 <template>
   <b-container>
-    <h1>Welcome Back {{utente.name}}</h1>
+    <h1 style="margin-top:5%">Welcome Back, {{utente.name}}</h1>
     <br><br>
-   <b-button v-b-toggle.collapse-1 variant="primary" href="/utente/profile">profile</b-button>
+    <nuxt-link :to="'/utente/profile'">
+      <div class="img-with-text">
+        <img width="100" height="100" src="../../img/user.png" alt="Image not loaded" />
+        <p>Profile</p>
+      </div>
+    </nuxt-link>
+    <nuxt-link :to="'/admin/specialists'">
+      <div class="img-with-text">
+        <img width="100" height="100" src="../../img/doctor.png" alt="Image not loaded" />
+        <p>My Prescriptions</p>
+      </div>
+    </nuxt-link>
+    <nuxt-link :to="'/admin/biometricdata'">
+      <div class="img-with-text">
+        <img width="100" height="100" src="../../img/blood-test.png" alt="Image not loaded" />
+        <p>Biometric data</p>
+      </div>
+    </nuxt-link>
+
   </b-container>
 </template>
+<style scoped>
+.img-with-text {
+  width:200px;
+  text-align:center;
+  display:block;
+  background-color: transparent;
+  border: 1px solid transparent;
+  margin-top: 5%;
+  margin-right: 15%;
+  margin-bottom: 1px;
+  float:left;
+}
+</style>
 <script>
 export default {
   data() {

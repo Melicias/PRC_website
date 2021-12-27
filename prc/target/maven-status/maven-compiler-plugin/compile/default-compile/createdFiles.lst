@@ -46,3 +46,4 @@ com/example/prc/entities/TipoDadosBiometricos.class
 com/example/prc/ejbs/UtenteBean.class
 com/example/prc/ejbs/UserBean.class
 com/example/prc/exceptions/MyIllegalArgumentExceptionMapper.class
+

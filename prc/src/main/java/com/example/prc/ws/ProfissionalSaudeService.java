@@ -156,9 +156,9 @@ public class ProfissionalSaudeService {
                 utente.getEmail(),
                 utente.getPassword(),
                 utente.getName(),
+                utente.getDataNasc(),
                 utente.getDeleted_at(),
-                utente.getBlocked(),
-                utente.getDataNasc()
+                utente.getBlocked()
         );
     }
 

@@ -87,6 +87,7 @@ public class UtenteBean {
         }
     }
 
+
     public void updateUtente(String email,String name, String password, Date birthDate)
             throws MyEntityNotFoundException, MyConstraintViolationException {
         Utente utente = em.find(Utente.class, email);
@@ -144,4 +145,5 @@ public class UtenteBean {
         em.flush();
         return u;
     }
+
 }
