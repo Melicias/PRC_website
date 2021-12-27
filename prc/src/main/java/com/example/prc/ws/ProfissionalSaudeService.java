@@ -90,7 +90,7 @@ public class ProfissionalSaudeService {
             throws MyEntityNotFoundException, MyConstraintViolationException {
         Utente utente;
         try{
-            utente = profissionalSaudeBean.addUtente(emailprofissional, utenteDTO);
+            utente = profissionalSaudeBean.addUtente(emailprofissional, utenteDTO.getEmail());
         }catch (Exception e){
             return Response.status(400).entity(e.getMessage()).build();
         }
@@ -103,7 +103,7 @@ public class ProfissionalSaudeService {
             throws MyEntityNotFoundException, MyConstraintViolationException {
         Utente utente;
         try{
-            utente = profissionalSaudeBean.removeUtente(emailprofissional, utenteDTO);
+            utente = profissionalSaudeBean.removeUtente(emailprofissional, utenteDTO.getEmail());
         }catch (Exception e){
             return Response.status(400).entity(e.getMessage()).build();
         }

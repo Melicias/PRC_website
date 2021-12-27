@@ -10,6 +10,7 @@ import com.example.prc.ejbs.UtenteBean;
 import com.example.prc.entities.ProfissionalSaude;
 import com.example.prc.entities.User;
 import com.example.prc.entities.Utente;
+import com.example.prc.exceptions.MyConstraintViolationException;
 import com.example.prc.exceptions.MyEntityNotFoundException;
 import com.example.prc.jwt.Jwt;
 
@@ -54,7 +55,7 @@ public class UtenteService {
                     new Date("29/06/1999"),
                     utenteDTO.getEmailProfissionalSaude());
         } catch (Exception e) {
-            return Response.status(400).entity(e.getMessage()+"Entrou catch").build();
+            return Response.status(400).entity(e.getMessage()).build();
         }
         return Response.ok(utenteDTO).build();
     }
@@ -65,9 +66,22 @@ public class UtenteService {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addProfissionalSaudeToUtente(UtenteDTO utenteDTO){
         try {
-            profissionalSaudeBean.addUtente(utenteDTO.getEmailProfissionalSaude(), utenteDTO);
+            profissionalSaudeBean.addUtente(utenteDTO.getEmailProfissionalSaude(), utenteDTO.getEmail());
         } catch (Exception e) {
-            return Response.status(400).entity(e.getMessage()+"Entrou catch").build();
+            return Response.status(400).entity(e.getMessage()).build();
+        }
+        return  Response.ok(utenteDTO).build();
+    }
+
+    @POST
+    @Path("/removeprofissionalsaude")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response removeProfissionalSaudeToUtente(UtenteDTO utenteDTO){
+        try {
+            profissionalSaudeBean.removeUtente(utenteDTO.getEmailProfissionalSaude(), utenteDTO.getEmail());
+        } catch (Exception e) {
+            return Response.status(400).entity(e.getMessage()).build();
         }
         return  Response.ok(utenteDTO).build();
     }

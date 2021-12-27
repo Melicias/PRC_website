@@ -99,12 +99,12 @@ public class ProfissionalSaudeBean {
         return ps;
     }
 
-    public Utente addUtente(String emailprofissional, UtenteDTO utenteDTO)
+    public Utente addUtente(String emailprofissional, String emailUtente)
             throws MyEntityNotFoundException, MyConstraintViolationException, MyEntityExistsException {
         ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class,emailprofissional);
         if(profissionalSaude == null)
             throw new MyEntityNotFoundException("The Healthcare specialist was not found..");
-        Utente utente = em.find(Utente.class,utenteDTO.getEmail());
+        Utente utente = em.find(Utente.class, emailUtente);
         if(utente == null)
             throw new MyEntityNotFoundException("The Pacient was not found..");
         List<ProfissionalSaude> ps = utente.getProfissionalSaude();
@@ -125,12 +125,12 @@ public class ProfissionalSaudeBean {
         }
     }
 
-    public Utente removeUtente(String emailprofissional, UtenteDTO utenteDTO)
+    public Utente removeUtente(String emailprofissional, String emailUtente)
             throws MyEntityNotFoundException, MyConstraintViolationException {
         ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class,emailprofissional);
         if(profissionalSaude == null)
             throw new MyEntityNotFoundException("The Healthcare specialist was not found..");
-        Utente utente = em.find(Utente.class,utenteDTO.getEmail());
+        Utente utente = em.find(Utente.class,emailUtente);
         if(utente == null)
             throw new MyEntityNotFoundException("The Pacient was not found..");
         try {

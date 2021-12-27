@@ -1,5 +1,7 @@
 package com.example.prc.ejbs;
 
+import com.example.prc.dtos.ProfissionalSaudeDTO;
+import com.example.prc.dtos.UtenteDTO;
 import com.example.prc.entities.ProfissionalSaude;
 import com.example.prc.entities.TipoDadosBiometricos;
 import com.example.prc.entities.User;
