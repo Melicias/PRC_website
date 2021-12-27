@@ -4,6 +4,7 @@
             <h2>Profissional de Saúde</h2>
             <b-button to="/profissionalSaude/createUser">Create new user</b-button>
             <b-button to="/profissionalSaude/usersManagement">Manage users</b-button>
+            <b-button to="/profissionalSaude/createPrescription">Manage prescriptions</b-button>
             <b-button @click="addUser = true">Add user to my responsability</b-button>
             <b-button to="/">Logout</b-button>
             <b-container v-show="addUser">

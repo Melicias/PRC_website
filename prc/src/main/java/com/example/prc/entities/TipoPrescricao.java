@@ -5,6 +5,12 @@ import io.smallrye.common.constraint.NotNull;
 import javax.persistence.*;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(
+                name = "getAllTiposPrescricao",
+                query = "SELECT tp FROM TipoPrescricao tp ORDER BY tp.name" // JPQL
+        )
+})
 public class TipoPrescricao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -8,13 +8,27 @@ public class PrcDTO {
     private int id;
     private UtenteDTO utente;
     private ProfissionalSaudeDTO profissionalSaude;
+    private String emailUtente;
+    private String emailProfissionalSaude;
     private String doenca;
     private Date validade;
     private Date created_at;
     private Date deleted_at;
     private List<PrescricaoDTO> prescricoes;
+    private int idPrescricao;
 
     public PrcDTO() {
+    }
+
+    public PrcDTO(int id, String doenca, Date validade, Date created_at, Date deleted_at) {
+        this.id = id;
+        this.utente = utente;
+        this.profissionalSaude = profissionalSaude;
+        this.doenca = doenca;
+        this.validade = validade;
+        this.created_at = created_at;
+        this.deleted_at = deleted_at;
+        this.prescricoes = new ArrayList<>();
     }
 
     public PrcDTO(int id, UtenteDTO utente, ProfissionalSaudeDTO profissionalSaude, String doenca, Date validade, Date created_at, Date deleted_at) {
@@ -50,6 +64,22 @@ public class PrcDTO {
 
     public void setProfissionalSaude(ProfissionalSaudeDTO profissionalSaude) {
         this.profissionalSaude = profissionalSaude;
+    }
+
+    public String getEmailUtente() {
+        return emailUtente;
+    }
+
+    public void setEmailUtente(String emailUtente) {
+        this.emailUtente = emailUtente;
+    }
+
+    public String getEmailProfissionalSaude() {
+        return emailProfissionalSaude;
+    }
+
+    public void setEmailProfissionalSaude(String emailProfissionalSaude) {
+        this.emailProfissionalSaude = emailProfissionalSaude;
     }
 
     public String getDoenca() {
@@ -90,5 +120,13 @@ public class PrcDTO {
 
     public void setPrescricoes(List<PrescricaoDTO> prescricoes) {
         this.prescricoes = prescricoes;
+    }
+
+    public int getIdPrescricao() {
+        return idPrescricao;
+    }
+
+    public void setIdPrescricao(int idPrescricao) {
+        this.idPrescricao = idPrescricao;
     }
 }

@@ -138,7 +138,7 @@ public class ProfissionalSaudeService {
         return profissionaSaudeDTO;
     }
 
-    private ProfissionalSaudeDTO toDTO(ProfissionalSaude profissionalSaude) {
+    public ProfissionalSaudeDTO toDTO(ProfissionalSaude profissionalSaude) {
         ProfissionalSaudeDTO profissionaSaudeDTO = new ProfissionalSaudeDTO(
                 profissionalSaude.getEmail(),
                 profissionalSaude.getPassword(),

@@ -7,14 +7,24 @@ import javax.persistence.*;
 import java.util.Date;
 
 public class PrescricaoDTO {
+
     private int id;
     private String name;
     private String descricao;
     private Date created_at;
     private TipoPrescricaoDTO tipoPrescricao;
+    private int tipoPrescricaoId;
     private Date deleted_at;
 
     public PrescricaoDTO() {
+    }
+
+    public PrescricaoDTO(int id, String name, String descricao, Date created_at, Date deleted_at) {
+        this.id = id;
+        this.name = name;
+        this.descricao = descricao;
+        this.created_at = created_at;
+        this.deleted_at = deleted_at;
     }
 
     public PrescricaoDTO(int id, String name, String descricao, Date created_at, TipoPrescricaoDTO tipoPrescricao, Date deleted_at) {
@@ -64,6 +74,14 @@ public class PrescricaoDTO {
 
     public void setTipoPrescricao(TipoPrescricaoDTO tipoPrescricao) {
         this.tipoPrescricao = tipoPrescricao;
+    }
+
+    public int getTipoPrescricaoId() {
+        return tipoPrescricaoId;
+    }
+
+    public void setTipoPrescricaoId(int tipoPrescricaoId) {
+        this.tipoPrescricaoId = tipoPrescricaoId;
     }
 
     public Date getDeleted_at() {

@@ -23,7 +23,6 @@ const _4ad735a0 = () => interopDefault(import('../pages/admin/biometricdata/_nam
 const _41169e3e = () => interopDefault(import('../pages/admin/patients/_email.vue' /* webpackChunkName: "pages/admin/patients/_email" */))
 const _9f4cb3d2 = () => interopDefault(import('../pages/admin/specialists/_email.vue' /* webpackChunkName: "pages/admin/specialists/_email" */))
 const _319db6b5 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
-
 const emptyFn = () => {}
 
 Vue.use(Router)
@@ -67,6 +66,14 @@ export const routerOptions = {
     path: "/auth/login",
     component: _50aad86f,
     name: "auth-login"
+  }, {
+    path: "/profissionalSaude/createPrc",
+    component: _2c303aec,
+    name: "profissionalSaude-createPrc"
+  }, {
+    path: "/profissionalSaude/createPrescription",
+    component: _546ff4df,
+    name: "profissionalSaude-createPrescription"
   }, {
     path: "/profissionalSaude/createUser",
     component: _0b2acc44,

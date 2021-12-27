@@ -56,6 +56,20 @@
     "_name": "_50aad86f"
   },
   {
+    "name": "profissionalSaude-createPrc",
+    "path": "/profissionalSaude/createPrc",
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\profissionalSaude\\\\createPrc.vue",
+    "chunkName": "pages/profissionalSaude/createPrc",
+    "_name": "_2c303aec"
+  },
+  {
+    "name": "profissionalSaude-createPrescription",
+    "path": "/profissionalSaude/createPrescription",
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\profissionalSaude\\\\createPrescription.vue",
+    "chunkName": "pages/profissionalSaude/createPrescription",
+    "_name": "_546ff4df"
+  },
+  {
     "name": "profissionalSaude-createUser",
     "path": "/profissionalSaude/createUser",
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/profissionalSaude/createUser.vue",

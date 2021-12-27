@@ -36,7 +36,7 @@ public class UtenteService {
 
     @GET
     @Path("/")
-    public List<UtenteDTO> getTipoProfissionalWS() {
+    public List<UtenteDTO> getAllUtentes() {
         System.out.println("AQUI GET"+toDTOs(utenteBean.getAllUtentes())+"vamos");
         return toDTOs(utenteBean.getAllUtentes());
     }
@@ -112,7 +112,7 @@ public class UtenteService {
         return Response.ok(toDTOs(utentes)).build();
     }
 
-    private UtenteDTO toDTO(Utente utente) {
+    public UtenteDTO toDTO(Utente utente) {
         UtenteDTO utenteDTO = new UtenteDTO(
                 utente.getEmail(),
                 utente.getPassword(),
@@ -121,7 +121,7 @@ public class UtenteService {
                 utente.getBlocked(),
                 utente.getDataNasc()
         );
-        List<ProfissionalSaudeDTO> profissionalSaudeDTOS= ToDTOProfissionalSaude(utente.getProfissionalSaude());
+        List<ProfissionalSaudeDTO> profissionalSaudeDTOS = ToDTOProfissionalSaude(utente.getProfissionalSaude());
         utenteDTO.setProfissionalSaude(profissionalSaudeDTOS);
         return utenteDTO;
     }
