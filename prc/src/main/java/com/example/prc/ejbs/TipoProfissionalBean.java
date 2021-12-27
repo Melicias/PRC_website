@@ -49,17 +49,25 @@ public class TipoProfissionalBean {
         }
     }
 
-    public TipoProfissional deleteTipoProfissional(int id){
+    public TipoProfissional deleteTipoProfissional(int id)
+            throws MyEntityNotFoundException{
+
         TipoProfissional tdb = em.find(TipoProfissional.class,id);
-        if(tdb != null){
-            if(tdb.getDeleted_at() == null){
-                tdb.setDeleted_at(new Date());
-            }else{
-                tdb.setDeleted_at(null);
-            }
-            em.persist(tdb);
+        if(tdb == null)
+            throw new MyEntityNotFoundException("Professional type not found");
+
+        if(tdb.getProfissionaisSaude().size() == 0 ){
+            em.remove(tdb);
             em.flush();
+            return null;
         }
+        if(tdb.getDeleted_at() == null){
+            tdb.setDeleted_at(new Date());
+        }else{
+            tdb.setDeleted_at(null);
+        }
+        em.persist(tdb);
+        em.flush();
         return tdb;
     }
 

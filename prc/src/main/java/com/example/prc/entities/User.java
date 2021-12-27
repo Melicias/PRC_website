@@ -21,7 +21,6 @@ public class User implements Serializable {
     @Id
     @Email
     @NotNull
-    @Column(unique=true)
     private String email;
     @NotNull
     private String password;

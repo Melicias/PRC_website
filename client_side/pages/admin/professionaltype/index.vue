@@ -24,7 +24,7 @@
 export default {
   data () {
     return {
-      fields: ['id', 'name','actions'],
+      fields: [{key:'id'}, {key: 'name'},{key:'actions'}],
       tipoprofissional: [],
       form: {
         name: ''
@@ -36,15 +36,16 @@ export default {
     this.$axios.$get('/api/tipoprofissional')
       .then((tipoprofissional) => {
         this.tipoprofissional = tipoprofissional
-        console.log(this.tipoprofissional);
       })
   },
   methods: {
     deleteTipo(id, index) {
-      console.log(id);
       this.$axios.$delete(`/api/tipoprofissional/${id}`)
         .then(msg => {
-          this.$toast.success("Professional type data deleted with success").goAway(1500)
+          this.$toast.success("Professional type deleted with success").goAway(1500)
+          if(msg === ''){
+            location.reload();
+          }
           this.tipoprofissional[index].deleted_at = msg.deleted_at;
           this.$refs.table.refresh();
         })

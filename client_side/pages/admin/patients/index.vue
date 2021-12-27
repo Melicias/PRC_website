@@ -1,6 +1,8 @@
 <template>
   <b-container>
     <h1>Patients Management</h1>
+    <br>
+    <b-button v-b-toggle.collapse-1 variant="primary" href="/admin">Back</b-button>
     <br><br>
     <b-table striped over :items="utentes" :fields="fields">
       <template v-slot:cell(specialists)="row">
@@ -29,7 +31,7 @@
         </nuxt-link>
       </template>
     </b-table>
-    <nuxt-link to="/admin">Back</nuxt-link>
+    <br><br>
   </b-container>
 </template>
 <script>

@@ -90,7 +90,7 @@ public class ProfissionalSaudeService {
             throws MyEntityNotFoundException, MyConstraintViolationException {
         Utente utente;
         try{
-            utente = profissionalSaudeBean.addUtente(emailprofissional, utenteDTO);
+            utente = profissionalSaudeBean.addUtente(emailprofissional, utenteDTO.getEmail());
         }catch (Exception e){
             return Response.status(400).entity(e.getMessage()).build();
         }
@@ -103,7 +103,7 @@ public class ProfissionalSaudeService {
             throws MyEntityNotFoundException, MyConstraintViolationException {
         Utente utente;
         try{
-            utente = profissionalSaudeBean.removeUtente(emailprofissional, utenteDTO);
+            utente = profissionalSaudeBean.removeUtente(emailprofissional, utenteDTO.getEmail());
         }catch (Exception e){
             return Response.status(400).entity(e.getMessage()).build();
         }
@@ -129,7 +129,7 @@ public class ProfissionalSaudeService {
                 profissionalSaude.getName(),
                 profissionalSaude.getDeleted_at(),
                 profissionalSaude.getBlocked(),
-                profissionalSaude.getTipoProfissional()
+                toDTOTipoProfissional(profissionalSaude.getTipoProfissional())
         );
         List<UtenteDTO> utentesDTOS = toDTOUtentes(profissionalSaude.getUtentes());
         profissionaSaudeDTO.setUtentes(utentesDTOS);
@@ -139,15 +139,25 @@ public class ProfissionalSaudeService {
     }
 
     public ProfissionalSaudeDTO toDTO(ProfissionalSaude profissionalSaude) {
+
         ProfissionalSaudeDTO profissionaSaudeDTO = new ProfissionalSaudeDTO(
                 profissionalSaude.getEmail(),
                 profissionalSaude.getPassword(),
                 profissionalSaude.getName(),
                 profissionalSaude.getDeleted_at(),
                 profissionalSaude.getBlocked(),
-                profissionalSaude.getTipoProfissional()
+                toDTOTipoProfissional(profissionalSaude.getTipoProfissional())
         );
         return profissionaSaudeDTO;
+    }
+
+    private TipoProfissionalDTO toDTOTipoProfissional(TipoProfissional tipoProfissional) {
+        TipoProfissionalDTO tp = new TipoProfissionalDTO(
+                tipoProfissional.getId(),
+                tipoProfissional.getName(),
+                tipoProfissional.getDeleted_at()
+        );
+        return tp;
     }
 
 
@@ -156,9 +166,9 @@ public class ProfissionalSaudeService {
                 utente.getEmail(),
                 utente.getPassword(),
                 utente.getName(),
+                utente.getDataNasc(),
                 utente.getDeleted_at(),
-                utente.getBlocked(),
-                utente.getDataNasc()
+                utente.getBlocked()
         );
     }
 

@@ -61,6 +61,7 @@
     </b-card>
     <br>
     <b-button v-b-toggle.collapse-1 variant="primary" href="/admin/specialists">Back</b-button>
+    <br><br>
   </b-container>
 </template>
 
@@ -87,7 +88,6 @@ export default {
     },
   },
   created() {
-    console.log(this.email);
     this.$axios.$get('/api/tipoprofissional')
       .then((tipoprofissional) => {
         for (let i = 0; i < tipoprofissional.length; i++) {
@@ -102,14 +102,12 @@ export default {
       .then((profissionalsaude) => {
         this.profissionalsaude = profissionalsaude || {}
         this.utentesProfissional = this.profissionalsaude.utentes;
-        console.log(this.utentesProfissional)
         this.form.name = this.profissionalsaude.name
         this.form.tipoProfissional = this.profissionalsaude.tipoProfissional.id
       })
     this.$axios.$get(`/api/utente/semprofissional/${this.email}`)
       .then((utentes) => {
         this.utentesSemProfissional = utentes;
-        console.log(this.utentesSemProfissional);
       })
   },
   methods: {
@@ -130,8 +128,7 @@ export default {
       })
         .then(msg => {
           this.$toast.success("Specialist updated with success").goAway(1500)
-          console.log(msg)
-          this.$router.push({path: "/admin/specialists"});
+          this.form.password = ''
         })
         .catch(error => {
           this.$toast.error(error.response.data).goAway(3000)
@@ -142,7 +139,6 @@ export default {
         email: email
       })
         .then(msg => {
-          console.log(msg);
           this.$toast.success("Pacient added with success").goAway(1500)
           for (let i = 0; i < this.utentesSemProfissional.length; i++) {
             if(this.utentesSemProfissional[i].email == email){
@@ -155,7 +151,6 @@ export default {
           this.$refs.tableSem.refresh();
         })
         .catch(error => {
-          console.log(error);
           this.$toast.error(error).goAway(3000)
         })
     },
@@ -164,7 +159,6 @@ export default {
         email: email
       })
         .then(msg => {
-          console.log(msg);
           this.$toast.success("Pacient removed with success").goAway(1500)
           for (let i = 0; i < this.utentesProfissional.length; i++) {
             if(this.utentesProfissional[i].email == email){
@@ -177,7 +171,6 @@ export default {
           this.$refs.tableSem.refresh();
         })
         .catch(error => {
-          console.log(error);
           this.$toast.error(error).goAway(3000)
         })
     }

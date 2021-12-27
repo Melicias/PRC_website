@@ -85,7 +85,6 @@ export default {
     this.$axios.$get(`/api/tipoDadosBiometricos/${this.name}`)
       .then((tipoDadoBiometrico) => {
         this.tipoDadoBiometrico = tipoDadoBiometrico || {}
-        console.log(this.tipoDadoBiometrico);
         this.type = this.tipoDadoBiometrico.type;
         if(this.tipoDadoBiometrico.type == 2){
           this.form.min = this.tipoDadoBiometrico.min;
@@ -112,7 +111,6 @@ export default {
       })
         .then(msg => {
           this.$toast.success("Biometric data updated with success").goAway(1500)
-          console.log(msg)
           this.$router.push({path: "/admin/biometricdata"});
         })
         .catch(error => {

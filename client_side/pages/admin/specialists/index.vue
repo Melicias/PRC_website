@@ -48,7 +48,6 @@ export default {
     this.$axios.$get('/api/profissionalsaude')
       .then((specialist) => {
         this.specialist = specialist
-        console.log(this.specialist)
       })
   },
   methods: {

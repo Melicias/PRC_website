@@ -3,7 +3,9 @@ package com.example.prc.entities;
 import io.smallrye.common.constraint.NotNull;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 
@@ -36,6 +38,8 @@ public class TipoDadosBiometricos {
     private String quantitativo;
     @Temporal(TemporalType.TIMESTAMP)
     private Date deleted_at;
+    @OneToMany
+    private List<UtenteDadosBiometricos> dadosBiometricos;
 
     public TipoDadosBiometricos() {
 
@@ -46,12 +50,14 @@ public class TipoDadosBiometricos {
         this.min = min;
         this.max = max;
         this.type = QUALITATIVO;
+        dadosBiometricos = new ArrayList<>();
     }
 
     public TipoDadosBiometricos(String name, String quantitativo) {
         this.name = name;
         this.quantitativo = quantitativo;
         this.type = QUANTITATIVO;
+        dadosBiometricos = new ArrayList<>();
     }
 
     public int getId() {
@@ -108,5 +114,13 @@ public class TipoDadosBiometricos {
 
     public void setDeleted_at(Date deleted_at) {
         this.deleted_at = deleted_at;
+    }
+
+    public List<UtenteDadosBiometricos> getDadosBiometricos() {
+        return dadosBiometricos;
+    }
+
+    public void setDadosBiometricos(List<UtenteDadosBiometricos> dadosBiometricos) {
+        this.dadosBiometricos = dadosBiometricos;
     }
 }
