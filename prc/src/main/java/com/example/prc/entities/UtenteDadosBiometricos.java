@@ -8,6 +8,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Entity
+
+@NamedQueries({
+        @NamedQuery(
+                name = "isDadosBiometricosUsed",
+                query = "SELECT 1 FROM ProfissionalSaude ps where ps.tipoProfissional.id = :id" // JPQL
+        )
+})
+
 public class UtenteDadosBiometricos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

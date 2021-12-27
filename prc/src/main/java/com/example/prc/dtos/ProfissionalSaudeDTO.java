@@ -13,7 +13,7 @@ public class ProfissionalSaudeDTO {
     private String name;
     private Date deleted_at;
     private int blocked;
-    private TipoProfissional tipoProfissional;
+    private TipoProfissionalDTO tipoProfissionalDTO;
     private List<UtenteDTO> utentes;
     private List<PrcDTO> prcs;
 
@@ -21,13 +21,13 @@ public class ProfissionalSaudeDTO {
 
     }
 
-    public ProfissionalSaudeDTO(String email, String password, String name, Date deleted_at, int blocked,TipoProfissional tipoProfissional) {
+    public ProfissionalSaudeDTO(String email, String password, String name, Date deleted_at, int blocked,TipoProfissionalDTO tipoProfissionalDTO) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.deleted_at = deleted_at;
         this.blocked = blocked;
-        this.tipoProfissional = tipoProfissional;
+        this.tipoProfissionalDTO = tipoProfissionalDTO;
         this.utentes = new ArrayList<>();
         this.prcs = new ArrayList<>();
     }
@@ -80,12 +80,12 @@ public class ProfissionalSaudeDTO {
         this.utentes = utentes;
     }
 
-    public TipoProfissional getTipoProfissional() {
-        return tipoProfissional;
+    public TipoProfissionalDTO getTipoProfissional() {
+        return tipoProfissionalDTO;
     }
 
-    public void setTipoProfissional(TipoProfissional tipoProfissional) {
-        this.tipoProfissional = tipoProfissional;
+    public void setTipoProfissional(TipoProfissionalDTO tipoProfissionalDTO) {
+        this.tipoProfissionalDTO = tipoProfissionalDTO;
     }
 
     public List<PrcDTO> getPrcs() {

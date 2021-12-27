@@ -55,8 +55,8 @@ public class TipoProfissionalBean {
         TipoProfissional tdb = em.find(TipoProfissional.class,id);
         if(tdb == null)
             throw new MyEntityNotFoundException("Professional type not found");
-        int isTipoProfissionalUsed = em.createNamedQuery("isTipoProfissionalUsed").setParameter("id",id).getResultList().size();
-        if(isTipoProfissionalUsed == 0 ){
+
+        if(tdb.getProfissionaisSaude().size() == 0 ){
             em.remove(tdb);
             em.flush();
             return null;
