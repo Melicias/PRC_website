@@ -4,6 +4,7 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
+
 const _01017896 = () => interopDefault(import('../pages/admin/index.vue' /* webpackChunkName: "pages/admin/index" */))
 const _7b685732 = () => interopDefault(import('../pages/tipoProfissional/index.vue' /* webpackChunkName: "pages/tipoProfissional/index" */))
 const _46015dae = () => interopDefault(import('../pages/utente/index.vue' /* webpackChunkName: "pages/utente/index" */))
@@ -26,6 +27,7 @@ const _4ad735a0 = () => interopDefault(import('../pages/admin/biometricdata/_nam
 const _41169e3e = () => interopDefault(import('../pages/admin/patients/_email.vue' /* webpackChunkName: "pages/admin/patients/_email" */))
 const _9f4cb3d2 = () => interopDefault(import('../pages/admin/specialists/_email.vue' /* webpackChunkName: "pages/admin/specialists/_email" */))
 const _319db6b5 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+
 
 const emptyFn = () => {}
 
@@ -72,11 +74,13 @@ export const routerOptions = {
     name: "auth-login"
   }, {
     path: "/profissionalSaude/createPrc",
-    component: _25bc6f44,
+
+    component: _1d903b08,
     name: "profissionalSaude-createPrc"
   }, {
     path: "/profissionalSaude/createPrescription",
-    component: _4ea167ad,
+    component: _cd386162,
+
     name: "profissionalSaude-createPrescription"
   }, {
     path: "/profissionalSaude/createUser",
@@ -88,7 +92,9 @@ export const routerOptions = {
     name: "profissionalSaude-main"
   }, {
     path: "/profissionalSaude/userManagement",
+
     component: _5e66db36,
+
     name: "profissionalSaude-userManagement"
   }, {
     path: "/profissionalSaude/usersManagement",
