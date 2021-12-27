@@ -10,11 +10,15 @@ import java.util.Date;
 @NamedQueries({
         @NamedQuery(
                 name = "getAllTipoProfisiional",
-                query = "SELECT tp FROM TipoProfissional tp ORDER BY tp.name" // JPQL
+                query = "SELECT tp FROM TipoProfissional tp ORDER BY tp.id" // JPQL
         ),
         @NamedQuery(
                 name = "getTipoProfissionalByName",
                 query = "SELECT tp FROM TipoProfissional tp where tp.name = :name" // JPQL
+        ),
+        @NamedQuery(
+                name = "isTipoProfissionalUsed",
+                query = "SELECT 1 FROM ProfissionalSaude ps where ps.tipoProfissional.id = :id" // JPQL
         )
 })
 

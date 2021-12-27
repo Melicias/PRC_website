@@ -106,7 +106,6 @@ export default {
   },
   methods: {
     onSubmit(event) {
-      console.log(new Date(this.form.dataNasc).toISOString());
       event.preventDefault()
       this.$axios.$put(`/api/utente`, {
         email: this.email,
