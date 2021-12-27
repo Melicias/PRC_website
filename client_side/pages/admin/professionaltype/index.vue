@@ -36,12 +36,10 @@ export default {
     this.$axios.$get('/api/tipoprofissional')
       .then((tipoprofissional) => {
         this.tipoprofissional = tipoprofissional
-        console.log(this.tipoprofissional);
       })
   },
   methods: {
     deleteTipo(id, index) {
-      console.log(id);
       this.$axios.$delete(`/api/tipoprofissional/${id}`)
         .then(msg => {
           this.$toast.success("Professional type deleted with success").goAway(1500)

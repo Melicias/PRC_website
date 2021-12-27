@@ -40,7 +40,7 @@
         <b-button type="submit" variant="primary">Update</b-button>
       </b-form>
       <br>
-      <b-button variant="danger" @click.prevent="deleteUtente()">{{utente.deleted_at == null ? "Delete" : "Recover"}}</b-button>
+      <b-button variant="danger" @click.prevent="deleteUtente()">{{utente.deleted_at != null ? "Recover" : "Delete"}}</b-button>
       <b-button variant="danger" @click.prevent="blockUtente()">{{utente.blocked == 0 ? "Block" : "Unblock"}}</b-button>
     </b-card>
     <br>
@@ -118,7 +118,6 @@ export default {
           this.form.password = ''
         })
         .catch(error => {
-          console.log(error.response.data)
           this.$toast.error(error.response.data).goAway(3000)
         })
     },
@@ -172,7 +171,6 @@ export default {
       this.$axios.$delete(`/api/utente/${this.email}`)
           .then(msg => {
             this.$toast.success("Patient deleted with success").goAway(1500)
-            console.log(msg);
             this.utente.deleted_at = msg.deleted_at;
           })
           .catch(error => {

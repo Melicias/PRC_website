@@ -3,7 +3,9 @@ package com.example.prc.entities;
 import io.smallrye.common.constraint.NotNull;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 
@@ -32,13 +34,16 @@ public class TipoProfissional {
     private String name;
     @Temporal(TemporalType.TIMESTAMP)
     private Date deleted_at;
+    @OneToMany(mappedBy = "tipoProfissional")
+    private List<ProfissionalSaude> profissionaisSaude;
 
     public TipoProfissional() {
-
+        this.profissionaisSaude = new ArrayList<>();
     }
 
     public TipoProfissional(String name) {
         this.name = name;
+        this.profissionaisSaude = new ArrayList<>();
     }
 
     public int getId() {
@@ -63,5 +68,21 @@ public class TipoProfissional {
 
     public void setDeleted_at(Date deleted_at) {
         this.deleted_at = deleted_at;
+    }
+
+    public List<ProfissionalSaude> getProfissionaisSaude() {
+        return profissionaisSaude;
+    }
+
+    public void setProfissionaisSaude(List<ProfissionalSaude> profissionaisSaude) {
+        this.profissionaisSaude = profissionaisSaude;
+    }
+
+    public void addProfissionaisSaude(ProfissionalSaude ps){
+        profissionaisSaude.add(ps);
+    }
+
+    public void removeProfissionaisSaude(ProfissionalSaude ps){
+        profissionaisSaude.remove(ps);
     }
 }

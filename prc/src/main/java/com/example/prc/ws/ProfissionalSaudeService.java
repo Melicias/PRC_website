@@ -129,7 +129,7 @@ public class ProfissionalSaudeService {
                 profissionalSaude.getName(),
                 profissionalSaude.getDeleted_at(),
                 profissionalSaude.getBlocked(),
-                profissionalSaude.getTipoProfissional()
+                toDTOTipoProfissional(profissionalSaude.getTipoProfissional())
         );
         List<UtenteDTO> utentesDTOS = toDTOUtentes(profissionalSaude.getUtentes());
         profissionaSaudeDTO.setUtentes(utentesDTOS);
@@ -139,15 +139,25 @@ public class ProfissionalSaudeService {
     }
 
     public ProfissionalSaudeDTO toDTO(ProfissionalSaude profissionalSaude) {
+
         ProfissionalSaudeDTO profissionaSaudeDTO = new ProfissionalSaudeDTO(
                 profissionalSaude.getEmail(),
                 profissionalSaude.getPassword(),
                 profissionalSaude.getName(),
                 profissionalSaude.getDeleted_at(),
                 profissionalSaude.getBlocked(),
-                profissionalSaude.getTipoProfissional()
+                toDTOTipoProfissional(profissionalSaude.getTipoProfissional())
         );
         return profissionaSaudeDTO;
+    }
+
+    private TipoProfissionalDTO toDTOTipoProfissional(TipoProfissional tipoProfissional) {
+        TipoProfissionalDTO tp = new TipoProfissionalDTO(
+                tipoProfissional.getId(),
+                tipoProfissional.getName(),
+                tipoProfissional.getDeleted_at()
+        );
+        return tp;
     }
 
 

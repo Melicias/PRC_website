@@ -102,7 +102,14 @@ public class TipoDadosBiometricosService {
     @DELETE
     @Path("{id}")
     public Response deleteTipoDadoBiometrico(@PathParam("id") int id) throws MyEntityExistsException, MyEntityNotFoundException {
-        TipoDadosBiometricos tipoDadosBiometricos = tipoDadosBiometricosBean.deleteTipoDadoBiometrico(id);
-        return Response.ok(toDTO(tipoDadosBiometricos)).build();
+        try{
+            TipoDadosBiometricos tipoDadosBiometricos = tipoDadosBiometricosBean.deleteTipoDadoBiometrico(id);
+            if(tipoDadosBiometricos == null)
+                return Response.ok(null).build();
+            return Response.ok(toDTO(tipoDadosBiometricos)).build();
+        }catch (Exception e){
+            return Response.status(400).entity(e.getMessage()).build();
+        }
+
     }
 }

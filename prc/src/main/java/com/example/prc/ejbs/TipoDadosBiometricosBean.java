@@ -4,6 +4,7 @@ import com.example.prc.entities.TipoDadosBiometricos;
 import com.example.prc.entities.TipoProfissional;
 import com.example.prc.exceptions.MyConstraintViolationException;
 import com.example.prc.exceptions.MyEntityExistsException;
+import com.example.prc.exceptions.MyEntityNotFoundException;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -65,17 +66,24 @@ public class TipoDadosBiometricosBean {
         }
     }
 
-    public TipoDadosBiometricos deleteTipoDadoBiometrico(int id){
+    public TipoDadosBiometricos deleteTipoDadoBiometrico(int id)
+            throws MyEntityNotFoundException {
         TipoDadosBiometricos tdb = em.find(TipoDadosBiometricos.class,id);
-        if(tdb != null){
-            if(tdb.getDeleted_at() == null){
-                tdb.setDeleted_at(new Date());
-            }else{
-                tdb.setDeleted_at(null);
-            }
-            em.persist(tdb);
+        if(tdb == null)
+            throw new MyEntityNotFoundException("Type of Biometric data not found");
+
+        if(tdb.getDadosBiometricos().size() == 0 ){
+            em.remove(tdb);
             em.flush();
+            return null;
         }
+        if(tdb.getDeleted_at() == null){
+            tdb.setDeleted_at(new Date());
+        }else{
+            tdb.setDeleted_at(null);
+        }
+        em.persist(tdb);
+        em.flush();
         return tdb;
     }
 }
