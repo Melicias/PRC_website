@@ -8,13 +8,13 @@
         <p>Profile</p>
       </div>
     </nuxt-link>
-    <nuxt-link :to="'/admin/specialists'">
+    <nuxt-link :to="'/utente/prescritions'">
       <div class="img-with-text">
         <img width="100" height="100" src="../../img/doctor.png" alt="Image not loaded" />
         <p>My Prescriptions</p>
       </div>
     </nuxt-link>
-    <nuxt-link :to="'/admin/biometricdata'">
+    <nuxt-link :to="'/utente/biometricData'">
       <div class="img-with-text">
         <img width="100" height="100" src="../../img/blood-test.png" alt="Image not loaded" />
         <p>Biometric data</p>

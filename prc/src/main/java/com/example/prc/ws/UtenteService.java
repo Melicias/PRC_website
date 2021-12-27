@@ -110,7 +110,7 @@ public class UtenteService {
         log.info(utenteDTO.getName());
 
         try{
-            utenteBean.update(
+            utenteBean.updateUtente(
                     utenteDTO.getEmail(),
                     utenteDTO.getName(),
                     utenteDTO.getPassword(),

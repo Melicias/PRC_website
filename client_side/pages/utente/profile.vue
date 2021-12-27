@@ -93,17 +93,14 @@ export default {
       })
     },
      methods: {
-      /* format (value) {
-        return moment(value).format('YYYY-MM-DDThh:mm:ss')
-      }, */
+   
         onSubmit(event) {
           event.preventDefault()
-          console.log(this.form.dataNasc)
           this.$axios.$put('/api/utente', {
-            email: this.utente.email,
-            name: this.form.name,
-            password: this.form.password,
-            dataNasc: this.form.dataNasc,
+            email: this.email,
+        dataNasc: new Date(this.form.dataNasc).toISOString(),
+        name: this.form.name,
+        password: this.form.password.length == 0 ? null : this.form.password,
           })
         }}
 }
