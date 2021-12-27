@@ -22,8 +22,6 @@ public class PrcDTO {
 
     public PrcDTO(int id, String doenca, Date validade, Date created_at, Date deleted_at) {
         this.id = id;
-        this.utente = utente;
-        this.profissionalSaude = profissionalSaude;
         this.doenca = doenca;
         this.validade = validade;
         this.created_at = created_at;

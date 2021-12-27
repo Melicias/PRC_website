@@ -30,6 +30,7 @@ public class Prc {
 
     @NotNull
     @ManyToOne
+    @JoinColumn(name = "EMAIL_PROFISSIONALSAUDE")
     private ProfissionalSaude profissionalSaude;
 
     @NotNull

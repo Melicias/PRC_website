@@ -54,7 +54,7 @@ public class UtenteService {
             utenteBean.create(utenteDTO.getPassword(),
                     utenteDTO.getName(),
                     utenteDTO.getEmail(),
-                    new Date("29/06/1999"),
+                    utenteDTO.getDataNasc(),
                     utenteDTO.getEmailProfissionalSaude());
         } catch (Exception e) {
             return Response.status(400).entity(e.getMessage()).build();

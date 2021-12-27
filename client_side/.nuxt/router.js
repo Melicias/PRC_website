@@ -4,7 +4,6 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-
 const _01017896 = () => interopDefault(import('../pages/admin/index.vue' /* webpackChunkName: "pages/admin/index" */))
 const _7b685732 = () => interopDefault(import('../pages/tipoProfissional/index.vue' /* webpackChunkName: "pages/tipoProfissional/index" */))
 const _46015dae = () => interopDefault(import('../pages/utente/index.vue' /* webpackChunkName: "pages/utente/index" */))
@@ -28,7 +27,6 @@ const _41169e3e = () => interopDefault(import('../pages/admin/patients/_email.vu
 const _9f4cb3d2 = () => interopDefault(import('../pages/admin/specialists/_email.vue' /* webpackChunkName: "pages/admin/specialists/_email" */))
 const _319db6b5 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
-
 const emptyFn = () => {}
 
 Vue.use(Router)
@@ -42,35 +40,35 @@ export const routerOptions = {
 
   routes: [{
     path: "/admin",
-    component: _01017896,
+    component: _059fd822,
     name: "admin"
   }, {
     path: "/tipoProfissional",
-    component: _7b685732,
+    component: _3bae8b5f,
     name: "tipoProfissional"
   }, {
     path: "/utente",
-    component: _46015dae,
+    component: _134a57c6,
     name: "utente"
   }, {
     path: "/admin/biometricdata",
-    component: _b0c991f0,
+    component: _73fb2923,
     name: "admin-biometricdata"
   }, {
     path: "/admin/patients",
-    component: _b7807284,
+    component: _a1f7293e,
     name: "admin-patients"
   }, {
     path: "/admin/professionaltype",
-    component: _1343c1d1,
+    component: _290d0ea4,
     name: "admin-professionaltype"
   }, {
     path: "/admin/specialists",
-    component: _68ec52c8,
+    component: _718ceee3,
     name: "admin-specialists"
   }, {
     path: "/auth/login",
-    component: _50aad86f,
+    component: _15cc8525,
     name: "auth-login"
   }, {
     path: "/profissionalSaude/createPrc",
@@ -84,21 +82,19 @@ export const routerOptions = {
     name: "profissionalSaude-createPrescription"
   }, {
     path: "/profissionalSaude/createUser",
-    component: _0b2acc44,
+    component: _c5ab0de0,
     name: "profissionalSaude-createUser"
   }, {
     path: "/profissionalSaude/main",
-    component: _4af3d6f0,
+    component: _760f83a2,
     name: "profissionalSaude-main"
   }, {
     path: "/profissionalSaude/userManagement",
-
     component: _5e66db36,
-
     name: "profissionalSaude-userManagement"
   }, {
     path: "/profissionalSaude/usersManagement",
-    component: _66e30104,
+    component: _fcee5ddc,
     name: "profissionalSaude-usersManagement"
   }, {
     path: "/utente/profile",
@@ -106,31 +102,31 @@ export const routerOptions = {
     name: "utente-profile"
   }, {
     path: "/admin/biometricdata/create",
-    component: _737ff4b6,
+    component: _331e45fb,
     name: "admin-biometricdata-create"
   }, {
     path: "/admin/professionaltype/create",
-    component: _7ce8c30d,
+    component: _a92c3060,
     name: "admin-professionaltype-create"
   }, {
     path: "/admin/specialists/create",
-    component: _475b5e14,
+    component: _30758f8a,
     name: "admin-specialists-create"
   }, {
     path: "/admin/biometricdata/:name",
-    component: _4ad735a0,
+    component: _173727bb,
     name: "admin-biometricdata-name"
   }, {
     path: "/admin/patients/:email",
-    component: _41169e3e,
+    component: _2d44a09e,
     name: "admin-patients-email"
   }, {
     path: "/admin/specialists/:email",
-    component: _9f4cb3d2,
+    component: _8866e548,
     name: "admin-specialists-email"
   }, {
     path: "/",
-    component: _319db6b5,
+    component: _0369bd36,
     name: "index"
   }],
 

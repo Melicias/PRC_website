@@ -30,16 +30,14 @@ public class Utente extends User{
     private List<ProfissionalSaude> profissionalSaude;
     @OneToMany
     private List<UtenteDadosBiometricos> dadosBiometricos;
-
-    @OneToMany
-    private List<Prescricao> prescricoes;
-
+    @OneToMany(mappedBy = "utente")
+    private List<Prc> prcs;
 
     public Utente() {
         super();
         this.profissionalSaude = new ArrayList<>();
         this.dadosBiometricos = new ArrayList<>();
-        this.prescricoes = new ArrayList<>();
+        this.prcs = new ArrayList<>();
     }
 
     public Utente(String password, String name, String email, Date dataNasc) {
@@ -47,7 +45,7 @@ public class Utente extends User{
         this.dataNasc = dataNasc;
         this.profissionalSaude = new ArrayList<>();
         this.dadosBiometricos = new ArrayList<>();
-        this.prescricoes = new ArrayList<>();
+        this.prcs = new ArrayList<>();
     }
 
     public Date getDataNasc() {
@@ -66,20 +64,20 @@ public class Utente extends User{
         this.dadosBiometricos = dadosBiometricos;
     }
 
-    public List<Prescricao> getPrcs() {
-        return prescricoes;
+    public List<Prc> getPrcs() {
+        return prcs;
     }
 
-    public void setPrcs(List<Prescricao> prescricoes) {
-        this.prescricoes = prescricoes;
+    public void setPrcs(List<Prc> prcs) {
+        this.prcs = prcs;
     }
 
     public void addDadosBiometricos(UtenteDadosBiometricos dados){
         this.dadosBiometricos.add(dados);
     }
 
-    public void addPrc(Prescricao dados){
-        this.prescricoes.add(dados);
+    public void addPrc(Prc prc){
+        this.prcs.add(prc);
     }
 
     public void addProfissionalSaude(ProfissionalSaude profissionalSaude){
@@ -99,11 +97,11 @@ public class Utente extends User{
     }
 
     public void removerPrc(int index){
-        this.prescricoes.remove(index);
+        this.prcs.remove(index);
     }
 
-    public void removerPrc(Prc dados){
-        this.prescricoes.remove(dados);
+    public void removerPrc(Prc prc){
+        this.prcs.remove(prc);
     }
 
     public List<ProfissionalSaude> getProfissionalSaude() {
@@ -113,7 +111,4 @@ public class Utente extends User{
     public void setProfissionalSaude(List<ProfissionalSaude> profissionalSaude) {
         this.profissionalSaude = profissionalSaude;
     }
-
-
-
 }

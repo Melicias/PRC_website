@@ -50,18 +50,14 @@
   {
     "name": "profissionalSaude-createPrc",
     "path": "/profissionalSaude/createPrc",
-
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/profissionalSaude/createPrc.vue",
     "chunkName": "pages/profissionalSaude/createPrc"
-
   },
   {
     "name": "profissionalSaude-createPrescription",
     "path": "/profissionalSaude/createPrescription",
-
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/profissionalSaude/createPrescription.vue",
     "chunkName": "pages/profissionalSaude/createPrescription"
-
   },
   {
     "name": "profissionalSaude-createUser",
@@ -78,11 +74,8 @@
   {
     "name": "profissionalSaude-userManagement",
     "path": "/profissionalSaude/userManagement",
-
-
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/profissionalSaude/userManagement.vue",
     "chunkName": "pages/profissionalSaude/userManagement"
-
   },
   {
     "name": "profissionalSaude-usersManagement",
