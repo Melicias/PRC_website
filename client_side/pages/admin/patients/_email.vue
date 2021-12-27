@@ -46,21 +46,28 @@
     <br>
     <b-card header="Patient health specialists">
       <b-table striped over sticky-header :items="profissionaisUtente" :fields="fields" ref="tableCom">
+        <template v-slot:cell(speciality)="row">
+          {{row.item.tipoProfissional != null ? row.item.tipoProfissional.name : ""}}
+        </template>
         <template v-slot:cell(actions)="row">
-          <b-button variant="danger" @click.prevent="removeUtente(`${row.item.email}`)">Remove</b-button>
+          <b-button variant="danger" @click.prevent="removeSpecialist(`${row.item.email}`)">Remove</b-button>
         </template>
       </b-table>
     </b-card>
     <br>
     <b-card header="Other health specialists">
-      <b-table striped over sticky-header :items="profissionaisNaoLigadosUtente" :fields="fields" ref="tableSem" >
+      <b-table striped over sticky-header :items="profissionaisNaoLigadosUtente" :fields="fields" ref="tableSem">
+        <template v-slot:cell(speciality)="row">
+          {{row.item.tipoProfissional != null ? row.item.tipoProfissional.name : ""}}
+        </template>
         <template v-slot:cell(actions)="row">
-          <b-button variant="success" @click.prevent="addUtente(`${row.item.email}`)">Add</b-button>
+          <b-button variant="success" @click.prevent="addSpecialist(`${row.item.email}`)">Add</b-button>
         </template>
       </b-table>
     </b-card>
     <br>
     <b-button v-b-toggle.collapse-1 variant="primary" href="/admin/patients">Back</b-button>
+    <br><br>
   </b-container>
 </template>
 
@@ -85,90 +92,102 @@ export default {
     },
   },
   created() {
-    console.log(this.email);
     this.$axios.$get(`/api/utente/${this.email}`)
       .then((utente) => {
         this.utente = utente || {}
         this.profissionaisUtente = this.utente.profissionalSaude;
-        console.log(this.profissionaisUtente)
-        console.log(this.utente)
         this.form.name = this.utente.name
         this.form.dataNasc = this.utente.dataNasc != null ? this.utente.dataNasc.split('T')[0] : ""
       })
     this.$axios.$get(`/api/profissionalsaude/profissionaissemutente/${this.email}`)
       .then((profissionais) => {
         this.profissionaisNaoLigadosUtente = profissionais;
-        console.log(this.profissionaisNaoLigadosUtente);
       })
   },
   methods: {
     onSubmit(event) {
       event.preventDefault()
-      var tipo = null;
-      for (let i = 0; i < this.allTiposProfissionais.length; i++) {
-        if(this.allTiposProfissionais[i].id == this.form.tipoProfissional){
-          tipo = this.allTiposProfissionais[i];
-          break;
-        }
-      }
-      this.$axios.$put(`/api/profissionalsaude`, {
-        email: this.profissionalsaude.email,
-        tipoProfissional: tipo,
+      this.$axios.$put(`/api/utente`, {
+        email: this.email,
+        dataNasc: new Date(this.form.dataNasc).toISOString(),
         name: this.form.name,
         password: this.form.password.length == 0 ? null : this.form.password,
       })
         .then(msg => {
-          this.$toast.success("Specialist updated with success").goAway(1500)
-          console.log(msg)
-          this.$router.push({path: "/admin/specialists"});
+          this.$toast.success("Patient updated with success").goAway(1500)
+          this.form.password = ''
         })
         .catch(error => {
+          console.log(error.response.data)
           this.$toast.error(error.response.data).goAway(3000)
         })
     },
-    addUtente(email){
-      this.$axios.post(`/api/profissionalsaude/addUtente/${this.profissionalsaude.email}`, {
-        email: email
+    addSpecialist(emailProf){
+      this.$axios.post(`/api/utente/addprofissionalsaude`, {
+        email: this.email,
+        emailProfissionalSaude: emailProf
       })
         .then(msg => {
-          console.log(msg);
-          this.$toast.success("Pacient added with success").goAway(1500)
-          for (let i = 0; i < this.utentesSemProfissional.length; i++) {
-            if(this.utentesSemProfissional[i].email == email){
-              this.utentesSemProfissional.splice(i,1);
+          this.$toast.success("Healthcare Specialist added with success").goAway(1500)
+          for (let i = 0; i < this.profissionaisNaoLigadosUtente.length; i++) {
+            if(this.profissionaisNaoLigadosUtente[i].email == emailProf){
+              let t = this.profissionaisNaoLigadosUtente.splice(i,1)
+              if(t.length > 0 ){
+                this.profissionaisUtente.push(t[0])
+              }
               break;
             }
           }
-          this.utentesProfissional.push(msg.data);
           this.$refs.tableCom.refresh();
           this.$refs.tableSem.refresh();
         })
         .catch(error => {
-          console.log(error);
           this.$toast.error(error).goAway(3000)
         })
     },
-    removeUtente(email){
-      this.$axios.post(`/api/profissionalsaude/removeUtente/${this.profissionalsaude.email}`, {
-        email: email
+    removeSpecialist(emailProf){
+      this.$axios.post(`/api/utente/removeprofissionalsaude`, {
+        email: this.email,
+        emailProfissionalSaude: emailProf
       })
         .then(msg => {
-          console.log(msg);
-          this.$toast.success("Pacient removed with success").goAway(1500)
-          for (let i = 0; i < this.utentesProfissional.length; i++) {
-            if(this.utentesProfissional[i].email == email){
-              this.utentesProfissional.splice(i,1);
+          this.$toast.success("Healthcare Specialist removed with success").goAway(1500)
+          for (let i = 0; i < this.profissionaisUtente.length; i++) {
+            if(this.profissionaisUtente[i].email == emailProf){
+              let t = this.profissionaisUtente.splice(i,1)
+              if(t.length > 0 ){
+                this.profissionaisNaoLigadosUtente.push(t[0]);
+              }
               break;
             }
           }
-          this.utentesSemProfissional.push(msg.data);
           this.$refs.tableCom.refresh();
           this.$refs.tableSem.refresh();
         })
         .catch(error => {
-          console.log(error);
           this.$toast.error(error).goAway(3000)
         })
+    },
+    deleteUtente() {
+      this.$axios.$delete(`/api/utente/${this.email}`)
+          .then(msg => {
+            this.$toast.success("Patient deleted with success").goAway(1500)
+            console.log(msg);
+            this.utente.deleted_at = msg.deleted_at;
+          })
+          .catch(error => {
+            this.$toast.error('error while deleting').goAway(3000)
+          })
+    },
+    blockUtente() {
+      this.$axios.put(`/api/utente/block/${this.email}`)
+          .then(msg => {
+            this.$toast.success("Patient deleted with success").goAway(1500)
+            this.utente.blocked = msg.data.blocked
+          })
+          .catch(error => {
+            this.$toast.error('error while deleting').goAway(3000)
+          })
     }
   }
 }
