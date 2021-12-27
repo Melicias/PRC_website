@@ -57,7 +57,6 @@ export default {
         form: {
           name: '',
           descricao: '',
-          tipoPrescricaoId: ''
         },
         selectTipoPrescription: 'null',
         tiposPrescricao: [],

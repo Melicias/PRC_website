@@ -3,6 +3,8 @@ package com.example.prc.entities;
 import io.smallrye.common.constraint.NotNull;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NamedQueries({
@@ -18,13 +20,17 @@ public class TipoPrescricao {
     @NotNull
     @Column(unique=true)
     private String name;
+    @OneToMany
+    @NotNull
+    private List<Prescricao> prescricoes;
 
     public TipoPrescricao() {
-
+        this.prescricoes = new ArrayList<>();
     }
 
     public TipoPrescricao(String name) {
         this.name = name;
+        this.prescricoes = new ArrayList<>();
     }
 
     public int getId() {

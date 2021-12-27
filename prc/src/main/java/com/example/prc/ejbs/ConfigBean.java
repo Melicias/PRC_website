@@ -30,6 +30,8 @@ public class ConfigBean {
     UtenteBean utenteBean;
     @EJB
     ProfissionalSaudeBean profissionalSaudeBean;
+    @EJB
+    PrcBean prcBean;
 
     @PostConstruct
     public void populateDB() {
@@ -53,6 +55,10 @@ public class ConfigBean {
             tipoDadosBiometricos.create("bpm",60,100,null);
             tipoDadosBiometricos.create("colestrol",5,10,null);
             tipoDadosBiometricos.create("obesidade",0, 0,"cenas que nao vou criar ja mas possivelmente criado em json");
+
+            prescricaoBean.create("Prescricao (descricao 1)","Prescricao 1",1);
+            prescricaoBean.create("Prescricao (descricao 2)","Prescricao 2",2);
+            prescricaoBean.create("Prescricao (descricao 3)","Prescricao 3",3);
 
             adminBean.create("teste123","admin teste", "admin@admin.com");
           
@@ -91,6 +97,12 @@ public class ConfigBean {
             utenteBean.create("teste123","Adele Farmer", "utente21@utente.com", new Date("22/05/1980"),"profissional10@profissional.com");
             utenteBean.create("teste123","Jordi Greene", "utente22@utente.com", new Date("20/10/1990"));
 
+            prcBean.create("utente@utente.com", "profissional@profissional.com", "Doença", new Date("29/12/2021"), 1);
+            prcBean.create("utente@utente.com", "profissional2@profissional.com", "Doença 1", new Date("29/12/2021"), 1);
+            prcBean.create("utente@utente.com", "profissional1@profissional.com", "Doença 2", new Date("29/12/2021"), 1);
+            prcBean.create("utente@utente.com", "profissional9@profissional.com", "Doença 3", new Date("29/12/2021"), 1);
+            prcBean.create("utente@utente.com", "profissional5@profissional.com", "Doença 4", new Date("29/12/2021"), 1);
+            prcBean.create("utente@utente.com", "profissional1@profissional.com", "Doença 5", new Date("29/12/2021"), 1);
         } catch (Exception e) {
             logger.log(Level.SEVERE, e.toString());
         }

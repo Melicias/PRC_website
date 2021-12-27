@@ -36,7 +36,13 @@ public class PrcBean {
         try {
             Prc prc = new Prc(utente, profissionalSaude, doenca, validade);
             prc.addPrescricao(prescricao);
-            em.persist(prescricao);
+            prescricao.addPrc(prc);
+            utente.addPrc(prc);
+            profissionalSaude.addPrc(prc);
+            em.persist(prc);
+            em.merge(prescricao);
+            em.merge(utente);
+            em.merge(profissionalSaude);
             em.flush();
         } catch (ConstraintViolationException e) {
             throw new MyConstraintViolationException(e);

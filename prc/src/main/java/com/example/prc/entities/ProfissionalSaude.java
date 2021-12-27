@@ -35,7 +35,7 @@ public class ProfissionalSaude extends User{
             inverseJoinColumns = @JoinColumn(name = "EMAIL_UTENTE", referencedColumnName = "EMAIL"))
     private List<Utente> utentes;
 
-    @OneToMany
+    @OneToMany(mappedBy = "profissionalSaude")
     private List<Prc> prcs;
 
     public ProfissionalSaude() {
@@ -80,6 +80,10 @@ public class ProfissionalSaude extends User{
 
     public void addUtente(Utente utente) {
         utentes.add(utente);
+    }
+
+    public void addPrc(Prc prc){
+        this.prcs.add(prc);
     }
 
     public List<Prc> getPrcs() {

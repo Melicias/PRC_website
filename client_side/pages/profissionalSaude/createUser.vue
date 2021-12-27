@@ -78,7 +78,7 @@ export default {
             email: this.form.email,
             name: this.form.name,
             password: this.form.password,
-            dataNasc: this.form.date,
+            dataNasc: new Date(this.form.date).toISOString(),
             emailProfissionalSaude: "profissional@profissional.com"
           })
             .then(msg => {
