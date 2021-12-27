@@ -10,6 +10,7 @@ import com.example.prc.ejbs.UtenteBean;
 import com.example.prc.entities.ProfissionalSaude;
 import com.example.prc.entities.User;
 import com.example.prc.entities.Utente;
+import com.example.prc.exceptions.MyConstraintViolationException;
 import com.example.prc.exceptions.MyEntityNotFoundException;
 import com.example.prc.jwt.Jwt;
 
@@ -72,6 +73,24 @@ public class UtenteService {
         return  Response.ok(utenteDTO).build();
     }
 
+    @PUT
+    @Path("/")
+    public Response putUtente(UtenteDTO utenteDTO)
+            throws MyEntityNotFoundException, MyConstraintViolationException {
+        log.info(utenteDTO.getEmail());
+        log.info(utenteDTO.getName());
+
+        try{
+            utenteBean.update(
+                    utenteDTO.getEmail(),
+                    utenteDTO.getName(),
+                    utenteDTO.getPassword(),
+                    utenteDTO.getDataNasc());
+        }catch (Exception e){
+            return Response.status(400).entity(e.getMessage()).build();
+        }
+        return Response.ok(utenteDTO).build();
+    }
     /*@POST
     @Path("/prescricao")
     @Produces(MediaType.APPLICATION_JSON)
@@ -90,7 +109,7 @@ public class UtenteService {
     @Path("{email}")
     public  Response getUtente(@PathParam("email") String email){
         Utente utente= utenteBean.findUtente(email);
-        log.info(utente.getName());
+        utente.setPassword("");
         return Response.ok(toDTO(utente)).build();
     }
 
@@ -117,9 +136,9 @@ public class UtenteService {
                 utente.getEmail(),
                 utente.getPassword(),
                 utente.getName(),
+                utente.getDataNasc(),
                 utente.getDeleted_at(),
-                utente.getBlocked(),
-                utente.getDataNasc()
+                utente.getBlocked()
         );
         List<ProfissionalSaudeDTO> profissionalSaudeDTOS = ToDTOProfissionalSaude(utente.getProfissionalSaude());
         utenteDTO.setProfissionalSaude(profissionalSaudeDTOS);

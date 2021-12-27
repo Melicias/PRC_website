@@ -11,6 +11,7 @@ import com.example.prc.ws.LoginService;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.LockModeType;
 import javax.persistence.PersistenceContext;
 import javax.validation.ConstraintViolationException;
 import java.util.Date;
@@ -83,6 +84,27 @@ public class UtenteBean {
             return (List<Utente>) em.createNamedQuery("getUtenteSemProfissional").setParameter("email",profissionalEmail).getResultList();
         }catch (Exception e){
             return null;
+        }
+    }
+
+    public void update(String email, String name, String password, Date dataNasc) throws MyEntityNotFoundException, MyConstraintViolationException {
+        Utente utente=em.find(Utente.class,email);
+        if(utente==null){
+            throw new MyEntityNotFoundException("Cant find this Pacient");
+        }
+        try {
+            em.lock(utente, LockModeType.OPTIMISTIC);
+            if(name!=null)
+            utente.setName(name);
+            if(password != null)
+                utente.setPassword(password);
+            log.info(dataNasc);
+            if(dataNasc!=null)
+            utente.setDataNasc(dataNasc);
+            em.persist(utente);
+        } catch (
+                ConstraintViolationException e) {
+            throw new MyConstraintViolationException(e);
         }
     }
 }
