@@ -72,13 +72,11 @@ export const routerOptions = {
     name: "auth-login"
   }, {
     path: "/profissionalSaude/createPrc",
-
     component: _1d903b08,
     name: "profissionalSaude-createPrc"
   }, {
     path: "/profissionalSaude/createPrescription",
     component: _cd386162,
-
     name: "profissionalSaude-createPrescription"
   }, {
     path: "/profissionalSaude/createUser",
@@ -98,7 +96,7 @@ export const routerOptions = {
     name: "profissionalSaude-usersManagement"
   }, {
     path: "/utente/profile",
-    component: _d8308a80,
+    component: _6784c1b8,
     name: "utente-profile"
   }, {
     path: "/admin/biometricdata/create",
