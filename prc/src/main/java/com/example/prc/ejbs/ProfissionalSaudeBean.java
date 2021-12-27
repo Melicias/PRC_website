@@ -31,6 +31,7 @@ public class ProfissionalSaudeBean {
         if(tipoProfissional==null) throw new MyEntityNotFoundException("Tipo Profissional with the code: "+idTipoProfissional+ " not found");
         try {
             ProfissionalSaude newprofissional= new ProfissionalSaude(password,name,email,tipoProfissional);
+            tipoProfissional.addProfissionaisSaude(newprofissional);
             em.persist(newprofissional);
             em.flush();
         } catch (ConstraintViolationException e) {
@@ -60,10 +61,15 @@ public class ProfissionalSaudeBean {
             throw new MyEntityNotFoundException("The Healthcare specialist was not found..");
         try {
             em.lock(profissionalSaude, LockModeType.OPTIMISTIC);
+            if(profissionalSaude.getTipoProfissional().getId() != idTipoProfissional){
+                TipoProfissional tipoProfissionalAntigo =  profissionalSaude.getTipoProfissional();
+                tipoProfissionalAntigo.removeProfissionaisSaude(profissionalSaude);
+                profissionalSaude.setTipoProfissional(tipoProfissional);
+                tipoProfissional.addProfissionaisSaude(profissionalSaude);
+            }
             profissionalSaude.setName(name);
             if(password != null)
                 profissionalSaude.setPassword(password);
-            profissionalSaude.setTipoProfissional(tipoProfissional);
             em.persist(profissionalSaude);
         } catch (
                 ConstraintViolationException e) {

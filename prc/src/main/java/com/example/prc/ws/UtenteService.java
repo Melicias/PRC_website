@@ -66,7 +66,8 @@ public class UtenteService {
     @Path("/")
     public Response updateUtente(UtenteDTO utenteDTO) {
         try {
-            utenteBean.updateUtente(utenteDTO.getEmail(),
+            utenteBean.updateUtente(
+                    utenteDTO.getEmail(),
                     utenteDTO.getName(),
                     utenteDTO.getPassword(),
                     utenteDTO.getDataNasc());
@@ -102,24 +103,7 @@ public class UtenteService {
         return  Response.ok(utenteDTO).build();
     }
 
-    @PUT
-    @Path("/")
-    public Response putUtente(UtenteDTO utenteDTO)
-            throws MyEntityNotFoundException, MyConstraintViolationException {
-        log.info(utenteDTO.getEmail());
-        log.info(utenteDTO.getName());
 
-        try{
-            utenteBean.updateUtente(
-                    utenteDTO.getEmail(),
-                    utenteDTO.getName(),
-                    utenteDTO.getPassword(),
-                    utenteDTO.getDataNasc());
-        }catch (Exception e){
-            return Response.status(400).entity(e.getMessage()).build();
-        }
-        return Response.ok(utenteDTO).build();
-    }
     /*@POST
     @Path("/prescricao")
     @Produces(MediaType.APPLICATION_JSON)

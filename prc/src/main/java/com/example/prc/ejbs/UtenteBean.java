@@ -43,7 +43,6 @@ public class UtenteBean {
 
     public void create(String password, String name, String email, Date dataNasc, String emailProfissionalSaude)
             throws MyEntityExistsException, MyConstraintViolationException, MyEntityNotFoundException {
-        System.out.println("HELLO "+dataNasc);
         Utente utente = em.find(Utente.class, email);
         if(utente != null)
             throw new MyEntityExistsException();

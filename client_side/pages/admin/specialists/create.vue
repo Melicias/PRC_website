@@ -75,7 +75,8 @@ export default {
     this.$axios.$get('/api/tipoprofissional')
       .then((tipoprofissional) => {
         for (let i = 0; i < tipoprofissional.length; i++) {
-          this.types.push({text: tipoprofissional[i].name, value: tipoprofissional[i].id})
+          if(tipoprofissional[i].deleted_at == null)
+            this.types.push({text: tipoprofissional[i].name, value: tipoprofissional[i].id})
         }
         this.allTiposProfissionais = tipoprofissional;
       })
@@ -102,7 +103,6 @@ export default {
       })
         .then(msg => {
           this.$toast.success("Specialist created with success").goAway(1500)
-          console.log(msg)
           this.$router.push({path: "/admin/specialists"});
         })
         .catch(error => {

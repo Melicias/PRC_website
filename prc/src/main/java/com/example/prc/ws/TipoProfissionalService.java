@@ -59,9 +59,13 @@ public class TipoProfissionalService {
     @DELETE
     @Path("{id}")
     public Response deleteTipoProfissional(@PathParam("id") int id) throws MyEntityExistsException, MyEntityNotFoundException {
-        TipoProfissional tipoProfissional = tipoProfissionalBean.deleteTipoProfissional(id);
-        if(tipoProfissional == null)
-            return Response.ok(null).build();
-        return Response.ok(toDTO(tipoProfissional)).build();
+        try{
+            TipoProfissional tipoProfissional = tipoProfissionalBean.deleteTipoProfissional(id);
+            if(tipoProfissional == null)
+                return Response.ok(null).build();
+            return Response.ok(toDTO(tipoProfissional)).build();
+        }catch (Exception e){
+            return Response.status(400).entity(e.getMessage()).build();
+        }
     }
 }
