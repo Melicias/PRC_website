@@ -2,58 +2,58 @@
   {
     "name": "admin",
     "path": "/admin",
-    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\admin\\\\index.vue",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/index.vue",
     "chunkName": "pages/admin/index",
-    "_name": "_059fd822"
+    "_name": "_01017896"
   },
   {
     "name": "tipoProfissional",
     "path": "/tipoProfissional",
-    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\tipoProfissional\\\\index.vue",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/tipoProfissional/index.vue",
     "chunkName": "pages/tipoProfissional/index",
-    "_name": "_3bae8b5f"
+    "_name": "_7b685732"
   },
   {
     "name": "utente",
     "path": "/utente",
-    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\utente\\\\index.vue",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/utente/index.vue",
     "chunkName": "pages/utente/index",
-    "_name": "_134a57c6"
+    "_name": "_46015dae"
   },
   {
     "name": "admin-biometricdata",
     "path": "/admin/biometricdata",
-    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\admin\\\\biometricdata\\\\index.vue",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/biometricdata/index.vue",
     "chunkName": "pages/admin/biometricdata/index",
-    "_name": "_73fb2923"
+    "_name": "_b0c991f0"
   },
   {
     "name": "admin-patients",
     "path": "/admin/patients",
-    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\admin\\\\patients\\\\index.vue",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/patients/index.vue",
     "chunkName": "pages/admin/patients/index",
-    "_name": "_a1f7293e"
+    "_name": "_b7807284"
   },
   {
     "name": "admin-professionaltype",
     "path": "/admin/professionaltype",
-    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\admin\\\\professionaltype\\\\index.vue",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/professionaltype/index.vue",
     "chunkName": "pages/admin/professionaltype/index",
-    "_name": "_290d0ea4"
+    "_name": "_1343c1d1"
   },
   {
     "name": "admin-specialists",
     "path": "/admin/specialists",
-    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\admin\\\\specialists\\\\index.vue",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/specialists/index.vue",
     "chunkName": "pages/admin/specialists/index",
-    "_name": "_718ceee3"
+    "_name": "_68ec52c8"
   },
   {
     "name": "auth-login",
     "path": "/auth/login",
-    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\auth\\\\login.vue",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/auth/login.vue",
     "chunkName": "pages/auth/login",
-    "_name": "_15cc8525"
+    "_name": "_50aad86f"
   },
   {
     "name": "profissionalSaude-createPrc",
@@ -72,71 +72,78 @@
   {
     "name": "profissionalSaude-createUser",
     "path": "/profissionalSaude/createUser",
-    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\profissionalSaude\\\\createUser.vue",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/profissionalSaude/createUser.vue",
     "chunkName": "pages/profissionalSaude/createUser",
-    "_name": "_c5ab0de0"
+    "_name": "_0b2acc44"
   },
   {
     "name": "profissionalSaude-main",
     "path": "/profissionalSaude/main",
-    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\profissionalSaude\\\\main.vue",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/profissionalSaude/main.vue",
     "chunkName": "pages/profissionalSaude/main",
-    "_name": "_760f83a2"
+    "_name": "_4af3d6f0"
   },
   {
-    "name": "profissionalSaude-userManagement",
-    "path": "/profissionalSaude/userManagement",
-    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\profissionalSaude\\\\userManagement.vue",
-    "chunkName": "pages/profissionalSaude/userManagement",
-    "_name": "_45458897"
+    "name": "profissionalSaude-passPrescription",
+    "path": "/profissionalSaude/passPrescription",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/profissionalSaude/passPrescription.vue",
+    "chunkName": "pages/profissionalSaude/passPrescription",
+    "_name": "_28fbe6fc"
   },
   {
     "name": "profissionalSaude-usersManagement",
     "path": "/profissionalSaude/usersManagement",
-    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\profissionalSaude\\\\usersManagement.vue",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/profissionalSaude/usersManagement.vue",
     "chunkName": "pages/profissionalSaude/usersManagement",
-    "_name": "_fcee5ddc"
+    "_name": "_66e30104"
   },
   {
     "name": "admin-biometricdata-create",
     "path": "/admin/biometricdata/create",
-    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\admin\\\\biometricdata\\\\create.vue",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/biometricdata/create.vue",
     "chunkName": "pages/admin/biometricdata/create",
-    "_name": "_331e45fb"
+    "_name": "_737ff4b6"
   },
   {
     "name": "admin-professionaltype-create",
     "path": "/admin/professionaltype/create",
-    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\admin\\\\professionaltype\\\\create.vue",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/professionaltype/create.vue",
     "chunkName": "pages/admin/professionaltype/create",
-    "_name": "_a92c3060"
+    "_name": "_7ce8c30d"
   },
   {
     "name": "admin-specialists-create",
     "path": "/admin/specialists/create",
-    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\admin\\\\specialists\\\\create.vue",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/specialists/create.vue",
     "chunkName": "pages/admin/specialists/create",
-    "_name": "_30758f8a"
+    "_name": "_475b5e14"
   },
   {
     "name": "admin-biometricdata-name",
     "path": "/admin/biometricdata/:name",
-    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\admin\\\\biometricdata\\\\_name.vue",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/biometricdata/_name.vue",
     "chunkName": "pages/admin/biometricdata/_name",
-    "_name": "_173727bb"
+    "_name": "_4ad735a0"
+  },
+  {
+    "name": "admin-patients-email",
+    "path": "/admin/patients/:email",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/patients/_email.vue",
+    "chunkName": "pages/admin/patients/_email",
+    "_name": "_41169e3e"
   },
   {
     "name": "admin-specialists-email",
     "path": "/admin/specialists/:email",
-    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\admin\\\\specialists\\\\_email.vue",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/specialists/_email.vue",
     "chunkName": "pages/admin/specialists/_email",
-    "_name": "_8866e548"
+    "_name": "_9f4cb3d2"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\index.vue",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/index.vue",
     "chunkName": "pages/index",
-    "_name": "_0369bd36"
+    "_name": "_319db6b5"
   }
 ]

@@ -2,13 +2,31 @@
   <b-container>
     <h1>Patients Management</h1>
     <br><br>
-    <b-table striped over :items="students" :fields="fields">
+    <b-table striped over :items="utentes" :fields="fields">
+      <template v-slot:cell(specialists)="row">
+        <p v-for="specialists in row.item.profissionalSaude">
+          {{specialists.name + "" + (specialists.tipoProfissional != null ? " (" + specialists.tipoProfissional.name + ")" : "") }}
+        </p>
+      </template>
+      <template #cell(deleted)="data">
+        <div v-if="data.item.deleted_at != null">
+          <p>Deleted</p>
+        </div>
+      </template>
+      <template #cell(blocked)="data">
+        <div v-if="data.item.blocked == 0">
+          <p>No</p>
+        </div>
+        <div v-else>
+          <p>Yes</p>
+        </div>
+      </template>
       <template v-slot:cell(actions)="row">
         <nuxt-link
-          class="btn btn-link"
-          :to="`/students/${row.item.username}`">Details</nuxt-link>
-        <nuxt-link :to="`/students/${row.item.username}/send-email`">Send e- mail</nuxt-link>
-
+          tag="img" style="cursor: pointer"
+          :src="require('~/img/view-details.png')"
+          :to="`patients/${row.item.email}`">
+        </nuxt-link>
       </template>
     </b-table>
     <nuxt-link to="/admin">Back</nuxt-link>
@@ -18,14 +36,14 @@
 export default {
   data () {
     return {
-      fields: ['email', 'name', 'deleted', 'blocked'],
-      students: []
+      fields: ['name', 'email','specialists','deleted','blocked','actions'],
+      utentes: []
     }
   },
   created () {
-    this.$axios.$get('/api/students')
-      .then((students) => {
-        this.students = students
+    this.$axios.$get('/api/utente')
+      .then((utentes) => {
+        this.utentes = utentes
       })
   } }
 </script>

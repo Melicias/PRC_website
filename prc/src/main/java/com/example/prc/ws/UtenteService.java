@@ -110,7 +110,6 @@ public class UtenteService {
             return Response.status(400).entity(e.getMessage()).build();
         }
         return Response.ok(toDTOs(utentes)).build();
-
     }
 
     public UtenteDTO toDTO(Utente utente) {

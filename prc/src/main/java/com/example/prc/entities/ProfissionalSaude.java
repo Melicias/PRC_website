@@ -17,6 +17,10 @@ import java.util.List;
         @NamedQuery(
                 name = "getProfissionalSaude",
                 query = "SELECT ps FROM ProfissionalSaude ps WHERE ps.email = :email ORDER BY ps.name" // JPQL
+        ),
+        @NamedQuery(
+                name = "getProfissionaisSemEsteUtente",
+                query = "SELECT distinct ps  FROM ProfissionalSaude ps left join fetch ps.utentes u where not exists (select 1 from ps.utentes uu where uu.email = :email) ORDER BY ps.name" // JPQL
         )
 })
 public class ProfissionalSaude extends User{

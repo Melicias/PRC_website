@@ -110,6 +110,18 @@ public class ProfissionalSaudeService {
         return Response.ok(toDTOUtente(utente)).build();
     }
 
+    @GET
+    @Path("/profissionaissemutente/{utenteemail}")
+    public Response getProfissionaSemUtente(@PathParam("utenteemail") String utenteemail) throws MyEntityNotFoundException {
+        List<ProfissionalSaude> profissionalSaudes;
+        try{
+            profissionalSaudes = profissionalSaudeBean.getProfissionaisSemUtente(utenteemail);
+        }catch (Exception e){
+            return Response.status(400).entity(e.getMessage()).build();
+        }
+        return Response.ok(toDTOs(profissionalSaudes)).build();
+    }
+
     private ProfissionalSaudeDTO toDTOComplete(ProfissionalSaude profissionalSaude) {
         ProfissionalSaudeDTO profissionaSaudeDTO = new ProfissionalSaudeDTO(
                 profissionalSaude.getEmail(),

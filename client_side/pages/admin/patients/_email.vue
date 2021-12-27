@@ -1,29 +1,18 @@
 <template>
   <b-container>
-    <b-card class="mt-3" header="Update Healthcare specialist">
+    <b-card class="mt-3" header="Update Patient">
       <b-form-group id="input-group-1" label="Email: " label-for="input-1">
         <b-form-input
           :disabled=true
           id="input-1"
-          v-model="this.profissionalsaude.email"
+          v-model="this.utente.email"
           type="text"
           placeholder="Enter email"
           required
         ></b-form-input>
       </b-form-group>
-      <p>{{ profissionalsaude.deleted_at == null ? "" : "Deleted!" }}</p>
-      <p>{{ profissionalsaude.blocked == 0 ? "" : "Blocked!" }}</p>
-      <b-form-group id="input-group-2" label="Type:" label-for="input-2">
-        <b-form-select
-          id="input-4"
-          v-model="form.tipoProfissional"
-          :disabled=false
-          :options="types"
-          required
-        ></b-form-select>
-      </b-form-group>
       <b-form @submit="onSubmit">
-        <b-form-group id="input-group-3" label="Name:" label-for="input-3">
+        <b-form-group id="input-group-2" label="Name:" label-for="input-2">
           <b-form-input
             id="input-2"
             v-model="form.name"
@@ -32,7 +21,7 @@
             required
           ></b-form-input>
         </b-form-group>
-        <b-form-group id="input-group-4" label="Password:" label-for="input-4">
+        <b-form-group id="input-group-3" label="Password:" label-for="input-3">
           <b-form-input
             id="input-3"
             v-model="form.password"
@@ -40,27 +29,38 @@
             placeholder="Enter new password"
           ></b-form-input>
         </b-form-group>
+        <b-form-group id="input-group-4" label="Birth date:" label-for="input-4">
+          <b-form-input
+            id="input-4"
+            type="date"
+            v-model="form.dataNasc"
+            required
+          ></b-form-input>
+        </b-form-group>
         <b-button type="submit" variant="primary">Update</b-button>
       </b-form>
+      <br>
+      <b-button variant="danger" @click.prevent="deleteUtente()">{{utente.deleted_at == null ? "Delete" : "Recover"}}</b-button>
+      <b-button variant="danger" @click.prevent="blockUtente()">{{utente.blocked == 0 ? "Block" : "Unblock"}}</b-button>
     </b-card>
     <br>
-    <b-card header="His pacients">
-      <b-table striped over sticky-header :items="utentesProfissional" :fields="fields" ref="tableCom">
+    <b-card header="Patient health specialists">
+      <b-table striped over sticky-header :items="profissionaisUtente" :fields="fields" ref="tableCom">
         <template v-slot:cell(actions)="row">
           <b-button variant="danger" @click.prevent="removeUtente(`${row.item.email}`)">Remove</b-button>
         </template>
       </b-table>
     </b-card>
     <br>
-    <b-card header="Other pacients">
-      <b-table striped over sticky-header :items="utentesSemProfissional" :fields="fields" ref="tableSem" >
+    <b-card header="Other health specialists">
+      <b-table striped over sticky-header :items="profissionaisNaoLigadosUtente" :fields="fields" ref="tableSem" >
         <template v-slot:cell(actions)="row">
           <b-button variant="success" @click.prevent="addUtente(`${row.item.email}`)">Add</b-button>
         </template>
       </b-table>
     </b-card>
     <br>
-    <b-button v-b-toggle.collapse-1 variant="primary" href="/admin/specialists">Back</b-button>
+    <b-button v-b-toggle.collapse-1 variant="primary" href="/admin/patients">Back</b-button>
   </b-container>
 </template>
 
@@ -68,17 +68,15 @@
 export default {
   data() {
     return {
-      profissionalsaude: {},
+      utente: {},
       form: {
         name: '',
         password: '',
-        tipoProfissional: null
+        dataNasc: ''
       },
-      types: [],
-      allTiposProfissionais: [],
-      utentesProfissional: [],
-      utentesSemProfissional: [],
-      fields: ['name', 'email', 'actions'],
+      profissionaisUtente: [],
+      profissionaisNaoLigadosUtente: [],
+      fields: ['name', 'email', 'speciality', 'actions'],
     }
   },
   computed: {
@@ -88,28 +86,19 @@ export default {
   },
   created() {
     console.log(this.email);
-    this.$axios.$get('/api/tipoprofissional')
-      .then((tipoprofissional) => {
-        for (let i = 0; i < tipoprofissional.length; i++) {
-          this.types.push({text: tipoprofissional[i].name, value: tipoprofissional[i].id})
-        }
-        this.allTiposProfissionais = tipoprofissional;
-        if(!(Object.keys(this.profissionalsaude).length === 0)){
-          this.form.tipoProfissional = this.profissionalsaude.tipoProfissional.id
-        }
+    this.$axios.$get(`/api/utente/${this.email}`)
+      .then((utente) => {
+        this.utente = utente || {}
+        this.profissionaisUtente = this.utente.profissionalSaude;
+        console.log(this.profissionaisUtente)
+        console.log(this.utente)
+        this.form.name = this.utente.name
+        this.form.dataNasc = this.utente.dataNasc != null ? this.utente.dataNasc.split('T')[0] : ""
       })
-    this.$axios.$get(`/api/profissionalsaude/${this.email}`)
-      .then((profissionalsaude) => {
-        this.profissionalsaude = profissionalsaude || {}
-        this.utentesProfissional = this.profissionalsaude.utentes;
-        console.log(this.utentesProfissional)
-        this.form.name = this.profissionalsaude.name
-        this.form.tipoProfissional = this.profissionalsaude.tipoProfissional.id
-      })
-    this.$axios.$get(`/api/utente/semprofissional/${this.email}`)
-      .then((utentes) => {
-        this.utentesSemProfissional = utentes;
-        console.log(this.utentesSemProfissional);
+    this.$axios.$get(`/api/profissionalsaude/profissionaissemutente/${this.email}`)
+      .then((profissionais) => {
+        this.profissionaisNaoLigadosUtente = profissionais;
+        console.log(this.profissionaisNaoLigadosUtente);
       })
   },
   methods: {
