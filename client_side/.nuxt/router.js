@@ -12,9 +12,11 @@ const _a1f7293e = () => interopDefault(import('..\\pages\\admin\\patients\\index
 const _290d0ea4 = () => interopDefault(import('..\\pages\\admin\\professionaltype\\index.vue' /* webpackChunkName: "pages/admin/professionaltype/index" */))
 const _718ceee3 = () => interopDefault(import('..\\pages\\admin\\specialists\\index.vue' /* webpackChunkName: "pages/admin/specialists/index" */))
 const _15cc8525 = () => interopDefault(import('..\\pages\\auth\\login.vue' /* webpackChunkName: "pages/auth/login" */))
+const _2c303aec = () => interopDefault(import('..\\pages\\profissionalSaude\\createPrc.vue' /* webpackChunkName: "pages/profissionalSaude/createPrc" */))
+const _546ff4df = () => interopDefault(import('..\\pages\\profissionalSaude\\createPrescription.vue' /* webpackChunkName: "pages/profissionalSaude/createPrescription" */))
 const _c5ab0de0 = () => interopDefault(import('..\\pages\\profissionalSaude\\createUser.vue' /* webpackChunkName: "pages/profissionalSaude/createUser" */))
 const _760f83a2 = () => interopDefault(import('..\\pages\\profissionalSaude\\main.vue' /* webpackChunkName: "pages/profissionalSaude/main" */))
-const _25963e34 = () => interopDefault(import('..\\pages\\profissionalSaude\\passPrescription.vue' /* webpackChunkName: "pages/profissionalSaude/passPrescription" */))
+const _45458897 = () => interopDefault(import('..\\pages\\profissionalSaude\\userManagement.vue' /* webpackChunkName: "pages/profissionalSaude/userManagement" */))
 const _fcee5ddc = () => interopDefault(import('..\\pages\\profissionalSaude\\usersManagement.vue' /* webpackChunkName: "pages/profissionalSaude/usersManagement" */))
 const _331e45fb = () => interopDefault(import('..\\pages\\admin\\biometricdata\\create.vue' /* webpackChunkName: "pages/admin/biometricdata/create" */))
 const _a92c3060 = () => interopDefault(import('..\\pages\\admin\\professionaltype\\create.vue' /* webpackChunkName: "pages/admin/professionaltype/create" */))
@@ -67,6 +69,14 @@ export const routerOptions = {
     component: _15cc8525,
     name: "auth-login"
   }, {
+    path: "/profissionalSaude/createPrc",
+    component: _2c303aec,
+    name: "profissionalSaude-createPrc"
+  }, {
+    path: "/profissionalSaude/createPrescription",
+    component: _546ff4df,
+    name: "profissionalSaude-createPrescription"
+  }, {
     path: "/profissionalSaude/createUser",
     component: _c5ab0de0,
     name: "profissionalSaude-createUser"
@@ -75,9 +85,9 @@ export const routerOptions = {
     component: _760f83a2,
     name: "profissionalSaude-main"
   }, {
-    path: "/profissionalSaude/passPrescription",
-    component: _25963e34,
-    name: "profissionalSaude-passPrescription"
+    path: "/profissionalSaude/userManagement",
+    component: _45458897,
+    name: "profissionalSaude-userManagement"
   }, {
     path: "/profissionalSaude/usersManagement",
     component: _fcee5ddc,

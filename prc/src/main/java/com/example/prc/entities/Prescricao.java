@@ -3,10 +3,23 @@ package com.example.prc.entities;
 import io.smallrye.common.constraint.NotNull;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
+@NamedQueries({
+        @NamedQuery(
+                name = "getAllPrescricoes",
+                query = "SELECT tp FROM Prescricao tp ORDER BY tp.name" // JPQL
+        ),
+        @NamedQuery(
+                name = "getPrescricaoByName",
+                query = "SELECT tp FROM Prescricao tp where tp.name = :name" // JPQL
+        )
+})
+
 public class Prescricao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,8 +42,14 @@ public class Prescricao {
     @Temporal(TemporalType.TIMESTAMP)
     private Date deleted_at;
 
-    public Prescricao() {
+    @ManyToMany
+    @JoinTable(name = "PRESCRICAO_PRC",
+            joinColumns = @JoinColumn(name = "ID_PRESCRICAO", referencedColumnName = "ID"),
+            inverseJoinColumns = @JoinColumn(name = "ID_PRC", referencedColumnName = "ID"))
+    private List<Prc> prcs;
 
+    public Prescricao() {
+        this.prcs = new ArrayList<>();
     }
 
     public Prescricao(String descricao, String name, TipoPrescricao tipoPrescricao) {
@@ -38,6 +57,7 @@ public class Prescricao {
         this.name = name;
         this.tipoPrescricao = tipoPrescricao;
         this.created_at = new Date();
+        this.prcs = new ArrayList<>();
     }
 
     public int getId() {
@@ -86,5 +106,17 @@ public class Prescricao {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void addPrc(Prc prc) {
+        prcs.add(prc);
+    }
+
+    public List<Prc> getPrcs() {
+        return prcs;
+    }
+
+    public void setPrcs(List<Prc> prcs) {
+        this.prcs = prcs;
     }
 }

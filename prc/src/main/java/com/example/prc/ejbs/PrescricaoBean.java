@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.validation.ConstraintViolationException;
 import java.util.Date;
+import java.util.List;
 
 @Stateless
 public class PrescricaoBean {
@@ -30,4 +31,9 @@ public class PrescricaoBean {
             throw new MyConstraintViolationException(e);
         }
     }
+
+    public List<Prescricao> getAllPrescricoes() {
+        return (List<Prescricao>) em.createNamedQuery("getAllPrescricoes").getResultList();
+    }
+
 }

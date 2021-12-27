@@ -3,6 +3,7 @@ C:\Users\danis\OneDrive\Documentos\GitHub\prc\prc\src\main\java\com\example\prc\
 C:\Users\danis\OneDrive\Documentos\GitHub\prc\prc\src\main\java\com\example\prc\dtos\TipoDadosBiometricosDTO.java
 C:\Users\danis\OneDrive\Documentos\GitHub\prc\prc\src\main\java\com\example\prc\entities\Admin.java
 C:\Users\danis\OneDrive\Documentos\GitHub\prc\prc\src\main\java\com\example\prc\entities\Prc.java
+C:\Users\danis\OneDrive\Documentos\GitHub\prc\prc\src\main\java\com\example\prc\ws\PrescricaoService.java
 C:\Users\danis\OneDrive\Documentos\GitHub\prc\prc\src\main\java\com\example\prc\entities\Prescricao.java
 C:\Users\danis\OneDrive\Documentos\GitHub\prc\prc\src\main\java\com\example\prc\dtos\AuthDTO.java
 C:\Users\danis\OneDrive\Documentos\GitHub\prc\prc\src\main\java\com\example\prc\ejbs\UtenteDadosBiometricosBean.java
@@ -22,6 +23,7 @@ C:\Users\danis\OneDrive\Documentos\GitHub\prc\prc\src\main\java\com\example\prc\
 C:\Users\danis\OneDrive\Documentos\GitHub\prc\prc\src\main\java\com\example\prc\exceptions\MyIllegalArgumentExceptionMapper.java
 C:\Users\danis\OneDrive\Documentos\GitHub\prc\prc\src\main\java\com\example\prc\entities\Utente.java
 C:\Users\danis\OneDrive\Documentos\GitHub\prc\prc\src\main\java\com\example\prc\exceptions\MyEntityExistsException.java
+C:\Users\danis\OneDrive\Documentos\GitHub\prc\prc\src\main\java\com\example\prc\ws\TipoPrescricaoService.java
 C:\Users\danis\OneDrive\Documentos\GitHub\prc\prc\src\main\java\com\example\prc\dtos\TipoPrescricaoDTO.java
 C:\Users\danis\OneDrive\Documentos\GitHub\prc\prc\src\main\java\com\example\prc\ejbs\PrescricaoBean.java
 C:\Users\danis\OneDrive\Documentos\GitHub\prc\prc\src\main\java\com\example\prc\exceptions\MyIllegalArgumentException.java

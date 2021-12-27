@@ -15,6 +15,7 @@ com\example\prc\entities\TipoProfissional.class
 com\example\prc\entities\ProfissionalSaude.class
 com\example\prc\entities\Utente.class
 com\example\prc\ejbs\TipoPrescricaoBean.class
+com\example\prc\ws\TipoPrescricaoService.class
 com\example\prc\ws\TipoProfissionalService.class
 com\example\prc\ejbs\TipoProfissionalBean.class
 com\example\prc\ejbs\UserBean.class
@@ -24,6 +25,7 @@ com\example\prc\exceptions\CatchAllExceptionMapper.class
 com\example\prc\ws\ProfissionalSaudeService.class
 com\example\prc\entities\Admin.class
 com\example\prc\entities\TipoPrescricao.class
+com\example\prc\ws\PrescricaoService.class
 com\example\prc\dtos\TipoDadosBiometricosDTO.class
 com\example\prc\dtos\TipoPrescricaoDTO.class
 com\example\prc\HelloApplication.class
