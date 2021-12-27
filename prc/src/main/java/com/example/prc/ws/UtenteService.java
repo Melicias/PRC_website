@@ -13,6 +13,7 @@ import com.example.prc.entities.Utente;
 import com.example.prc.exceptions.MyConstraintViolationException;
 import com.example.prc.exceptions.MyEntityNotFoundException;
 import com.example.prc.jwt.Jwt;
+import org.jboss.resteasy.plugins.touri.URITemplateAnnotationResolver;
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;
@@ -20,9 +21,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
-
-import static io.smallrye.config.ConfigLogging.log;
 
 @Path("utente")
 @Produces({MediaType.APPLICATION_JSON}) // injects header “Content-Type: application/json”
@@ -35,10 +35,12 @@ public class UtenteService {
     @EJB
     private PrescricaoBean prescricaoBean;
 
+    private static final Logger log =
+            Logger.getLogger(UtenteService.class.getName());
+
     @GET
     @Path("/")
     public List<UtenteDTO> getAllUtentes() {
-        System.out.println("AQUI GET"+toDTOs(utenteBean.getAllUtentes())+"vamos");
         return toDTOs(utenteBean.getAllUtentes());
     }
 
@@ -54,6 +56,20 @@ public class UtenteService {
                     utenteDTO.getEmail(),
                     new Date("29/06/1999"),
                     utenteDTO.getEmailProfissionalSaude());
+        } catch (Exception e) {
+            return Response.status(400).entity(e.getMessage()).build();
+        }
+        return Response.ok(utenteDTO).build();
+    }
+
+    @PUT
+    @Path("/")
+    public Response updateUtente(UtenteDTO utenteDTO) {
+        try {
+            utenteBean.updateUtente(utenteDTO.getEmail(),
+                    utenteDTO.getName(),
+                    utenteDTO.getPassword(),
+                    utenteDTO.getDataNasc());
         } catch (Exception e) {
             return Response.status(400).entity(e.getMessage()).build();
         }
@@ -109,12 +125,6 @@ public class UtenteService {
     }
 
     @GET
-    @Path("/")
-    public List<UtenteDTO> getUtenteWS() {
-        return toDTOs(utenteBean.getAllUtentes());
-    }
-
-    @GET
     @Path("/semprofissional/{profissionalEmail}")
     public Response getUtenteSemProfissionalSaude(@PathParam("profissionalEmail") String profissionalEmail) throws MyEntityNotFoundException {
         List<Utente> utentes;
@@ -124,6 +134,29 @@ public class UtenteService {
             return Response.status(400).entity(e.getMessage()).build();
         }
         return Response.ok(toDTOs(utentes)).build();
+    }
+
+    @PUT
+    @Path("/block/{email}")
+    public Response blockUtente(@PathParam("email") String email)
+            throws MyEntityNotFoundException {
+        try{
+            Utente utente = utenteBean.blockUtente(email);
+            return Response.ok(toDTO(utente)).build();
+        }catch (Exception e){
+            return Response.status(400).entity(e.getMessage()).build();
+        }
+    }
+
+    @DELETE
+    @Path("{email}")
+    public Response deleteUtente(@PathParam("email") String email) throws MyEntityNotFoundException {
+        try{
+            Utente utente = utenteBean.deleteUtente(email);
+            return Response.ok(toDTO(utente)).build();
+        }catch (Exception e){
+            return Response.status(400).entity(e.getMessage()).build();
+        }
     }
 
     public UtenteDTO toDTO(Utente utente) {
