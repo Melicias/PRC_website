@@ -58,16 +58,16 @@
   {
     "name": "profissionalSaude-createPrc",
     "path": "/profissionalSaude/createPrc",
-    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\profissionalSaude\\\\createPrc.vue",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/profissionalSaude/createPrc.vue",
     "chunkName": "pages/profissionalSaude/createPrc",
-    "_name": "_2c303aec"
+    "_name": "_25bc6f44"
   },
   {
     "name": "profissionalSaude-createPrescription",
     "path": "/profissionalSaude/createPrescription",
-    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\profissionalSaude\\\\createPrescription.vue",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/profissionalSaude/createPrescription.vue",
     "chunkName": "pages/profissionalSaude/createPrescription",
-    "_name": "_546ff4df"
+    "_name": "_4ea167ad"
   },
   {
     "name": "profissionalSaude-createUser",
@@ -84,11 +84,11 @@
     "_name": "_4af3d6f0"
   },
   {
-    "name": "profissionalSaude-passPrescription",
-    "path": "/profissionalSaude/passPrescription",
-    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/profissionalSaude/passPrescription.vue",
-    "chunkName": "pages/profissionalSaude/passPrescription",
-    "_name": "_28fbe6fc"
+    "name": "profissionalSaude-userManagement",
+    "path": "/profissionalSaude/userManagement",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/profissionalSaude/userManagement.vue",
+    "chunkName": "pages/profissionalSaude/userManagement",
+    "_name": "_5e66db36"
   },
   {
     "name": "profissionalSaude-usersManagement",

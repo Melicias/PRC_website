@@ -61,6 +61,7 @@
     </b-card>
     <br>
     <b-button v-b-toggle.collapse-1 variant="primary" href="/admin/specialists">Back</b-button>
+    <br><br>
   </b-container>
 </template>
 
@@ -130,8 +131,7 @@ export default {
       })
         .then(msg => {
           this.$toast.success("Specialist updated with success").goAway(1500)
-          console.log(msg)
-          this.$router.push({path: "/admin/specialists"});
+          this.form.password = ''
         })
         .catch(error => {
           this.$toast.error(error.response.data).goAway(3000)

@@ -2,17 +2,16 @@ package com.example.prc.ejbs;
 
 import com.example.prc.dtos.ProfissionalSaudeDTO;
 import com.example.prc.dtos.UtenteDTO;
-import com.example.prc.entities.ProfissionalSaude;
-import com.example.prc.entities.TipoDadosBiometricos;
-import com.example.prc.entities.User;
-import com.example.prc.entities.Utente;
+import com.example.prc.entities.*;
 import com.example.prc.exceptions.MyConstraintViolationException;
 import com.example.prc.exceptions.MyEntityExistsException;
 import com.example.prc.exceptions.MyEntityNotFoundException;
+import com.example.prc.exceptions.MyIllegalArgumentExceptionMapper;
 import com.example.prc.ws.LoginService;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.LockModeType;
 import javax.persistence.PersistenceContext;
 import javax.validation.ConstraintViolationException;
 import java.util.Date;
@@ -86,5 +85,63 @@ public class UtenteBean {
         }catch (Exception e){
             return null;
         }
+    }
+
+    public void updateUtente(String email,String name, String password, Date birthDate)
+            throws MyEntityNotFoundException, MyConstraintViolationException {
+        Utente utente = em.find(Utente.class, email);
+        if(utente == null)
+            throw new MyEntityNotFoundException("Patient with this email not found");
+        try {
+            em.lock(utente, LockModeType.OPTIMISTIC);
+            utente.setName(name);
+            if(password != null)
+                utente.setPassword(password);
+            if(birthDate != null)
+                utente.setDataNasc(birthDate);
+            em.persist(utente);
+        } catch (ConstraintViolationException e) {
+            throw new MyConstraintViolationException(e);
+        }
+    }
+
+    public Utente blockUtente(String email)
+            throws MyEntityNotFoundException, MyConstraintViolationException {
+        Utente u = em.find(Utente.class,email);
+        if(u == null)
+            throw new MyEntityNotFoundException("Patient with this email not found");
+        /*List<Prc> prcs = u.getPrcs();
+        for(int i = 0; i < prcs.size(); i++){
+            if()
+        }*/
+        //verificar se o utente tem prcs atribuidas a ele
+        if(u.getBlocked() == 0){
+            u.setBlocked(1);
+        }else{
+            u.setBlocked(0);
+        }
+        em.persist(u);
+        em.flush();
+
+        return u;
+    }
+
+    public Utente deleteUtente(String email)
+        throws MyEntityNotFoundException, MyConstraintViolationException {
+        Utente u = em.find(Utente.class,email);
+        if(u == null)
+            throw new MyEntityNotFoundException("Patient with this email not found");
+
+        //VERIFICAR AS CENAS AQUI
+
+
+        if(u.getDeleted_at() == null){
+            u.setDeleted_at(new Date());
+        }else{
+            u.setDeleted_at(null);
+        }
+        em.persist(u);
+        em.flush();
+        return u;
     }
 }

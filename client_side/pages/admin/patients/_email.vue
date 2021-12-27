@@ -46,6 +46,9 @@
     <br>
     <b-card header="Patient health specialists">
       <b-table striped over sticky-header :items="profissionaisUtente" :fields="fields" ref="tableCom">
+        <template v-slot:cell(speciality)="row">
+          {{row.item.tipoProfissional != null ? row.item.tipoProfissional.name : ""}}
+        </template>
         <template v-slot:cell(actions)="row">
           <b-button variant="danger" @click.prevent="removeSpecialist(`${row.item.email}`)">Remove</b-button>
         </template>
@@ -53,7 +56,10 @@
     </b-card>
     <br>
     <b-card header="Other health specialists">
-      <b-table striped over sticky-header :items="profissionaisNaoLigadosUtente" :fields="fields" ref="tableSem" >
+      <b-table striped over sticky-header :items="profissionaisNaoLigadosUtente" :fields="fields" ref="tableSem">
+        <template v-slot:cell(speciality)="row">
+          {{row.item.tipoProfissional != null ? row.item.tipoProfissional.name : ""}}
+        </template>
         <template v-slot:cell(actions)="row">
           <b-button variant="success" @click.prevent="addSpecialist(`${row.item.email}`)">Add</b-button>
         </template>
@@ -61,6 +67,7 @@
     </b-card>
     <br>
     <b-button v-b-toggle.collapse-1 variant="primary" href="/admin/patients">Back</b-button>
+    <br><br>
   </b-container>
 </template>
 
@@ -99,25 +106,20 @@ export default {
   },
   methods: {
     onSubmit(event) {
+      console.log(new Date(this.form.dataNasc).toISOString());
       event.preventDefault()
-      var tipo = null;
-      for (let i = 0; i < this.allTiposProfissionais.length; i++) {
-        if(this.allTiposProfissionais[i].id == this.form.tipoProfissional){
-          tipo = this.allTiposProfissionais[i];
-          break;
-        }
-      }
-      this.$axios.$put(`/api/profissionalsaude`, {
-        email: this.profissionalsaude.email,
-        tipoProfissional: tipo,
+      this.$axios.$put(`/api/utente`, {
+        email: this.email,
+        dataNasc: new Date(this.form.dataNasc).toISOString(),
         name: this.form.name,
         password: this.form.password.length == 0 ? null : this.form.password,
       })
         .then(msg => {
-          this.$toast.success("Specialist updated with success").goAway(1500)
-          this.$router.push({path: "/admin/specialists"});
+          this.$toast.success("Patient updated with success").goAway(1500)
+          this.form.password = ''
         })
         .catch(error => {
+          console.log(error.response.data)
           this.$toast.error(error.response.data).goAway(3000)
         })
     },
@@ -166,6 +168,27 @@ export default {
         .catch(error => {
           this.$toast.error(error).goAway(3000)
         })
+    },
+    deleteUtente() {
+      this.$axios.$delete(`/api/utente/${this.email}`)
+          .then(msg => {
+            this.$toast.success("Patient deleted with success").goAway(1500)
+            console.log(msg);
+            this.utente.deleted_at = msg.deleted_at;
+          })
+          .catch(error => {
+            this.$toast.error('error while deleting').goAway(3000)
+          })
+    },
+    blockUtente() {
+      this.$axios.put(`/api/utente/block/${this.email}`)
+          .then(msg => {
+            this.$toast.success("Patient deleted with success").goAway(1500)
+            this.utente.blocked = msg.data.blocked
+          })
+          .catch(error => {
+            this.$toast.error('error while deleting').goAway(3000)
+          })
     }
   }
 }

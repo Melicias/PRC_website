@@ -12,9 +12,11 @@ const _b7807284 = () => interopDefault(import('../pages/admin/patients/index.vue
 const _1343c1d1 = () => interopDefault(import('../pages/admin/professionaltype/index.vue' /* webpackChunkName: "pages/admin/professionaltype/index" */))
 const _68ec52c8 = () => interopDefault(import('../pages/admin/specialists/index.vue' /* webpackChunkName: "pages/admin/specialists/index" */))
 const _50aad86f = () => interopDefault(import('../pages/auth/login.vue' /* webpackChunkName: "pages/auth/login" */))
+const _25bc6f44 = () => interopDefault(import('../pages/profissionalSaude/createPrc.vue' /* webpackChunkName: "pages/profissionalSaude/createPrc" */))
+const _4ea167ad = () => interopDefault(import('../pages/profissionalSaude/createPrescription.vue' /* webpackChunkName: "pages/profissionalSaude/createPrescription" */))
 const _0b2acc44 = () => interopDefault(import('../pages/profissionalSaude/createUser.vue' /* webpackChunkName: "pages/profissionalSaude/createUser" */))
 const _4af3d6f0 = () => interopDefault(import('../pages/profissionalSaude/main.vue' /* webpackChunkName: "pages/profissionalSaude/main" */))
-const _28fbe6fc = () => interopDefault(import('../pages/profissionalSaude/passPrescription.vue' /* webpackChunkName: "pages/profissionalSaude/passPrescription" */))
+const _5e66db36 = () => interopDefault(import('../pages/profissionalSaude/userManagement.vue' /* webpackChunkName: "pages/profissionalSaude/userManagement" */))
 const _66e30104 = () => interopDefault(import('../pages/profissionalSaude/usersManagement.vue' /* webpackChunkName: "pages/profissionalSaude/usersManagement" */))
 const _737ff4b6 = () => interopDefault(import('../pages/admin/biometricdata/create.vue' /* webpackChunkName: "pages/admin/biometricdata/create" */))
 const _7ce8c30d = () => interopDefault(import('../pages/admin/professionaltype/create.vue' /* webpackChunkName: "pages/admin/professionaltype/create" */))
@@ -23,6 +25,7 @@ const _4ad735a0 = () => interopDefault(import('../pages/admin/biometricdata/_nam
 const _41169e3e = () => interopDefault(import('../pages/admin/patients/_email.vue' /* webpackChunkName: "pages/admin/patients/_email" */))
 const _9f4cb3d2 = () => interopDefault(import('../pages/admin/specialists/_email.vue' /* webpackChunkName: "pages/admin/specialists/_email" */))
 const _319db6b5 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+
 const emptyFn = () => {}
 
 Vue.use(Router)
@@ -68,11 +71,11 @@ export const routerOptions = {
     name: "auth-login"
   }, {
     path: "/profissionalSaude/createPrc",
-    component: _2c303aec,
+    component: _25bc6f44,
     name: "profissionalSaude-createPrc"
   }, {
     path: "/profissionalSaude/createPrescription",
-    component: _546ff4df,
+    component: _4ea167ad,
     name: "profissionalSaude-createPrescription"
   }, {
     path: "/profissionalSaude/createUser",
@@ -83,9 +86,9 @@ export const routerOptions = {
     component: _4af3d6f0,
     name: "profissionalSaude-main"
   }, {
-    path: "/profissionalSaude/passPrescription",
-    component: _28fbe6fc,
-    name: "profissionalSaude-passPrescription"
+    path: "/profissionalSaude/userManagement",
+    component: _5e66db36,
+    name: "profissionalSaude-userManagement"
   }, {
     path: "/profissionalSaude/usersManagement",
     component: _66e30104,
