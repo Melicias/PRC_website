@@ -151,6 +151,8 @@ public class UtenteService {
     public Response deleteUtente(@PathParam("email") String email) throws MyEntityNotFoundException {
         try{
             Utente utente = utenteBean.deleteUtente(email);
+            if(utente == null)
+                return Response.ok(null).build();
             return Response.ok(toDTO(utente)).build();
         }catch (Exception e){
             return Response.status(400).entity(e.getMessage()).build();
@@ -169,8 +171,8 @@ public class UtenteService {
         List<ProfissionalSaudeDTO> profissionalSaudeDTOS = ToDTOProfissionalSaude(utente.getProfissionalSaude());
         utenteDTO.setProfissionalSaude(profissionalSaudeDTOS);
         List<PrcDTO> prcs = ToDTOPrc(utente.getPrcs());
+        utenteDTO.setPrcs(prcs);
         List<UtenteDadosBiometricosDTO> utenteDadosBiometricosDTOS= toDtosDadosBiomediocos(utente.getDadosBiometricos());
-        utenteDTO.setPrescricoes(prcs);
         utenteDTO.setDadosBiometricos(utenteDadosBiometricosDTOS);
         return utenteDTO;
     }

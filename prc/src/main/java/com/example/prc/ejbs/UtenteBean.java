@@ -131,10 +131,11 @@ public class UtenteBean {
         Utente u = em.find(Utente.class,email);
         if(u == null)
             throw new MyEntityNotFoundException("Patient with this email not found");
-
-        //VERIFICAR AS CENAS AQUI
-
-
+        if (u.getDadosBiometricos().isEmpty() && u.getProfissionalSaude().isEmpty() && u.getPrcs().isEmpty()) {
+            em.remove(u);
+            em.flush();
+            return null;
+        }
         if(u.getDeleted_at() == null){
             u.setDeleted_at(new Date());
         }else{
