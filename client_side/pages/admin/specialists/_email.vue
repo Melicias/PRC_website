@@ -197,7 +197,7 @@ export default {
           this.$refs.tableSem.refresh();
         })
         .catch(error => {
-          this.$toast.error(error).goAway(3000)
+          this.$toast.error(error.response.data).goAway(3000)
         })
     },
     deleteSpecialist() {
