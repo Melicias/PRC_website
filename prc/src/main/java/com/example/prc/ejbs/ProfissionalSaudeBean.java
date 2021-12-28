@@ -8,6 +8,7 @@ import com.example.prc.entities.Utente;
 import com.example.prc.exceptions.MyConstraintViolationException;
 import com.example.prc.exceptions.MyEntityExistsException;
 import com.example.prc.exceptions.MyEntityNotFoundException;
+import com.example.prc.exceptions.MyIllegalArgumentException;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -77,17 +78,23 @@ public class ProfissionalSaudeBean {
         }
     }
 
-    public ProfissionalSaude deleteProfissionalSaude(String email){
+    public ProfissionalSaude deleteProfissionalSaude(String email)
+            throws MyEntityNotFoundException {
         ProfissionalSaude ps = em.find(ProfissionalSaude.class,email);
-        if(ps != null){
-            if(ps.getDeleted_at() == null){
-                ps.setDeleted_at(new Date());
-            }else{
-                ps.setDeleted_at(null);
-            }
-            em.persist(ps);
+        if(ps == null)
+            throw new MyEntityNotFoundException("Patient with this email not found");
+        if(ps.getUtentes().isEmpty() && ps.getPrcs().isEmpty()){
+            em.remove(ps);
             em.flush();
+            return null;
         }
+        if(ps.getDeleted_at() == null){
+            ps.setDeleted_at(new Date());
+        }else{
+            ps.setDeleted_at(null);
+        }
+        em.persist(ps);
+        em.flush();
         return ps;
     }
 

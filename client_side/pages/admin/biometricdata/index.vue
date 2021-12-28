@@ -50,6 +50,9 @@ export default {
       this.$axios.$delete(`/api/tipoDadosBiometricos/${id}`)
         .then(msg => {
           this.$toast.success("Biometric data deleted with success").goAway(1500)
+          if(msg === ''){
+            location.reload();
+          }
           this.tipoDadosBiometricos[index].deleted_at = msg.deleted_at;
           this.$refs.table.refresh();
         })

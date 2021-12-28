@@ -38,7 +38,7 @@ public class TipoDadosBiometricos {
     private String quantitativo;
     @Temporal(TemporalType.TIMESTAMP)
     private Date deleted_at;
-    @OneToMany
+    @OneToMany(mappedBy = "tipoDadosBiometricos")
     private List<UtenteDadosBiometricos> dadosBiometricos;
 
     public TipoDadosBiometricos() {

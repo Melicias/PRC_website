@@ -12,7 +12,7 @@ import java.util.List;
 @NamedQueries({
         @NamedQuery(
                 name = "isDadosBiometricosUsed",
-                query = "SELECT 1 FROM ProfissionalSaude ps where ps.tipoProfissional.id = :id" // JPQL
+                query = "SELECT 1 FROM UtenteDadosBiometricos udb where udb.tipoDadosBiometricos.id = :id" // JPQL
         )
 })
 
