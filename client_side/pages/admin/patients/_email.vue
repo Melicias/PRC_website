@@ -40,7 +40,7 @@
         <b-button type="submit" variant="primary">Update</b-button>
       </b-form>
       <br>
-      <b-button variant="danger" @click.prevent="deleteUtente()">{{utente.deleted_at != null ? "Recover" : "Delete"}}</b-button>
+      <b-button variant="danger" @click.prevent="deleteUtente()">{{utente.deleted_at == undefined ? "Delete" : "Recover"}}</b-button>
       <b-button variant="danger" @click.prevent="blockUtente()">{{utente.blocked == 0 ? "Block" : "Unblock"}}</b-button>
     </b-card>
     <br>
@@ -66,6 +66,25 @@
       </b-table>
     </b-card>
     <br>
+    <b-card header="Prcs">
+      <b-table striped over sticky-header :items="prcs" :fields="fieldsPrc" ref="tablePrcs" >
+        <template v-slot:cell(Disease)="row">
+          {{row.item.doenca}}
+        </template>
+        <template v-slot:cell(specialist)="row">
+          {{row.item.profissionalSaude.name}}
+        </template>
+        <template v-slot:cell(Until)="row">
+          {{/\d{4}-\d{2}-\d{2}/.exec(row.item.validade)[0]}}
+        </template>
+        <template v-slot:cell(Prescriptions)="row">
+          <p v-for="prescricao in row.item.prescricoes">
+            {{prescricao.descricao + " (" + prescricao.tipoPrescricao.name + ")"}}
+          </p>
+        </template>
+      </b-table>
+    </b-card>
+    <br>
     <b-button v-b-toggle.collapse-1 variant="primary" href="/admin/patients">Back</b-button>
     <br><br>
   </b-container>
@@ -84,6 +103,8 @@ export default {
       profissionaisUtente: [],
       profissionaisNaoLigadosUtente: [],
       fields: ['name', 'email', 'speciality', 'actions'],
+      fieldsPrc: ['Disease', 'specialist', 'Prescriptions','Until'],
+      prcs: [],
     }
   },
   computed: {
@@ -94,10 +115,13 @@ export default {
   created() {
     this.$axios.$get(`/api/utente/${this.email}`)
       .then((utente) => {
+        if(!utente.hasOwnProperty("deleted_at"))
+          utente.deleted_at = undefined
         this.utente = utente || {}
         this.profissionaisUtente = this.utente.profissionalSaude;
         this.form.name = this.utente.name
         this.form.dataNasc = this.utente.dataNasc != null ? this.utente.dataNasc.split('T')[0] : ""
+        this.prcs = this.utente.prcs
       })
     this.$axios.$get(`/api/profissionalsaude/profissionaissemutente/${this.email}`)
       .then((profissionais) => {
@@ -171,6 +195,9 @@ export default {
       this.$axios.$delete(`/api/utente/${this.email}`)
           .then(msg => {
             this.$toast.success("Patient deleted with success").goAway(1500)
+            if(msg === ''){
+              this.$router.push("/admin/patients")
+            }
             this.utente.deleted_at = msg.deleted_at;
           })
           .catch(error => {
