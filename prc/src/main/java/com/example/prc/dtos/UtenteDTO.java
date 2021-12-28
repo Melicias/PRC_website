@@ -18,7 +18,7 @@ public class UtenteDTO {
     private Date dataNasc;
     private List<ProfissionalSaudeDTO> profissionalSaude;
     private List<UtenteDadosBiometricos> dadosBiometricos;
-    private List<Prescricao> prescricoes;
+    private List<PrcDTO> prescricoes;
     private String emailProfissionalSaude;
 
     public UtenteDTO() {
@@ -104,11 +104,11 @@ public class UtenteDTO {
         this.dadosBiometricos = dadosBiometricos;
     }
 
-    public List<Prescricao> getPrescricoes() {
+    public List<PrcDTO> getPrescricoes() {
         return prescricoes;
     }
 
-    public void setPrescricoes(List<Prescricao> prescricoes) {
+    public void setPrescricoes(List<PrcDTO> prescricoes) {
         this.prescricoes = prescricoes;
     }
 

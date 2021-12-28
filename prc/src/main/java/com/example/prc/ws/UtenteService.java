@@ -1,15 +1,11 @@
 package com.example.prc.ws;
 
-import com.example.prc.dtos.ProfissionalSaudeDTO;
-import com.example.prc.dtos.TipoProfissionalDTO;
-import com.example.prc.dtos.UtenteDTO;
+import com.example.prc.dtos.*;
 import com.example.prc.ejbs.PrescricaoBean;
 import com.example.prc.ejbs.ProfissionalSaudeBean;
 import com.example.prc.ejbs.TipoProfissionalBean;
 import com.example.prc.ejbs.UtenteBean;
-import com.example.prc.entities.ProfissionalSaude;
-import com.example.prc.entities.User;
-import com.example.prc.entities.Utente;
+import com.example.prc.entities.*;
 import com.example.prc.exceptions.MyConstraintViolationException;
 import com.example.prc.exceptions.MyEntityNotFoundException;
 import com.example.prc.jwt.Jwt;
@@ -172,6 +168,8 @@ public class UtenteService {
         );
         List<ProfissionalSaudeDTO> profissionalSaudeDTOS = ToDTOProfissionalSaude(utente.getProfissionalSaude());
         utenteDTO.setProfissionalSaude(profissionalSaudeDTOS);
+        List<PrcDTO> prcs = ToDTOPrc(utente.getPrcs());
+        utenteDTO.setPrescricoes(prcs);
         return utenteDTO;
     }
 
@@ -179,6 +177,35 @@ public class UtenteService {
         ProfissionalSaudeService profissionalSaudeService=new ProfissionalSaudeService();
         List<ProfissionalSaudeDTO>profissionalSaudeDTOS= profissionalSaudeService.toDTOs(profissionalSaude);
         return  profissionalSaudeDTOS;
+    }
+    private ProfissionalSaudeDTO ToDTOProfissionalSaud(ProfissionalSaude profissionalSaude) {
+        ProfissionalSaudeService profissionalSaudeService=new ProfissionalSaudeService();
+       ProfissionalSaudeDTO profissionalSaudeDTOS= profissionalSaudeService.toDTO(profissionalSaude);
+        return  profissionalSaudeDTOS;
+    }
+
+    private List<PrcDTO> ToDTOPrc(List<Prc> prcs) {
+        return prcs.stream().map(this::prcDTO).collect(Collectors.toList());
+    }
+    private List<PrescricaoDTO> ToDTOsPrescricoesDTO(List<Prescricao> prescricoes) {
+        PrescricaoService prescricaoService = new PrescricaoService();
+        List<PrescricaoDTO> prescricaoDTO = prescricaoService.toDTOs(prescricoes);
+        return  prescricaoDTO;
+    }
+
+    private  PrcDTO prcDTO(Prc prc){
+        PrcDTO prcDTO = new PrcDTO(
+                prc.getId(),
+                prc.getDoenca(),
+                prc.getValidade(),
+                prc.getCreated_at(),
+                prc.getDeleted_at()
+        );
+        List<PrescricaoDTO> prescricoesDTO = ToDTOsPrescricoesDTO(prc.getPrescricoes());
+        prcDTO.setPrescricoes(prescricoesDTO);
+        ProfissionalSaudeDTO profissionalSaudeDTO = ToDTOProfissionalSaud(prc.getProfissionalSaude());
+        prcDTO.setProfissionalSaude(profissionalSaudeDTO);
+        return prcDTO;
     }
 
     public List<UtenteDTO> toDTOs(List<Utente> utentes) {
