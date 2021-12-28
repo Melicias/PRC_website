@@ -58,14 +58,16 @@
   {
     "name": "profissionalSaude-createPrc",
     "path": "/profissionalSaude/createPrc",
-    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/profissionalSaude/createPrc.vue",
-    "chunkName": "pages/profissionalSaude/createPrc"
+    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\profissionalSaude\\\\createPrc.vue",
+    "chunkName": "pages/profissionalSaude/createPrc",
+    "_name": "_1d903b08"
   },
   {
     "name": "profissionalSaude-createPrescription",
     "path": "/profissionalSaude/createPrescription",
-    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/profissionalSaude/createPrescription.vue",
-    "chunkName": "pages/profissionalSaude/createPrescription"
+    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\profissionalSaude\\\\createPrescription.vue",
+    "chunkName": "pages/profissionalSaude/createPrescription",
+    "_name": "_cd386162"
   },
   {
     "name": "profissionalSaude-createUser",
@@ -84,8 +86,9 @@
   {
     "name": "profissionalSaude-userManagement",
     "path": "/profissionalSaude/userManagement",
-    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/profissionalSaude/userManagement.vue",
-    "chunkName": "pages/profissionalSaude/userManagement"
+    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\profissionalSaude\\\\userManagement.vue",
+    "chunkName": "pages/profissionalSaude/userManagement",
+    "_name": "_7ba81b07"
   },
   {
     "name": "profissionalSaude-usersManagement",
