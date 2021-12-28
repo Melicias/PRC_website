@@ -40,8 +40,15 @@ public class ProfissionalSaudeService {
     @DELETE
     @Path("{email}")
     public Response deleteTipoProfissional(@PathParam("email") String email) throws MyEntityNotFoundException {
-        ProfissionalSaude profissionalSaude = profissionalSaudeBean.deleteProfissionalSaude(email);
-        return Response.ok(toDTO(profissionalSaude)).build();
+        try{
+            ProfissionalSaude profissionalSaude = profissionalSaudeBean.deleteProfissionalSaude(email);
+            if(profissionalSaude == null)
+                return Response.ok(null).build();
+            return Response.ok(toDTO(profissionalSaude)).build();
+        }catch (Exception e){
+            return Response.status(400).entity(e.getMessage()).build();
+        }
+
     }
 
     @PUT
