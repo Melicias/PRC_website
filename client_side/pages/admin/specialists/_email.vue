@@ -60,6 +60,25 @@
       </b-table>
     </b-card>
     <br>
+    <b-card header="Prcs">
+      <b-table striped over sticky-header :items="prcs" :fields="fieldsPrc" ref="tablePrcs" >
+        <template v-slot:cell(Disease)="row">
+          {{row.item.doenca}}
+        </template>
+        <template v-slot:cell(Patient)="row">
+          {{row.item.utente.name}}
+        </template>
+        <template v-slot:cell(Until)="row">
+          {{/\d{4}-\d{2}-\d{2}/.exec(row.item.validade)[0]}}
+        </template>
+        <template v-slot:cell(Prescriptions)="row">
+          <p v-for="prescricao in row.item.prescricoes">
+            {{prescricao.descricao + " (" + prescricao.tipoPrescricao.name + ")"}}
+          </p>
+        </template>
+      </b-table>
+    </b-card>
+    <br>
     <b-button v-b-toggle.collapse-1 variant="primary" href="/admin/specialists">Back</b-button>
     <br><br>
   </b-container>
@@ -80,6 +99,8 @@ export default {
       utentesProfissional: [],
       utentesSemProfissional: [],
       fields: ['name', 'email', 'actions'],
+      fieldsPrc: ['Disease', 'Patient', 'Prescriptions','Until'],
+      prcs: [],
     }
   },
   computed: {
@@ -104,6 +125,8 @@ export default {
         this.utentesProfissional = this.profissionalsaude.utentes;
         this.form.name = this.profissionalsaude.name
         this.form.tipoProfissional = this.profissionalsaude.tipoProfissional.id
+        this.prcs = this.profissionalsaude.prcs;
+        console.log(this.prcs)
       })
     this.$axios.$get(`/api/utente/semprofissional/${this.email}`)
       .then((utentes) => {
