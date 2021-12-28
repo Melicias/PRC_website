@@ -40,9 +40,9 @@ public class ConfigBean {
 
         try{
 
-            tipoPrescricao.create("Exercicio Fisico");
-            tipoPrescricao.create("Comer para emagrecer");
-            tipoPrescricao.create("Comer para engordar");
+            tipoPrescricao.create("Mediquentosa");
+            tipoPrescricao.create("Dieta");
+            tipoPrescricao.create("Exercicio fisico");
 
             tipoProfissional.create("Cardiologista");
             tipoProfissional.create("Cirurgião");
@@ -56,9 +56,13 @@ public class ConfigBean {
             tipoDadosBiometricos.create("colestrol",5,10,null);
             tipoDadosBiometricos.create("obesidade",0, 0,"cenas que nao vou criar ja mas possivelmente criado em json");
 
-            prescricaoBean.create("Prescricao (descricao 1)","Prescricao 1",1);
-            prescricaoBean.create("Prescricao (descricao 2)","Prescricao 2",2);
-            prescricaoBean.create("Prescricao (descricao 3)","Prescricao 3",3);
+            prescricaoBean.create("Tomar os medicamentos todos os dias","Prescricao medicamentos diario",1);
+            prescricaoBean.create("Tomar os medicamentos a noite","Prescricao medicamentos noturnos",1);
+            prescricaoBean.create("Cuidado com a alimentação, apenas comer arroz e carnes","Prescricao de arroz e carnes",2);
+            prescricaoBean.create("Não comer carnes vermelhas","Prescricao evitar carnes vermelhas",2);
+            prescricaoBean.create("Apenas comer coisas não processadas","Prescricao de cuidado com processados",2);
+            prescricaoBean.create("Fazer  cardio pelo menos 1 vez por dia","Prescricao cardio diario",3);
+            prescricaoBean.create("Fazer Levantamento de pesos","Prescricao ginasio",3);
 
             adminBean.create("teste123","admin teste", "admin@admin.com");
           
@@ -103,6 +107,7 @@ public class ConfigBean {
             prcBean.create("utente@utente.com", "profissional9@profissional.com", "Doença 3", new Date("29/12/2021"), 1);
             prcBean.create("utente@utente.com", "profissional5@profissional.com", "Doença 4", new Date("29/12/2021"), 1);
             prcBean.create("utente@utente.com", "profissional1@profissional.com", "Doença 5", new Date("29/12/2021"), 1);
+            prcBean.create("utente2@utente.com", "profissional2@profissional.com", "Doença rara", new Date("05/01/2022"), 6);
         } catch (Exception e) {
             logger.log(Level.SEVERE, e.toString());
         }
