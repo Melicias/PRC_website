@@ -35,7 +35,7 @@ public class TipoDadosBiometricosService {
         return toDTOs(tipoDadosBiometricosBean.getAllTipoDadosBiometricos());
     }
 
-    private TipoDadosBiometricosDTO toDTO(TipoDadosBiometricos tipoDadosBiometricos) {
+    public TipoDadosBiometricosDTO toDTO(TipoDadosBiometricos tipoDadosBiometricos) {
         TipoDadosBiometricosDTO tdb;
         if(tipoDadosBiometricos.getType() == TipoDadosBiometricos.QUALITATIVO){
             tdb = new TipoDadosBiometricosDTO(

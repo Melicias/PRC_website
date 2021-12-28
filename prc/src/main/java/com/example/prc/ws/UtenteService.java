@@ -169,7 +169,9 @@ public class UtenteService {
         List<ProfissionalSaudeDTO> profissionalSaudeDTOS = ToDTOProfissionalSaude(utente.getProfissionalSaude());
         utenteDTO.setProfissionalSaude(profissionalSaudeDTOS);
         List<PrcDTO> prcs = ToDTOPrc(utente.getPrcs());
+        List<UtenteDadosBiometricosDTO> utenteDadosBiometricosDTOS= toDtosDadosBiomediocos(utente.getDadosBiometricos());
         utenteDTO.setPrescricoes(prcs);
+        utenteDTO.setDadosBiometricos(utenteDadosBiometricosDTOS);
         return utenteDTO;
     }
 
@@ -182,6 +184,23 @@ public class UtenteService {
         ProfissionalSaudeService profissionalSaudeService=new ProfissionalSaudeService();
        ProfissionalSaudeDTO profissionalSaudeDTOS= profissionalSaudeService.toDTO(profissionalSaude);
         return  profissionalSaudeDTOS;
+    }
+
+    public UtenteDadosBiometricosDTO toDtoDadosBiomedicos(UtenteDadosBiometricos utenteDadosBiometricos) {
+        UtenteDadosBiometricosDTO utenteDadosBiometricosDTO = new UtenteDadosBiometricosDTO(
+                toDtoTipoDados(utenteDadosBiometricos.getTipoDadosBiometricos()),
+                utenteDadosBiometricos.getData_observacao(),
+                utenteDadosBiometricos.getValor()
+        );
+        return  utenteDadosBiometricosDTO;
+    }
+
+    public List<UtenteDadosBiometricosDTO> toDtosDadosBiomediocos(List<UtenteDadosBiometricos> utenteDadosBiometricos){
+        return utenteDadosBiometricos.stream().map(this::toDtoDadosBiomedicos).collect(Collectors.toList());
+    }
+    private TipoDadosBiometricosDTO toDtoTipoDados(TipoDadosBiometricos tipoDadosBiometricos) {
+        TipoDadosBiometricosService tipoDadosBiometricosService = new TipoDadosBiometricosService();
+        return tipoDadosBiometricosService.toDTO(tipoDadosBiometricos);
     }
 
     private List<PrcDTO> ToDTOPrc(List<Prc> prcs) {
