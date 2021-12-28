@@ -32,6 +32,8 @@ public class ConfigBean {
     ProfissionalSaudeBean profissionalSaudeBean;
     @EJB
     PrcBean prcBean;
+    @EJB
+    UtenteDadosBiometricosBean dadosBiometricosBean;
 
     @PostConstruct
     public void populateDB() {
@@ -103,6 +105,9 @@ public class ConfigBean {
             prcBean.create("utente@utente.com", "profissional9@profissional.com", "Doença 3", new Date("29/12/2021"), 1);
             prcBean.create("utente@utente.com", "profissional5@profissional.com", "Doença 4", new Date("29/12/2021"), 1);
             prcBean.create("utente@utente.com", "profissional1@profissional.com", "Doença 5", new Date("29/12/2021"), 1);
+
+            dadosBiometricosBean.create(1,new Date("28/02/2020"),"115","utente@utente.com");
+
         } catch (Exception e) {
             logger.log(Level.SEVERE, e.toString());
         }

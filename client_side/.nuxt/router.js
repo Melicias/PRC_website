@@ -18,6 +18,7 @@ const _7917c380 = () => interopDefault(import('..\\pages\\profissionalSaude\\cre
 const _12bd3bdc = () => interopDefault(import('..\\pages\\profissionalSaude\\main.vue' /* webpackChunkName: "pages/profissionalSaude/main" */))
 const _7ba81b07 = () => interopDefault(import('..\\pages\\profissionalSaude\\userManagement.vue' /* webpackChunkName: "pages/profissionalSaude/userManagement" */))
 const _17788ca2 = () => interopDefault(import('..\\pages\\profissionalSaude\\usersManagement.vue' /* webpackChunkName: "pages/profissionalSaude/usersManagement" */))
+const _5bdce638 = () => interopDefault(import('..\\pages\\utente\\prescritions\\index.vue' /* webpackChunkName: "pages/utente/prescritions/index" */))
 const _6784c1b8 = () => interopDefault(import('..\\pages\\utente\\profile.vue' /* webpackChunkName: "pages/utente/profile" */))
 const _0fb424ea = () => interopDefault(import('..\\pages\\admin\\biometricdata\\create.vue' /* webpackChunkName: "pages/admin/biometricdata/create" */))
 const _412e5640 = () => interopDefault(import('..\\pages\\admin\\professionaltype\\create.vue' /* webpackChunkName: "pages/admin/professionaltype/create" */))
@@ -25,6 +26,7 @@ const _929cf86a = () => interopDefault(import('..\\pages\\admin\\specialists\\cr
 const _25d44e2b = () => interopDefault(import('..\\pages\\admin\\biometricdata\\_name.vue' /* webpackChunkName: "pages/admin/biometricdata/_name" */))
 const _a45301e4 = () => interopDefault(import('..\\pages\\admin\\patients\\_email.vue' /* webpackChunkName: "pages/admin/patients/_email" */))
 const _ea8e4e28 = () => interopDefault(import('..\\pages\\admin\\specialists\\_email.vue' /* webpackChunkName: "pages/admin/specialists/_email" */))
+const _f141d2c0 = () => interopDefault(import('..\\pages\\utente\\prescritions\\_id.vue' /* webpackChunkName: "pages/utente/prescritions/_id" */))
 const _d23950b4 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
@@ -95,6 +97,10 @@ export const routerOptions = {
     component: _17788ca2,
     name: "profissionalSaude-usersManagement"
   }, {
+    path: "/utente/prescritions",
+    component: _5bdce638,
+    name: "utente-prescritions"
+  }, {
     path: "/utente/profile",
     component: _6784c1b8,
     name: "utente-profile"
@@ -122,6 +128,10 @@ export const routerOptions = {
     path: "/admin/specialists/:email",
     component: _ea8e4e28,
     name: "admin-specialists-email"
+  }, {
+    path: "/utente/prescritions/:id",
+    component: _f141d2c0,
+    name: "utente-prescritions-id"
   }, {
     path: "/",
     component: _d23950b4,
