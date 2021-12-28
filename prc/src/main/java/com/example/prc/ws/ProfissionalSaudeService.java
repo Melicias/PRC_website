@@ -177,7 +177,7 @@ public class ProfissionalSaudeService {
     }
 
     private PrcDTO toDTOPrc(Prc prc) {
-        return new PrcDTO(
+        PrcDTO prcDTO = new PrcDTO(
                 prc.getId(),
                 toDTOUtente(prc.getUtente()),
                 toDTO(prc.getProfissionalSaude()),
@@ -186,6 +186,9 @@ public class ProfissionalSaudeService {
                 prc.getCreated_at(),
                 prc.getDeleted_at()
         );
+        PrescricaoService ps = new PrescricaoService();
+        prcDTO.setPrescricoes(ps.toDTOs(prc.getPrescricoes()));
+        return prcDTO;
     }
 
     private List<PrcDTO> toDTOPrcs(List<Prc> prcs) {

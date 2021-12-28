@@ -103,13 +103,17 @@ public class ConfigBean {
             utenteBean.create("teste123","Adele Farmer", "utente21@utente.com", new Date("22/05/1980"),"profissional10@profissional.com");
             utenteBean.create("teste123","Jordi Greene", "utente22@utente.com", new Date("20/10/1990"));
 
-            prcBean.create("utente@utente.com", "profissional@profissional.com", "Doença", new Date("29/12/2021"), 1);
-            prcBean.create("utente@utente.com", "profissional2@profissional.com", "Doença 1", new Date("29/12/2021"), 1);
-            prcBean.create("utente@utente.com", "profissional1@profissional.com", "Doença 2", new Date("29/12/2021"), 1);
-            prcBean.create("utente@utente.com", "profissional9@profissional.com", "Doença 3", new Date("29/12/2021"), 1);
-            prcBean.create("utente@utente.com", "profissional5@profissional.com", "Doença 4", new Date("29/12/2021"), 1);
-            prcBean.create("utente@utente.com", "profissional1@profissional.com", "Doença 5", new Date("29/12/2021"), 1);
-            prcBean.create("utente2@utente.com", "profissional2@profissional.com", "Doença rara", new Date("05/01/2022"), 6);
+            prcBean.create("utente@utente.com", "profissional@profissional.com", "Doença", new Date("2021/12/29"), 1);
+            prcBean.create("utente@utente.com", "profissional2@profissional.com", "Doença 1", new Date("2021/12/29"), 1);
+            prcBean.create("utente@utente.com", "profissional1@profissional.com", "Doença 2", new Date("2021/12/29"), 1);
+            prcBean.create("utente@utente.com", "profissional9@profissional.com", "Doença 3", new Date("2021/12/29"), 1);
+            prcBean.create("utente@utente.com", "profissional5@profissional.com", "Doença 4", new Date("2021/12/29"), 1);
+            prcBean.create("utente@utente.com", "profissional1@profissional.com", "Doença 5", new Date("2021/12/29"), 1);
+            prcBean.create("utente2@utente.com", "profissional2@profissional.com", "Doença rara", new Date("2022/01/05"), 6);
+            prcBean.create("utente5@utente.com", "profissional1@profissional.com", "Doença teste", new Date("2022/02/10"), 1);
+            prcBean.create("utente3@utente.com", "profissional1@profissional.com", "Doença teste 2.0", new Date("2022/02/01"), 7);
+            prcBean.create("utente6@utente.com", "profissional1@profissional.com", "Doença random", new Date("2022/12/10"), 2);
+            prcBean.create("utente9@utente.com", "profissional1@profissional.com", "Doença que nao se sabe", new Date("2022/01/10"), 4);
 
         } catch (Exception e) {
             logger.log(Level.SEVERE, e.toString());
