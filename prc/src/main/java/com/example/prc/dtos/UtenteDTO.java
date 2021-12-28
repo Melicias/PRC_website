@@ -17,7 +17,7 @@ public class UtenteDTO {
     private int blocked;
     private Date dataNasc;
     private List<ProfissionalSaudeDTO> profissionalSaude;
-    private List<UtenteDadosBiometricos> dadosBiometricos;
+    private List<UtenteDadosBiometricosDTO> dadosBiometricos;
     private List<PrcDTO> prescricoes;
     private String emailProfissionalSaude;
 
@@ -96,11 +96,11 @@ public class UtenteDTO {
         this.profissionalSaude = profissionalSaude;
     }
 
-    public List<UtenteDadosBiometricos> getDadosBiometricos() {
+    public List<UtenteDadosBiometricosDTO> getDadosBiometricos() {
         return dadosBiometricos;
     }
 
-    public void setDadosBiometricos(List<UtenteDadosBiometricos> dadosBiometricos) {
+    public void setDadosBiometricos(List<UtenteDadosBiometricosDTO> dadosBiometricos) {
         this.dadosBiometricos = dadosBiometricos;
     }
 

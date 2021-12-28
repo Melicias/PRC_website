@@ -115,6 +115,8 @@ public class ConfigBean {
             prcBean.create("utente6@utente.com", "profissional1@profissional.com", "Doença random", new Date("2022/12/10"), 2);
             prcBean.create("utente9@utente.com", "profissional1@profissional.com", "Doença que nao se sabe", new Date("2022/01/10"), 4);
 
+            dadosBiometricosBean.create(1,new Date("20/10/2020"),"80","utente@utente.com");
+
         } catch (Exception e) {
             logger.log(Level.SEVERE, e.toString());
         }
