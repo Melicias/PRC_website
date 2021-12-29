@@ -84,6 +84,12 @@
     "chunkName": "pages/profissionalSaude/usersManagement"
   },
   {
+    "name": "utente-biometricdata",
+    "path": "/utente/biometricdata",
+    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\utente\\\\biometricdata\\\\index.vue",
+    "chunkName": "pages/utente/biometricdata/index"
+  },
+  {
     "name": "utente-prescritions",
     "path": "/utente/prescritions",
     "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\utente\\\\prescritions\\\\index.vue",

@@ -172,6 +172,7 @@ public class UtenteService {
         List<UtenteDadosBiometricosDTO> utenteDadosBiometricosDTOS= toDtosDadosBiomediocos(utente.getDadosBiometricos());
         utenteDTO.setPrescricoes(prcs);
         utenteDTO.setDadosBiometricos(utenteDadosBiometricosDTOS);
+        utenteDTO.setPassword("");
         return utenteDTO;
     }
 

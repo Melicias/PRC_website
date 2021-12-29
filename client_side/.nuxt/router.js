@@ -18,6 +18,7 @@ const _7917c380 = () => interopDefault(import('..\\pages\\profissionalSaude\\cre
 const _12bd3bdc = () => interopDefault(import('..\\pages\\profissionalSaude\\main.vue' /* webpackChunkName: "pages/profissionalSaude/main" */))
 const _7ba81b07 = () => interopDefault(import('..\\pages\\profissionalSaude\\userManagement.vue' /* webpackChunkName: "pages/profissionalSaude/userManagement" */))
 const _17788ca2 = () => interopDefault(import('..\\pages\\profissionalSaude\\usersManagement.vue' /* webpackChunkName: "pages/profissionalSaude/usersManagement" */))
+const _7535eec5 = () => interopDefault(import('..\\pages\\utente\\biometricdata\\index.vue' /* webpackChunkName: "pages/utente/biometricdata/index" */))
 const _5bdce638 = () => interopDefault(import('..\\pages\\utente\\prescritions\\index.vue' /* webpackChunkName: "pages/utente/prescritions/index" */))
 const _6784c1b8 = () => interopDefault(import('..\\pages\\utente\\profile.vue' /* webpackChunkName: "pages/utente/profile" */))
 const _0fb424ea = () => interopDefault(import('..\\pages\\admin\\biometricdata\\create.vue' /* webpackChunkName: "pages/admin/biometricdata/create" */))
@@ -96,6 +97,10 @@ export const routerOptions = {
     path: "/profissionalSaude/usersManagement",
     component: _17788ca2,
     name: "profissionalSaude-usersManagement"
+  }, {
+    path: "/utente/biometricdata",
+    component: _7535eec5,
+    name: "utente-biometricdata"
   }, {
     path: "/utente/prescritions",
     component: _5bdce638,
