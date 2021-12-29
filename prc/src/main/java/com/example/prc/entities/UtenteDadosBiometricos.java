@@ -10,10 +10,15 @@ import java.util.List;
 @Entity
 
 @NamedQueries({
+
+        @NamedQuery(name = "dadosBiometricos",
+        query = "select ut from UtenteDadosBiometricos ut where ut.utente.email= :email order by ut.data_observacao DESC "),
+
         @NamedQuery(
                 name = "isDadosBiometricosUsed",
                 query = "SELECT 1 FROM UtenteDadosBiometricos udb where udb.tipoDadosBiometricos.id = :id" // JPQL
         )
+
 })
 
 public class UtenteDadosBiometricos {

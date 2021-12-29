@@ -4,7 +4,7 @@
     <br>
     <br>
     <b-card header="My atual Prescriptions">
-      <b-table striped over sticky-header :items="prescritions" :fields="fields" ref="tableCom">
+      <b-table striped over sticky-header :items="prescritionsValidat" :fields="fields" ref="tableCom">
         <template v-slot:cell(disease)="row">
           {{row.item.doenca}}
         </template>
@@ -34,6 +34,7 @@ export default {
     return {
        utente: {},
       prescritions: [],
+      prescritionsValidat:[],
       fields: ['disease', 'Doctor', 'validity','actions'],
     }
   },
@@ -43,14 +44,17 @@ export default {
     },
   },
   created() {
-    console.log(this.email);
     this.$axios.$get(`/api/utente/${this.email}`)
       .then((utente) => {
         this.utente = utente || {}
         this.prescritions = this.utente.prescricoes;
-        console.log(this.prescritions)
-        console.log(this.utente) 
-
+       this.prescritions.forEach(element => {
+         var date= new Date();
+         var validade=new Date(element.validade)
+         if(date<validade){
+           this.prescritionsValidat.push(element)
+         }
+        });
       })
     }
 }

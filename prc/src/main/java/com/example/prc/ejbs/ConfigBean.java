@@ -116,7 +116,14 @@ public class ConfigBean {
             prcBean.create("utente9@utente.com", "profissional1@profissional.com", "Doença que nao se sabe", new Date("2022/01/10"), 4,true);
 
             dadosBiometricosBean.create(1,new Date("20/10/2020"),"80","utente@utente.com");
+            dadosBiometricosBean.create(1,new Date("20/10/2021"),"90","utente@utente.com");
+            dadosBiometricosBean.create(1,new Date("20/10/2024"),"65","utente@utente.com");
+            dadosBiometricosBean.create(1,new Date("20/10/2025"),"70","utente@utente.com");
+            dadosBiometricosBean.create(1,new Date("21/10/2025"),"80","utente@utente.com");
+            dadosBiometricosBean.create(2,new Date("21/10/2025"),"80","utente@utente.com");
+            dadosBiometricosBean.create(2,new Date("21/10/2024"),"80","utente@utente.com");
             dadosBiometricosBean.create(2,new Date("20/10/2020"),"70","utente21@utente.com");
+
 
         } catch (Exception e) {
             logger.log(Level.SEVERE, e.toString());
