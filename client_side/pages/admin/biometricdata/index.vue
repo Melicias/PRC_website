@@ -1,6 +1,6 @@
 <template>
   <b-container>
-    <h1>Type of Biometric data Management</h1>
+    <h2>Type of Biometric data Management</h2>
     <br>
     <b-button v-b-toggle.collapse-1 variant="primary" href="/admin">Back</b-button>
     <b-button v-b-toggle.collapse-1 variant="primary" href="/admin/biometricdata/create">Create New</b-button>

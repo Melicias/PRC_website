@@ -1,6 +1,6 @@
 <template>
   <b-container>
-    <h1>Professional type data Management</h1>
+    <h2>Healthcare Specialists type data Management</h2>
     <br>
     <b-button v-b-toggle.collapse-1 variant="primary" href="/admin">Back</b-button>
     <b-button v-b-toggle.collapse-1 variant="primary" href="/admin/professionaltype/create">Create New</b-button>

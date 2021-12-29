@@ -1,6 +1,6 @@
 <template>
   <b-container>
-    <h1>Welcome Back {{email}}</h1>
+    <h3>Welcome {{email}}</h3>
     <br><br>
     <nuxt-link :to="'/admin/patients'">
       <div class="img-with-text">
@@ -23,7 +23,7 @@
     <nuxt-link :to="'/admin/professionaltype'">
       <div class="img-with-text">
         <img width="100" height="100" src="../../img/hematologist.png" alt="Image not loaded" />
-        <p>Professional type management</p>
+        <p>Healthcare specialists type management</p>
       </div>
     </nuxt-link>
 
