@@ -1,26 +1,30 @@
 package com.example.prc.ejbs;
 
 import com.example.prc.dtos.UtenteDTO;
-import com.example.prc.entities.ProfissionalSaude;
-import com.example.prc.entities.TipoDadosBiometricos;
-import com.example.prc.entities.TipoProfissional;
-import com.example.prc.entities.Utente;
+import com.example.prc.entities.*;
 import com.example.prc.exceptions.MyConstraintViolationException;
 import com.example.prc.exceptions.MyEntityExistsException;
 import com.example.prc.exceptions.MyEntityNotFoundException;
+import com.example.prc.exceptions.MyIllegalArgumentException;
+import com.example.prc.ws.LoginService;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.LockModeType;
 import javax.persistence.PersistenceContext;
 import javax.validation.ConstraintViolationException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Logger;
 
 @Stateless
 public class ProfissionalSaudeBean {
     @PersistenceContext
     EntityManager em;
+
+    private static final Logger log =
+            Logger.getLogger(ProfissionalSaude.class.getName());
 
     public void create(String password, String name, String email, int idTipoProfissional)
             throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException {
@@ -77,17 +81,23 @@ public class ProfissionalSaudeBean {
         }
     }
 
-    public ProfissionalSaude deleteProfissionalSaude(String email){
+    public ProfissionalSaude deleteProfissionalSaude(String email)
+            throws MyEntityNotFoundException {
         ProfissionalSaude ps = em.find(ProfissionalSaude.class,email);
-        if(ps != null){
-            if(ps.getDeleted_at() == null){
-                ps.setDeleted_at(new Date());
-            }else{
-                ps.setDeleted_at(null);
-            }
-            em.persist(ps);
+        if(ps == null)
+            throw new MyEntityNotFoundException("Patient with this email not found");
+        if(ps.getUtentes().isEmpty() && ps.getPrcs().isEmpty()){
+            em.remove(ps);
             em.flush();
+            return null;
         }
+        if(ps.getDeleted_at() == null){
+            ps.setDeleted_at(new Date());
+        }else{
+            ps.setDeleted_at(null);
+        }
+        em.persist(ps);
+        em.flush();
         return ps;
     }
 
@@ -132,21 +142,28 @@ public class ProfissionalSaudeBean {
     }
 
     public Utente removeUtente(String emailprofissional, String emailUtente)
-            throws MyEntityNotFoundException, MyConstraintViolationException {
+            throws MyEntityNotFoundException, MyConstraintViolationException,MyIllegalArgumentException {
         ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class,emailprofissional);
         if(profissionalSaude == null)
             throw new MyEntityNotFoundException("The Healthcare specialist was not found..");
         Utente utente = em.find(Utente.class,emailUtente);
         if(utente == null)
             throw new MyEntityNotFoundException("The Pacient was not found..");
+        List<Prc> prcs = utente.getPrcs();
+        for(int i = 0;i <prcs.size();i++){
+            if(prcs.get(i).getProfissionalSaude().getEmail() == profissionalSaude.getEmail()){
+                if (prcs.get(i).getValidade().after(new Date())) {
+                    throw new MyIllegalArgumentException("There is Prcs not finished...");
+                }
+            }
+        }
         try {
             profissionalSaude.removerUtente(utente);
             utente.removeProfissionalSaude(profissionalSaude);
             em.merge(utente);
             em.merge(profissionalSaude);
             return utente;
-        } catch (
-                ConstraintViolationException e) {
+        } catch (ConstraintViolationException e) {
             throw new MyConstraintViolationException(e);
         }
     }

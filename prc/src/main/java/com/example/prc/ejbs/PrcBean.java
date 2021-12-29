@@ -16,7 +16,7 @@ public class PrcBean {
     @PersistenceContext
     EntityManager em;
 
-    public void create(String emailUtente, String emailProfissionalSaude, String doenca, Date validade, int idPrescricao)
+    public void create(String emailUtente, String emailProfissionalSaude, String doenca, Date validade, int idPrescricao, boolean itsBean)
             throws MyEntityNotFoundException, MyConstraintViolationException {
         Utente utente = em.find(Utente.class, emailUtente);
         if (utente == null) {
@@ -25,9 +25,11 @@ public class PrcBean {
         ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class, emailProfissionalSaude);
         if(profissionalSaude == null)
             throw new MyEntityNotFoundException("Healthcare specialist not found.");
-        Date date = new Date();
-        if (validade.before(date)) {
-            throw new MyEntityNotFoundException("Validation date must be after current date.");
+        if(!itsBean) {
+            Date date = new Date();
+            if (validade.before(date)) {
+                throw new MyEntityNotFoundException("Validation date must be after current date.");
+            }
         }
         Prescricao prescricao = em.find(Prescricao.class, idPrescricao);
         if (prescricao == null) {

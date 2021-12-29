@@ -11,8 +11,6 @@
           required
         ></b-form-input>
       </b-form-group>
-      <p>{{ profissionalsaude.deleted_at == null ? "" : "Deleted!" }}</p>
-      <p>{{ profissionalsaude.blocked == 0 ? "" : "Blocked!" }}</p>
       <b-form-group id="input-group-2" label="Type:" label-for="input-2">
         <b-form-select
           id="input-4"
@@ -42,6 +40,10 @@
         </b-form-group>
         <b-button type="submit" variant="primary">Update</b-button>
       </b-form>
+      <br>
+      <b-button variant="danger" @click.prevent="deleteSpecialist()">{{profissionalsaude.deleted_at == undefined ? "Delete" : "Recover"}}</b-button>
+      <b-button variant="danger" @click.prevent="blockSpecialist()">{{profissionalsaude.blocked == 0 ? "Block" : "Unblock"}}</b-button>
+      <br>
     </b-card>
     <br>
     <b-card header="His pacients">
@@ -121,12 +123,13 @@ export default {
       })
     this.$axios.$get(`/api/profissionalsaude/${this.email}`)
       .then((profissionalsaude) => {
+        if(!profissionalsaude.hasOwnProperty("deleted_at"))
+          profissionalsaude.deleted_at = undefined
         this.profissionalsaude = profissionalsaude || {}
         this.utentesProfissional = this.profissionalsaude.utentes;
         this.form.name = this.profissionalsaude.name
         this.form.tipoProfissional = this.profissionalsaude.tipoProfissional.id
         this.prcs = this.profissionalsaude.prcs;
-        console.log(this.prcs)
       })
     this.$axios.$get(`/api/utente/semprofissional/${this.email}`)
       .then((utentes) => {
@@ -194,7 +197,31 @@ export default {
           this.$refs.tableSem.refresh();
         })
         .catch(error => {
-          this.$toast.error(error).goAway(3000)
+          this.$toast.error(error.response.data).goAway(3000)
+        })
+    },
+    deleteSpecialist() {
+      this.$axios.$delete(`/api/profissionalsaude/${this.email}`)
+        .then(msg => {
+          this.$toast.success("Specialist deleted with success").goAway(1500)
+          console.log(msg)
+          if(msg === ''){
+            this.$router.push("/admin/specialists")
+          }
+          this.profissionalsaude.deleted_at = msg.deleted_at
+        })
+        .catch(error => {
+          this.$toast.error('error while deleting').goAway(3000)
+        })
+    },
+    blockSpecialist() {
+      this.$axios.put(`/api/profissionalsaude/block/${this.email}`)
+        .then(msg => {
+          this.$toast.success("Specialist deleted with success").goAway(1500)
+          this.profissionalsaude.blocked = msg.data.blocked
+        })
+        .catch(error => {
+          this.$toast.error('error while deleting').goAway(3000)
         })
     }
   }

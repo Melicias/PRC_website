@@ -2,6 +2,7 @@ package com.example.prc.ejbs;
 
 import com.example.prc.entities.TipoDadosBiometricos;
 import com.example.prc.entities.TipoProfissional;
+import com.example.prc.entities.UtenteDadosBiometricos;
 import com.example.prc.exceptions.MyConstraintViolationException;
 import com.example.prc.exceptions.MyEntityExistsException;
 import com.example.prc.exceptions.MyEntityNotFoundException;
@@ -72,7 +73,8 @@ public class TipoDadosBiometricosBean {
         if(tdb == null)
             throw new MyEntityNotFoundException("Type of Biometric data not found");
 
-        if(tdb.getDadosBiometricos().size() == 0 ){
+        List<UtenteDadosBiometricos> utb = (List<UtenteDadosBiometricos>) em.createNamedQuery("isDadosBiometricosUsed").setParameter("id",id).setMaxResults(1).getResultList();
+        if(utb.isEmpty()){
             em.remove(tdb);
             em.flush();
             return null;

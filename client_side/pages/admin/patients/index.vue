@@ -1,6 +1,6 @@
 <template>
   <b-container>
-    <h1>Patients Management</h1>
+    <h2>Patients Management</h2>
     <br>
     <b-button v-b-toggle.collapse-1 variant="primary" href="/admin">Back</b-button>
     <br><br>
