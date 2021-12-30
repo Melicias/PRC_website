@@ -31,10 +31,13 @@ com/example/prc/ejbs/ProfissionalSaudeBean.class
 com/example/prc/ejbs/TipoPrescricaoBean.class
 com/example/prc/dtos/PrescricaoDTO.class
 com/example/prc/ws/TipoPrescricaoService.class
+com/example/prc/ejbs/TipoDadosBiometricosQuantitativoBean.class
 com/example/prc/dtos/PrcDTO.class
 com/example/prc/exceptions/MyEntityExistsExceptionMapper.class
+com/example/prc/dtos/TipoDadosBiometricosQuantitativoDTO.class
 com/example/prc/dtos/TipoPrescricaoDTO.class
 com/example/prc/ws/UtenteService.class
+com/example/prc/entities/TipoDadosBiometricosQuantitativo.class
 com/example/prc/ejbs/ConfigBean.class
 com/example/prc/exceptions/MyIllegalArgumentException.class
 com/example/prc/entities/Utente.class

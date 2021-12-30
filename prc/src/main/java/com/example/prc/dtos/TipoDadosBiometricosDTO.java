@@ -1,6 +1,10 @@
 package com.example.prc.dtos;
 
+import com.example.prc.entities.TipoDadosBiometricosQuantitativo;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class TipoDadosBiometricosDTO {
     //vai preencher a string
@@ -12,15 +16,15 @@ public class TipoDadosBiometricosDTO {
     private int type;
     private double min;
     private double max;
-    private String quantitativo;
     private Date deleted_at;
+    private List<TipoDadosBiometricosQuantitativoDTO> tipoDadosBiometricosQuantitativo;
 
-    public TipoDadosBiometricosDTO(String name, double min, double max,int type, String quantitativo) {
+    public TipoDadosBiometricosDTO(String name, double min, double max,int type) {
         this.name = name;
         this.min = min;
         this.max = max;
         this.type = type;
-        this.quantitativo = quantitativo;
+        tipoDadosBiometricosQuantitativo = new ArrayList<>();
     }
 
     public TipoDadosBiometricosDTO() {
@@ -36,10 +40,9 @@ public class TipoDadosBiometricosDTO {
         this.deleted_at = deleted_at;
     }
 
-    public TipoDadosBiometricosDTO(int id, String name, String quantitativo, Date deleted_at) {
+    public TipoDadosBiometricosDTO(int id, String name, Date deleted_at) {
         this.id = id;
         this.name = name;
-        this.quantitativo = quantitativo;
         this.type = QUANTITATIVO;
         this.deleted_at = deleted_at;
     }
@@ -84,19 +87,23 @@ public class TipoDadosBiometricosDTO {
         this.max = max;
     }
 
-    public String getQuantitativo() {
-        return quantitativo;
-    }
-
-    public void setQuantitativo(String quantitativo) {
-        this.quantitativo = quantitativo;
-    }
-
     public Date getDeleted_at() {
         return deleted_at;
     }
 
     public void setDeleted_at(Date deleted_at) {
         this.deleted_at = deleted_at;
+    }
+
+    public List<TipoDadosBiometricosQuantitativoDTO> getTipoDadosBiometricosQuantitativo() {
+        return tipoDadosBiometricosQuantitativo;
+    }
+
+    public void setTipoDadosBiometricosQuantitativo(List<TipoDadosBiometricosQuantitativoDTO> tipoDadosBiometricosQuantitativo) {
+        this.tipoDadosBiometricosQuantitativo = tipoDadosBiometricosQuantitativo;
+    }
+
+    public void addTipoDadosBiometricosQuantitativo(TipoDadosBiometricosQuantitativoDTO tipoDadosBiometricosQuantitativo){
+        this.tipoDadosBiometricosQuantitativo.add(tipoDadosBiometricosQuantitativo);
     }
 }
