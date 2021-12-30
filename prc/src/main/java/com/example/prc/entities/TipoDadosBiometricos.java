@@ -35,14 +35,15 @@ public class TipoDadosBiometricos {
     private int type;
     private double min;
     private double max;
-    private String quantitativo;
     @Temporal(TemporalType.TIMESTAMP)
     private Date deleted_at;
     @OneToMany(mappedBy = "tipoDadosBiometricos")
     private List<UtenteDadosBiometricos> dadosBiometricos;
+    @OneToMany(mappedBy = "tipoDadosBiometricos")
+    private List<TipoDadosBiometricosQuantitativo> tipoDadosBiometricosQuantitativo;
 
     public TipoDadosBiometricos() {
-
+        tipoDadosBiometricosQuantitativo = new ArrayList<>();
     }
 
     public TipoDadosBiometricos(String name, double min, double max) {
@@ -51,13 +52,14 @@ public class TipoDadosBiometricos {
         this.max = max;
         this.type = QUALITATIVO;
         dadosBiometricos = new ArrayList<>();
+        tipoDadosBiometricosQuantitativo = new ArrayList<>();
     }
 
-    public TipoDadosBiometricos(String name, String quantitativo) {
+    public TipoDadosBiometricos(String name) {
         this.name = name;
-        this.quantitativo = quantitativo;
         this.type = QUANTITATIVO;
         dadosBiometricos = new ArrayList<>();
+        tipoDadosBiometricosQuantitativo = new ArrayList<>();
     }
 
     public int getId() {
@@ -100,14 +102,6 @@ public class TipoDadosBiometricos {
         this.max = max;
     }
 
-    public String getQuantitativo() {
-        return quantitativo;
-    }
-
-    public void setQuantitativo(String quantitativo) {
-        this.quantitativo = quantitativo;
-    }
-
     public Date getDeleted_at() {
         return deleted_at;
     }
@@ -122,5 +116,17 @@ public class TipoDadosBiometricos {
 
     public void setDadosBiometricos(List<UtenteDadosBiometricos> dadosBiometricos) {
         this.dadosBiometricos = dadosBiometricos;
+    }
+
+    public List<TipoDadosBiometricosQuantitativo> getTipoDadosBiometricosQuantitativo() {
+        return tipoDadosBiometricosQuantitativo;
+    }
+
+    public void setTipoDadosBiometricosQuantitativo(List<TipoDadosBiometricosQuantitativo> tipoDadosBiometricosQuantitativo) {
+        this.tipoDadosBiometricosQuantitativo = tipoDadosBiometricosQuantitativo;
+    }
+
+    public void addTipoDadosBiometricosQuantitativo(TipoDadosBiometricosQuantitativo tipoDadosBiometricosQuantitativo){
+        this.tipoDadosBiometricosQuantitativo.add(tipoDadosBiometricosQuantitativo);
     }
 }

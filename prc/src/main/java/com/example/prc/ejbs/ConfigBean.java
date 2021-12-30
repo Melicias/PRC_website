@@ -1,5 +1,7 @@
 package com.example.prc.ejbs;
 
+import com.example.prc.dtos.TipoDadosBiometricosQuantitativoDTO;
+import com.example.prc.entities.TipoDadosBiometricosQuantitativo;
 import com.example.prc.entities.TipoPrescricao;
 import com.example.prc.entities.TipoProfissional;
 
@@ -7,6 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,6 +37,8 @@ public class ConfigBean {
     PrcBean prcBean;
     @EJB
     UtenteDadosBiometricosBean dadosBiometricosBean;
+    @EJB
+    TipoDadosBiometricosQuantitativoBean tipoDadosBiometricosQuantitativo;
 
     @PostConstruct
     public void populateDB() {
@@ -54,9 +59,23 @@ public class ConfigBean {
             tipoProfissional.create("Genecologista");
             tipoProfissional.create("Urologista");
 
-            tipoDadosBiometricos.create("bpm",60,100,null);
-            tipoDadosBiometricos.create("colestrol",5,10,null);
-            tipoDadosBiometricos.create("obesidade",0, 0,"cenas que nao vou criar ja mas possivelmente criado em json");
+            tipoDadosBiometricos.create("bpm",60,100,true,new ArrayList<>());
+            tipoDadosBiometricos.create("colestrol",5,10,true,new ArrayList<>());
+            /*ArrayList<TipoDadosBiometricosQuantitativoDTO> tdbq = new ArrayList<>();
+            tdbq.add(new TipoDadosBiometricosQuantitativoDTO(0,18.5,"Lower"));
+            tdbq.add(new TipoDadosBiometricosQuantitativoDTO(18.5,24.9,"Normal"));
+            tdbq.add(new TipoDadosBiometricosQuantitativoDTO(25,29.9,"overweight"));
+            tdbq.add(new TipoDadosBiometricosQuantitativoDTO(30,34.9,"Obesity I"));
+            tdbq.add(new TipoDadosBiometricosQuantitativoDTO(35,39.9,"Obesity II"));
+            tdbq.add(new TipoDadosBiometricosQuantitativoDTO(40,0,"Obesity III"));*/
+            tipoDadosBiometricos.create("IMC",0, 0,false,new ArrayList<>());
+
+            tipoDadosBiometricosQuantitativo.create("Lower",0,18.5,3);
+            tipoDadosBiometricosQuantitativo.create("Normal",18.5,24.9,3);
+            tipoDadosBiometricosQuantitativo.create("overweight",25,29.9,3);
+            tipoDadosBiometricosQuantitativo.create("Obesity I",30,34.9,3);
+            tipoDadosBiometricosQuantitativo.create("Obesity II",35,39.9,3);
+            tipoDadosBiometricosQuantitativo.create("Obesity III",40,0,3);
 
             prescricaoBean.create("Tomar os medicamentos todos os dias","Prescricao medicamentos diario",1);
             prescricaoBean.create("Tomar os medicamentos a noite","Prescricao medicamentos noturnos",1);

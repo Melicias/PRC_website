@@ -42,6 +42,7 @@ export default {
     this.$axios.$get('/api/tipoDadosBiometricos')
       .then((tipoDadosBiometricos) => {
         this.tipoDadosBiometricos = tipoDadosBiometricos
+        console.log(this.tipoDadosBiometricos)
       })
   },
   methods: {

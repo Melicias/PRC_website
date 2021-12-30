@@ -100,8 +100,9 @@
   {
     "name": "utente-biometricdata",
     "path": "/utente/biometricdata",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\utente\\\\biometricdata\\\\index.vue",
-    "chunkName": "pages/utente/biometricdata/index"
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/utente/biometricdata/index.vue",
+    "chunkName": "pages/utente/biometricdata/index",
+    "_name": "_7e26ad08"
   },
   {
     "name": "utente-prescritions",

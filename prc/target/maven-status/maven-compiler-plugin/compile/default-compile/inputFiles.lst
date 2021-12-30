@@ -15,7 +15,9 @@
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/ejbs/JwtBean.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/dtos/PrcDTO.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/entities/ProfissionalSaude.java
+/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/entities/TipoDadosBiometricosQuantitativo.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/ejbs/TipoDadosBiometricosBean.java
+/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/dtos/TipoDadosBiometricosQuantitativoDTO.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/exceptions/CatchAllExceptionMapper.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/entities/TipoProfissional.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/exceptions/MyEntityNotFoundException.java
@@ -37,6 +39,7 @@
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/exceptions/MyIllegalArgumentException.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/ws/PrescricaoService.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/entities/User.java
+/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/ejbs/TipoDadosBiometricosQuantitativoBean.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/dtos/ProfissionalSaudeDTO.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/ws/LoginService.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/entities/TipoPrescricao.java

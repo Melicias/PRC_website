@@ -4,7 +4,6 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-
 const _01017896 = () => interopDefault(import('../pages/admin/index.vue' /* webpackChunkName: "pages/admin/index" */))
 const _7b685732 = () => interopDefault(import('../pages/tipoProfissional/index.vue' /* webpackChunkName: "pages/tipoProfissional/index" */))
 const _46015dae = () => interopDefault(import('../pages/utente/index.vue' /* webpackChunkName: "pages/utente/index" */))
@@ -19,6 +18,7 @@ const _0b2acc44 = () => interopDefault(import('../pages/profissionalSaude/create
 const _4af3d6f0 = () => interopDefault(import('../pages/profissionalSaude/main.vue' /* webpackChunkName: "pages/profissionalSaude/main" */))
 const _5e66db36 = () => interopDefault(import('../pages/profissionalSaude/userManagement.vue' /* webpackChunkName: "pages/profissionalSaude/userManagement" */))
 const _66e30104 = () => interopDefault(import('../pages/profissionalSaude/usersManagement.vue' /* webpackChunkName: "pages/profissionalSaude/usersManagement" */))
+const _7e26ad08 = () => interopDefault(import('../pages/utente/biometricdata/index.vue' /* webpackChunkName: "pages/utente/biometricdata/index" */))
 const _2535b0f1 = () => interopDefault(import('../pages/utente/prescritions/index.vue' /* webpackChunkName: "pages/utente/prescritions/index" */))
 const _d8308a80 = () => interopDefault(import('../pages/utente/profile.vue' /* webpackChunkName: "pages/utente/profile" */))
 const _737ff4b6 = () => interopDefault(import('../pages/admin/biometricdata/create.vue' /* webpackChunkName: "pages/admin/biometricdata/create" */))
@@ -99,7 +99,7 @@ export const routerOptions = {
     name: "profissionalSaude-usersManagement"
   }, {
     path: "/utente/biometricdata",
-    component: _7535eec5,
+    component: _7e26ad08,
     name: "utente-biometricdata"
   }, {
     path: "/utente/prescritions",
