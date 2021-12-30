@@ -20,6 +20,11 @@
           <b-button variant="success"  @click.prevent="deleteTipo(`${data.item.id}`, `${data.index}`)">undo</b-button>
         </div>
       </template>
+      <template #cell(quantitativo)="data">
+        <p v-for="tipoDado in data.item.tipoDadosBiometricosQuantitativo">
+          {{tipoDado.name + " - min: " + tipoDado.min + " max: " + tipoDado.max }}
+        </p>
+      </template>
       <template v-slot:cell(actions)="row">
         <nuxt-link
           tag="img" style="cursor: pointer"

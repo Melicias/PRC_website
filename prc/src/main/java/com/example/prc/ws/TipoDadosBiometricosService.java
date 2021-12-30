@@ -54,7 +54,6 @@ public class TipoDadosBiometricosService {
                     tipoDadosBiometricos.getName(),
                     tipoDadosBiometricos.getDeleted_at()
             );
-            log.info(tipoDadosBiometricos.getTipoDadosBiometricosQuantitativo().size() + "");
             tdb.setTipoDadosBiometricosQuantitativo(toDTOsTipoDadosBiometricosQuantitativo(tipoDadosBiometricos.getTipoDadosBiometricosQuantitativo()));
         }
         return tdb;
