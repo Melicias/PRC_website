@@ -17,6 +17,14 @@ import java.util.List;
         @NamedQuery(
                 name = "getPrescricaoByName",
                 query = "SELECT tp FROM Prescricao tp where tp.name = :name" // JPQL
+        ),
+        @NamedQuery(
+                name = "getPrescricoesComUmPrc",
+                query = "SELECT distinct p FROM Prescricao p left join fetch p.prcs ps where exists (select 1 from p.prcs psps where psps.id = :idPrc) and p.deleted_at is null" // JPQL
+        ),
+        @NamedQuery(
+                name = "getPrescricoesSemUmPrc",
+                query = "SELECT distinct p FROM Prescricao p left join fetch p.prcs ps where not exists (select 1 from p.prcs psps where psps.id = :idPrc) and p.deleted_at is null" // JPQL
         )
 })
 
@@ -110,6 +118,10 @@ public class Prescricao {
 
     public void addPrc(Prc prc) {
         prcs.add(prc);
+    }
+
+    public void removePrc(Prc prc) {
+        prcs.remove(prc);
     }
 
     public List<Prc> getPrcs() {

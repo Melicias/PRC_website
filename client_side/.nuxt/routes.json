@@ -123,7 +123,7 @@
     "path": "/admin/biometricdata/create",
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/biometricdata/create.vue",
     "chunkName": "pages/admin/biometricdata/create",
-    "_name": "_737ff4b6"
+    "_name": "_737ff4b6
   },
   {
     "name": "admin-professionaltype-create",

@@ -46,6 +46,10 @@ export const routerOptions = {
     component: _01017896,
     name: "admin"
   }, {
+    path: "/profissionalSaude",
+    component: _2d55ccb9,
+    name: "profissionalSaude"
+  }, {
     path: "/tipoProfissional",
     component: _7b685732,
     name: "tipoProfissional"

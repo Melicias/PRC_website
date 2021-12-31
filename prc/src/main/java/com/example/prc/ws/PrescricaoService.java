@@ -6,6 +6,8 @@ import com.example.prc.dtos.UtenteDTO;
 import com.example.prc.ejbs.PrescricaoBean;
 import com.example.prc.entities.Prescricao;
 import com.example.prc.entities.TipoPrescricao;
+import com.example.prc.entities.Utente;
+import com.example.prc.exceptions.MyEntityNotFoundException;
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;
@@ -25,8 +27,31 @@ public class PrescricaoService {
     @GET
     @Path("/")
     public List<PrescricaoDTO> getAllPrescricoes() {
-        System.out.println(toDTOs(prescricaoBean.getAllPrescricoes()));
         return toDTOs(prescricaoBean.getAllPrescricoes());
+    }
+
+    @GET
+    @Path("/comUmPrc/{idPrc}")
+    public Response getAllPrescricoesComUmPrc(@PathParam("idPrc") int idPrc) {
+        List<Prescricao> prescricoes;
+        try{
+            prescricoes = prescricaoBean.getPrescricoesComUmPrc(idPrc);
+        }catch (Exception e){
+            return Response.status(400).entity(e.getMessage()).build();
+        }
+        return Response.ok(toDTOs(prescricoes)).build();
+    }
+
+    @GET
+    @Path("/semUmPrc/{idPrc}")
+    public Response getAllPrescricoesSemUmPrc(@PathParam("idPrc") int idPrc) {
+        List<Prescricao> prescricoes;
+        try{
+            prescricoes = prescricaoBean.getPrescricoesSemUmPrc(idPrc);
+        }catch (Exception e){
+            return Response.status(400).entity(e.getMessage()).build();
+        }
+        return Response.ok(toDTOs(prescricoes)).build();
     }
 
     @POST
@@ -44,6 +69,37 @@ public class PrescricaoService {
             return Response.status(400).entity(e.getMessage()).build();
         }
         return Response.ok(prescricaoDTO).build();
+    }
+
+    @PUT
+    @Path("/")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response updatePrescricao(PrescricaoDTO prescricaoDTO) {
+        try {
+            prescricaoBean.update(
+                    prescricaoDTO.getId(),
+                    prescricaoDTO.getDescricao(),
+                    prescricaoDTO.getName(),
+                    prescricaoDTO.getTipoPrescricaoId()
+            );
+        } catch (Exception e) {
+            return Response.status(400).entity(e.getMessage()).build();
+        }
+        return Response.ok(prescricaoDTO).build();
+    }
+
+    @DELETE
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response deletePrescricao(@PathParam("id") int id) throws MyEntityNotFoundException {
+        try{
+            Prescricao prescricao = prescricaoBean.delete(id);
+            return Response.ok(toDTO(prescricao)).build();
+        }catch (Exception e){
+            return Response.status(400).entity(e.getMessage()).build();
+        }
     }
 
     private PrescricaoDTO toDTO(Prescricao prescricao) {

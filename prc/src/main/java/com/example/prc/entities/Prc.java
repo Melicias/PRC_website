@@ -122,6 +122,10 @@ public class Prc {
         prescricoes.add(prescricao);
     }
 
+    public void removePrescricao(Prescricao prescricao) {
+        prescricoes.remove(prescricao);
+    }
+
     public List<Prescricao> getPrescricoes() {
         return prescricoes;
     }

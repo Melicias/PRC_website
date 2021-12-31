@@ -3,6 +3,7 @@ package com.example.prc.ws;
 import com.example.prc.dtos.*;
 import com.example.prc.ejbs.PrcBean;
 import com.example.prc.entities.*;
+import com.example.prc.exceptions.MyEntityNotFoundException;
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;
@@ -34,7 +35,7 @@ public class PrcService {
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createPrescricao(PrcDTO prcDTO) {
+    public Response createPrc(PrcDTO prcDTO) {
         try {
             prcBean.create(
                     prcDTO.getEmailUtente(),
@@ -48,6 +49,62 @@ public class PrcService {
             return Response.status(400).entity(e.getMessage()).build();
         }
         return Response.ok(prcDTO).build();
+    }
+
+    @PUT
+    @Path("/")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response updatePrc(PrcDTO prcDTO) {
+        try {
+            prcBean.update(
+                    prcDTO.getId(),
+                    prcDTO.getDoenca(),
+                    prcDTO.getValidade()
+            );
+        } catch (Exception e) {
+            return Response.status(400).entity(e.getMessage()).build();
+        }
+        return Response.ok(prcDTO).build();
+    }
+
+    @DELETE
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response deletePrc(@PathParam("id") int id) throws MyEntityNotFoundException {
+        try{
+            Prc prc = prcBean.delete(id);
+            return Response.ok(toDTO(prc)).build();
+        }catch (Exception e){
+            return Response.status(400).entity(e.getMessage()).build();
+        }
+    }
+
+    @POST
+    @Path("/addPrescription")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response addPrescriptionToPrc(PrcDTO prcDTO){
+        try {
+            prcBean.addPrescricao(prcDTO.getId(), prcDTO.getIdPrescricao());
+        } catch (Exception e) {
+            return Response.status(400).entity(e.getMessage()).build();
+        }
+        return  Response.ok(prcDTO).build();
+    }
+
+    @POST
+    @Path("/removePrescription")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response removePrescriptionFromToPrc(PrcDTO prcDTO){
+        try {
+            prcBean.removePrescricao(prcDTO.getId(), prcDTO.getIdPrescricao());
+        } catch (Exception e) {
+            return Response.status(400).entity(e.getMessage()).build();
+        }
+        return  Response.ok(prcDTO).build();
     }
 
     private PrcDTO toDTO(Prc prc) {

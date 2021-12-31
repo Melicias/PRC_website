@@ -2,7 +2,7 @@
     <div> 
         <b-container>
             <h2>Create PRC</h2>
-            <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+            <b-form class="margin" @submit="onSubmit" @reset="onReset" v-if="show">
                 <b-form-group
                     id="input-group-1"
                     label="Disease:"
@@ -88,8 +88,8 @@
                       </b-form>
                   </b-container>
                 </b-form-group>     
-                <b-button class="btn-default" to="/profissionalSaude/userManagement">Back</b-button> 
-                <b-button type="submit" variant="primary">Submit</b-button>
+                <b-button variant="primary" to="/profissionalSaude/pacientManagement">Back</b-button> 
+                <b-button type="submit" variant="primary" >Submit</b-button>
                 <b-button type="reset" variant="danger">Reset</b-button>
             </b-form>
             
@@ -124,7 +124,7 @@ export default {
             doenca: this.form.doenca,
             validade: new Date(this.form.validade).toISOString(),
             idPrescricao: this.selectPrescription,
-            emailUtente: "utente@utente.com",
+            emailUtente: this.$store.state.pacientEmail,
             emailProfissionalSaude: "profissional@profissional.com"
           })
             .then(msg => {
@@ -137,6 +137,7 @@ export default {
               this.$nextTick(() => {
                 this.show = true
               })
+              this.$router.push({path: 'pacientManagement'});
             })
             .catch(error => {
               console.log(error.response.data)
@@ -197,6 +198,6 @@ export default {
 </script>
 <style scoped>
 .margin{
-  margin-top: 10px;
+  margin-top: 30px;
 }
 </style>

@@ -1,8 +1,8 @@
 <template>
     <div> 
         <b-container>
-            <h2>Create a User</h2>
-            <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+            <h1>Create a User</h1>
+            <b-form class="margin" @submit="onSubmit" @reset="onReset" v-if="show">
                 <b-form-group
                     id="input-group-1"
                     label="Email address:"
@@ -43,9 +43,8 @@
                     required
                     placeholder="Enter password"
                     ></b-form-input>
-                </b-form-group>
-                
-                <b-button class="btn-default" to="/profissionalSaude/main">Back</b-button> 
+                </b-form-group>       
+                <b-button variant="primary" to="/profissionalSaude/">Back</b-button> 
                 <b-button type="submit" variant="primary">Submit</b-button>
                 <b-button type="reset" variant="danger">Reset</b-button>
             </b-form>
@@ -114,4 +113,8 @@ export default {
     } 
 }
 </script>
-<style></style>
+<style scoped>
+.margin{
+  margin-top: 30px;
+}
+</style>

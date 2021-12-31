@@ -210,7 +210,6 @@ async function createApp(ssrContext, config = {}) {
     }
   }
   // Plugin execution
-
   if (typeof nuxt_plugin_plugin_2b3a7a9a === 'function') {
     await nuxt_plugin_plugin_2b3a7a9a(app.context, inject)
   }
