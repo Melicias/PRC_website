@@ -46,7 +46,6 @@ public class UtenteService {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createUtente(UtenteDTO utenteDTO) {
         try {
-            System.out.println("HELLO "+utenteDTO.getDataNasc());
             utenteBean.create(utenteDTO.getPassword(),
                     utenteDTO.getName(),
                     utenteDTO.getEmail(),
@@ -98,21 +97,6 @@ public class UtenteService {
         }
         return  Response.ok(utenteDTO).build();
     }
-
-
-    /*@POST
-    @Path("/prescricao")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response addPrescricaoToUtente(UtenteDTO utenteDTO){
-        try {
-            prescricaoBean.crea(utenteDTO.getEmail(), utenteDTO.getEmailProfissionalSaude());
-            profissionalSaudeBean.addUtente(utenteDTO.getEmailProfissionalSaude(), utenteDTO.getEmail());
-        } catch (Exception e) {
-            return Response.status(400).entity(e.getMessage()+"Entrou catch").build();
-        }
-        return  Response.ok(utenteDTO).build();
-    }*/
 
     @GET
     @Path("{email}")
