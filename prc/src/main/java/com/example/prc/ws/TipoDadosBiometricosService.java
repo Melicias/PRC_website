@@ -2,10 +2,12 @@ package com.example.prc.ws;
 
 
 import com.example.prc.dtos.TipoDadosBiometricosDTO;
+import com.example.prc.dtos.TipoDadosBiometricosQuantitativoDTO;
 import com.example.prc.dtos.TipoProfissionalDTO;
 import com.example.prc.ejbs.TipoDadosBiometricosBean;
 import com.example.prc.ejbs.TipoProfissionalBean;
 import com.example.prc.entities.TipoDadosBiometricos;
+import com.example.prc.entities.TipoDadosBiometricosQuantitativo;
 import com.example.prc.entities.TipoProfissional;
 import com.example.prc.exceptions.MyConstraintViolationException;
 import com.example.prc.exceptions.MyEntityExistsException;
@@ -24,10 +26,11 @@ import java.util.stream.Collectors;
 @Produces({MediaType.APPLICATION_JSON}) // injects header “Content-Type: application/json”
 @Consumes({MediaType.APPLICATION_JSON}) // injects header “Accept: application/json”
 public class TipoDadosBiometricosService {
-    private static final Logger log =
-            Logger.getLogger(LoginService.class.getName());
     @EJB
     private TipoDadosBiometricosBean tipoDadosBiometricosBean;
+
+    private static final Logger log =
+            Logger.getLogger(LoginService.class.getName());
 
     @GET
     @Path("/")
@@ -35,7 +38,7 @@ public class TipoDadosBiometricosService {
         return toDTOs(tipoDadosBiometricosBean.getAllTipoDadosBiometricos());
     }
 
-    private TipoDadosBiometricosDTO toDTO(TipoDadosBiometricos tipoDadosBiometricos) {
+    public TipoDadosBiometricosDTO toDTO(TipoDadosBiometricos tipoDadosBiometricos) {
         TipoDadosBiometricosDTO tdb;
         if(tipoDadosBiometricos.getType() == TipoDadosBiometricos.QUALITATIVO){
             tdb = new TipoDadosBiometricosDTO(
@@ -49,9 +52,9 @@ public class TipoDadosBiometricosService {
             tdb = new TipoDadosBiometricosDTO(
                     tipoDadosBiometricos.getId(),
                     tipoDadosBiometricos.getName(),
-                    tipoDadosBiometricos.getQuantitativo(),
                     tipoDadosBiometricos.getDeleted_at()
             );
+            tdb.setTipoDadosBiometricosQuantitativo(toDTOsTipoDadosBiometricosQuantitativo(tipoDadosBiometricos.getTipoDadosBiometricosQuantitativo()));
         }
         return tdb;
     }
@@ -59,6 +62,20 @@ public class TipoDadosBiometricosService {
     private List<TipoDadosBiometricosDTO> toDTOs(List<TipoDadosBiometricos> tipoDadosBiometricos) {
         return tipoDadosBiometricos.stream().map(this::toDTO).collect(Collectors.toList());
     }
+
+    public TipoDadosBiometricosQuantitativoDTO toDTOTipoDadosBiometricosQuantitativo(TipoDadosBiometricosQuantitativo tipoDadosBiometricosQuantitativo) {
+        return new TipoDadosBiometricosQuantitativoDTO(
+          tipoDadosBiometricosQuantitativo.getId(),
+          tipoDadosBiometricosQuantitativo.getMin(),
+          tipoDadosBiometricosQuantitativo.getMax(),
+          tipoDadosBiometricosQuantitativo.getName()
+        );
+    }
+
+    private List<TipoDadosBiometricosQuantitativoDTO> toDTOsTipoDadosBiometricosQuantitativo(List<TipoDadosBiometricosQuantitativo> tipoDadosBiometricosQuantitativo) {
+        return tipoDadosBiometricosQuantitativo.stream().map(this::toDTOTipoDadosBiometricosQuantitativo).collect(Collectors.toList());
+    }
+
 
     @POST
     @Path("/")
@@ -69,7 +86,8 @@ public class TipoDadosBiometricosService {
                     tipoDadosBiometricosDTO.getName(),
                     tipoDadosBiometricosDTO.getMin(),
                     tipoDadosBiometricosDTO.getMax(),
-                    tipoDadosBiometricosDTO.getType() == TipoDadosBiometricos.QUALITATIVO ? null : tipoDadosBiometricosDTO.getQuantitativo());
+                    tipoDadosBiometricosDTO.getType() == TipoDadosBiometricosDTO.QUALITATIVO ? true : false,
+                    tipoDadosBiometricosDTO.getTipoDadosBiometricosQuantitativo());
         }catch (Exception e){
             return Response.status(400).entity(e.getMessage()).build();
         }
@@ -84,8 +102,7 @@ public class TipoDadosBiometricosService {
             tipoDadosBiometricosBean.update(
                     tipoDadosBiometricosDTO.getId(),
                     tipoDadosBiometricosDTO.getMin(),
-                    tipoDadosBiometricosDTO.getMax(),
-                    tipoDadosBiometricosDTO.getQuantitativo());
+                    tipoDadosBiometricosDTO.getMax());
         }catch (Exception e){
             return Response.status(400).entity(e.getMessage()).build();
         }

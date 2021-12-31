@@ -1,45 +1,17 @@
-package com.example.prc.entities;
+package com.example.prc.dtos;
 
+import com.example.prc.entities.TipoDadosBiometricos;
+import com.example.prc.entities.Utente;
 import io.smallrye.common.constraint.NotNull;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
 
-@Entity
-
-@NamedQueries({
-
-        @NamedQuery(name = "dadosBiometricos",
-        query = "select ut from UtenteDadosBiometricos ut where ut.utente.email= :email order by ut.data_observacao DESC "),
-
-        @NamedQuery(
-                name = "isDadosBiometricosUsed",
-                query = "SELECT 1 FROM UtenteDadosBiometricos udb where udb.tipoDadosBiometricos.id = :id" // JPQL
-        )
-
-})
-
-public class UtenteDadosBiometricos {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class UtenteDadosBiometricosDTO {
     private int id;
-
-    @NotNull
-    @JoinColumn(name = "tidadosbiometricos_id")
-    @ManyToOne
-    private TipoDadosBiometricos tipoDadosBiometricos;
-
-    @ManyToOne
-    @JoinColumn(name = "EMAIL_UTENTE")
-    @NotNull
-    private Utente utente;
-
-    @NotNull
+    private TipoDadosBiometricosDTO tipoDadosBiometricos;
+    private UtenteDTO utente;
     private Date data_observacao;
-
-    @NotNull
     private String valor;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -47,15 +19,14 @@ public class UtenteDadosBiometricos {
     @Temporal(TemporalType.TIMESTAMP)
     private Date created_at;
 
-    public UtenteDadosBiometricos() {
+    public UtenteDadosBiometricosDTO() {
     }
 
-    public UtenteDadosBiometricos(TipoDadosBiometricos tipoDadosBiometricos, Date data_observacao, String valor, Utente utente) {
+    public UtenteDadosBiometricosDTO(TipoDadosBiometricosDTO tipoDadosBiometricos, Date data_observacao, String valor) {
         this.tipoDadosBiometricos = tipoDadosBiometricos;
         this.data_observacao = data_observacao;
         this.valor = valor;
         this.created_at = new Date();
-        this.utente = utente;
     }
 
     public int getId() {
@@ -66,11 +37,11 @@ public class UtenteDadosBiometricos {
         this.id = id;
     }
 
-    public TipoDadosBiometricos getTipoDadosBiometricos() {
+    public TipoDadosBiometricosDTO getTipoDadosBiometricos() {
         return tipoDadosBiometricos;
     }
 
-    public void setTipoDadosBiometricos(TipoDadosBiometricos tipoDadosBiometricos) {
+    public void setTipoDadosBiometricos(TipoDadosBiometricosDTO tipoDadosBiometricos) {
         this.tipoDadosBiometricos = tipoDadosBiometricos;
     }
 
@@ -106,11 +77,11 @@ public class UtenteDadosBiometricos {
         this.created_at = created_at;
     }
 
-    public Utente getUtente() {
+    public UtenteDTO getUtente() {
         return utente;
     }
 
-    public void setUtente(Utente utente) {
+    public void setUtente(UtenteDTO utente) {
         this.utente = utente;
     }
 }

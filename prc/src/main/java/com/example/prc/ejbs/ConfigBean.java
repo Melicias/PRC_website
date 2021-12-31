@@ -1,5 +1,7 @@
 package com.example.prc.ejbs;
 
+import com.example.prc.dtos.TipoDadosBiometricosQuantitativoDTO;
+import com.example.prc.entities.TipoDadosBiometricosQuantitativo;
 import com.example.prc.entities.TipoPrescricao;
 import com.example.prc.entities.TipoProfissional;
 
@@ -7,6 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,6 +35,10 @@ public class ConfigBean {
     ProfissionalSaudeBean profissionalSaudeBean;
     @EJB
     PrcBean prcBean;
+    @EJB
+    UtenteDadosBiometricosBean dadosBiometricosBean;
+    @EJB
+    TipoDadosBiometricosQuantitativoBean tipoDadosBiometricosQuantitativo;
 
     @PostConstruct
     public void populateDB() {
@@ -40,9 +47,9 @@ public class ConfigBean {
 
         try{
 
-            tipoPrescricao.create("Exercicio Fisico");
-            tipoPrescricao.create("Comer para emagrecer");
-            tipoPrescricao.create("Comer para engordar");
+            tipoPrescricao.create("Mediquentosa");
+            tipoPrescricao.create("Dieta");
+            tipoPrescricao.create("Exercicio fisico");
 
             tipoProfissional.create("Cardiologista");
             tipoProfissional.create("Cirurgião");
@@ -52,13 +59,31 @@ public class ConfigBean {
             tipoProfissional.create("Genecologista");
             tipoProfissional.create("Urologista");
 
-            tipoDadosBiometricos.create("bpm",60,100,null);
-            tipoDadosBiometricos.create("colestrol",5,10,null);
-            tipoDadosBiometricos.create("obesidade",0, 0,"cenas que nao vou criar ja mas possivelmente criado em json");
+            tipoDadosBiometricos.create("bpm",60,100,true,new ArrayList<>());
+            tipoDadosBiometricos.create("colestrol",5,10,true,new ArrayList<>());
+            /*ArrayList<TipoDadosBiometricosQuantitativoDTO> tdbq = new ArrayList<>();
+            tdbq.add(new TipoDadosBiometricosQuantitativoDTO(0,18.5,"Lower"));
+            tdbq.add(new TipoDadosBiometricosQuantitativoDTO(18.5,24.9,"Normal"));
+            tdbq.add(new TipoDadosBiometricosQuantitativoDTO(25,29.9,"overweight"));
+            tdbq.add(new TipoDadosBiometricosQuantitativoDTO(30,34.9,"Obesity I"));
+            tdbq.add(new TipoDadosBiometricosQuantitativoDTO(35,39.9,"Obesity II"));
+            tdbq.add(new TipoDadosBiometricosQuantitativoDTO(40,0,"Obesity III"));*/
+            tipoDadosBiometricos.create("IMC",0, 0,false,new ArrayList<>());
 
-            prescricaoBean.create("Prescricao (descricao 1)","Prescricao 1",1);
-            prescricaoBean.create("Prescricao (descricao 2)","Prescricao 2",2);
-            prescricaoBean.create("Prescricao (descricao 3)","Prescricao 3",3);
+            tipoDadosBiometricosQuantitativo.create("Lower",0,18.5,3);
+            tipoDadosBiometricosQuantitativo.create("Normal",18.5,24.9,3);
+            tipoDadosBiometricosQuantitativo.create("overweight",25,29.9,3);
+            tipoDadosBiometricosQuantitativo.create("Obesity I",30,34.9,3);
+            tipoDadosBiometricosQuantitativo.create("Obesity II",35,39.9,3);
+            tipoDadosBiometricosQuantitativo.create("Obesity III",40,0,3);
+
+            prescricaoBean.create("Tomar os medicamentos todos os dias","Prescricao medicamentos diario",1);
+            prescricaoBean.create("Tomar os medicamentos a noite","Prescricao medicamentos noturnos",1);
+            prescricaoBean.create("Cuidado com a alimentação, apenas comer arroz e carnes","Prescricao de arroz e carnes",2);
+            prescricaoBean.create("Não comer carnes vermelhas","Prescricao evitar carnes vermelhas",2);
+            prescricaoBean.create("Apenas comer coisas não processadas","Prescricao de cuidado com processados",2);
+            prescricaoBean.create("Fazer  cardio pelo menos 1 vez por dia","Prescricao cardio diario",3);
+            prescricaoBean.create("Fazer Levantamento de pesos","Prescricao ginasio",3);
 
             adminBean.create("teste123","admin teste", "admin@admin.com");
           
@@ -97,12 +122,28 @@ public class ConfigBean {
             utenteBean.create("teste123","Adele Farmer", "utente21@utente.com", new Date("22/05/1980"),"profissional10@profissional.com");
             utenteBean.create("teste123","Jordi Greene", "utente22@utente.com", new Date("20/10/1990"));
 
-            prcBean.create("utente@utente.com", "profissional@profissional.com", "Doença", new Date("29/12/2021"), 1);
-            prcBean.create("utente@utente.com", "profissional2@profissional.com", "Doença 1", new Date("29/12/2021"), 1);
-            prcBean.create("utente@utente.com", "profissional1@profissional.com", "Doença 2", new Date("29/12/2021"), 1);
-            prcBean.create("utente@utente.com", "profissional9@profissional.com", "Doença 3", new Date("29/12/2021"), 1);
-            prcBean.create("utente@utente.com", "profissional5@profissional.com", "Doença 4", new Date("29/12/2021"), 1);
-            prcBean.create("utente@utente.com", "profissional1@profissional.com", "Doença 5", new Date("29/12/2021"), 1);
+            prcBean.create("utente@utente.com", "profissional@profissional.com", "Doença", new Date("2021/12/29"), 1,true);
+            prcBean.create("utente@utente.com", "profissional2@profissional.com", "Doença 1", new Date("2021/12/22"), 1,true);
+            prcBean.create("utente@utente.com", "profissional1@profissional.com", "Doença 2", new Date("2021/12/27"), 1,true);
+            prcBean.create("utente@utente.com", "profissional9@profissional.com", "Doença 3", new Date("2021/12/29"), 1,true);
+            prcBean.create("utente@utente.com", "profissional5@profissional.com", "Doença 4", new Date("2021/12/29"), 1,true);
+            prcBean.create("utente@utente.com", "profissional1@profissional.com", "Doença 5", new Date("2021/12/30"), 1,true);
+            prcBean.create("utente2@utente.com", "profissional2@profissional.com", "Doença rara", new Date("2022/01/05"), 6,true);
+            prcBean.create("utente5@utente.com", "profissional1@profissional.com", "Doença teste", new Date("2022/02/10"), 1,true);
+            prcBean.create("utente3@utente.com", "profissional1@profissional.com", "Doença teste 2.0", new Date("2022/02/01"), 7,true);
+            prcBean.create("utente6@utente.com", "profissional1@profissional.com", "Doença random", new Date("2022/12/10"), 2,true);
+            prcBean.create("utente9@utente.com", "profissional1@profissional.com", "Doença que nao se sabe", new Date("2022/01/10"), 4,true);
+
+            dadosBiometricosBean.create(1,new Date("20/10/2020"),"80","utente@utente.com");
+            dadosBiometricosBean.create(1,new Date("20/10/2021"),"90","utente@utente.com");
+            dadosBiometricosBean.create(1,new Date("20/10/2024"),"65","utente@utente.com");
+            dadosBiometricosBean.create(1,new Date("20/10/2025"),"70","utente@utente.com");
+            dadosBiometricosBean.create(1,new Date("21/10/2025"),"80","utente@utente.com");
+            dadosBiometricosBean.create(2,new Date("21/10/2025"),"80","utente@utente.com");
+            dadosBiometricosBean.create(2,new Date("21/10/2024"),"80","utente@utente.com");
+            dadosBiometricosBean.create(2,new Date("20/10/2020"),"70","utente21@utente.com");
+
+
         } catch (Exception e) {
             logger.log(Level.SEVERE, e.toString());
         }

@@ -1,6 +1,6 @@
 <template>
   <b-container>
-    <h1>Type of Biometric data Management</h1>
+    <h2>Type of Biometric data Management</h2>
     <br>
     <b-button v-b-toggle.collapse-1 variant="primary" href="/admin">Back</b-button>
     <b-button v-b-toggle.collapse-1 variant="primary" href="/admin/biometricdata/create">Create New</b-button>
@@ -19,6 +19,11 @@
         <div v-else>
           <b-button variant="success"  @click.prevent="deleteTipo(`${data.item.id}`, `${data.index}`)">undo</b-button>
         </div>
+      </template>
+      <template #cell(quantitativo)="data">
+        <p v-for="tipoDado in data.item.tipoDadosBiometricosQuantitativo">
+          {{tipoDado.name + " - min: " + tipoDado.min + " max: " + tipoDado.max }}
+        </p>
       </template>
       <template v-slot:cell(actions)="row">
         <nuxt-link
@@ -42,6 +47,7 @@ export default {
     this.$axios.$get('/api/tipoDadosBiometricos')
       .then((tipoDadosBiometricos) => {
         this.tipoDadosBiometricos = tipoDadosBiometricos
+        console.log(this.tipoDadosBiometricos)
       })
   },
   methods: {
@@ -50,6 +56,9 @@ export default {
       this.$axios.$delete(`/api/tipoDadosBiometricos/${id}`)
         .then(msg => {
           this.$toast.success("Biometric data deleted with success").goAway(1500)
+          if(msg === ''){
+            location.reload();
+          }
           this.tipoDadosBiometricos[index].deleted_at = msg.deleted_at;
           this.$refs.table.refresh();
         })

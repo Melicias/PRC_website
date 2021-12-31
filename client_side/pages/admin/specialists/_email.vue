@@ -11,8 +11,6 @@
           required
         ></b-form-input>
       </b-form-group>
-      <p>{{ profissionalsaude.deleted_at == null ? "" : "Deleted!" }}</p>
-      <p>{{ profissionalsaude.blocked == 0 ? "" : "Blocked!" }}</p>
       <b-form-group id="input-group-2" label="Type:" label-for="input-2">
         <b-form-select
           id="input-4"
@@ -42,6 +40,10 @@
         </b-form-group>
         <b-button type="submit" variant="primary">Update</b-button>
       </b-form>
+      <br>
+      <b-button variant="danger" @click.prevent="deleteSpecialist()">{{profissionalsaude.deleted_at == undefined ? "Delete" : "Recover"}}</b-button>
+      <b-button variant="danger" @click.prevent="blockSpecialist()">{{profissionalsaude.blocked == 0 ? "Block" : "Unblock"}}</b-button>
+      <br>
     </b-card>
     <br>
     <b-card header="His pacients">
@@ -56,6 +58,25 @@
       <b-table striped over sticky-header :items="utentesSemProfissional" :fields="fields" ref="tableSem" >
         <template v-slot:cell(actions)="row">
           <b-button variant="success" @click.prevent="addUtente(`${row.item.email}`)">Add</b-button>
+        </template>
+      </b-table>
+    </b-card>
+    <br>
+    <b-card header="Prcs">
+      <b-table striped over sticky-header :items="prcs" :fields="fieldsPrc" ref="tablePrcs" >
+        <template v-slot:cell(Disease)="row">
+          {{row.item.doenca}}
+        </template>
+        <template v-slot:cell(Patient)="row">
+          {{row.item.utente.name}}
+        </template>
+        <template v-slot:cell(Until)="row">
+          {{/\d{4}-\d{2}-\d{2}/.exec(row.item.validade)[0]}}
+        </template>
+        <template v-slot:cell(Prescriptions)="row">
+          <p v-for="prescricao in row.item.prescricoes">
+            {{prescricao.descricao + " (" + prescricao.tipoPrescricao.name + ")"}}
+          </p>
         </template>
       </b-table>
     </b-card>
@@ -80,6 +101,8 @@ export default {
       utentesProfissional: [],
       utentesSemProfissional: [],
       fields: ['name', 'email', 'actions'],
+      fieldsPrc: ['Disease', 'Patient', 'Prescriptions','Until'],
+      prcs: [],
     }
   },
   computed: {
@@ -100,10 +123,13 @@ export default {
       })
     this.$axios.$get(`/api/profissionalsaude/${this.email}`)
       .then((profissionalsaude) => {
+        if(!profissionalsaude.hasOwnProperty("deleted_at"))
+          profissionalsaude.deleted_at = undefined
         this.profissionalsaude = profissionalsaude || {}
         this.utentesProfissional = this.profissionalsaude.utentes;
         this.form.name = this.profissionalsaude.name
         this.form.tipoProfissional = this.profissionalsaude.tipoProfissional.id
+        this.prcs = this.profissionalsaude.prcs;
       })
     this.$axios.$get(`/api/utente/semprofissional/${this.email}`)
       .then((utentes) => {
@@ -171,7 +197,31 @@ export default {
           this.$refs.tableSem.refresh();
         })
         .catch(error => {
-          this.$toast.error(error).goAway(3000)
+          this.$toast.error(error.response.data).goAway(3000)
+        })
+    },
+    deleteSpecialist() {
+      this.$axios.$delete(`/api/profissionalsaude/${this.email}`)
+        .then(msg => {
+          this.$toast.success("Specialist deleted with success").goAway(1500)
+          console.log(msg)
+          if(msg === ''){
+            this.$router.push("/admin/specialists")
+          }
+          this.profissionalsaude.deleted_at = msg.deleted_at
+        })
+        .catch(error => {
+          this.$toast.error('error while deleting').goAway(3000)
+        })
+    },
+    blockSpecialist() {
+      this.$axios.put(`/api/profissionalsaude/block/${this.email}`)
+        .then(msg => {
+          this.$toast.success("Specialist deleted with success").goAway(1500)
+          this.profissionalsaude.blocked = msg.data.blocked
+        })
+        .catch(error => {
+          this.$toast.error('error while deleting').goAway(3000)
         })
     }
   }

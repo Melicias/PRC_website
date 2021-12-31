@@ -1,6 +1,6 @@
 <template>
   <b-container>
-    <h1>Healthcare Specialists Management</h1>
+    <h2>Healthcare Specialists Management</h2>
     <br>
     <b-button v-b-toggle.collapse-1 variant="primary" href="/admin">Back</b-button>
     <b-button v-b-toggle.collapse-1 variant="primary" href="/admin/specialists/create">Create New</b-button>

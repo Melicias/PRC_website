@@ -42,7 +42,8 @@ public class PrcService {
                     prcDTO.getEmailProfissionalSaude(),
                     prcDTO.getDoenca(),
                     prcDTO.getValidade(),
-                    prcDTO.getIdPrescricao()
+                    prcDTO.getIdPrescricao(),
+                    false
             );
         } catch (Exception e) {
             return Response.status(400).entity(e.getMessage()).build();

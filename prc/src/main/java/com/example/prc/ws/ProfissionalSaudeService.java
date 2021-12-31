@@ -40,8 +40,15 @@ public class ProfissionalSaudeService {
     @DELETE
     @Path("{email}")
     public Response deleteTipoProfissional(@PathParam("email") String email) throws MyEntityNotFoundException {
-        ProfissionalSaude profissionalSaude = profissionalSaudeBean.deleteProfissionalSaude(email);
-        return Response.ok(toDTO(profissionalSaude)).build();
+        try{
+            ProfissionalSaude profissionalSaude = profissionalSaudeBean.deleteProfissionalSaude(email);
+            if(profissionalSaude == null)
+                return Response.ok(null).build();
+            return Response.ok(toDTO(profissionalSaude)).build();
+        }catch (Exception e){
+            return Response.status(400).entity(e.getMessage()).build();
+        }
+
     }
 
     @PUT
@@ -177,7 +184,7 @@ public class ProfissionalSaudeService {
     }
 
     private PrcDTO toDTOPrc(Prc prc) {
-        return new PrcDTO(
+        PrcDTO prcDTO = new PrcDTO(
                 prc.getId(),
                 toDTOUtente(prc.getUtente()),
                 toDTO(prc.getProfissionalSaude()),
@@ -186,6 +193,9 @@ public class ProfissionalSaudeService {
                 prc.getCreated_at(),
                 prc.getDeleted_at()
         );
+        PrescricaoService ps = new PrescricaoService();
+        prcDTO.setPrescricoes(ps.toDTOs(prc.getPrescricoes()));
+        return prcDTO;
     }
 
     private List<PrcDTO> toDTOPrcs(List<Prc> prcs) {

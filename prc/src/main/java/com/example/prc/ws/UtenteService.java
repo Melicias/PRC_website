@@ -135,6 +135,8 @@ public class UtenteService {
     public Response deleteUtente(@PathParam("email") String email) throws MyEntityNotFoundException {
         try{
             Utente utente = utenteBean.deleteUtente(email);
+            if(utente == null)
+                return Response.ok(null).build();
             return Response.ok(toDTO(utente)).build();
         }catch (Exception e){
             return Response.status(400).entity(e.getMessage()).build();
@@ -153,7 +155,10 @@ public class UtenteService {
         List<ProfissionalSaudeDTO> profissionalSaudeDTOS = ToDTOProfissionalSaude(utente.getProfissionalSaude());
         utenteDTO.setProfissionalSaude(profissionalSaudeDTOS);
         List<PrcDTO> prcs = ToDTOPrc(utente.getPrcs());
-        utenteDTO.setPrescricoes(prcs);
+        utenteDTO.setPrcs(prcs);
+        List<UtenteDadosBiometricosDTO> utenteDadosBiometricosDTOS= toDtosDadosBiomediocos(utente.getDadosBiometricos());
+        utenteDTO.setDadosBiometricos(utenteDadosBiometricosDTOS);
+        utenteDTO.setPassword("");
         return utenteDTO;
     }
 
@@ -166,6 +171,23 @@ public class UtenteService {
         ProfissionalSaudeService profissionalSaudeService=new ProfissionalSaudeService();
        ProfissionalSaudeDTO profissionalSaudeDTOS= profissionalSaudeService.toDTO(profissionalSaude);
         return  profissionalSaudeDTOS;
+    }
+
+    public UtenteDadosBiometricosDTO toDtoDadosBiomedicos(UtenteDadosBiometricos utenteDadosBiometricos) {
+        UtenteDadosBiometricosDTO utenteDadosBiometricosDTO = new UtenteDadosBiometricosDTO(
+                toDtoTipoDados(utenteDadosBiometricos.getTipoDadosBiometricos()),
+                utenteDadosBiometricos.getData_observacao(),
+                utenteDadosBiometricos.getValor()
+        );
+        return  utenteDadosBiometricosDTO;
+    }
+
+    public List<UtenteDadosBiometricosDTO> toDtosDadosBiomediocos(List<UtenteDadosBiometricos> utenteDadosBiometricos){
+        return utenteDadosBiometricos.stream().map(this::toDtoDadosBiomedicos).collect(Collectors.toList());
+    }
+    private TipoDadosBiometricosDTO toDtoTipoDados(TipoDadosBiometricos tipoDadosBiometricos) {
+        TipoDadosBiometricosService tipoDadosBiometricosService = new TipoDadosBiometricosService();
+        return tipoDadosBiometricosService.toDTO(tipoDadosBiometricos);
     }
 
     private List<PrcDTO> ToDTOPrc(List<Prc> prcs) {

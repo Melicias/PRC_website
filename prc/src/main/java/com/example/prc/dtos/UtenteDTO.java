@@ -17,14 +17,14 @@ public class UtenteDTO {
     private int blocked;
     private Date dataNasc;
     private List<ProfissionalSaudeDTO> profissionalSaude;
-    private List<UtenteDadosBiometricos> dadosBiometricos;
-    private List<PrcDTO> prescricoes;
+    private List<UtenteDadosBiometricosDTO> dadosBiometricos;
+    private List<PrcDTO> prcs;
     private String emailProfissionalSaude;
 
     public UtenteDTO() {
         this.profissionalSaude = new ArrayList<>();
         this.dadosBiometricos = new ArrayList<>();
-        this.prescricoes = new ArrayList<>();
+        this.prcs = new ArrayList<>();
     }
 
 
@@ -37,7 +37,7 @@ public class UtenteDTO {
         this.blocked = blocked;
         this.profissionalSaude = new ArrayList<>();
         this.dadosBiometricos = new ArrayList<>();
-        this.prescricoes = new ArrayList<>();
+        this.prcs = new ArrayList<>();
     }
 
     public String getEmail() {
@@ -96,20 +96,20 @@ public class UtenteDTO {
         this.profissionalSaude = profissionalSaude;
     }
 
-    public List<UtenteDadosBiometricos> getDadosBiometricos() {
+    public List<UtenteDadosBiometricosDTO> getDadosBiometricos() {
         return dadosBiometricos;
     }
 
-    public void setDadosBiometricos(List<UtenteDadosBiometricos> dadosBiometricos) {
+    public void setDadosBiometricos(List<UtenteDadosBiometricosDTO> dadosBiometricos) {
         this.dadosBiometricos = dadosBiometricos;
     }
 
-    public List<PrcDTO> getPrescricoes() {
-        return prescricoes;
+    public List<PrcDTO> getPrcs() {
+        return prcs;
     }
 
-    public void setPrescricoes(List<PrcDTO> prescricoes) {
-        this.prescricoes = prescricoes;
+    public void setPrcs(List<PrcDTO> prcs) {
+        this.prcs = prcs;
     }
 
     public String getEmailProfissionalSaude() {
