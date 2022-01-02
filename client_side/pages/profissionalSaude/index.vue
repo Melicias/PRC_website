@@ -1,7 +1,7 @@
 <template>
     <div>
         <b-container>
-            <h2>Profissional de Saúde</h2>
+            <h2>Healthcare Professional: {{ this.$auth.user.sub }}</h2>
             <b-button to="/profissionalSaude/createPacient">Create Pacient</b-button>
             <b-button to="/profissionalSaude/pacientsManagement">Manage Pacients</b-button>
             <b-button to="/profissionalSaude/managePrescriptions">Manage Prescriptions</b-button>

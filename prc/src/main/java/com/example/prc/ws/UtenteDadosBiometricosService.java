@@ -24,11 +24,11 @@ import static io.smallrye.config.ConfigLogging.log;
 public class UtenteDadosBiometricosService {
     @EJB
     private UtenteDadosBiometricosBean utenteDadosBiometricosBean;
-@GET
-@Path("{email}")
-public  List<UtenteDadosBiometricosDTO> DadosBiometricos(@PathParam("email") String email) throws MyEntityNotFoundException {
-           return toDtos(utenteDadosBiometricosBean.findMax(email));
-}
+    @GET
+    @Path("{email}")
+    public  List<UtenteDadosBiometricosDTO> DadosBiometricos(@PathParam("email") String email) throws MyEntityNotFoundException {
+        return toDtos(utenteDadosBiometricosBean.findMax(email));
+    }
 
     public UtenteDadosBiometricosDTO toDto(UtenteDadosBiometricos utenteDadosBiometricos) {
         UtenteDadosBiometricosDTO utenteDadosBiometricosDTO = new UtenteDadosBiometricosDTO(

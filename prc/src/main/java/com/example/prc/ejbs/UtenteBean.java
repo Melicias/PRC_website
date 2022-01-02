@@ -85,6 +85,17 @@ public class UtenteBean {
             return null;
         }
     }
+    public List<Utente> getUtentesComProfissionalSaude(String profissionalEmail)
+            throws MyEntityNotFoundException {
+        try{
+            ProfissionalSaude ps = em.find(ProfissionalSaude.class, profissionalEmail);
+            if(ps == null)
+                throw new MyEntityNotFoundException();
+            return (List<Utente>) em.createNamedQuery("getUtenteComProfissional").setParameter("email",profissionalEmail).getResultList();
+        }catch (Exception e){
+            return null;
+        }
+    }
 
 
     public void updateUtente(String email,String name, String password, Date birthDate)

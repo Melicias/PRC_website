@@ -19,7 +19,7 @@ public class PrescricaoBean {
 
     public void create(String descricao, String name, int idTipoPrescricao)
             throws MyEntityNotFoundException, MyConstraintViolationException {
-        TipoPrescricao tipoPrescricao = em.find(TipoPrescricao.class,idTipoPrescricao);
+        TipoPrescricao tipoPrescricao = em.find(TipoPrescricao.class, idTipoPrescricao);
         if(tipoPrescricao == null)
             throw new MyEntityNotFoundException("TipoPrescricao with code: " + idTipoPrescricao + " not found.");
         try {
@@ -36,7 +36,7 @@ public class PrescricaoBean {
         Prescricao prescricao = em.find(Prescricao.class, idPrescricao);
         if(prescricao == null)
             throw new MyEntityNotFoundException("Prescription not found");
-        TipoPrescricao tipoPrescricao = em.find(TipoPrescricao.class,idTipoPrescricao);
+        TipoPrescricao tipoPrescricao = em.find(TipoPrescricao.class, idTipoPrescricao);
         if(tipoPrescricao == null)
             throw new MyEntityNotFoundException("TipoPrescricao with code: " + idTipoPrescricao + " not found.");
         try {
