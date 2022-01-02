@@ -185,6 +185,18 @@ export default {
           .then(response => {
             this.prescricoes = response
           })
+      },
+      sendEmail(){
+        this.$axios.$post(`/api/utente/${this.userEmail}/send`, {
+          subject: "You have a bew PRC created by the Healthcare: " + this.$auth.user.sub + "!",
+          message: "Dear " + this.$store.state.pacientName + ", checkout your account and keep active on our platform please, you have a new PRC created by the healthcare: " + this.$auth.user.sub + "!"
+        })
+          .then(msg => {
+            this.$toast.success(msg).goAway(1500)
+          })
+          .catch(error => {
+            this.$toast.error('error sending the e-mail').goAway(3000)
+          })
       }
     },
     created (){

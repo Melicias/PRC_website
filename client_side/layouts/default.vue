@@ -41,13 +41,13 @@
           <div v-if="this.$auth.user.groups.includes('ProfissionalSaude')">
             <b-navbar-nav>
               <li class="nav-item">
-                <nuxt-link class="nav-link" to="/profissionalSaude/pacientsManagement">Manage Pacients</nuxt-link>
+                <nuxt-link class="nav-link" to="/profissionalSaude/pacientsManagement">Manage Patients</nuxt-link>
               </li>
               <li class="nav-item">
-                <nuxt-link class="nav-link" to="/profissionalSaude/createPacient">Create Pacient</nuxt-link>
+                <nuxt-link class="nav-link" to="/profissionalSaude/createPacient">Create Patient</nuxt-link>
               </li>
               <li class="nav-item">
-                <nuxt-link class="nav-link" to="/profissionalSaude/addPacient">Add Pacient To My Responsability</nuxt-link>
+                <nuxt-link class="nav-link" to="/profissionalSaude/addPacient">Add/Remove Patient</nuxt-link>
               </li>
               <li class="nav-item">
                 <nuxt-link class="nav-link" to="/profissionalSaude/managePrescriptions">Manage Prescriptions</nuxt-link>

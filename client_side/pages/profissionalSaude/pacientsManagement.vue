@@ -1,14 +1,14 @@
 <template>
     <div>
         <b-container>
-          <h1>My Pacients</h1>
+          <h1>My Patients</h1>
           <div class="btnStyle">
             <b-button variant="primary" to="/profissionalSaude/">Back</b-button>
           </div>
-          <b-card class="mt-3 margin" header="Find for a Pacient">
+          <b-card class="mt-3 margin" header="Find for a Patient">
               <b-form-group
                   id="input-group-1"
-                  label="Pacient email address:"
+                  label="Patient email address:"
                   label-for="input-1">
                   <b-form-input
                   id="input-1"
@@ -21,7 +21,7 @@
               <b-button @click="pacientManagement(pacient)" variant="primary">Manage</b-button>
           </b-card>
           <b-table striped hover selectable :items="utentes" :fields="fields" @row-clicked="pacientManagement" caption-top>
-            <template #table-caption>Click in pacient row to manage a pacient individually </template>
+            <template #table-caption>Click in pacient row to manage a patient individually </template>
             <template v-slot:cell(BiometricData(total))="data">
               <p>
                 {{data.item.dadosBiometricos.length}}

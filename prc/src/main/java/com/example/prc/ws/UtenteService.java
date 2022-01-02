@@ -1,10 +1,7 @@
 package com.example.prc.ws;
 
 import com.example.prc.dtos.*;
-import com.example.prc.ejbs.PrescricaoBean;
-import com.example.prc.ejbs.ProfissionalSaudeBean;
-import com.example.prc.ejbs.TipoProfissionalBean;
-import com.example.prc.ejbs.UtenteBean;
+import com.example.prc.ejbs.*;
 import com.example.prc.entities.*;
 import com.example.prc.exceptions.MyConstraintViolationException;
 import com.example.prc.exceptions.MyEntityNotFoundException;
@@ -12,6 +9,7 @@ import com.example.prc.jwt.Jwt;
 import org.jboss.resteasy.plugins.touri.URITemplateAnnotationResolver;
 
 import javax.ejb.EJB;
+import javax.mail.MessagingException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -30,6 +28,8 @@ public class UtenteService {
     private ProfissionalSaudeBean profissionalSaudeBean;
     @EJB
     private PrescricaoBean prescricaoBean;
+    @EJB
+    private EmailBean emailBean;
 
     private static final Logger log =
             Logger.getLogger(UtenteService.class.getName());
@@ -154,6 +154,19 @@ public class UtenteService {
         }catch (Exception e){
             return Response.status(400).entity(e.getMessage()).build();
         }
+    }
+
+    @POST
+    @Path("/{email}/send")
+    public Response sendEmail(@PathParam("email") String utenteEmail, EmailDTO email)
+            throws MyEntityNotFoundException, MessagingException {
+        Utente utente = utenteBean.findUtente(utenteEmail);
+        if (utente == null) {
+            throw new MyEntityNotFoundException("Utente with email '" + utenteEmail
+                    + "' not found in our records.");
+        }
+        emailBean.send(utenteEmail, email.getSubject(), email.getMessage());
+        return Response.status(Response.Status.OK).entity("E-mail sent").build();
     }
 
     public UtenteDTO toDTO(Utente utente) {

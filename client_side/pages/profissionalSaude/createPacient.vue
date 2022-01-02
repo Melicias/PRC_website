@@ -82,6 +82,7 @@ export default {
           })
             .then(msg => {
               this.$toast.success("User created with success").goAway(1500)
+              this.sendEmail()
               this.form.name = ''
               this.form.email = ''
               this.form.password = ''
@@ -109,6 +110,18 @@ export default {
         this.$nextTick(() => {
           this.show = true
         })
+      },
+      sendEmail(){
+        this.$axios.$post(`/api/utente/${this.form.email}/send`, {
+          subject: "Welcome to PRC! Your account was created by the Healthcare: " + this.$auth.user.sub,
+          message: "Dear " + this.form.name + " keep active on our platform in order to achieve the proper follow-up by us and to achieve our goals!"
+        })
+          .then(msg => {
+            this.$toast.success(msg).goAway(1500)
+          })
+          .catch(error => {
+            this.$toast.error('error sending the e-mail').goAway(3000)
+          })
       }
     } 
 }
