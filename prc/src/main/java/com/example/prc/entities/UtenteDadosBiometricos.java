@@ -36,11 +36,13 @@ public class UtenteDadosBiometricos {
     @NotNull
     private Utente utente;
 
+    private String avaliacao;
+
     @NotNull
     private Date data_observacao;
 
     @NotNull
-    private String valor;
+    private double valor;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date deleted_at;
@@ -50,7 +52,7 @@ public class UtenteDadosBiometricos {
     public UtenteDadosBiometricos() {
     }
 
-    public UtenteDadosBiometricos(TipoDadosBiometricos tipoDadosBiometricos, Date data_observacao, String valor, Utente utente) {
+    public UtenteDadosBiometricos(TipoDadosBiometricos tipoDadosBiometricos, Date data_observacao, double valor, Utente utente) {
         this.tipoDadosBiometricos = tipoDadosBiometricos;
         this.data_observacao = data_observacao;
         this.valor = valor;
@@ -82,11 +84,19 @@ public class UtenteDadosBiometricos {
         this.data_observacao = data_observacao;
     }
 
-    public String getValor() {
+    public double getValor() {
         return valor;
     }
 
-    public void setValor(String valor) {
+    public String getAvaliacao() {
+        return avaliacao;
+    }
+
+    public void setAvaliacao(String avaliacao) {
+        this.avaliacao = avaliacao;
+    }
+
+    public void setValor(double valor) {
         this.valor = valor;
     }
 

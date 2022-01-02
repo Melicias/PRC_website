@@ -75,7 +75,7 @@ public class ConfigBean {
             tipoDadosBiometricosQuantitativo.create("overweight",25,29.9,3);
             tipoDadosBiometricosQuantitativo.create("Obesity I",30,34.9,3);
             tipoDadosBiometricosQuantitativo.create("Obesity II",35,39.9,3);
-            tipoDadosBiometricosQuantitativo.create("Obesity III",40,0,3);
+            tipoDadosBiometricosQuantitativo.create("Obesity III",40,50,3);
 
             prescricaoBean.create("Tomar os medicamentos todos os dias","Prescricao medicamentos diario",1);
             prescricaoBean.create("Tomar os medicamentos a noite","Prescricao medicamentos noturnos",1);
@@ -134,14 +134,14 @@ public class ConfigBean {
             prcBean.create("utente6@utente.com", "profissional1@profissional.com", "Doença random", new Date("2022/12/10"), 2,true);
             prcBean.create("utente9@utente.com", "profissional1@profissional.com", "Doença que nao se sabe", new Date("2022/01/10"), 4,true);
 
-            dadosBiometricosBean.create(1,new Date("20/10/2020"),"80","utente@utente.com");
-            dadosBiometricosBean.create(1,new Date("20/10/2021"),"90","utente@utente.com");
-            dadosBiometricosBean.create(1,new Date("20/10/2024"),"65","utente@utente.com");
-            dadosBiometricosBean.create(1,new Date("20/10/2025"),"70","utente@utente.com");
-            dadosBiometricosBean.create(1,new Date("21/10/2025"),"80","utente@utente.com");
-            dadosBiometricosBean.create(2,new Date("21/10/2025"),"80","utente@utente.com");
-            dadosBiometricosBean.create(2,new Date("21/10/2024"),"80","utente@utente.com");
-            dadosBiometricosBean.create(2,new Date("20/10/2020"),"70","utente21@utente.com");
+            dadosBiometricosBean.create(1,new Date("20/10/2020"),80,"utente@utente.com");
+            dadosBiometricosBean.create(1,new Date("20/10/2021"),90,"utente@utente.com");
+            dadosBiometricosBean.create(1,new Date("20/10/2024"),60,"utente@utente.com");
+            dadosBiometricosBean.create(1,new Date("20/10/2025"),70,"utente@utente.com");
+            dadosBiometricosBean.create(1,new Date("21/10/2025"),80,"utente@utente.com");
+            dadosBiometricosBean.create(2,new Date("21/10/2025"),80,"utente@utente.com");
+            dadosBiometricosBean.create(2,new Date("21/10/2024"),80,"utente@utente.com");
+            dadosBiometricosBean.create(2,new Date("20/10/2020"),70,"utente21@utente.com");
 
 
         } catch (Exception e) {

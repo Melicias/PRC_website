@@ -4,6 +4,9 @@ import io.smallrye.common.constraint.NotNull;
 
 import javax.persistence.*;
 
+@NamedQuery(name = "tipodadosBiometrico",
+query = "select tipo from TipoDadosBiometricosQuantitativo tipo where tipo.tipoDadosBiometricos.id=:id")
+
 @Entity
 public class TipoDadosBiometricosQuantitativo {
     @Id

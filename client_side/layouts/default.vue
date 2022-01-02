@@ -24,7 +24,16 @@
           <div v-if="this.$auth.user.groups.includes('Utente')">
             <b-navbar-nav>
               <li class="nav-item">
-                <nuxt-link class="nav-link" to="/adminpatients">EXEMPLO</nuxt-link>
+                <nuxt-link class="nav-link" to="/utente/profile">Profile</nuxt-link>
+              </li>
+              <li class="nav-item">
+                <nuxt-link class="nav-link" to="/utente/biometricdata">My Biometric Data</nuxt-link>
+              </li>
+               <li class="nav-item">
+                <nuxt-link class="nav-link" to="/utente/biometricdata/create">Add Biometric Data</nuxt-link>
+              </li>
+              <li class="nav-item">
+                <nuxt-link class="nav-link" to="/utente/prescritions">My Prescritions</nuxt-link>
               </li>
 
             </b-navbar-nav>
