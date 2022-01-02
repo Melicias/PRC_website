@@ -34,7 +34,8 @@ public class UtenteDadosBiometricosService {
              throws MyEntityExistsException, MyConstraintViolationException {
         log.info(utenteDadosBiometricosDTO.getTipodadosBiometricos_id());
             try{
-            utenteDadosBiometricosBean.create(utenteDadosBiometricosDTO.getTipodadosBiometricos_id(),utenteDadosBiometricosDTO.getData_observacao(),utenteDadosBiometricosDTO.getValor(),utenteDadosBiometricosDTO.getUtente().getEmail());
+            UtenteDadosBiometricos utenteDadosBiometricos=  utenteDadosBiometricosBean.create(utenteDadosBiometricosDTO.getTipodadosBiometricos_id(),utenteDadosBiometricosDTO.getData_observacao(),utenteDadosBiometricosDTO.getValor(),utenteDadosBiometricosDTO.getUtente().getEmail());
+            utenteDadosBiometricosDTO= toDto(utenteDadosBiometricos);
             }catch (Exception e){
                 return Response.status(400).entity(e.getMessage()).build();
             }
@@ -46,7 +47,7 @@ public class UtenteDadosBiometricosService {
 @GET
 @Path("{email}")
 public  List<UtenteDadosBiometricosDTO> DadosBiometricos(@PathParam("email") String email) throws MyEntityNotFoundException {
-           return toDtos(utenteDadosBiometricosBean.findMax(email));
+           return toDtos(utenteDadosBiometricosBean.find(email));
 }
 
 
@@ -54,7 +55,8 @@ public  List<UtenteDadosBiometricosDTO> DadosBiometricos(@PathParam("email") Str
         UtenteDadosBiometricosDTO utenteDadosBiometricosDTO = new UtenteDadosBiometricosDTO(
                 toDtoTipoDados(utenteDadosBiometricos.getTipoDadosBiometricos()),
                 utenteDadosBiometricos.getData_observacao(),
-                utenteDadosBiometricos.getValor()
+                utenteDadosBiometricos.getValor(),
+                utenteDadosBiometricos.getAvaliacao()
         );
         utenteDadosBiometricosDTO.setUtente(toDtoUtente(utenteDadosBiometricos.getUtente()));
         return  utenteDadosBiometricosDTO;

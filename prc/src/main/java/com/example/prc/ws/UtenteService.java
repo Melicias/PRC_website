@@ -190,7 +190,8 @@ public class UtenteService {
         UtenteDadosBiometricosDTO utenteDadosBiometricosDTO = new UtenteDadosBiometricosDTO(
                 toDtoTipoDados(utenteDadosBiometricos.getTipoDadosBiometricos()),
                 utenteDadosBiometricos.getData_observacao(),
-                utenteDadosBiometricos.getValor()
+                utenteDadosBiometricos.getValor(),
+                utenteDadosBiometricos.getAvaliacao()
         );
         return  utenteDadosBiometricosDTO;
     }
