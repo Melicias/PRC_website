@@ -126,7 +126,7 @@ export default {
           name: '',
           descricao: ''
         },
-        selectTipoPrescriptionUpdate: '',
+        selectTipoPrescriptionUpdate: 'null',
         idPrescriptionUpdate: '',
         show: true
       }
@@ -137,7 +137,7 @@ export default {
           this.$axios.$post('/api/prescricao', {
             name: this.form.name,
             descricao: this.form.descricao,
-            tipoPrescricaoId: this.selectTipoPrescription
+            ...(this.selectTipoPrescription != null ? { tipoPrescricaoId: this.selectTipoPrescription } : { tipoPrescricaoId: 0 })
           })
             .then(msg => {
               this.$toast.success("Prescription created with success").goAway(1500)
@@ -171,7 +171,7 @@ export default {
           id: this.idPrescriptionUpdate,
           name: this.formUpdate.name,
           descricao: this.formUpdate.descricao,
-          tipoPrescricaoId: this.selectTipoPrescriptionUpdate
+          ...(this.selectTipoPrescriptionUpdate != null ? { tipoPrescricaoId: this.selectTipoPrescriptionUpdate } : { tipoPrescricaoId: 0 })
         })
           .then(msg => {
             this.$toast.success("Prescription updated with success").goAway(1500)

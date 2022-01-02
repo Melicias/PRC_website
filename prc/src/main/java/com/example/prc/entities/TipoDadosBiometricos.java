@@ -39,7 +39,8 @@ public class TipoDadosBiometricos {
     private Date deleted_at;
     @OneToMany(mappedBy = "tipoDadosBiometricos")
     private List<UtenteDadosBiometricos> dadosBiometricos;
-    @OneToMany(mappedBy = "tipoDadosBiometricos")
+    @OneToMany(mappedBy = "tipoDadosBiometricos",
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private List<TipoDadosBiometricosQuantitativo> tipoDadosBiometricosQuantitativo;
 
     public TipoDadosBiometricos() {

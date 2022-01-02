@@ -1,7 +1,7 @@
 <template>
     <div>
         <b-container>
-          <h2>User Management</h2>
+          <h2 v-if="utente">Managing: {{ utente.name }}</h2>
           <b-button variant="primary" to="/profissionalSaude/pacientsManagement">Back</b-button>
           <b-card class="mt-3" header="Pacient Data">
             <b-card-group deck class="mb-3">
@@ -106,7 +106,7 @@
 
                 </b-form>
               </b-card>
-              <b-table striped hover selectable :items="utente.prescricoes" :fields="fieldsPrcs">
+              <b-table striped hover selectable :items="utente.prcs" :fields="fieldsPrcs">
                 <template v-slot:cell(Desease)="data">
                   <p>
                     {{data.item.doenca}}
@@ -134,7 +134,27 @@
               </b-table>  
             </b-container>
             <b-container v-if="tab == 2">
-              <b-table  striped hover selectable :items="utente.dadosBiometricos" :fields="fieldsSpecialists">
+              <b-table  striped hover selectable :items="utente.dadosBiometricos" :fields="fieldsBiometricData">
+                <template v-slot:cell(BiometricDataType)="data">
+                  <p>
+                    {{data.item.tipoDadosBiometricos.name}}
+                  </p>
+                </template>
+                <template v-slot:cell(Value)="data">
+                  <p>
+                    {{data.item.valor}}
+                  </p>
+                </template>
+                <template v-slot:cell(CreationDate)="data">
+                  <p v-if="data.item.created_at">
+                    {{data.item.created_at.split('T')[0]}}
+                  </p>
+                </template>
+                <template v-slot:cell(ObservationDate)="data">
+                  <p v-if="data.item.data_observacao">
+                    {{data.item.data_observacao.split('T')[0]}}
+                  </p>
+                </template>
               </b-table>  
             </b-container>
             <b-container v-if="tab == 3">
@@ -152,6 +172,7 @@ export default {
       utente: [],
       tab: 1,
       fieldsPrcs: ['Desease', 'CreatedAt', 'Until', 'Prescriptions', 'Actions'],
+      fieldsBiometricData: ['BiometricDataType', 'Value', 'CreationDate', 'ObservationDate'],
       fieldsSpecialists: ['name', 'email'],
       formUpdate: {
         doenca: '',
@@ -171,6 +192,8 @@ export default {
       // Reset our form values
       this.formUpdate.doenca = ''
       this.formUpdate.validade = ''
+      this.selectPrescriptionToAdd = 'null'
+      this.selectPrescriptionToRemove = 'null'
     },
     prcUpdate(){
       this.$axios.$put('/api/prc', {
@@ -190,13 +213,15 @@ export default {
     addPrescriptionToPrc(){
       this.$axios.$post('/api/prc/addPrescription', {
         id: this.idPrc,
-        idPrescricao: this.selectPrescriptionToAdd
+        ...(this.selectPrescriptionToAdd != null ? { idPrescricao: this.selectPrescriptionToAdd } : { idPrescricao: 0 })
       })
         .then(msg => {
           this.$toast.success("Prc updated with success").goAway(1500)
           this.fetchPacientProfile(this.utente.email)
           this.fetchPrescriptionWithoutPrc(this.idPrc)
           this.fetchPrescriptionWithPrc(this.idPrc)
+          this.selectPrescriptionToAdd = 'null'
+          this.selectPrescriptionToRemove = 'null'
         })
         .catch(error => {
           console.log(error.response.data)
@@ -206,13 +231,15 @@ export default {
     removePrescriptionFromPrc(){
       this.$axios.$post('/api/prc/removePrescription', {
         id: this.idPrc,
-        idPrescricao: this.selectPrescriptionToRemove
+        ...(this.selectPrescriptionToRemove != null ? { idPrescricao: this.selectPrescriptionToRemove } : { idPrescricao: 0 })
       })
         .then(msg => {
           this.$toast.success("Prc updated with success").goAway(1500)
           this.fetchPacientProfile(this.utente.email)
           this.fetchPrescriptionWithoutPrc(this.idPrc)
           this.fetchPrescriptionWithPrc(this.idPrc)
+          this.selectPrescriptionToAdd = 'null'
+          this.selectPrescriptionToRemove = 'null'
         })
         .catch(error => {
           console.log(error.response.data)
@@ -235,6 +262,7 @@ export default {
       .then((response) => {
         console.log(response)
         this.utente = response.data
+        this.$store.commit('getPacientName', this.utente.name)
         console.log(this.utente)
       })
     },
@@ -266,7 +294,7 @@ export default {
   created () {
     if(this.$store.state.pacientEmail != null){
       this.fetchPacientProfile(this.$store.state.pacientEmail)
-    }
+    } 
   } 
 }
 </script>
