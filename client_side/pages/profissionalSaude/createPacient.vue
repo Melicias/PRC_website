@@ -1,7 +1,7 @@
 <template>
     <div> 
         <b-container>
-            <h1>Create a User</h1>
+            <h1>Create Pacient Account</h1>
             <b-form class="margin" @submit="onSubmit" @reset="onReset" v-if="show">
                 <b-form-group
                     id="input-group-1"
@@ -78,7 +78,7 @@ export default {
             name: this.form.name,
             password: this.form.password,
             dataNasc: new Date(this.form.date).toISOString(),
-            emailProfissionalSaude: "profissional@profissional.com"
+            emailProfissionalSaude: this.$auth.user.sub
           })
             .then(msg => {
               this.$toast.success("User created with success").goAway(1500)

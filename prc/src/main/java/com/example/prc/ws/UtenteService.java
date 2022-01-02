@@ -115,6 +115,19 @@ public class UtenteService {
         }catch (Exception e){
             return Response.status(400).entity(e.getMessage()).build();
         }
+        System.out.println(Response.ok(utentes));
+        return Response.ok(toDTOs(utentes)).build();
+    }
+
+    @GET
+    @Path("/comprofissional/{profissionalEmail}")
+    public Response getUtenteComProfissionalSaude(@PathParam("profissionalEmail") String profissionalEmail) throws MyEntityNotFoundException {
+        List<Utente> utentes;
+        try{
+            utentes = utenteBean.getUtentesComProfissionalSaude(profissionalEmail);
+        }catch (Exception e){
+            return Response.status(400).entity(e.getMessage()).build();
+        }
         return Response.ok(toDTOs(utentes)).build();
     }
 

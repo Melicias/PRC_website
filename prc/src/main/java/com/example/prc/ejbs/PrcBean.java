@@ -89,7 +89,8 @@ public class PrcBean {
         if(prc == null)
             throw new MyEntityNotFoundException("Prc not found");
         Date date = new Date();
-        if (prc.getValidade().before(date)) {
+        System.out.println(prc.getValidade().before(date));
+        if (prc.getValidade().after(date)) {
             throw new MyEntityNotFoundException("This PRC is valid so cant be deleted.");
         }
 

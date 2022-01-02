@@ -49,7 +49,7 @@ export default {
       event.preventDefault()
       this.$axios.$post('/api/utente/addprofissionalsaude', {
         email: this.userEmail,
-        emailProfissionalSaude: "profissional@profissional.com"
+        emailProfissionalSaude: this.$auth.user.sub
       })
         .then(msg => {
           this.$toast.success("User added to your responsability with success").goAway(1500)
@@ -62,7 +62,7 @@ export default {
         })
     },
     fecthUtentes(){
-        this.$axios.$get("/api/utente/semprofissional/"+"profissional@profissional.com")
+        this.$axios.$get("/api/utente/semprofissional/"+this.$auth.user.sub)
         .then((utentes) => {
             this.utentesSemProfissional = utentes;
         })

@@ -27,7 +27,8 @@ import static io.smallrye.config.ConfigLogging.log;
 public class UtenteDadosBiometricosService {
     @EJB
     private UtenteDadosBiometricosBean utenteDadosBiometricosBean;
-    @POST
+
+  @POST
     @Path("/")
     public Response CreateDadosBiometricos(UtenteDadosBiometricosDTO utenteDadosBiometricosDTO)
              throws MyEntityExistsException, MyConstraintViolationException {
@@ -48,6 +49,7 @@ public class UtenteDadosBiometricosService {
 public  List<UtenteDadosBiometricosDTO> DadosBiometricos(@PathParam("email") String email) throws MyEntityNotFoundException {
            return toDtos(utenteDadosBiometricosBean.find(email));
 }
+
 
     public UtenteDadosBiometricosDTO toDto(UtenteDadosBiometricos utenteDadosBiometricos) {
         UtenteDadosBiometricosDTO utenteDadosBiometricosDTO = new UtenteDadosBiometricosDTO(
