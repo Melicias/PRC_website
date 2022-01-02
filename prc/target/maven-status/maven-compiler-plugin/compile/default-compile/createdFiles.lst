@@ -1,3 +1,4 @@
+
 com/example/prc/dtos/TipoDadosBiometricosDTO.class
 com/example/prc/ws/PrescricaoService.class
 com/example/prc/ws/ProfissionalSaudeService.class
@@ -52,3 +53,4 @@ com/example/prc/ejbs/UtenteBean.class
 com/example/prc/ejbs/UserBean.class
 com/example/prc/exceptions/MyIllegalArgumentExceptionMapper.class
 com/example/prc/ws/AdminService.class
+

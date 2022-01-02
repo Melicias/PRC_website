@@ -17,6 +17,7 @@
         </template>
       </b-table>
     </b-card>
+     <b-button v-b-toggle.collapse-1 variant="primary" href="/utente/biometricdata/create">Add My Biometric Data</b-button>
     <br>
     <br>
     <b-button v-b-toggle.collapse-1 variant="primary" href="/utente">Back</b-button>

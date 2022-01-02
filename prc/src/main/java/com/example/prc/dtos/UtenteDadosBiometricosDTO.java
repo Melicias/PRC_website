@@ -13,7 +13,8 @@ public class UtenteDadosBiometricosDTO {
     private UtenteDTO utente;
     private Date data_observacao;
     private String valor;
-
+    private String avaliacao;
+    private int tipodadosBiometricos_id;
     @Temporal(TemporalType.TIMESTAMP)
     private Date deleted_at;
     @Temporal(TemporalType.TIMESTAMP)
@@ -45,6 +46,20 @@ public class UtenteDadosBiometricosDTO {
         this.tipoDadosBiometricos = tipoDadosBiometricos;
     }
 
+    public int getTipodadosBiometricos_id() {
+        return tipodadosBiometricos_id;
+    }
+
+    public void setTipodadosBiometricos_id(int tipodadosBiometricos_id) {
+        this.tipodadosBiometricos_id = tipodadosBiometricos_id;
+    }
+    public String getAvaliacao() {
+        return avaliacao;
+    }
+
+    public void setAvaliacao(String avaliacao) {
+        this.avaliacao = avaliacao;
+    }
     public Date getData_observacao() {
         return data_observacao;
     }
