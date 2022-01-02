@@ -13,6 +13,10 @@ import java.util.List;
                 name = "getUtenteSemProfissional",
                 query = "SELECT distinct u FROM Utente u left join fetch u.profissionalSaude ps where not exists (select 1 from u.profissionalSaude p where p.email = :email) and u.deleted_at is null" // JPQL
         ),
+        @NamedQuery(
+                name = "getUtenteComProfissional",
+                query = "SELECT distinct u FROM Utente u left join fetch u.profissionalSaude ps where exists (select 1 from u.profissionalSaude p where p.email = :email) and u.deleted_at is null" // JPQL
+        ),
         @NamedQuery(      
                 name = "getAllUtentes",
                 query = "select  ut FROM Utente ut order by  ut.email"

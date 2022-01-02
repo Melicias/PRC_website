@@ -1,7 +1,7 @@
 <template>
     <div> 
         <b-container>
-            <h2>Create PRC</h2>
+            <h2>Create PRC: {{ this.$store.state.pacientName }}</h2>
             <b-form class="margin" @submit="onSubmit" @reset="onReset" v-if="show">
                 <b-form-group
                     id="input-group-1"
@@ -123,9 +123,9 @@ export default {
           this.$axios.$post('/api/prc', {
             doenca: this.form.doenca,
             validade: new Date(this.form.validade).toISOString(),
-            idPrescricao: this.selectPrescription,
+            ...(this.selectPrescription != null ? { idPrescricao: this.selectPrescription } : { idPrescricao: 0 }),
             emailUtente: this.$store.state.pacientEmail,
-            emailProfissionalSaude: "profissional@profissional.com"
+            emailProfissionalSaude: this.$auth.user.sub
           })
             .then(msg => {
               this.$toast.success("PRC created with success").goAway(1500)
@@ -149,7 +149,7 @@ export default {
             this.$axios.$post('/api/prescricao', {
               name: this.formPrescription.name,
               descricao: this.formPrescription.descricao,
-              tipoPrescricaoId: this.selectTipoPrescription
+              ...(this.selectTipoPrescription != null ? { tipoPrescricaoId: this.selectTipoPrescription } : { tipoPrescricaoId: 0 })
             })
               .then(msg => {
                 this.$toast.success("Prescription created with success").goAway(1500)

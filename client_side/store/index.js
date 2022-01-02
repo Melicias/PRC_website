@@ -1,15 +1,15 @@
 export const state = () => ({
-  pacient: [],
-  pacientEmail: null
+  pacientEmail: null,
+  pacientName: null
 })
 
 export const mutations = {
   getPacientEmail(state, pacientEmail) {
     state.pacientEmail = pacientEmail;
   },
-  setPacientData(state, pacientData) {
-    state.paciente = pacientData;
-  },
+  getPacientName(state, pacientName) {
+    state.pacientName = pacientName;
+  }
 }
 
 export const actions = {

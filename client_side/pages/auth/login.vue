@@ -50,7 +50,7 @@ export default {
         } else if (this.$auth.user.groups.includes('Admin')) {
           this.$router.push('/admin')
         } if (this.$auth.user.groups.includes('ProfissionalSaude')) {
-          //this.$router.push('/students/' + this.username)
+          this.$router.push('/profissionalSaude/')
         }
       })
       promise.catch((error) => {
