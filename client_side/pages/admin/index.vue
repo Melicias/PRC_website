@@ -105,10 +105,8 @@ export default {
     this.$axios.$get('/api/admin/statistics')
       .then((statistics) => {
         this.statistics = statistics
-        console.log(this.statistics)
       })
       .catch(error => {
-        console.log(error)
       })
   },
 }
