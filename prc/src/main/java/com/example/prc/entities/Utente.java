@@ -11,11 +11,11 @@ import java.util.List;
 @NamedQueries({
         @NamedQuery(
                 name = "getUtenteSemProfissional",
-                query = "SELECT distinct u FROM Utente u left join fetch u.profissionalSaude ps where not exists (select 1 from u.profissionalSaude p where p.email = :email) and u.deleted_at is null" // JPQL
+                query = "SELECT distinct u FROM Utente u left join fetch u.profissionalSaude ps where not exists (select 1 from u.profissionalSaude p where p.email = :email) and u.deleted_at is null order by u.name" // JPQL
         ),
         @NamedQuery(
                 name = "getUtenteComProfissional",
-                query = "SELECT distinct u FROM Utente u left join fetch u.profissionalSaude ps where exists (select 1 from u.profissionalSaude p where p.email = :email) and u.deleted_at is null" // JPQL
+                query = "SELECT distinct u FROM Utente u left join fetch u.profissionalSaude ps where exists (select 1 from u.profissionalSaude p where p.email = :email) and u.deleted_at is null order by u.name" // JPQL
         ),
         @NamedQuery(      
                 name = "getAllUtentes",

@@ -24,8 +24,10 @@ C:\Users\danis\OneDrive\Documentos\GitHub\prc\prc\src\main\java\com\example\prc\
 C:\Users\danis\OneDrive\Documentos\GitHub\prc\prc\src\main\java\com\example\prc\entities\TipoPrescricao.java
 C:\Users\danis\OneDrive\Documentos\GitHub\prc\prc\src\main\java\com\example\prc\dtos\PrcDTO.java
 C:\Users\danis\OneDrive\Documentos\GitHub\prc\prc\src\main\java\com\example\prc\ejbs\JwtBean.java
+C:\Users\danis\OneDrive\Documentos\GitHub\prc\prc\src\main\java\com\example\prc\dtos\EmailDTO.java
 C:\Users\danis\OneDrive\Documentos\GitHub\prc\prc\src\main\java\com\example\prc\ejbs\ProfissionalSaudeBean.java
 C:\Users\danis\OneDrive\Documentos\GitHub\prc\prc\src\main\java\com\example\prc\ws\TipoProfissionalService.java
+C:\Users\danis\OneDrive\Documentos\GitHub\prc\prc\src\main\java\com\example\prc\ejbs\EmailBean.java
 C:\Users\danis\OneDrive\Documentos\GitHub\prc\prc\src\main\java\com\example\prc\ejbs\UserBean.java
 C:\Users\danis\OneDrive\Documentos\GitHub\prc\prc\src\main\java\com\example\prc\dtos\TipoDadosBiometricosDTO.java
 C:\Users\danis\OneDrive\Documentos\GitHub\prc\prc\src\main\java\com\example\prc\ws\PrescricaoService.java

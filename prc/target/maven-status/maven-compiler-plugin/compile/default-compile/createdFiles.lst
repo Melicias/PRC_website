@@ -14,6 +14,7 @@ com\example\prc\ws\UtenteDadosBiometricosService.class
 com\example\prc\ws\TipoPrescricaoService.class
 com\example\prc\ejbs\TipoProfissionalBean.class
 com\example\prc\ejbs\UserBean.class
+com\example\prc\ejbs\EmailBean.class
 com\example\prc\exceptions\CatchAllExceptionMapper.class
 com\example\prc\ws\PrescricaoService.class
 com\example\prc\dtos\TipoDadosBiometricosDTO.class
@@ -21,6 +22,7 @@ com\example\prc\dtos\TipoPrescricaoDTO.class
 com\example\prc\ejbs\TipoDadosBiometricosQuantitativoBean.class
 com\example\prc\HelloApplication.class
 com\example\prc\entities\UtenteDadosBiometricos.class
+com\example\prc\dtos\EmailDTO.class
 com\example\prc\dtos\AuthDTO.class
 com\example\prc\dtos\TipoDadosBiometricosQuantitativoDTO.class
 com\example\prc\dtos\UtenteDadosBiometricosDTO.class

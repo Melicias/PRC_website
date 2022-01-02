@@ -3,7 +3,7 @@
         <b-container>
           <h2 v-if="utente">Managing: {{ utente.name }}</h2>
           <b-button variant="primary" to="/profissionalSaude/pacientsManagement">Back</b-button>
-          <b-card class="mt-3" header="Pacient Data">
+          <b-card class="mt-3" header="Patient Data">
             <b-card-group deck class="mb-3">
               <b-card border-variant="light" header="Name:" class="text-center">
                 <b-card-text>
@@ -106,7 +106,7 @@
 
                 </b-form>
               </b-card>
-              <b-table striped hover selectable :items="utente.prcs" :fields="fieldsPrcs">
+              <b-table striped hover sticky-header :items="utente.prcs" :fields="fieldsPrcs">
                 <template v-slot:cell(Desease)="data">
                   <p>
                     {{data.item.doenca}}
@@ -134,7 +134,7 @@
               </b-table>  
             </b-container>
             <b-container v-if="tab == 2">
-              <b-table  striped hover selectable :items="utente.dadosBiometricos" :fields="fieldsBiometricData">
+              <b-table  striped hover sticky-header :items="utente.dadosBiometricos" :fields="fieldsBiometricData">
                 <template v-slot:cell(BiometricDataType)="data">
                   <p>
                     {{data.item.tipoDadosBiometricos.name}}
@@ -158,7 +158,7 @@
               </b-table>  
             </b-container>
             <b-container v-if="tab == 3">
-              <b-table  striped hover selectable :items="utente.profissionalSaude" :fields="fieldsSpecialists">
+              <b-table  striped hover sticky-header :items="utente.profissionalSaude" :fields="fieldsSpecialists">
               </b-table>  
             </b-container>
           </b-card>
