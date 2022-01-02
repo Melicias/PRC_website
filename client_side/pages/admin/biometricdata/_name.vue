@@ -44,16 +44,20 @@
         </div>
         <div v-if="type == 1">
           <b-form-group id="input-group-5" label="Quantitativo:" label-for="input-5">
-            <b-form-input
-              id="input-3"
-              v-model="form.quantitativo"
-              type="text"
-              placeholder=""
-              required
-            ></b-form-input>
+            <p>How to fill this fields?</p>
+            <p>The first row only needs the max number, so it goes from n until Max and the last one only needs to have the Min so it goes from Min until N</p>
+            <p>Here you have an example: N - 10 = Lower than 10; 10 - 20 = between 10 and 20; 20 - N = Bigger than 20</p>
+            <b-form-row v-for="(item, index) in tipoDadoBiometrico.tipoDadosBiometricosQuantitativo">
+              {{index}} -
+              <b-col><b-form-input min=0 :disabled=true v-model="item.min" type="number" placeholder="Min"></b-form-input></b-col>
+              <b-col><b-form-input min=0 :disabled=true v-model="item.max" type="number" placeholder="Max"></b-form-input></b-col>
+              <b-col><b-form-input v-model="item.name" :disabled=true type="text" placeholder="Name"></b-form-input></b-col>
+            </b-form-row>
           </b-form-group>
         </div>
-        <b-button type="submit" variant="primary">Update</b-button>
+        <div v-if="type != 1">
+          <b-button type="submit" variant="primary">Update</b-button>
+        </div>
       </b-form>
       <p>{{ tipoDadoBiometrico.deleted_at == null ? "" : "Deleted!" }}</p>
     </b-card>
@@ -70,8 +74,7 @@ export default {
       type: null,
       form: {
         min: 0,
-        max: 1,
-        quantitativo: ''
+        max: 1
       },
       types: [{ text: 'Select One', value: null }, { text: 'Quantitativa', value: 1 }, { text: 'Qualitativo', value: 2 }]
     }
@@ -89,9 +92,8 @@ export default {
         if(this.tipoDadoBiometrico.type == 2){
           this.form.min = this.tipoDadoBiometrico.min;
           this.form.max = this.tipoDadoBiometrico.max;
-        }else{
-          this.form.quantitativo = this.tipoDadoBiometrico.quantitativo;
         }
+        console.log(this.tipoDadoBiometrico)
       })
   },
   methods: {
@@ -106,8 +108,7 @@ export default {
         name: this.tipoDadoBiometrico.name,
         min: this.form.min,
         max: this.form.max,
-        type: this.tipoDadoBiometrico.type,
-        quantitativo: this.form.quantitativo
+        type: this.tipoDadoBiometrico.type
       })
         .then(msg => {
           this.$toast.success("Biometric data updated with success").goAway(1500)
