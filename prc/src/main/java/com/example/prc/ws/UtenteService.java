@@ -159,7 +159,7 @@ public class UtenteService {
     public UtenteDTO toDTO(Utente utente) {
         UtenteDTO utenteDTO = new UtenteDTO(
                 utente.getEmail(),
-                utente.getPassword(),
+                "",
                 utente.getName(),
                 utente.getDataNasc(),
                 utente.getDeleted_at(),
@@ -171,7 +171,6 @@ public class UtenteService {
         utenteDTO.setPrcs(prcs);
         List<UtenteDadosBiometricosDTO> utenteDadosBiometricosDTOS= toDtosDadosBiomediocos(utente.getDadosBiometricos());
         utenteDTO.setDadosBiometricos(utenteDadosBiometricosDTOS);
-        utenteDTO.setPassword("");
         return utenteDTO;
     }
 
