@@ -128,11 +128,11 @@ public class UtenteBean {
         Utente u = em.find(Utente.class,email);
         if(u == null)
             throw new MyEntityNotFoundException("Patient with this email not found");
-        /*List<Prc> prcs = u.getPrcs();
+        List<Prc> prcs = u.getPrcs();
         for(int i = 0; i < prcs.size(); i++){
-            if()
-        }*/
-        //verificar se o utente tem prcs atribuidas a ele
+            if(prcs.get(i).getValidade().after(new Date()))
+                throw new MyEntityNotFoundException("There is active PRCS, the user can't be blocked");
+        }
         if(u.getBlocked() == 0){
             u.setBlocked(1);
         }else{
