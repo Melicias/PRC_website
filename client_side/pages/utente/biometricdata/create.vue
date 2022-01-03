@@ -58,6 +58,7 @@ export default {
       .then((utente) => {
         this.utente = utente || {}
       })
+
     this.$axios.$get('/api/tipoDadosBiometricos/utente')
       .then((tipoDadosBiometricos) => {
         this.tipoDadosBiometricos = tipoDadosBiometricos
