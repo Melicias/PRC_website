@@ -1,12 +1,17 @@
 package com.example.prc.ws;
 
+import com.example.prc.dtos.AdminDTO;
+import com.example.prc.dtos.ProfissionalSaudeDTO;
+import com.example.prc.dtos.TipoPrescricaoDTO;
+import com.example.prc.dtos.UtenteDTO;
 import com.example.prc.ejbs.AdminBean;
 import com.example.prc.ejbs.PrescricaoBean;
 import com.example.prc.ejbs.ProfissionalSaudeBean;
 import com.example.prc.ejbs.UtenteBean;
-import com.example.prc.entities.Prescricao;
-import com.example.prc.entities.ProfissionalSaude;
-import com.example.prc.entities.Utente;
+import com.example.prc.entities.*;
+import com.example.prc.exceptions.MyConstraintViolationException;
+import com.example.prc.exceptions.MyEntityExistsException;
+import com.example.prc.exceptions.MyEntityNotFoundException;
 import com.nimbusds.jose.shaded.json.JSONObject;
 
 import javax.ejb.EJB;
@@ -15,6 +20,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 @Path("admin")
 @Produces({MediaType.APPLICATION_JSON}) // injects header “Content-Type: application/json”
@@ -33,41 +39,69 @@ public class AdminService {
     @GET
     @Path("statistics")
     public Response getStatisticsAdmin() {
-        List<Utente> utentes;
-        int utentesBloqueados = 0;
-        int utentesApagados = 0;
-        List<ProfissionalSaude> ps;
-        int PSBloqueados = 0;
-        int PSApagados = 0;
+        return adminBean.getStatistics(utenteBean.getAllUtentes(), profissionalSaudeBean.getAllProfissionalSaude());
+    }
+
+    @GET
+    @Path("/")
+    public List<AdminDTO> getAdmins() {
+        return toDTOs(adminBean.getAllAdmins());
+    }
+
+    @POST
+    @Path("/")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response createAdmin(AdminDTO adminDTO) {
+        try {
+            adminBean.create(adminDTO.getPassword(),
+                    adminDTO.getName(),
+                    adminDTO.getEmail());
+        } catch (Exception e) {
+            return Response.status(400).entity(e.getMessage()).build();
+        }
+        return Response.ok(adminDTO).build();
+    }
+
+    @PUT
+    @Path("/block/{email}")
+    public Response blockProfissionalSaude(@PathParam("email") String email)
+            throws MyEntityNotFoundException {
         try{
-            utentes = utenteBean.getAllUtentes();
-            ps = profissionalSaudeBean.getAllProfissionalSaude();
-            for (Utente utente: utentes) {
-                if(utente.getDeleted_at() != null)
-                    utentesApagados++;
-                if(utente.getBlocked() ==1)
-                    utentesBloqueados++;
-            }
-            for (ProfissionalSaude profissionalSaude: ps) {
-                if(profissionalSaude.getDeleted_at() != null)
-                    PSApagados++;
-                if(profissionalSaude.getBlocked() ==1)
-                    PSBloqueados++;
-            }
-
-
-            JSONObject jsonObj = new JSONObject();
-
-            jsonObj.put("nrUtentes", utentes.size());
-            jsonObj.put("utentesBloqueados", utentesBloqueados);
-            jsonObj.put("utentesApagados", utentesApagados);
-            jsonObj.put("nrPS", ps.size());
-            jsonObj.put("PSBloqueados", PSBloqueados);
-            jsonObj.put("PSApagados", PSApagados);
-
-            return Response.ok(jsonObj.toString()).build();
+            Admin admin = adminBean.blockAdmin(email);
+            return Response.ok(toDTO(admin)).build();
         }catch (Exception e){
             return Response.status(400).entity(e.getMessage()).build();
         }
+    }
+
+    @PUT
+    @Path("{emailadmin}")
+    public Response updateProfissionalSaudePassword (@PathParam("emailadmin") String emailadmin, AdminDTO adminDTO)
+            throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException {
+        try{
+            adminBean.updatePassword(
+                    emailadmin,
+                    adminDTO.getPassword(),
+                    adminDTO.getNewPassword(),
+                    adminDTO.getConfirmNewPassword());
+        }catch (Exception e){
+            return Response.status(400).entity(e.getMessage()).build();
+        }
+        return Response.ok().build();
+    }
+
+    public AdminDTO toDTO(Admin admin) {
+        return new AdminDTO(
+                admin.getEmail(),
+                "",
+                admin.getName(),
+                admin.getDeleted_at(),
+                admin.getBlocked()
+        );
+    }
+
+    private List<AdminDTO> toDTOs(List<Admin> admins) {
+        return admins.stream().map(this::toDTO).collect(Collectors.toList());
     }
 }
