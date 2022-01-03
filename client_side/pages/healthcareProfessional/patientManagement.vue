@@ -147,7 +147,7 @@
                     {{data.item.valor}}
                   </p>
                 </template>
-                <template v-slot:cell(Classification)="data">
+                <template v-slot:cell(Appraisal)="data">
                   <p>
                     {{data.item.avaliacao}}
                   </p>
@@ -180,7 +180,7 @@ export default {
       utente: [],
       tab: 1,
       fieldsPrcs: ['Desease', 'CreatedAt', 'Until', 'Prescriptions', 'Actions'],
-      fieldsBiometricData: ['BiometricDataType', 'Value', 'Classification', 'CreationDate', 'ObservationDate'],
+      fieldsBiometricData: ['BiometricDataType', 'Value', 'Appraisal', 'CreationDate', 'ObservationDate'],
       fieldsSpecialists: ['name', 'email'],
       formUpdate: {
         doenca: '',
