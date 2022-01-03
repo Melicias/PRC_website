@@ -19,8 +19,6 @@ import java.util.stream.Collectors;
 @Produces({MediaType.APPLICATION_JSON}) // injects header “Content-Type: application/json”
 @Consumes({MediaType.APPLICATION_JSON}) // injects header “Accept: application/json”
 public class ProfissionalSaudeService {
-    private static final Logger log =
-            Logger.getLogger(LoginService.class.getName());
     @EJB
     private ProfissionalSaudeBean profissionalSaudeBean;
 
@@ -44,11 +42,11 @@ public class ProfissionalSaudeService {
             ProfissionalSaude profissionalSaude = profissionalSaudeBean.deleteProfissionalSaude(email);
             if(profissionalSaude == null)
                 return Response.ok(null).build();
+
             return Response.ok(toDTO(profissionalSaude)).build();
         }catch (Exception e){
             return Response.status(400).entity(e.getMessage()).build();
         }
-
     }
 
     @PUT
@@ -71,8 +69,12 @@ public class ProfissionalSaudeService {
     @Path("/block/{email}")
     public Response blockProfissionalSaude(@PathParam("email") String email)
             throws MyEntityNotFoundException {
-        ProfissionalSaude profissionalSaude = profissionalSaudeBean.blockProfissionalSaude(email);
-        return Response.ok(toDTO(profissionalSaude)).build();
+        try{
+            ProfissionalSaude profissionalSaude = profissionalSaudeBean.blockProfissionalSaude(email);
+            return Response.ok(toDTO(profissionalSaude)).build();
+        }catch (Exception e){
+            return Response.status(400).entity(e.getMessage()).build();
+        }
     }
 
     @POST
