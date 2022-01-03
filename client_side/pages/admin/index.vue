@@ -27,6 +27,12 @@
           <p>Healthcare specialists type management</p>
         </div>
       </nuxt-link>
+      <nuxt-link :to="'/admin/admins'">
+        <div class="img-with-text">
+          <img width="100" height="100" src="../../img/avataradmin.png" alt="Image not loaded" />
+          <p>Admins management</p>
+        </div>
+      </nuxt-link>
     </div>
     <br><br><br>
 

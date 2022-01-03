@@ -2,209 +2,204 @@
   {
     "name": "admin",
     "path": "/admin",
-
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/index.vue",
-
-    "chunkName": "pages/admin/index"
+    "chunkName": "pages/admin/index",
+    "_name": "_01017896"
   },
   {
     "name": "profissionalSaude",
     "path": "/profissionalSaude",
-
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/profissionalSaude/index.vue",
-
-    "chunkName": "pages/profissionalSaude/index"
+    "chunkName": "pages/profissionalSaude/index",
+    "_name": "_160839aa"
   },
   {
     "name": "tipoProfissional",
     "path": "/tipoProfissional",
-
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/tipoProfissional/index.vue",
-
-    "chunkName": "pages/tipoProfissional/index"
+    "chunkName": "pages/tipoProfissional/index",
+    "_name": "_7b685732"
   },
   {
     "name": "utente",
     "path": "/utente",
-
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/utente/index.vue",
-
-    "chunkName": "pages/utente/index"
+    "chunkName": "pages/utente/index",
+    "_name": "_46015dae"
+  },
+  {
+    "name": "admin-admins",
+    "path": "/admin/admins",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/admins/index.vue",
+    "chunkName": "pages/admin/admins/index",
+    "_name": "_05503d74"
   },
   {
     "name": "admin-biometricdata",
     "path": "/admin/biometricdata",
-
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/biometricdata/index.vue",
-
-    "chunkName": "pages/admin/biometricdata/index"
+    "chunkName": "pages/admin/biometricdata/index",
+    "_name": "_b0c991f0"
   },
   {
     "name": "admin-patients",
     "path": "/admin/patients",
-
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/patients/index.vue",
-
-    "chunkName": "pages/admin/patients/index"
+    "chunkName": "pages/admin/patients/index",
+    "_name": "_b7807284"
   },
   {
     "name": "admin-professionaltype",
     "path": "/admin/professionaltype",
-
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/professionaltype/index.vue",
-
-    "chunkName": "pages/admin/professionaltype/index"
+    "chunkName": "pages/admin/professionaltype/index",
+    "_name": "_1343c1d1"
   },
   {
     "name": "admin-specialists",
     "path": "/admin/specialists",
-
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/specialists/index.vue",
-
-    "chunkName": "pages/admin/specialists/index"
+    "chunkName": "pages/admin/specialists/index",
+    "_name": "_68ec52c8"
   },
   {
     "name": "auth-login",
     "path": "/auth/login",
-
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/auth/login.vue",
-
-    "chunkName": "pages/auth/login"
+    "chunkName": "pages/auth/login",
+    "_name": "_50aad86f"
   },
   {
     "name": "profissionalSaude-addPacient",
     "path": "/profissionalSaude/addPacient",
-
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/profissionalSaude/addPacient.vue",
-
-    "chunkName": "pages/profissionalSaude/addPacient"
+    "chunkName": "pages/profissionalSaude/addPacient",
+    "_name": "_3f1ef48a"
   },
   {
     "name": "profissionalSaude-createPacient",
     "path": "/profissionalSaude/createPacient",
-
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/profissionalSaude/createPacient.vue",
-
-    "chunkName": "pages/profissionalSaude/createPacient"
+    "chunkName": "pages/profissionalSaude/createPacient",
+    "_name": "_b445159e"
   },
   {
     "name": "profissionalSaude-createPrc",
     "path": "/profissionalSaude/createPrc",
-
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/profissionalSaude/createPrc.vue",
-
-    "chunkName": "pages/profissionalSaude/createPrc"
+    "chunkName": "pages/profissionalSaude/createPrc",
+    "_name": "_25bc6f44"
   },
   {
     "name": "profissionalSaude-managePrescriptions",
     "path": "/profissionalSaude/managePrescriptions",
-
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/profissionalSaude/managePrescriptions.vue",
-
-    "chunkName": "pages/profissionalSaude/managePrescriptions"
+    "chunkName": "pages/profissionalSaude/managePrescriptions",
+    "_name": "_7fff71cd"
   },
   {
     "name": "profissionalSaude-pacientManagement",
     "path": "/profissionalSaude/pacientManagement",
-
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/profissionalSaude/pacientManagement.vue",
-
-    "chunkName": "pages/profissionalSaude/pacientManagement"
+    "chunkName": "pages/profissionalSaude/pacientManagement",
+    "_name": "_79b40530"
   },
   {
     "name": "profissionalSaude-pacientsManagement",
     "path": "/profissionalSaude/pacientsManagement",
-
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/profissionalSaude/pacientsManagement.vue",
-
-    "chunkName": "pages/profissionalSaude/pacientsManagement"
+    "chunkName": "pages/profissionalSaude/pacientsManagement",
+    "_name": "_4a2c30ce"
   },
   {
     "name": "utente-biometricdata",
     "path": "/utente/biometricdata",
-
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/utente/biometricdata/index.vue",
-
-    "chunkName": "pages/utente/biometricdata/index"
+    "chunkName": "pages/utente/biometricdata/index",
+    "_name": "_7e26ad08"
   },
   {
     "name": "utente-prescritions",
     "path": "/utente/prescritions",
-
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/utente/prescritions/index.vue",
-
-    "chunkName": "pages/utente/prescritions/index"
+    "chunkName": "pages/utente/prescritions/index",
+    "_name": "_2535b0f1"
   },
   {
     "name": "utente-profile",
     "path": "/utente/profile",
-
-    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/utente/profile.vue",
-    "chunkName": "pages/utente/profile"
-
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/utente/profile/index.vue",
+    "chunkName": "pages/utente/profile/index",
+    "_name": "_5ba59d7a"
+  },
+  {
+    "name": "admin-admins-create",
+    "path": "/admin/admins/create",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/admins/create.vue",
+    "chunkName": "pages/admin/admins/create",
+    "_name": "_6728886c"
   },
   {
     "name": "admin-biometricdata-create",
     "path": "/admin/biometricdata/create",
-
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/biometricdata/create.vue",
-
-    "chunkName": "pages/admin/biometricdata/create"
+    "chunkName": "pages/admin/biometricdata/create",
+    "_name": "_737ff4b6"
   },
   {
     "name": "admin-professionaltype-create",
     "path": "/admin/professionaltype/create",
-
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/professionaltype/create.vue",
-
-    "chunkName": "pages/admin/professionaltype/create"
+    "chunkName": "pages/admin/professionaltype/create",
+    "_name": "_7ce8c30d"
   },
   {
     "name": "admin-specialists-create",
     "path": "/admin/specialists/create",
-
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/specialists/create.vue",
-    "chunkName": "pages/admin/specialists/create"
-
+    "chunkName": "pages/admin/specialists/create",
+    "_name": "_475b5e14"
+  },
+  {
+    "name": "utente-biometricdata-create",
+    "path": "/utente/biometricdata/create",
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/utente/biometricdata/create.vue",
+    "chunkName": "pages/utente/biometricdata/create",
+    "_name": "_f7465e7c"
   },
   {
     "name": "admin-biometricdata-name",
     "path": "/admin/biometricdata/:name",
-
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/biometricdata/_name.vue",
-
-    "chunkName": "pages/admin/biometricdata/_name"
+    "chunkName": "pages/admin/biometricdata/_name",
+    "_name": "_4ad735a0"
   },
   {
     "name": "admin-patients-email",
     "path": "/admin/patients/:email",
-
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/patients/_email.vue",
-
-    "chunkName": "pages/admin/patients/_email"
+    "chunkName": "pages/admin/patients/_email",
+    "_name": "_41169e3e"
   },
   {
     "name": "admin-specialists-email",
     "path": "/admin/specialists/:email",
-
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/specialists/_email.vue",
-
-    "chunkName": "pages/admin/specialists/_email"
+    "chunkName": "pages/admin/specialists/_email",
+    "_name": "_9f4cb3d2"
   },
   {
     "name": "utente-prescritions-id",
     "path": "/utente/prescritions/:id",
-
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/utente/prescritions/_id.vue",
-
-    "chunkName": "pages/utente/prescritions/_id"
+    "chunkName": "pages/utente/prescritions/_id",
+    "_name": "_2bad3b99"
   },
   {
     "name": "index",
     "path": "/",
-
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/index.vue",
-
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_319db6b5"
   }
 ]
