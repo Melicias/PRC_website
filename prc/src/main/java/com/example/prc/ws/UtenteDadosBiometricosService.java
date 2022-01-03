@@ -28,18 +28,18 @@ public class UtenteDadosBiometricosService {
     @EJB
     private UtenteDadosBiometricosBean utenteDadosBiometricosBean;
 
-  @POST
+    @POST
     @Path("/")
     public Response CreateDadosBiometricos(UtenteDadosBiometricosDTO utenteDadosBiometricosDTO)
-             throws MyEntityExistsException, MyConstraintViolationException {
-        log.info(utenteDadosBiometricosDTO.getTipodadosBiometricos_id());
-            try{
-            UtenteDadosBiometricos utenteDadosBiometricos=  utenteDadosBiometricosBean.create(utenteDadosBiometricosDTO.getTipodadosBiometricos_id(),utenteDadosBiometricosDTO.getData_observacao(),utenteDadosBiometricosDTO.getValor(),utenteDadosBiometricosDTO.getUtente().getEmail());
+            throws MyEntityExistsException, MyConstraintViolationException {
+        log.info(utenteDadosBiometricosDTO.getData_observacao());
+        try{
+            UtenteDadosBiometricos utenteDadosBiometricos=  utenteDadosBiometricosBean.create(utenteDadosBiometricosDTO.getTipodadosBiometricos_id(),utenteDadosBiometricosDTO.getData_observacao(),utenteDadosBiometricosDTO.getValor(),utenteDadosBiometricosDTO.getUtenteEmail());
             utenteDadosBiometricosDTO= toDto(utenteDadosBiometricos);
-            }catch (Exception e){
-                return Response.status(400).entity(e.getMessage()).build();
-            }
-            return Response.ok(utenteDadosBiometricosDTO).build();
+        }catch (Exception e){
+            return Response.status(400).entity(e.getMessage()).build();
+        }
+        return Response.ok(utenteDadosBiometricosDTO).build();
     }
 
 

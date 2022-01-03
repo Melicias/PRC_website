@@ -28,7 +28,11 @@ public class PrcService {
     @GET
     @Path("{emailUtente}")
     public List<PrcDTO> getAllPrcsByUtente(@PathParam("emailUtente") String emailUtente) {
-        return toDTOs(prcBean.getAllPrcsByUtente(emailUtente));
+        try{
+            return toDTOs(prcBean.getAllPrcsByUtente(emailUtente));
+        }catch (Exception e){
+            return null;
+        }
     }
 
     @POST

@@ -119,6 +119,10 @@ public class TipoDadosBiometricosBean {
         return (List<TipoDadosBiometricos>) em.createNamedQuery("getAllTipoDadosBiometricos").getResultList();
     }
 
+    public List<TipoDadosBiometricos> getAllTipoDadosBiometricosNotDeleted() {
+        return (List<TipoDadosBiometricos>) em.createNamedQuery("getAllTipoDadosBiometricosNotDeleted").getResultList();
+    }
+
     public TipoDadosBiometricos findTipoDadoBiometrico(String name) {
         try{
             return (TipoDadosBiometricos) em.createNamedQuery("getTipoDadosBiometricosByName").setParameter("name", name).getSingleResult();

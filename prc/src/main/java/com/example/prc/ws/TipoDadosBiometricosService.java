@@ -38,6 +38,12 @@ public class TipoDadosBiometricosService {
         return toDTOs(tipoDadosBiometricosBean.getAllTipoDadosBiometricos());
     }
 
+    @GET
+    @Path("/utente")
+    public List<TipoDadosBiometricosDTO> getTipoProfissionalUtenteWS() {
+        return toDTOs(tipoDadosBiometricosBean.getAllTipoDadosBiometricosNotDeleted());
+    }
+
     public TipoDadosBiometricosDTO toDTO(TipoDadosBiometricos tipoDadosBiometricos) {
         TipoDadosBiometricosDTO tdb;
         if(tipoDadosBiometricos.getType() == TipoDadosBiometricos.QUALITATIVO){
