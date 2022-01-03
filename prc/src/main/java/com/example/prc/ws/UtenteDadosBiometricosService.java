@@ -8,11 +8,14 @@ import com.example.prc.ejbs.UtenteDadosBiometricosBean;
 import com.example.prc.entities.TipoDadosBiometricos;
 import com.example.prc.entities.Utente;
 import com.example.prc.entities.UtenteDadosBiometricos;
+import com.example.prc.exceptions.MyConstraintViolationException;
+import com.example.prc.exceptions.MyEntityExistsException;
 import com.example.prc.exceptions.MyEntityNotFoundException;
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,17 +27,36 @@ import static io.smallrye.config.ConfigLogging.log;
 public class UtenteDadosBiometricosService {
     @EJB
     private UtenteDadosBiometricosBean utenteDadosBiometricosBean;
-    @GET
-    @Path("{email}")
-    public  List<UtenteDadosBiometricosDTO> DadosBiometricos(@PathParam("email") String email) throws MyEntityNotFoundException {
-        return toDtos(utenteDadosBiometricosBean.findMax(email));
+
+  @POST
+    @Path("/")
+    public Response CreateDadosBiometricos(UtenteDadosBiometricosDTO utenteDadosBiometricosDTO)
+             throws MyEntityExistsException, MyConstraintViolationException {
+        log.info(utenteDadosBiometricosDTO.getTipodadosBiometricos_id());
+            try{
+            UtenteDadosBiometricos utenteDadosBiometricos=  utenteDadosBiometricosBean.create(utenteDadosBiometricosDTO.getTipodadosBiometricos_id(),utenteDadosBiometricosDTO.getData_observacao(),utenteDadosBiometricosDTO.getValor(),utenteDadosBiometricosDTO.getUtente().getEmail());
+            utenteDadosBiometricosDTO= toDto(utenteDadosBiometricos);
+            }catch (Exception e){
+                return Response.status(400).entity(e.getMessage()).build();
+            }
+            return Response.ok(utenteDadosBiometricosDTO).build();
     }
+
+
+
+@GET
+@Path("{email}")
+public  List<UtenteDadosBiometricosDTO> DadosBiometricos(@PathParam("email") String email) throws MyEntityNotFoundException {
+           return toDtos(utenteDadosBiometricosBean.find(email));
+}
+
 
     public UtenteDadosBiometricosDTO toDto(UtenteDadosBiometricos utenteDadosBiometricos) {
         UtenteDadosBiometricosDTO utenteDadosBiometricosDTO = new UtenteDadosBiometricosDTO(
                 toDtoTipoDados(utenteDadosBiometricos.getTipoDadosBiometricos()),
                 utenteDadosBiometricos.getData_observacao(),
-                utenteDadosBiometricos.getValor()
+                utenteDadosBiometricos.getValor(),
+                utenteDadosBiometricos.getAvaliacao()
         );
         utenteDadosBiometricosDTO.setUtente(toDtoUtente(utenteDadosBiometricos.getUtente()));
         return  utenteDadosBiometricosDTO;

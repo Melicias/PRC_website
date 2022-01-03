@@ -50,11 +50,6 @@
       </b-table>
     </b-card>
     <br>
-    <b-card header="Other health specialists">
-      <b-table striped over sticky-header :items="profissionaisNaoLigadosUtente" :fields="fields" ref="tableSem" >
-      </b-table>
-    </b-card>
-    <br>
     <b-button v-b-toggle.collapse-1 variant="primary" href="/utente">Back</b-button>
   </b-container>
 </template>
