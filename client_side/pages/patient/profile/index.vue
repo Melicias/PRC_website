@@ -87,19 +87,24 @@ export default {
         console.log(this.utente)
         this.form.name = this.utente.name
         this.form.dataNasc = this.utente.dataNasc != null ? this.utente.dataNasc.split('T')[0] : ""
-
       })
     },
      methods: {
-   
         onSubmit(event) {
           event.preventDefault()
           this.$axios.$put('/api/utente', {
             email: this.email,
-        dataNasc: new Date(this.form.dataNasc).toISOString(),
-        name: this.form.name,
-        password: this.form.password.length == 0 ? null : this.form.password,
+            dataNasc: new Date(this.form.dataNasc).toISOString(),
+            name: this.form.name,
+            password: this.form.password.length == 0 ? null : this.form.password,
           })
-        }}
+          .then(msg => {
+            this.$toast.success("Profile updated with success").goAway(1500)
+          })
+          .catch(error => {
+            this.$toast.error(error.response.data).goAway(3000)
+          })
+        }
+      }
 }
 </script>
