@@ -76,7 +76,7 @@ export default {
   },
   created() {
     if (!this.$auth.user.groups.includes('Utente')) {
-      this.$router.push('nuxt-error')
+      this.$router.push('not-found')
     }
     console.log(this.email);
     this.$axios.$get(`/api/utente/${this.email}`)
