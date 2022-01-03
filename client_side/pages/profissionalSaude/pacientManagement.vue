@@ -43,6 +43,7 @@
               </b-nav>
             </template>
             <b-container v-if="tab == 1">
+              <p v-if="utente.prcs">PRC's total: {{ utente.prcs.length }}</p>
               <b-button class="marginBottom" variant="primary" to="/profissionalSaude/createPrc">Create PRC</b-button>
               <b-card v-if="updatePrc" class="mt-3 margin" header="Update Prc">
                 <b-form @reset="onReset">
@@ -134,6 +135,7 @@
               </b-table>  
             </b-container>
             <b-container v-if="tab == 2">
+              <p v-if="utente.dadosBiometricos">Biometrics total: {{ utente.dadosBiometricos.length }}</p>
               <b-table  striped hover sticky-header :items="utente.dadosBiometricos" :fields="fieldsBiometricData">
                 <template v-slot:cell(BiometricDataType)="data">
                   <p>
@@ -158,6 +160,7 @@
               </b-table>  
             </b-container>
             <b-container v-if="tab == 3">
+              <p v-if="utente.profissionalSaude">Biometrics total: {{ utente.profissionalSaude.length }}</p>
               <b-table  striped hover sticky-header :items="utente.profissionalSaude" :fields="fieldsSpecialists">
               </b-table>  
             </b-container>
