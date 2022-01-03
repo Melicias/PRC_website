@@ -22,6 +22,9 @@
               <li class="nav-item">
                 <nuxt-link class="nav-link" to="/admin/admins">Admins</nuxt-link>
               </li>
+              <li class="nav-item">
+                <nuxt-link class="nav-link" to="/admin/admins/changepassword">Change Password</nuxt-link>
+              </li>
             </b-navbar-nav>
           </div>
           <div v-if="this.$auth.user.groups.includes('Utente')">

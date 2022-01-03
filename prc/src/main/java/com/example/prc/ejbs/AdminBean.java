@@ -2,10 +2,12 @@ package com.example.prc.ejbs;
 
 import com.example.prc.entities.Admin;
 import com.example.prc.entities.ProfissionalSaude;
+import com.example.prc.entities.User;
 import com.example.prc.entities.Utente;
 import com.example.prc.exceptions.MyConstraintViolationException;
 import com.example.prc.exceptions.MyEntityExistsException;
 import com.example.prc.exceptions.MyEntityNotFoundException;
+import com.example.prc.exceptions.MyIllegalArgumentException;
 import com.nimbusds.jose.shaded.json.JSONObject;
 
 import javax.ejb.Stateless;
@@ -61,6 +63,25 @@ public class AdminBean {
             admin.setName(name);
             admin.setPassword(password);
             em.persist(admin);
+        } catch (ConstraintViolationException e) {
+            throw new MyConstraintViolationException(e);
+        }
+    }
+
+    public void updatePassword(String email, String password, String newPassword, String confirmPassword)
+            throws MyConstraintViolationException, MyEntityNotFoundException, MyIllegalArgumentException {
+        Admin admin = em.find(Admin.class,email);
+        if(admin == null) throw new MyEntityNotFoundException("Admin with email: "+email+" doesnt exist");
+        if (!User.hashPassword(password).equals(admin.getPassword()))
+            throw new MyIllegalArgumentException("Old password is not valid");
+        if (newPassword.length() < 8)
+            throw new MyIllegalArgumentException("New password is not valid, must has at least 8 characters");
+        if (!newPassword.equals(confirmPassword))
+            throw new MyIllegalArgumentException("Confirm password is not valid");
+        try {
+            admin.setPassword(newPassword);
+            em.persist(admin);
+            em.flush();
         } catch (ConstraintViolationException e) {
             throw new MyConstraintViolationException(e);
         }

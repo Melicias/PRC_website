@@ -5,6 +5,8 @@ import java.util.Date;
 public class AdminDTO {
     private String email;
     private String password;
+    private String newPassword;
+    private String confirmNewPassword;
     private String name;
     private Date deleted_at;
     private int blocked;
@@ -58,5 +60,21 @@ public class AdminDTO {
 
     public void setBlocked(int blocked) {
         this.blocked = blocked;
+    }
+
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
+    }
+
+    public String getConfirmNewPassword() {
+        return confirmNewPassword;
+    }
+
+    public void setConfirmNewPassword(String confirmNewPassword) {
+        this.confirmNewPassword = confirmNewPassword;
     }
 }

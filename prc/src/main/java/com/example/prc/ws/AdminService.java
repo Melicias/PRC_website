@@ -1,6 +1,7 @@
 package com.example.prc.ws;
 
 import com.example.prc.dtos.AdminDTO;
+import com.example.prc.dtos.ProfissionalSaudeDTO;
 import com.example.prc.dtos.TipoPrescricaoDTO;
 import com.example.prc.dtos.UtenteDTO;
 import com.example.prc.ejbs.AdminBean;
@@ -8,6 +9,8 @@ import com.example.prc.ejbs.PrescricaoBean;
 import com.example.prc.ejbs.ProfissionalSaudeBean;
 import com.example.prc.ejbs.UtenteBean;
 import com.example.prc.entities.*;
+import com.example.prc.exceptions.MyConstraintViolationException;
+import com.example.prc.exceptions.MyEntityExistsException;
 import com.example.prc.exceptions.MyEntityNotFoundException;
 import com.nimbusds.jose.shaded.json.JSONObject;
 
@@ -70,6 +73,22 @@ public class AdminService {
         }catch (Exception e){
             return Response.status(400).entity(e.getMessage()).build();
         }
+    }
+
+    @PUT
+    @Path("{emailadmin}")
+    public Response updateProfissionalSaudePassword (@PathParam("emailadmin") String emailadmin, AdminDTO adminDTO)
+            throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException {
+        try{
+            adminBean.updatePassword(
+                    emailadmin,
+                    adminDTO.getPassword(),
+                    adminDTO.getNewPassword(),
+                    adminDTO.getConfirmNewPassword());
+        }catch (Exception e){
+            return Response.status(400).entity(e.getMessage()).build();
+        }
+        return Response.ok().build();
     }
 
     public AdminDTO toDTO(Admin admin) {
