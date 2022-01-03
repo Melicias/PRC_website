@@ -211,8 +211,8 @@ async function createApp(ssrContext, config = {}) {
   }
   // Plugin execution
 
-  if (typeof nuxt_plugin_plugin_3c2a1da5 === 'function') {
-    await nuxt_plugin_plugin_3c2a1da5(app.context, inject)
+  if (typeof nuxt_plugin_plugin_47eec38b === 'function') {
+    await nuxt_plugin_plugin_47eec38b(app.context, inject)
   }
 
   if (typeof nuxt_plugin_bootstrapvue_6bb43777 === 'function') {

@@ -77,7 +77,7 @@ export default {
             data_observacao: new Date().toISOString(),
             valor:this.form.valor
           }) .then(msg => {
-          this.$toast.success("Professional type created with success").goAway(1500)
+          this.$toast.success("Add Biometric Data with success").goAway(1500)
           })
         }}
 }
