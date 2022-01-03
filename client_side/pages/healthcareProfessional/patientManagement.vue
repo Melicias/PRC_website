@@ -147,6 +147,11 @@
                     {{data.item.valor}}
                   </p>
                 </template>
+                <template v-slot:cell(Classification)="data">
+                  <p>
+                    {{data.item.avaliacao}}
+                  </p>
+                </template>
                 <template v-slot:cell(CreationDate)="data">
                   <p v-if="data.item.created_at">
                     {{data.item.created_at.split('T')[0]}}
@@ -175,7 +180,7 @@ export default {
       utente: [],
       tab: 1,
       fieldsPrcs: ['Desease', 'CreatedAt', 'Until', 'Prescriptions', 'Actions'],
-      fieldsBiometricData: ['BiometricDataType', 'Value', 'CreationDate', 'ObservationDate'],
+      fieldsBiometricData: ['BiometricDataType', 'Value', 'Classification', 'CreationDate', 'ObservationDate'],
       fieldsSpecialists: ['name', 'email'],
       formUpdate: {
         doenca: '',
