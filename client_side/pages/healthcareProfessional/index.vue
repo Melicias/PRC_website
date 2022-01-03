@@ -1,7 +1,7 @@
 <template>
     <div>
         <b-container>
-            <h2>Healthcare Professional: {{ this.$auth.user.groups[0] }}</h2>
+            <h2>Healthcare Professional: {{ this.$auth.user.sub }}</h2>
             <div v-show="!changePassword">
               <b-button variant="light" to="/healthcareProfessional/createPacient">
                 <div class="img-with-text width">
@@ -112,7 +112,7 @@ export default {
   },
   created () {
     if (!this.$auth.user.groups.includes('ProfissionalSaude')) {
-      this.$router.push('nuxt-error')
+      this.$router.push('not-found')
     }
   } 
 }

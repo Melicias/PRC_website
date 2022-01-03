@@ -296,7 +296,7 @@ export default {
   },
   created () {
     if (!this.$auth.user.groups.includes('ProfissionalSaude')) {
-      this.$router.push('nuxt-error')
+      this.$router.push('not-found')
     }
     if(this.$store.state.pacientEmail != null){
       this.fetchPacientProfile(this.$store.state.pacientEmail)

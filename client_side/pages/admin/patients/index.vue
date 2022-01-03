@@ -44,7 +44,7 @@ export default {
   },
   created () {
     if (!this.$auth.user.groups.includes('Admin')) {
-      this.$router.push('nuxt-error')
+      this.$router.push('not-found')
     }
     this.$axios.$get('/api/utente')
       .then((utentes) => {

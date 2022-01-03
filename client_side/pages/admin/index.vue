@@ -108,7 +108,7 @@ export default {
   },
   created() {
     if (!this.$auth.user.groups.includes('Admin')) {
-      this.$router.push('nuxt-error')
+      this.$router.push('not-found')
     }
     this.email = this.$auth.user.sub
     this.$axios.$get('/api/admin/statistics')

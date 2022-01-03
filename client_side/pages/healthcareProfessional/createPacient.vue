@@ -126,7 +126,7 @@ export default {
     },
     created(){
       if (!this.$auth.user.groups.includes('ProfissionalSaude')) {
-        this.$router.push('nuxt-error')
+        this.$router.push('not-found')
       }
     } 
 }
