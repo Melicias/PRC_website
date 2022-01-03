@@ -44,11 +44,11 @@
               <div v-else>
                 <p>Yes</p>
               </div>
-            </template> 
+            </template>
             <template #cell(Actions)="data">
               <b-button :variant="data.item.blocked == 0 ? 'danger' : 'success'" @click="blockUtente(data.item.email)">{{data.item.blocked == 0 ? "Block" : "Unblock"}}</b-button>
-            </template> 
-          </b-table>  
+            </template>
+          </b-table>
       </b-container>
     </div>
 </template>
@@ -77,7 +77,7 @@ export default {
           this.fetchUtente()
         })
         .catch(error => {
-          this.$toast.error('error while deleting').goAway(3000)
+          this.$toast.error(error.response.data).goAway(3000)
         })
     },
     fetchUtente(){
