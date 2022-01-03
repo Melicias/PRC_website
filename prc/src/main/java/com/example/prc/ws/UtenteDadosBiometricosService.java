@@ -3,7 +3,6 @@ package com.example.prc.ws;
 import com.example.prc.dtos.TipoDadosBiometricosDTO;
 import com.example.prc.dtos.UtenteDTO;
 import com.example.prc.dtos.UtenteDadosBiometricosDTO;
-import com.example.prc.ejbs.UtenteBean;
 import com.example.prc.ejbs.UtenteDadosBiometricosBean;
 import com.example.prc.entities.TipoDadosBiometricos;
 import com.example.prc.entities.Utente;
@@ -19,8 +18,6 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static io.smallrye.config.ConfigLogging.log;
-
 @Path("biometricdata")
 @Produces({MediaType.APPLICATION_JSON}) // injects header “Content-Type: application/json”
 @Consumes({MediaType.APPLICATION_JSON})
@@ -32,10 +29,9 @@ public class UtenteDadosBiometricosService {
     @Path("/")
     public Response CreateDadosBiometricos(UtenteDadosBiometricosDTO utenteDadosBiometricosDTO)
             throws MyEntityExistsException, MyConstraintViolationException {
-        log.info(utenteDadosBiometricosDTO.getData_observacao());
         try{
             UtenteDadosBiometricos utenteDadosBiometricos=  utenteDadosBiometricosBean.create(utenteDadosBiometricosDTO.getTipodadosBiometricos_id(),utenteDadosBiometricosDTO.getData_observacao(),utenteDadosBiometricosDTO.getValor(),utenteDadosBiometricosDTO.getUtenteEmail());
-            utenteDadosBiometricosDTO= toDto(utenteDadosBiometricos);
+            utenteDadosBiometricosDTO = toDto(utenteDadosBiometricos);
         }catch (Exception e){
             return Response.status(400).entity(e.getMessage()).build();
         }

@@ -48,9 +48,11 @@ public class UtenteBean {
         Utente utente = em.find(Utente.class, email);
         if(utente != null)
             throw new MyEntityExistsException();
+
         ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class, emailProfissionalSaude);
         if(profissionalSaude == null)
             throw new MyEntityNotFoundException();
+
         try {
             Utente newUtente = new Utente(password, name, email, dataNasc);
             profissionalSaude.addUtente(newUtente);
@@ -81,7 +83,8 @@ public class UtenteBean {
         try{
             ProfissionalSaude ps = em.find(ProfissionalSaude.class, profissionalEmail);
             if(ps == null)
-                throw new MyEntityNotFoundException();
+                throw new MyEntityNotFoundException("Healthcare specialists not found.");
+
             return (List<Utente>) em.createNamedQuery("getUtenteSemProfissional").setParameter("email",profissionalEmail).getResultList();
         }catch (Exception e){
             return null;
@@ -92,7 +95,8 @@ public class UtenteBean {
         try{
             ProfissionalSaude ps = em.find(ProfissionalSaude.class, profissionalEmail);
             if(ps == null)
-                throw new MyEntityNotFoundException();
+                throw new MyEntityNotFoundException("Healthcare specialists not found.");
+
             return (List<Utente>) em.createNamedQuery("getUtenteComProfissional").setParameter("email",profissionalEmail).getResultList();
         }catch (Exception e){
             return null;
@@ -105,6 +109,7 @@ public class UtenteBean {
         Utente utente = em.find(Utente.class, email);
         if(utente == null)
             throw new MyEntityNotFoundException("Patient with this email not found");
+
         try {
             em.lock(utente, LockModeType.OPTIMISTIC);
             utente.setName(name);
