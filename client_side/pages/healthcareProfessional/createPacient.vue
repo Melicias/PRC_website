@@ -1,5 +1,5 @@
 <template>
-    <div> 
+    <div>
         <b-container>
             <h1>Create Patient Account</h1>
             <b-form class="margin" @submit="onSubmit" @reset="onReset" v-if="show">
@@ -43,14 +43,14 @@
                     required
                     placeholder="Enter password"
                     ></b-form-input>
-                </b-form-group>       
-                <b-button variant="primary" to="/healthcareProfessional/">Back</b-button> 
+                </b-form-group>
+                <b-button variant="primary" to="/healthcareProfessional/">Back</b-button>
                 <b-button type="submit" variant="primary">Submit</b-button>
                 <b-button type="reset" variant="danger">Reset</b-button>
             </b-form>
-            
+
         </b-container>
-        
+
     </div>
 </template>
 <script>
@@ -128,7 +128,7 @@ export default {
       if (!this.$auth.user.groups.includes('ProfissionalSaude')) {
         this.$router.push('not-found')
       }
-    } 
+    }
 }
 </script>
 <style scoped>
