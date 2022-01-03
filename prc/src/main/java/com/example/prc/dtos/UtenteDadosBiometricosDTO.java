@@ -11,6 +11,7 @@ public class UtenteDadosBiometricosDTO {
     private int id;
     private TipoDadosBiometricosDTO tipoDadosBiometricos;
     private UtenteDTO utente;
+    private String utenteEmail;
     private Date data_observacao;
     private double valor;
     private String avaliacao;
@@ -99,5 +100,13 @@ public class UtenteDadosBiometricosDTO {
 
     public void setUtente(UtenteDTO utente) {
         this.utente = utente;
+    }
+
+    public String getUtenteEmail() {
+        return utenteEmail;
+    }
+
+    public void setUtenteEmail(String utenteEmail) {
+        this.utenteEmail = utenteEmail;
     }
 }

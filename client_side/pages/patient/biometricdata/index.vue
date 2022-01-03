@@ -73,7 +73,7 @@ export default {
          console.log(this.biometricDataMax)
       });
         });
-      this.$axios.$get('/api/tipoDadosBiometricos')
+      this.$axios.$get('/api/tipoDadosBiometricos/utente')
       .then((tipoDadosBiometricos) => {
         this.tipoDadosBiometricos = tipoDadosBiometricos
         console.log(this.tipoDadosBiometricos)

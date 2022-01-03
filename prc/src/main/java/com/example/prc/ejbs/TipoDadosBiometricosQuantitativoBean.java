@@ -34,15 +34,4 @@ public class TipoDadosBiometricosQuantitativoBean {
         }
     }
 
-    public List<TipoDadosBiometricosQuantitativo> find(int tipoDadoBiometrico_id) throws MyEntityNotFoundException {
-        try {
-            TipoDadosBiometricos tipoDadosBiometricos = em.find(TipoDadosBiometricos.class, tipoDadoBiometrico_id);
-            if (tipoDadosBiometricos == null) {
-                throw new MyEntityNotFoundException("Cant find this utente");
-            }
-            return (List<TipoDadosBiometricosQuantitativo>) em.createNamedQuery("tipodadosBiometrico").setParameter("id", tipoDadoBiometrico_id).getResultList();
-        } catch (Exception e) {
-            return  null;
-        }
-    }
 }

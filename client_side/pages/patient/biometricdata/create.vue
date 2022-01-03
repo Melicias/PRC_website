@@ -28,7 +28,7 @@
     <br><br>
       <b-button v-b-toggle.collapse-1 variant="primary" href="/patient/biometricdata">Back</b-button>
     </b-card>
-     
+
     <br>
   </b-container>
 </template>
@@ -61,7 +61,8 @@ export default {
       .then((utente) => {
         this.utente = utente || {}
       })
-    this.$axios.$get('/api/tipoDadosBiometricos')
+
+    this.$axios.$get('/api/tipoDadosBiometricos/utente')
       .then((tipoDadosBiometricos) => {
         this.tipoDadosBiometricos = tipoDadosBiometricos
         for (let i = 0; i < tipoDadosBiometricos.length; i++) {
@@ -71,12 +72,12 @@ export default {
       })
     },
      methods: {
-      
+
         onSubmit(event) {
        event.preventDefault()
           this.$axios.$post('/api/biometricdata/',{
             tipodadosBiometricos_id:this.form.tipoDadosBiometrico,
-            utente:this.utente,
+            utenteEmail:this.utente.email,
             data_observacao: new Date().toISOString(),
             valor:this.form.valor
           }) .then(msg => {

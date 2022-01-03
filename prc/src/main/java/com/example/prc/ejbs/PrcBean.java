@@ -4,6 +4,7 @@ import com.example.prc.entities.*;
 import com.example.prc.exceptions.MyConstraintViolationException;
 import com.example.prc.exceptions.MyEntityExistsException;
 import com.example.prc.exceptions.MyEntityNotFoundException;
+import com.example.prc.exceptions.MyIllegalArgumentException;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -19,24 +20,25 @@ public class PrcBean {
     EntityManager em;
 
     public void create(String emailUtente, String emailProfissionalSaude, String doenca, Date validade, int idPrescricao, boolean itsBean)
-            throws MyEntityNotFoundException, MyConstraintViolationException {
+            throws MyEntityNotFoundException, MyConstraintViolationException, MyIllegalArgumentException {
         Utente utente = em.find(Utente.class, emailUtente);
-        if (utente == null) {
+        if (utente == null)
             throw new MyEntityNotFoundException("User not found");
-        }
+
         ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class, emailProfissionalSaude);
         if(profissionalSaude == null)
             throw new MyEntityNotFoundException("Healthcare specialist not found.");
+
         if(!itsBean) {
             Date date = new Date();
             if (validade.before(date)) {
-                throw new MyEntityNotFoundException("Validation date must be after current date.");
+                throw new MyIllegalArgumentException("Validation date must be after current date.");
             }
         }
         Prescricao prescricao = em.find(Prescricao.class, idPrescricao);
-        if (prescricao == null) {
+        if (prescricao == null)
             throw new MyEntityNotFoundException("Prescription does not exists.");
-        }
+
         try {
             Prc prc = new Prc(utente, profissionalSaude, doenca, validade);
             prc.addPrescricao(prescricao);
@@ -57,21 +59,24 @@ public class PrcBean {
         return (List<Prc>) em.createNamedQuery("getAllPrcs").getResultList();
     }
 
-    public List<Prc> getAllPrcsByUtente(String emailUtente) {
+    public List<Prc> getAllPrcsByUtente(String emailUtente)  throws MyEntityNotFoundException{
         Utente utente = em.find(Utente.class, emailUtente);
+        if(utente == null)
+            throw new MyEntityNotFoundException("Patient not found");
+
         return (List<Prc>) em.createNamedQuery("getAllPrcsByUtente").setParameter("utente", utente).getResultList();
     }
 
     public void update(int idPrc, String doenca, Date validade)
-            throws MyEntityNotFoundException, MyConstraintViolationException {
+            throws MyEntityNotFoundException, MyConstraintViolationException, MyIllegalArgumentException {
         Prc prc = em.find(Prc.class, idPrc);
-        if (prc == null) {
+        if (prc == null)
             throw new MyEntityNotFoundException("PRC not found.");
-        }
+
         Date date = new Date();
-        if (validade.before(date)) {
-            throw new MyEntityNotFoundException("Validation date must be after current date.");
-        }
+        if (validade.before(date))
+            throw new MyIllegalArgumentException("Validation date must be after current date.");
+
         try {
             if (doenca != null)
                 prc.setDoenca(doenca);
@@ -84,15 +89,15 @@ public class PrcBean {
     }
 
     public Prc delete(int idPrc)
-            throws MyEntityNotFoundException, MyConstraintViolationException {
+            throws MyEntityNotFoundException, MyConstraintViolationException, MyIllegalArgumentException {
         Prc prc = em.find(Prc.class, idPrc);
         if(prc == null)
             throw new MyEntityNotFoundException("Prc not found");
+
         Date date = new Date();
         System.out.println(prc.getValidade().before(date));
-        if (prc.getValidade().after(date)) {
-            throw new MyEntityNotFoundException("This PRC is valid so cant be deleted.");
-        }
+        if (prc.getValidade().after(date))
+            throw new MyIllegalArgumentException("This PRC is valid so it can't be deleted.");
 
         if(prc.getDeleted_at() == null){
             prc.setDeleted_at(new Date());
@@ -109,14 +114,16 @@ public class PrcBean {
             throws MyEntityNotFoundException, MyConstraintViolationException, MyEntityExistsException {
         Prc prc = em.find(Prc.class, idPrc);
         if(prc == null)
-            throw new MyEntityNotFoundException("The Prc was not found..");
+            throw new MyEntityNotFoundException("The Prc was not found.");
+
         Prescricao prescricao = em.find(Prescricao.class, idPrescricao);
         if(prescricao == null)
-            throw new MyEntityNotFoundException("The Prescription was not found..");
+            throw new MyEntityNotFoundException("The Prescription was not found.");
+
         List<Prc> prcs = prescricao.getPrcs();
         for(int i = 0; i <prcs.size(); i++){
             if(prcs.get(i).getId() == idPrc){
-                throw new MyEntityExistsException("This prescription already exists in this PRC");
+                throw new MyEntityExistsException("This prescription already exists in this PRC.");
             }
         }
         try {
@@ -135,10 +142,12 @@ public class PrcBean {
             throws MyEntityNotFoundException, MyConstraintViolationException {
         Prc prc = em.find(Prc.class, idPrc);
         if(prc == null)
-            throw new MyEntityNotFoundException("The Prc doesnt exists...");
+            throw new MyEntityNotFoundException("The Prc does not exist.");
+
         Prescricao prescricao = em.find(Prescricao.class, idPrescricao);
         if(prescricao == null)
-            throw new MyEntityNotFoundException("The Prescription does not exists..");
+            throw new MyEntityNotFoundException("The Prescription does not exists.");
+
         try {
             prc.removePrescricao(prescricao);
             prescricao.removePrc(prc);
