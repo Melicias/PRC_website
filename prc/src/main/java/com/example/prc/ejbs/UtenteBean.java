@@ -3,10 +3,7 @@ package com.example.prc.ejbs;
 import com.example.prc.dtos.ProfissionalSaudeDTO;
 import com.example.prc.dtos.UtenteDTO;
 import com.example.prc.entities.*;
-import com.example.prc.exceptions.MyConstraintViolationException;
-import com.example.prc.exceptions.MyEntityExistsException;
-import com.example.prc.exceptions.MyEntityNotFoundException;
-import com.example.prc.exceptions.MyIllegalArgumentExceptionMapper;
+import com.example.prc.exceptions.*;
 import com.example.prc.ws.LoginService;
 
 import javax.ejb.Stateless;
@@ -44,14 +41,17 @@ public class UtenteBean {
     }
 
     public void create(String password, String name, String email, Date dataNasc, String emailProfissionalSaude)
-            throws MyEntityExistsException, MyConstraintViolationException, MyEntityNotFoundException {
+            throws MyEntityExistsException, MyConstraintViolationException, MyEntityNotFoundException, MyIllegalArgumentException {
         Utente utente = em.find(Utente.class, email);
         if(utente != null)
-            throw new MyEntityExistsException();
+            throw new MyEntityExistsException("This email is already in use.");
 
         ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class, emailProfissionalSaude);
         if(profissionalSaude == null)
-            throw new MyEntityNotFoundException();
+            throw new MyEntityNotFoundException("The healthcare specialist does not exist.");
+
+        if(dataNasc.after(new Date()))
+            throw new MyIllegalArgumentException("The birthday date is invalid.");
 
         try {
             Utente newUtente = new Utente(password, name, email, dataNasc);
