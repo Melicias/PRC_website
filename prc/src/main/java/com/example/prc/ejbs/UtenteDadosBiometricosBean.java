@@ -33,30 +33,37 @@ public class UtenteDadosBiometricosBean {
             throw new MyEntityNotFoundException("Tipo Dados Biometricos : "+ idTipoDadosBiometricos +" não foi encontrado");
 
         try{
-            log.info("OIOI");
+
             UtenteDadosBiometricos newutenteDadosBiometricos = new UtenteDadosBiometricos(tipoDadosBiometricos,data_observacao,valor, utente);
             utente.addDadosBiometricos(newutenteDadosBiometricos);
             if(newutenteDadosBiometricos.getTipoDadosBiometricos().getType()==2){
                 if(newutenteDadosBiometricos.getValor() > newutenteDadosBiometricos.getTipoDadosBiometricos().getMax()){
-                            newutenteDadosBiometricos.setAvaliacao("High");
-                }
-                else if(newutenteDadosBiometricos.getValor()< newutenteDadosBiometricos.getTipoDadosBiometricos().getMin()){
-                    newutenteDadosBiometricos.setAvaliacao("Low");
-                }else {
-                    newutenteDadosBiometricos.setAvaliacao("Normal");
+                        newutenteDadosBiometricos.setAvaliacao("High");
+                    }
+                    else if(newutenteDadosBiometricos.getValor()< newutenteDadosBiometricos.getTipoDadosBiometricos().getMin()){
+                        newutenteDadosBiometricos.setAvaliacao("Low");
+                    }else {
+                        newutenteDadosBiometricos.setAvaliacao("Normal");
                 }
             }else {
-                TipoDadosBiometricosQuantitativoBean tipoDadosBiometricosQuantitativo=new TipoDadosBiometricosQuantitativoBean();
-               List<TipoDadosBiometricosQuantitativo> tipoDadosBiometricosQuantitativos= tipoDadosBiometricosQuantitativo.find(newutenteDadosBiometricos.getTipoDadosBiometricos().getId());
-                for (TipoDadosBiometricosQuantitativo dados: tipoDadosBiometricosQuantitativos
-                     ) {
-                    if(dados.getMin()<newutenteDadosBiometricos.getValor() && newutenteDadosBiometricos.getValor()<dados.getMax())
+                List<TipoDadosBiometricosQuantitativo> dadosBiometricosQuantitativos=tipoDadosBiometricos.getTipoDadosBiometricosQuantitativo();
+                    if(tipoDadosBiometricos.getTipoDadosBiometricosQuantitativo().size()>1){
+                        if(newutenteDadosBiometricos.getValor()<dadosBiometricosQuantitativos.get(0).getMax()){
+                            newutenteDadosBiometricos.setAvaliacao(dadosBiometricosQuantitativos.get(0).getName());
+                        }
+                        if(newutenteDadosBiometricos.getValor()>dadosBiometricosQuantitativos.get(dadosBiometricosQuantitativos.size()-1).getMin()){
+                            newutenteDadosBiometricos.setAvaliacao(dadosBiometricosQuantitativos.get(dadosBiometricosQuantitativos.size()-1).getName());
+                        }
+                    }
+              for(int i=1;i<dadosBiometricosQuantitativos.size()-1;i++){
+                    if(dadosBiometricosQuantitativos.get(i).getMin()<= newutenteDadosBiometricos.getValor() && newutenteDadosBiometricos.getValor()<=dadosBiometricosQuantitativos.get(i).getMax())
                     {
-                        newutenteDadosBiometricos.setAvaliacao(dados.getName());
-                    }else{
-                        newutenteDadosBiometricos.setAvaliacao("Without appraisal");
+                        newutenteDadosBiometricos.setAvaliacao(dadosBiometricosQuantitativos.get(i).getName());
                     }
                 }
+              if(newutenteDadosBiometricos.getAvaliacao()==null){
+                  newutenteDadosBiometricos.setAvaliacao("Without appraisal");
+              }
 
             }
             em.persist(newutenteDadosBiometricos);
