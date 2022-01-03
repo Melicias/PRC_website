@@ -3,217 +3,180 @@
     "name": "admin",
     "path": "/admin",
     "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\admin\\\\index.vue",
-    "chunkName": "pages/admin/index",
-    "_name": "_059fd822"
+    "chunkName": "pages/admin/index"
   },
   {
     "name": "healthcareProfessional",
     "path": "/healthcareProfessional",
     "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\healthcareProfessional\\\\index.vue",
-    "chunkName": "pages/healthcareProfessional/index",
-    "_name": "_123daf02"
+    "chunkName": "pages/healthcareProfessional/index"
   },
   {
     "name": "patient",
     "path": "/patient",
     "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\patient\\\\index.vue",
-    "chunkName": "pages/patient/index",
-    "_name": "_71277d0e"
+    "chunkName": "pages/patient/index"
   },
   {
     "name": "tipoProfissional",
     "path": "/tipoProfissional",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\tipoProfissional\\\\index.vue",
-    "chunkName": "pages/tipoProfissional/index",
-    "_name": "_877f2c62"
-  },
-  {
-    "name": "utente",
-    "path": "/utente",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\utente\\\\index.vue",
-    "chunkName": "pages/utente/index",
-    "_name": "_098afe8d"
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\tipoProfissional\\\\index.vue",
+    "chunkName": "pages/tipoProfissional/index"
   },
   {
     "name": "admin-admins",
     "path": "/admin/admins",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\admin\\\\admins\\\\index.vue",
-    "chunkName": "pages/admin/admins/index",
-    "_name": "_1b57a97b"
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\admin\\\\admins\\\\index.vue",
+    "chunkName": "pages/admin/admins/index"
   },
   {
     "name": "admin-biometricdata",
     "path": "/admin/biometricdata",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\admin\\\\biometricdata\\\\index.vue",
-    "chunkName": "pages/admin/biometricdata/index",
-    "_name": "_facf60da"
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\admin\\\\biometricdata\\\\index.vue",
+    "chunkName": "pages/admin/biometricdata/index"
   },
   {
     "name": "admin-patients",
     "path": "/admin/patients",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\admin\\\\patients\\\\index.vue",
-    "chunkName": "pages/admin/patients/index",
-    "_name": "_1e84fef1"
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\admin\\\\patients\\\\index.vue",
+    "chunkName": "pages/admin/patients/index"
   },
   {
     "name": "admin-professionaltype",
     "path": "/admin/professionaltype",
     "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\admin\\\\professionaltype\\\\index.vue",
-    "chunkName": "pages/admin/professionaltype/index",
-    "_name": "_290d0ea4"
+    "chunkName": "pages/admin/professionaltype/index"
   },
   {
     "name": "admin-specialists",
     "path": "/admin/specialists",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\admin\\\\specialists\\\\index.vue",
-    "chunkName": "pages/admin/specialists/index",
-    "_name": "_1520f153"
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\admin\\\\specialists\\\\index.vue",
+    "chunkName": "pages/admin/specialists/index"
   },
   {
     "name": "auth-login",
     "path": "/auth/login",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\auth\\\\login.vue",
-    "chunkName": "pages/auth/login",
-    "_name": "_0ee48b95"
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\auth\\\\login.vue",
+    "chunkName": "pages/auth/login"
   },
   {
-    "name": "profissionalSaude-addPacient",
-    "path": "/profissionalSaude/addPacient",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\profissionalSaude\\\\addPacient.vue",
-    "chunkName": "pages/profissionalSaude/addPacient",
-    "_name": "_8467c3a8"
+    "name": "healthcareProfessional-addPacient",
+    "path": "/healthcareProfessional/addPacient",
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\healthcareProfessional\\\\addPacient.vue",
+    "chunkName": "pages/healthcareProfessional/addPacient"
   },
   {
-    "name": "profissionalSaude-createPacient",
-    "path": "/profissionalSaude/createPacient",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\profissionalSaude\\\\createPacient.vue",
-    "chunkName": "pages/profissionalSaude/createPacient",
-    "_name": "_1efd504f"
+    "name": "healthcareProfessional-createPacient",
+    "path": "/healthcareProfessional/createPacient",
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\healthcareProfessional\\\\createPacient.vue",
+    "chunkName": "pages/healthcareProfessional/createPacient"
   },
   {
-    "name": "profissionalSaude-createPrc",
-    "path": "/profissionalSaude/createPrc",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\profissionalSaude\\\\createPrc.vue",
-    "chunkName": "pages/profissionalSaude/createPrc",
-    "_name": "_1d903b08"
+    "name": "healthcareProfessional-createPrc",
+    "path": "/healthcareProfessional/createPrc",
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\healthcareProfessional\\\\createPrc.vue",
+    "chunkName": "pages/healthcareProfessional/createPrc"
   },
   {
-    "name": "profissionalSaude-managePrescriptions",
-    "path": "/profissionalSaude/managePrescriptions",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\profissionalSaude\\\\managePrescriptions.vue",
-    "chunkName": "pages/profissionalSaude/managePrescriptions",
-    "_name": "_e4ec032a"
+    "name": "healthcareProfessional-managePrescriptions",
+    "path": "/healthcareProfessional/managePrescriptions",
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\healthcareProfessional\\\\managePrescriptions.vue",
+    "chunkName": "pages/healthcareProfessional/managePrescriptions"
   },
   {
-    "name": "profissionalSaude-pacientManagement",
-    "path": "/profissionalSaude/pacientManagement",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\profissionalSaude\\\\pacientManagement.vue",
-    "chunkName": "pages/profissionalSaude/pacientManagement",
-    "_name": "_5b15214e"
+    "name": "healthcareProfessional-patientManagement",
+    "path": "/healthcareProfessional/patientManagement",
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\healthcareProfessional\\\\patientManagement.vue",
+    "chunkName": "pages/healthcareProfessional/patientManagement"
   },
   {
-    "name": "profissionalSaude-pacientsManagement",
-    "path": "/profissionalSaude/pacientsManagement",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\profissionalSaude\\\\pacientsManagement.vue",
-    "chunkName": "pages/profissionalSaude/pacientsManagement",
-    "_name": "_25ac4f3b"
+    "name": "healthcareProfessional-patientsManagement",
+    "path": "/healthcareProfessional/patientsManagement",
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\healthcareProfessional\\\\patientsManagement.vue",
+    "chunkName": "pages/healthcareProfessional/patientsManagement"
   },
   {
-    "name": "utente-biometricdata",
-    "path": "/utente/biometricdata",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\utente\\\\biometricdata\\\\index.vue",
-    "chunkName": "pages/utente/biometricdata/index",
-    "_name": "_7535eec5"
+    "name": "patient-biometricdata",
+    "path": "/patient/biometricdata",
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\patient\\\\biometricdata\\\\index.vue",
+    "chunkName": "pages/patient/biometricdata/index"
   },
   {
-    "name": "utente-prescritions",
-    "path": "/utente/prescritions",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\utente\\\\prescritions\\\\index.vue",
-    "chunkName": "pages/utente/prescritions/index",
-    "_name": "_5bdce638"
+    "name": "patient-prescritions",
+    "path": "/patient/prescritions",
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\patient\\\\prescritions\\\\index.vue",
+    "chunkName": "pages/patient/prescritions/index"
   },
   {
-    "name": "utente-profile",
-    "path": "/utente/profile",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\utente\\\\profile\\\\index.vue",
-    "chunkName": "pages/utente/profile/index",
-    "_name": "_4403b644"
+    "name": "patient-profile",
+    "path": "/patient/profile",
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\patient\\\\profile\\\\index.vue",
+    "chunkName": "pages/patient/profile/index"
   },
   {
     "name": "admin-admins-changepassword",
     "path": "/admin/admins/changepassword",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\admin\\\\admins\\\\changepassword.vue",
-    "chunkName": "pages/admin/admins/changepassword",
-    "_name": "_063ee11c"
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\admin\\\\admins\\\\changepassword.vue",
+    "chunkName": "pages/admin/admins/changepassword"
   },
   {
     "name": "admin-admins-create",
     "path": "/admin/admins/create",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\admin\\\\admins\\\\create.vue",
-    "chunkName": "pages/admin/admins/create",
-    "_name": "_7751d0a3"
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\admin\\\\admins\\\\create.vue",
+    "chunkName": "pages/admin/admins/create"
   },
   {
     "name": "admin-biometricdata-create",
     "path": "/admin/biometricdata/create",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\admin\\\\biometricdata\\\\create.vue",
-    "chunkName": "pages/admin/biometricdata/create",
-    "_name": "_0fb424ea"
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\admin\\\\biometricdata\\\\create.vue",
+    "chunkName": "pages/admin/biometricdata/create"
   },
   {
     "name": "admin-professionaltype-create",
     "path": "/admin/professionaltype/create",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\admin\\\\professionaltype\\\\create.vue",
-    "chunkName": "pages/admin/professionaltype/create",
-    "_name": "_412e5640"
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\admin\\\\professionaltype\\\\create.vue",
+    "chunkName": "pages/admin/professionaltype/create"
   },
   {
     "name": "admin-specialists-create",
     "path": "/admin/specialists/create",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\admin\\\\specialists\\\\create.vue",
-    "chunkName": "pages/admin/specialists/create",
-    "_name": "_929cf86a"
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\admin\\\\specialists\\\\create.vue",
+    "chunkName": "pages/admin/specialists/create"
   },
   {
-    "name": "utente-biometricdata-create",
-    "path": "/utente/biometricdata/create",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\utente\\\\biometricdata\\\\create.vue",
-    "chunkName": "pages/utente/biometricdata/create",
-    "_name": "_593c3499"
+    "name": "patient-biometricdata-create",
+    "path": "/patient/biometricdata/create",
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\patient\\\\biometricdata\\\\create.vue",
+    "chunkName": "pages/patient/biometricdata/create"
   },
   {
     "name": "admin-biometricdata-name",
     "path": "/admin/biometricdata/:name",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\admin\\\\biometricdata\\\\_name.vue",
-    "chunkName": "pages/admin/biometricdata/_name",
-    "_name": "_25d44e2b"
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\admin\\\\biometricdata\\\\_name.vue",
+    "chunkName": "pages/admin/biometricdata/_name"
   },
   {
     "name": "admin-patients-email",
     "path": "/admin/patients/:email",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\admin\\\\patients\\\\_email.vue",
-    "chunkName": "pages/admin/patients/_email",
-    "_name": "_a45301e4"
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\admin\\\\patients\\\\_email.vue",
+    "chunkName": "pages/admin/patients/_email"
   },
   {
     "name": "admin-specialists-email",
     "path": "/admin/specialists/:email",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\admin\\\\specialists\\\\_email.vue",
-    "chunkName": "pages/admin/specialists/_email",
-    "_name": "_ea8e4e28"
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\admin\\\\specialists\\\\_email.vue",
+    "chunkName": "pages/admin/specialists/_email"
   },
   {
-    "name": "utente-prescritions-id",
-    "path": "/utente/prescritions/:id",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\utente\\\\prescritions\\\\_id.vue",
-    "chunkName": "pages/utente/prescritions/_id",
-    "_name": "_f141d2c0"
+    "name": "patient-prescritions-id",
+    "path": "/patient/prescritions/:id",
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\patient\\\\prescritions\\\\_id.vue",
+    "chunkName": "pages/patient/prescritions/_id"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\index.vue",
-    "chunkName": "pages/index",
-    "_name": "_d23950b4"
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\index.vue",
+    "chunkName": "pages/index"
   }
 ]
