@@ -29,9 +29,11 @@ public class UtenteBean {
             Exception {
         Utente utente = em.find(Utente.class, email);
         if (utente != null && utente.getPassword().equals(Utente.hashPassword(password))) {
-            return utente;
+            if(utente.getBlocked() == 0 && utente.getDeleted_at() == null)
+                return utente;
+            throw new Exception("Failed logging in with the email  '" + email + "': unknown email or wrong password");
         }
-        throw new Exception("Failed logging in with the email  '" + email + "': unknown email or wrong password");
+        throw new Exception("This account is blocked or deleted, contact and admi if you think this is an error");
     }
     public List<Utente> getAllUtentes() {
         return (List<Utente>) em.createNamedQuery("getAllUtentes").getResultList();

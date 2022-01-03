@@ -56,18 +56,18 @@ public class LoginService {
     }
 
     @POST
-    @Path("/admin/login")
+    @Path("/mobile/login")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response authenticateAdmnin(AuthDTO credencials) {
         try {
-            Admin admin = adminBean.authenticate(credencials.getUsername(), credencials.getPassword());
-            if (admin != null) {
-                if (admin.getEmail() != null) {
-                    log.info("Generating JWT for user " + admin.getEmail());
+            Utente utente = utenteBean.authenticate(credencials.getUsername(), credencials.getPassword());
+            if (utente != null) {
+                if (utente.getEmail() != null) {
+                    log.info("Generating JWT for user " + utente.getEmail());
                 }
-                String token = jwtBean.createJwt(admin.getEmail(), new
-                        String[]{admin.getClass().getSimpleName()});
+                String token = jwtBean.createJwt(utente.getEmail(), new
+                        String[]{utente.getClass().getSimpleName()});
                 return Response.ok(new Jwt(token)).build();
             }
         } catch (Exception e) {
