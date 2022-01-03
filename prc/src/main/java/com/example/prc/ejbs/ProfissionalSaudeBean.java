@@ -29,10 +29,13 @@ public class ProfissionalSaudeBean {
     public void create(String password, String name, String email, int idTipoProfissional)
             throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException {
         ProfissionalSaude profissionalSaude=em.find(ProfissionalSaude.class,email);
-        if(profissionalSaude!=null) throw new MyEntityExistsException("Profissional with email: "+email+" already exist");
+        if(profissionalSaude!=null)
+            throw new MyEntityExistsException("Profissional with email: "+email+" already exist");
 
         TipoProfissional tipoProfissional = em.find(TipoProfissional.class,idTipoProfissional);
-        if(tipoProfissional==null) throw new MyEntityNotFoundException("Tipo Profissional with the code: "+idTipoProfissional+ " not found");
+        if(tipoProfissional==null)
+            throw new MyEntityNotFoundException("Tipo Profissional with the code: "+idTipoProfissional+ " not found");
+
         try {
             ProfissionalSaude newprofissional= new ProfissionalSaude(password,name,email,tipoProfissional);
             tipoProfissional.addProfissionaisSaude(newprofissional);
@@ -44,15 +47,18 @@ public class ProfissionalSaudeBean {
     }
 
     public void updatePassword(String email, String password, String newPassword, String confirmPassword)
-            throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException {
+            throws MyEntityNotFoundException, MyConstraintViolationException, MyIllegalArgumentException {
         ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class,email);
-        if(profissionalSaude == null) throw new MyEntityExistsException("Profissional with email: "+email+" doesnt exist");
+        if(profissionalSaude == null)
+            throw new MyEntityNotFoundException("Profissional with email: "+email+" doesnt exist");
+
         if (!User.hashPassword(password).equals(profissionalSaude.getPassword()))
-            throw new MyEntityExistsException("Old password is not valid");
+            throw new MyIllegalArgumentException("Old password is not valid");
         if (newPassword.length() < 8)
-            throw new MyEntityExistsException("New password is not valid, must has at least 8 characters");
+            throw new MyIllegalArgumentException("New password is not valid, must has at least 8 characters");
         if (!newPassword.equals(confirmPassword))
-            throw new MyEntityExistsException("Confirm password is not valid");
+            throw new MyIllegalArgumentException("Confirm password is not valid");
+
         try {
             profissionalSaude.setPassword(newPassword);
             em.persist(profissionalSaude);
@@ -79,9 +85,11 @@ public class ProfissionalSaudeBean {
         TipoProfissional tipoProfissional = em.find(TipoProfissional.class, idTipoProfissional);
         if(tipoProfissional == null)
             throw new MyEntityNotFoundException("The specialist type was not found, try with other.");
+
         ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class,email);
         if(profissionalSaude == null)
             throw new MyEntityNotFoundException("The Healthcare specialist was not found..");
+
         try {
             em.lock(profissionalSaude, LockModeType.OPTIMISTIC);
             if(profissionalSaude.getTipoProfissional().getId() != idTipoProfissional){
@@ -105,6 +113,7 @@ public class ProfissionalSaudeBean {
         ProfissionalSaude ps = em.find(ProfissionalSaude.class,email);
         if(ps == null)
             throw new MyEntityNotFoundException("Patient with this email not found");
+
         if(ps.getUtentes().isEmpty() && ps.getPrcs().isEmpty()){
             em.remove(ps);
             em.flush();
@@ -120,17 +129,19 @@ public class ProfissionalSaudeBean {
         return ps;
     }
 
-    public ProfissionalSaude blockProfissionalSaude(String email){
+    public ProfissionalSaude blockProfissionalSaude(String email) throws MyEntityNotFoundException{
         ProfissionalSaude ps = em.find(ProfissionalSaude.class,email);
-        if(ps != null){
-            if(ps.getBlocked() == 0){
-                ps.setBlocked(1);
-            }else{
-                ps.setBlocked(0);
-            }
-            em.persist(ps);
-            em.flush();
+        if(ps == null)
+            throw new MyEntityNotFoundException("The Healthcare specialist was not found.");
+
+        if(ps.getBlocked() == 0){
+            ps.setBlocked(1);
+        }else{
+            ps.setBlocked(0);
         }
+        em.persist(ps);
+        em.flush();
+
         return ps;
     }
 
@@ -138,14 +149,16 @@ public class ProfissionalSaudeBean {
             throws MyEntityNotFoundException, MyConstraintViolationException, MyEntityExistsException {
         ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class,emailprofissional);
         if(profissionalSaude == null)
-            throw new MyEntityNotFoundException("The Healthcare specialist was not found..");
+            throw new MyEntityNotFoundException("The Healthcare specialist was not found.");
+
         Utente utente = em.find(Utente.class, emailUtente);
         if(utente == null)
-            throw new MyEntityNotFoundException("The Pacient was not found..");
+            throw new MyEntityNotFoundException("The Patient was not found.");
+
         List<ProfissionalSaude> ps = utente.getProfissionalSaude();
         for(int i = 0; i <ps.size();i++){
             if(ps.get(i).getEmail() == emailprofissional){
-                throw new MyEntityExistsException("This connection already exists...");
+                throw new MyEntityExistsException("This connection already exists.");
             }
         }
         try {
@@ -164,15 +177,17 @@ public class ProfissionalSaudeBean {
             throws MyEntityNotFoundException, MyConstraintViolationException,MyIllegalArgumentException {
         ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class,emailprofissional);
         if(profissionalSaude == null)
-            throw new MyEntityNotFoundException("The Healthcare specialist was not found..");
+            throw new MyEntityNotFoundException("The Healthcare specialist was not found.");
+
         Utente utente = em.find(Utente.class,emailUtente);
         if(utente == null)
-            throw new MyEntityNotFoundException("The Pacient was not found..");
+            throw new MyEntityNotFoundException("The Patient was not found.");
+
         List<Prc> prcs = utente.getPrcs();
         for(int i = 0;i <prcs.size();i++){
             if(prcs.get(i).getProfissionalSaude().getEmail() == profissionalSaude.getEmail()){
                 if (prcs.get(i).getValidade().after(new Date())) {
-                    throw new MyIllegalArgumentException("There is Prcs not finished...");
+                    throw new MyIllegalArgumentException("There is Prcs not finished.");
                 }
             }
         }
@@ -187,15 +202,10 @@ public class ProfissionalSaudeBean {
         }
     }
 
-    public List<ProfissionalSaude> getProfissionaisSemUtente(String emailUtente)
-            throws MyEntityNotFoundException {
-        try{
-            Utente u = em.find(Utente.class, emailUtente);
-            if(u == null)
-                throw new MyEntityNotFoundException();
-            return (List<ProfissionalSaude>) em.createNamedQuery("getProfissionaisSemEsteUtente").setParameter("email",emailUtente).getResultList();
-        }catch (Exception e){
-            return null;
-        }
+    public List<ProfissionalSaude> getProfissionaisSemUtente(String emailUtente) throws MyEntityNotFoundException {
+        Utente u = em.find(Utente.class, emailUtente);
+        if(u == null)
+            throw new MyEntityNotFoundException();
+        return (List<ProfissionalSaude>) em.createNamedQuery("getProfissionaisSemEsteUtente").setParameter("email",emailUtente).getResultList();
     }
 }

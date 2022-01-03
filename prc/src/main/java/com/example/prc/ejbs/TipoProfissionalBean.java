@@ -22,7 +22,9 @@ public class TipoProfissionalBean {
     public String create(String name)
             throws MyConstraintViolationException, MyEntityExistsException {
         TipoProfissional tp = findTipoProfissional(name);
-        if(tp != null) throw new MyEntityExistsException("Name already in use!");
+        if(tp != null)
+            throw new MyEntityExistsException("Name already in use!");
+
         try {
             TipoProfissional tipoProfissional = new TipoProfissional(name);
             em.persist(tipoProfissional);
