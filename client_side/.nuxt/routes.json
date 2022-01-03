@@ -134,14 +134,16 @@
   {
     "name": "admin-professionaltype-create",
     "path": "/admin/professionaltype/create",
+
     "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/professionaltype/create.vue",
     "chunkName": "pages/admin/professionaltype/create"
   },
   {
     "name": "admin-specialists-create",
     "path": "/admin/specialists/create",
-    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/specialists/create.vue",
-    "chunkName": "pages/admin/specialists/create"
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\admin\\\\specialists\\\\create.vue",
+    "chunkName": "pages/admin/specialists/create",
+    "_name": "_30758f8a"
   },
   {
     "name": "patient-biometricdata-create",
