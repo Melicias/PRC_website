@@ -192,6 +192,11 @@ export default {
       }
       return true
     }
+  },
+  created(){
+    if (!this.$auth.user.groups.includes('Admin')) {
+      this.$router.push('nuxt-error')
+    }
   }
 }
 </script>

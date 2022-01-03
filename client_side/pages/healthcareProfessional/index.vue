@@ -1,33 +1,33 @@
 <template>
     <div>
         <b-container>
-            <h2>Healthcare Professional: {{ this.$auth.user.sub }}</h2>
+            <h2>Healthcare Professional: {{ this.$auth.user.groups[0] }}</h2>
             <div v-show="!changePassword">
-              <b-button variant="light" to="/profissionalSaude/createPacient">
+              <b-button variant="light" to="/healthcareProfessional/createPacient">
                 <div class="img-with-text width">
                   <img width="100" height="100" src="../../img/patient.png" alt="Image not loaded" />
                   <p>Create Patient</p>
                 </div>
               </b-button>
-              <b-button variant="light" to="/profissionalSaude/pacientsManagement">
+              <b-button variant="light" to="/healthcareProfessional/patientsManagement">
                 <div class="img-with-text">
                   <img width="100" height="100" src="../../img/user.png" alt="Image not loaded" />
                   <p>Patients management</p>
                 </div>
               </b-button>
-              <b-button variant="light" to="/profissionalSaude/managePrescriptions">
+              <b-button variant="light" to="/healthcareProfessional/managePrescriptions">
                 <div class="img-with-text">
                   <img width="100" height="100" src="../../img/prescription.png" alt="Image not loaded" />
                   <p>Manage Prescriptions</p>
                 </div>
               </b-button>
-              <b-button variant="light" to="/profissionalSaude/addPacient">
+              <b-button variant="light" to="/healthcareProfessional/addPacient">
                 <div class="img-with-text">
                   <img width="100" height="100" src="../../img/addPatient.png" alt="Image not loaded" />
                   <p>Add/Remove Patient</p>
                 </div>
               </b-button>
-              <b-button variant="light" to="/profissionalSaude/addPacient">
+              <b-button variant="light" to="/healthcareProfessional/addPacient">
                 <div class="img-with-text">
                   <img width="100" height="100" src="../../img/addPatient.png" alt="Image not loaded" />
                   <p>Add/Remove Patient</p>
@@ -111,8 +111,11 @@ export default {
     }
   },
   created () {
-    
-} }
+    if (!this.$auth.user.groups.includes('ProfissionalSaude')) {
+      this.$router.push('nuxt-error')
+    }
+  } 
+}
 </script>
 <style scoped>
 .width{

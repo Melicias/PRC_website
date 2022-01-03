@@ -2,19 +2,19 @@
   <b-container>
     <h1 style="margin-top:5%">Welcome Back, {{utente.name}}</h1>
     <br><br>
-    <nuxt-link :to="'/utente/profile'">
+    <nuxt-link :to="'/patient/profile'">
       <div class="img-with-text">
         <img width="100" height="100" src="../../img/user.png" alt="Image not loaded" />
         <p>Profile</p>
       </div>
     </nuxt-link>
-    <nuxt-link :to="'/utente/prescritions'">
+    <nuxt-link :to="'/patient/prescritions'">
       <div class="img-with-text">
         <img width="100" height="100" src="../../img/doctor.png" alt="Image not loaded" />
         <p>My Prescriptions</p>
       </div>
     </nuxt-link>
-    <nuxt-link :to="'/utente/biometricData'">
+    <nuxt-link :to="'/patient/biometricData'">
       <div class="img-with-text">
         <img width="100" height="100" src="../../img/blood-test.png" alt="Image not loaded" />
         <p>Biometric data</p>
@@ -45,6 +45,9 @@ export default {
     }
   },
   created() {
+    if (!this.$auth.user.groups.includes('Utente')) {
+      this.$router.push('nuxt-error')
+    }
     this.email = this.$auth.user.sub
     this.$axios.$get('/api/utente/'+this.email)
       .then((utente) => {

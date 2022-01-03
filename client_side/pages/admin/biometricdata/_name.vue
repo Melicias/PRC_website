@@ -85,6 +85,9 @@ export default {
     },
   },
   created() {
+    if (!this.$auth.user.groups.includes('Admin')) {
+      this.$router.push('nuxt-error')
+    }
     this.$axios.$get(`/api/tipoDadosBiometricos/${this.name}`)
       .then((tipoDadoBiometrico) => {
         this.tipoDadoBiometrico = tipoDadoBiometrico || {}

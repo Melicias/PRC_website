@@ -21,7 +21,7 @@
       </b-table>
     </b-card>
     <br>
-     <b-button v-b-toggle.collapse-1 variant="primary" href="/utente/biometricdata/create">Add My Biometric Data</b-button>
+     <b-button v-b-toggle.collapse-1 variant="primary" href="/patient/biometricdata/create">Add My Biometric Data</b-button>
     <br>
     <br>
 
@@ -41,7 +41,7 @@
     </b-table>
     </b-card>
     <br>
-    <b-button v-b-toggle.collapse-1 variant="primary" href="/utente">Back</b-button>
+    <b-button v-b-toggle.collapse-1 variant="primary" href="/patient">Back</b-button>
   </b-container>
 </template>
 <script>
@@ -61,6 +61,9 @@ export default {
     },
   },
   created() {
+    if (!this.$auth.user.groups.includes('Utente')) {
+      this.$router.push('nuxt-error')
+    }
     this.$axios.$get(`/api/utente/${this.email}`)
       .then((utente) => {
           this.utente=utente

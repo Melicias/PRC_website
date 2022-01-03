@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <b-navbar toggleable="lg">
-      <b-navbar-brand :href="$auth.loggedIn ? (this.$auth.user.groups.includes('Admin') ? '/admin' : (this.$auth.user.groups.includes('Utente') ? '/utente' : '/ProfissionalSaude')) : '/auth/login'">PRC</b-navbar-brand>
+      <b-navbar-brand :href="$auth.loggedIn ? (this.$auth.user.groups.includes('Admin') ? '/admin' : (this.$auth.user.groups.includes('Utente') ? '/patient' : '/healthcareProfessional')) : '/auth/login'">PRC</b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
         <div v-if="$auth.loggedIn">
@@ -30,16 +30,16 @@
           <div v-if="this.$auth.user.groups.includes('Utente')">
             <b-navbar-nav>
               <li class="nav-item">
-                <nuxt-link class="nav-link" to="/utente/profile">Profile</nuxt-link>
+                <nuxt-link class="nav-link" to="/patient/profile">Profile</nuxt-link>
               </li>
               <li class="nav-item">
-                <nuxt-link class="nav-link" to="/utente/biometricdata">My Biometric Data</nuxt-link>
+                <nuxt-link class="nav-link" to="/patient/biometricdata">My Biometric Data</nuxt-link>
               </li>
                <li class="nav-item">
-                <nuxt-link class="nav-link" to="/utente/biometricdata/create">Add Biometric Data</nuxt-link>
+                <nuxt-link class="nav-link" to="/patient/biometricdata/create">Add Biometric Data</nuxt-link>
               </li>
               <li class="nav-item">
-                <nuxt-link class="nav-link" to="/utente/prescritions">My Prescritions</nuxt-link>
+                <nuxt-link class="nav-link" to="/patient/prescritions">My Prescritions</nuxt-link>
               </li>
 
             </b-navbar-nav>
@@ -47,16 +47,16 @@
           <div v-if="this.$auth.user.groups.includes('ProfissionalSaude')">
             <b-navbar-nav>
               <li class="nav-item">
-                <nuxt-link class="nav-link" to="/profissionalSaude/pacientsManagement">Manage Patients</nuxt-link>
+                <nuxt-link class="nav-link" to="/healthcareProfessional/patientsManagement">Manage Patients</nuxt-link>
               </li>
               <li class="nav-item">
-                <nuxt-link class="nav-link" to="/profissionalSaude/createPacient">Create Patient</nuxt-link>
+                <nuxt-link class="nav-link" to="/healthcareProfessional/createPacient">Create Patient</nuxt-link>
               </li>
               <li class="nav-item">
-                <nuxt-link class="nav-link" to="/profissionalSaude/addPacient">Add/Remove Patient</nuxt-link>
+                <nuxt-link class="nav-link" to="/healthcareProfessional/addPacient">Add/Remove Patient</nuxt-link>
               </li>
               <li class="nav-item">
-                <nuxt-link class="nav-link" to="/profissionalSaude/managePrescriptions">Manage Prescriptions</nuxt-link>
+                <nuxt-link class="nav-link" to="/healthcareProfessional/managePrescriptions">Manage Prescriptions</nuxt-link>
               </li>
             </b-navbar-nav>
           </div>

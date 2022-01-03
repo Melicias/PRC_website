@@ -44,7 +44,7 @@
                     placeholder="Enter password"
                     ></b-form-input>
                 </b-form-group>       
-                <b-button variant="primary" to="/profissionalSaude/">Back</b-button> 
+                <b-button variant="primary" to="/healthcareProfessional/">Back</b-button> 
                 <b-button type="submit" variant="primary">Submit</b-button>
                 <b-button type="reset" variant="danger">Reset</b-button>
             </b-form>
@@ -122,6 +122,11 @@ export default {
           .catch(error => {
             this.$toast.error('error sending the e-mail').goAway(3000)
           })
+      }
+    },
+    created(){
+      if (!this.$auth.user.groups.includes('ProfissionalSaude')) {
+        this.$router.push('nuxt-error')
       }
     } 
 }

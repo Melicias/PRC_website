@@ -46,11 +46,11 @@ export default {
         // TODO redirect based on the user role
         // eg:
         if (this.$auth.user.groups.includes('Utente')) {
-          this.$router.push('/utente')
+          this.$router.push('/patient')
         } else if (this.$auth.user.groups.includes('Admin')) {
           this.$router.push('/admin')
         } if (this.$auth.user.groups.includes('ProfissionalSaude')) {
-          this.$router.push('/profissionalSaude/')
+          this.$router.push('/healthcareProfessional/')
         }
       })
       promise.catch((error) => {

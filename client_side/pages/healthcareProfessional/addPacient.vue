@@ -2,7 +2,7 @@
     <div>
         <b-container>
             <h1>Add/Remove Patient To/From My Responsability</h1>
-            <b-button variant="primary" to="/profissionalSaude/">Back</b-button>
+            <b-button variant="primary" to="/healthcareProfessional/">Back</b-button>
             <b-card class="mt-3 margin" header="Add Patient">
                 <b-form-group
                     id="input-group-1"
@@ -173,6 +173,9 @@ export default {
     }
   },
   created () {
+    if (!this.$auth.user.groups.includes('ProfissionalSaude')) {
+      this.$router.push('nuxt-error')
+    }
     this.fecthUtentes()
     this.fetchUtenteComProfissional()
   } 

@@ -2,7 +2,7 @@
     <div>
         <b-container>
           <h2 v-if="utente">Managing: {{ utente.name }}</h2>
-          <b-button variant="primary" to="/profissionalSaude/pacientsManagement">Back</b-button>
+          <b-button variant="primary" to="/healthcareProfessional/patientsManagement">Back</b-button>
           <b-card class="mt-3" header="Patient Data">
             <b-card-group deck class="mb-3">
               <b-card border-variant="light" header="Name:" class="text-center">
@@ -44,7 +44,7 @@
             </template>
             <b-container v-if="tab == 1">
               <p v-if="utente.prcs">PRC's total: {{ utente.prcs.length }}</p>
-              <b-button class="marginBottom" variant="primary" to="/profissionalSaude/createPrc">Create PRC</b-button>
+              <b-button class="marginBottom" variant="primary" to="/healthcareProfessional/createPrc">Create PRC</b-button>
               <b-card v-if="updatePrc" class="mt-3 margin" header="Update Prc">
                 <b-form @reset="onReset">
                   <b-form-group
@@ -295,6 +295,9 @@ export default {
     }
   },
   created () {
+    if (!this.$auth.user.groups.includes('ProfissionalSaude')) {
+      this.$router.push('nuxt-error')
+    }
     if(this.$store.state.pacientEmail != null){
       this.fetchPacientProfile(this.$store.state.pacientEmail)
     } 
