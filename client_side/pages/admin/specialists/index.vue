@@ -58,6 +58,12 @@ export default {
       this.$axios.$delete(`/api/profissionalsaude/${email}`)
         .then(msg => {
           this.$toast.success("Specialist deleted with success").goAway(1500)
+          if(msg === ''){
+            this.$axios.$get('/api/profissionalsaude')
+              .then((specialist) => {
+                this.specialist = specialist
+              })
+          }
           this.specialist[index].deleted_at = msg.deleted_at;
           this.$refs.table.refresh();
         })
