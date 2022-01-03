@@ -1,7 +1,7 @@
 <template>
     <div> 
         <b-container>
-            <h1>Create Pacient Account</h1>
+            <h1>Create Patient Account</h1>
             <b-form class="margin" @submit="onSubmit" @reset="onReset" v-if="show">
                 <b-form-group
                     id="input-group-1"

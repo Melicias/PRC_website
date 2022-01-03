@@ -91,6 +91,22 @@ public class ProfissionalSaudeService {
         return Response.ok(profissionalSaude).build();
     }
 
+    @PUT
+    @Path("{emailprofissional}")
+    public Response updateProfissionalSaudePassword (@PathParam("emailprofissional") String emailprofissional, ProfissionalSaudeDTO profissionalSaude)
+            throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException {
+        try{
+            profissionalSaudeBean.updatePassword(
+                    emailprofissional,
+                    profissionalSaude.getPassword(),
+                    profissionalSaude.getNewPassword(),
+                    profissionalSaude.getConfirmPassword());
+        }catch (Exception e){
+            return Response.status(400).entity(e.getMessage()).build();
+        }
+        return Response.ok(profissionalSaude).build();
+    }
+
     @POST
     @Path("/addUtente/{emailprofissional}")
     public Response addUtenteToProfissionalSaude (@PathParam("emailprofissional") String emailprofissional,UtenteDTO utenteDTO)
@@ -171,7 +187,7 @@ public class ProfissionalSaudeService {
     private UtenteDTO toDTOUtente(Utente utente) {
         return new UtenteDTO(
                 utente.getEmail(),
-                utente.getPassword(),
+                "",
                 utente.getName(),
                 utente.getDataNasc(),
                 utente.getDeleted_at(),

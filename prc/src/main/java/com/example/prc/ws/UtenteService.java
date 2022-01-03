@@ -172,7 +172,7 @@ public class UtenteService {
     public UtenteDTO toDTO(Utente utente) {
         UtenteDTO utenteDTO = new UtenteDTO(
                 utente.getEmail(),
-                utente.getPassword(),
+                "",
                 utente.getName(),
                 utente.getDataNasc(),
                 utente.getDeleted_at(),
