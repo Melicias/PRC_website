@@ -24,13 +24,12 @@ public class TipoDadosBiometricosBean {
     @PersistenceContext
     EntityManager em;
 
-    private static final Logger log =
-            Logger.getLogger(LoginService.class.getName());
-
     public void create(String name, double min, double max,boolean qualitativo, List<TipoDadosBiometricosQuantitativoDTO> tdbqDTOS)
             throws MyEntityExistsException, MyConstraintViolationException {
         TipoDadosBiometricos tipoDadosBiometricos = findTipoDadoBiometrico(name);
-        if(tipoDadosBiometricos != null) throw new MyEntityExistsException("Name already in use!");
+        if(tipoDadosBiometricos != null)
+            throw new MyEntityExistsException("Name already in use!");
+
         try {
             TipoDadosBiometricos tipoDadoBiometrico;
             if(qualitativo) {
@@ -62,9 +61,8 @@ public class TipoDadosBiometricosBean {
                 em.persist(tipoDadoBiometrico);
                 em.flush();
 
-                if(tdbqDTOS.isEmpty()){
+                if(tdbqDTOS.isEmpty())
                     return;
-                }
 
                 TipoDadosBiometricosQuantitativo tdbq = new TipoDadosBiometricosQuantitativo(0,tdbqDTOS.get(0).getMax(),tdbqDTOS.get(0).getName(),tipoDadoBiometrico);
                 tipoDadoBiometrico.addTipoDadosBiometricosQuantitativo(tdbq);
@@ -99,9 +97,12 @@ public class TipoDadosBiometricosBean {
     }
 
     public void update(int id, double min, double max)
-            throws MyEntityExistsException, MyConstraintViolationException {
+            throws MyEntityNotFoundException, MyConstraintViolationException {
+        TipoDadosBiometricos tdb = em.find(TipoDadosBiometricos.class,id);
+        if(tdb == null)
+            throw new MyEntityNotFoundException("Name already in use!");
+
         try {
-            TipoDadosBiometricos tdb = em.find(TipoDadosBiometricos.class,id);
             if(tdb.getType() == 2) {
                 tdb.setMin(min);
                 tdb.setMax(max);

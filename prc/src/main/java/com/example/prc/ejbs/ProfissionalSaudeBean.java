@@ -47,15 +47,18 @@ public class ProfissionalSaudeBean {
     }
 
     public void updatePassword(String email, String password, String newPassword, String confirmPassword)
-            throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException, MyIllegalArgumentException {
+            throws MyEntityNotFoundException, MyConstraintViolationException, MyIllegalArgumentException {
         ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class,email);
-        if(profissionalSaude == null) throw new MyEntityExistsException("Profissional with email: "+email+" doesnt exist");
+        if(profissionalSaude == null)
+            throw new MyEntityNotFoundException("Profissional with email: "+email+" doesnt exist");
+
         if (!User.hashPassword(password).equals(profissionalSaude.getPassword()))
             throw new MyIllegalArgumentException("Old password is not valid");
         if (newPassword.length() < 8)
             throw new MyIllegalArgumentException("New password is not valid, must has at least 8 characters");
         if (!newPassword.equals(confirmPassword))
             throw new MyIllegalArgumentException("Confirm password is not valid");
+
         try {
             profissionalSaude.setPassword(newPassword);
             em.persist(profissionalSaude);
@@ -147,13 +150,15 @@ public class ProfissionalSaudeBean {
         ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class,emailprofissional);
         if(profissionalSaude == null)
             throw new MyEntityNotFoundException("The Healthcare specialist was not found.");
+
         Utente utente = em.find(Utente.class, emailUtente);
         if(utente == null)
             throw new MyEntityNotFoundException("The Patient was not found.");
+
         List<ProfissionalSaude> ps = utente.getProfissionalSaude();
         for(int i = 0; i <ps.size();i++){
             if(ps.get(i).getEmail() == emailprofissional){
-                throw new MyEntityExistsException("This connection already exists...");
+                throw new MyEntityExistsException("This connection already exists.");
             }
         }
         try {
@@ -172,15 +177,17 @@ public class ProfissionalSaudeBean {
             throws MyEntityNotFoundException, MyConstraintViolationException,MyIllegalArgumentException {
         ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class,emailprofissional);
         if(profissionalSaude == null)
-            throw new MyEntityNotFoundException("The Healthcare specialist was not found..");
+            throw new MyEntityNotFoundException("The Healthcare specialist was not found.");
+
         Utente utente = em.find(Utente.class,emailUtente);
         if(utente == null)
-            throw new MyEntityNotFoundException("The Pacient was not found..");
+            throw new MyEntityNotFoundException("The Patient was not found.");
+
         List<Prc> prcs = utente.getPrcs();
         for(int i = 0;i <prcs.size();i++){
             if(prcs.get(i).getProfissionalSaude().getEmail() == profissionalSaude.getEmail()){
                 if (prcs.get(i).getValidade().after(new Date())) {
-                    throw new MyIllegalArgumentException("There is Prcs not finished...");
+                    throw new MyIllegalArgumentException("There is Prcs not finished.");
                 }
             }
         }
@@ -195,15 +202,10 @@ public class ProfissionalSaudeBean {
         }
     }
 
-    public List<ProfissionalSaude> getProfissionaisSemUtente(String emailUtente)
-            throws MyEntityNotFoundException {
-        try{
-            Utente u = em.find(Utente.class, emailUtente);
-            if(u == null)
-                throw new MyEntityNotFoundException();
-            return (List<ProfissionalSaude>) em.createNamedQuery("getProfissionaisSemEsteUtente").setParameter("email",emailUtente).getResultList();
-        }catch (Exception e){
-            return null;
-        }
+    public List<ProfissionalSaude> getProfissionaisSemUtente(String emailUtente) throws MyEntityNotFoundException {
+        Utente u = em.find(Utente.class, emailUtente);
+        if(u == null)
+            throw new MyEntityNotFoundException();
+        return (List<ProfissionalSaude>) em.createNamedQuery("getProfissionaisSemEsteUtente").setParameter("email",emailUtente).getResultList();
     }
 }

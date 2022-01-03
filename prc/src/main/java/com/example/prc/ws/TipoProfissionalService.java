@@ -3,7 +3,6 @@ package com.example.prc.ws;
 
 import com.example.prc.dtos.TipoProfissionalDTO;
 import com.example.prc.ejbs.TipoProfissionalBean;
-import com.example.prc.entities.TipoDadosBiometricos;
 import com.example.prc.entities.TipoProfissional;
 import com.example.prc.exceptions.MyConstraintViolationException;
 import com.example.prc.exceptions.MyEntityExistsException;
@@ -63,6 +62,7 @@ public class TipoProfissionalService {
             TipoProfissional tipoProfissional = tipoProfissionalBean.deleteTipoProfissional(id);
             if(tipoProfissional == null)
                 return Response.ok(null).build();
+
             return Response.ok(toDTO(tipoProfissional)).build();
         }catch (Exception e){
             return Response.status(400).entity(e.getMessage()).build();

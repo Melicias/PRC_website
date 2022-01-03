@@ -3,17 +3,13 @@ package com.example.prc.ws;
 import com.example.prc.dtos.*;
 import com.example.prc.ejbs.*;
 import com.example.prc.entities.*;
-import com.example.prc.exceptions.MyConstraintViolationException;
 import com.example.prc.exceptions.MyEntityNotFoundException;
-import com.example.prc.jwt.Jwt;
-import org.jboss.resteasy.plugins.touri.URITemplateAnnotationResolver;
 
 import javax.ejb.EJB;
 import javax.mail.MessagingException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -30,9 +26,6 @@ public class UtenteService {
     private PrescricaoBean prescricaoBean;
     @EJB
     private EmailBean emailBean;
-
-    private static final Logger log =
-            Logger.getLogger(UtenteService.class.getName());
 
     @GET
     @Path("/")
@@ -102,6 +95,8 @@ public class UtenteService {
     @Path("{email}")
     public  Response getUtente(@PathParam("email") String email){
         Utente utente= utenteBean.findUtente(email);
+        if(utente == null)
+            return Response.noContent().build();
         utente.setPassword("");
         return Response.ok(toDTO(utente)).build();
     }
@@ -109,26 +104,24 @@ public class UtenteService {
     @GET
     @Path("/semprofissional/{profissionalEmail}")
     public Response getUtenteSemProfissionalSaude(@PathParam("profissionalEmail") String profissionalEmail) throws MyEntityNotFoundException {
-        List<Utente> utentes;
         try{
-            utentes = utenteBean.getUtentesSemProfissionalSaude(profissionalEmail);
+            List<Utente> utentes = utenteBean.getUtentesSemProfissionalSaude(profissionalEmail);
+            return Response.ok(toDTOs(utentes)).build();
         }catch (Exception e){
             return Response.status(400).entity(e.getMessage()).build();
         }
-        System.out.println(Response.ok(utentes));
-        return Response.ok(toDTOs(utentes)).build();
+
     }
 
     @GET
     @Path("/comprofissional/{profissionalEmail}")
     public Response getUtenteComProfissionalSaude(@PathParam("profissionalEmail") String profissionalEmail) throws MyEntityNotFoundException {
-        List<Utente> utentes;
         try{
-            utentes = utenteBean.getUtentesComProfissionalSaude(profissionalEmail);
+            List<Utente> utentes = utenteBean.getUtentesComProfissionalSaude(profissionalEmail);
+            return Response.ok(toDTOs(utentes)).build();
         }catch (Exception e){
             return Response.status(400).entity(e.getMessage()).build();
         }
-        return Response.ok(toDTOs(utentes)).build();
     }
 
     @PUT
@@ -162,8 +155,7 @@ public class UtenteService {
             throws MyEntityNotFoundException, MessagingException {
         Utente utente = utenteBean.findUtente(utenteEmail);
         if (utente == null) {
-            throw new MyEntityNotFoundException("Utente with email '" + utenteEmail
-                    + "' not found in our records.");
+            throw new MyEntityNotFoundException("Utente with email '" + utenteEmail + "' not found in our records.");
         }
         emailBean.send(utenteEmail, email.getSubject(), email.getMessage());
         return Response.status(Response.Status.OK).entity("E-mail sent").build();
