@@ -47,7 +47,7 @@
             <p>How to fill this fields?</p>
             <p>The first row only needs the max number, so it goes from n until Max and the last one only needs to have the Min so it goes from Min until N</p>
             <p>Here you have an example: N - 10 = Lower than 10; 10 - 20 = between 10 and 20; 20 - N = Bigger than 20</p>
-            <b-form-row v-for="(item, index) in tipoDadoBiometrico.tipoDadosBiometricosQuantitativo">
+            <b-form-row v-for="(item, index) in tipoDadoBiometrico.tipoDadosBiometricosQuantitativo" :key="index">
               {{index}} -
               <b-col><b-form-input min=0 :disabled=true v-model="item.min" type="number" placeholder="Min"></b-form-input></b-col>
               <b-col><b-form-input min=0 :disabled=true v-model="item.max" type="number" placeholder="Max"></b-form-input></b-col>

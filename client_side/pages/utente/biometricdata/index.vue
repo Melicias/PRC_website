@@ -75,7 +75,7 @@ export default {
         this.tipoDadosBiometricos = tipoDadosBiometricos
         console.log(this.tipoDadosBiometricos)
       })
-     
+
       }
     }
 </script>

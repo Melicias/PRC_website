@@ -65,7 +65,7 @@ export default {
     blockSpecialist(email, index) {
       this.$axios.put(`/api/profissionalsaude/block/${email}`)
         .then(msg => {
-          this.$toast.success("Specialist deleted with success").goAway(1500)
+          this.$toast.success("Specialist updated with success").goAway(1500)
           this.specialist[index].blocked = msg.data.blocked
           this.$refs.table.refresh();
         })

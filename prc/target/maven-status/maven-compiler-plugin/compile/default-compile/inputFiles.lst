@@ -13,6 +13,7 @@
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/dtos/TipoPrescricaoDTO.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/ejbs/PrcBean.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/ejbs/JwtBean.java
+/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/dtos/EmailDTO.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/dtos/PrcDTO.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/entities/ProfissionalSaude.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/entities/TipoDadosBiometricosQuantitativo.java
@@ -39,10 +40,12 @@
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/ws/ProfissionalSaudeService.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/exceptions/MyIllegalArgumentException.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/ws/PrescricaoService.java
+/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/dtos/AdminDTO.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/entities/User.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/ejbs/TipoDadosBiometricosQuantitativoBean.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/dtos/ProfissionalSaudeDTO.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/ws/LoginService.java
+/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/ejbs/EmailBean.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/entities/TipoPrescricao.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/ws/TipoDadosBiometricosService.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/HelloApplication.java
@@ -52,4 +55,3 @@
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/ejbs/AdminBean.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/exceptions/MyConstraintViolationException.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/ejbs/TipoPrescricaoBean.java
-
