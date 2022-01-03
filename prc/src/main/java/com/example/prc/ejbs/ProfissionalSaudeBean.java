@@ -44,15 +44,15 @@ public class ProfissionalSaudeBean {
     }
 
     public void updatePassword(String email, String password, String newPassword, String confirmPassword)
-            throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException {
+            throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException, MyIllegalArgumentException {
         ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class,email);
         if(profissionalSaude == null) throw new MyEntityExistsException("Profissional with email: "+email+" doesnt exist");
         if (!User.hashPassword(password).equals(profissionalSaude.getPassword()))
-            throw new MyEntityExistsException("Old password is not valid");
+            throw new MyIllegalArgumentException("Old password is not valid");
         if (newPassword.length() < 8)
-            throw new MyEntityExistsException("New password is not valid, must has at least 8 characters");
+            throw new MyIllegalArgumentException("New password is not valid, must has at least 8 characters");
         if (!newPassword.equals(confirmPassword))
-            throw new MyEntityExistsException("Confirm password is not valid");
+            throw new MyIllegalArgumentException("Confirm password is not valid");
         try {
             profissionalSaude.setPassword(newPassword);
             em.persist(profissionalSaude);
