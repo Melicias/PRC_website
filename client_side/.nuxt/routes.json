@@ -165,7 +165,7 @@
     "path": "/admin/patients/:email",
     "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\admin\\\\patients\\\\_email.vue",
     "chunkName": "pages/admin/patients/_email",
-    "_name": "_a45301e4"
+    "_name": "_a45301e4
   },
   {
     "name": "admin-specialists-email",
