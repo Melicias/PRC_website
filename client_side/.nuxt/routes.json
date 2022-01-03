@@ -2,16 +2,23 @@
   {
     "name": "admin",
     "path": "/admin",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\admin\\\\index.vue",
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\admin\\\\index.vue",
     "chunkName": "pages/admin/index",
-    "_name": "_2718db7f"
+    "_name": "_059fd822"
   },
   {
-    "name": "profissionalSaude",
-    "path": "/profissionalSaude",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\profissionalSaude\\\\index.vue",
-    "chunkName": "pages/profissionalSaude/index",
-    "_name": "_8200876e"
+    "name": "healthcareProfessional",
+    "path": "/healthcareProfessional",
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\healthcareProfessional\\\\index.vue",
+    "chunkName": "pages/healthcareProfessional/index",
+    "_name": "_123daf02"
+  },
+  {
+    "name": "patient",
+    "path": "/patient",
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\patient\\\\index.vue",
+    "chunkName": "pages/patient/index",
+    "_name": "_71277d0e"
   },
   {
     "name": "tipoProfissional",
@@ -51,9 +58,9 @@
   {
     "name": "admin-professionaltype",
     "path": "/admin/professionaltype",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\admin\\\\professionaltype\\\\index.vue",
+    "component": "C:\\\\Users\\\\danis\\\\OneDrive\\\\Documentos\\\\GitHub\\\\prc\\\\client_side\\\\pages\\\\admin\\\\professionaltype\\\\index.vue",
     "chunkName": "pages/admin/professionaltype/index",
-    "_name": "_e5950784"
+    "_name": "_290d0ea4"
   },
   {
     "name": "admin-specialists",

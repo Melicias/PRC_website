@@ -48,123 +48,123 @@ export const routerOptions = {
 
   routes: [{
     path: "/admin",
-    component: _2718db7f,
+    component: _059fd822,
     name: "admin"
   }, {
-    path: "/profissionalSaude",
-    component: _8200876e,
-    name: "profissionalSaude"
+    path: "/healthcareProfessional",
+    component: _123daf02,
+    name: "healthcareProfessional"
+  }, {
+    path: "/patient",
+    component: _71277d0e,
+    name: "patient"
   }, {
     path: "/tipoProfissional",
-    component: _877f2c62,
+    component: _3bae8b5f,
     name: "tipoProfissional"
   }, {
-    path: "/utente",
-    component: _098afe8d,
-    name: "utente"
-  }, {
     path: "/admin/admins",
-    component: _1b57a97b,
+    component: _7eb11c2a,
     name: "admin-admins"
   }, {
     path: "/admin/biometricdata",
-    component: _facf60da,
+    component: _73fb2923,
     name: "admin-biometricdata"
   }, {
     path: "/admin/patients",
-    component: _1e84fef1,
+    component: _a1f7293e,
     name: "admin-patients"
   }, {
     path: "/admin/professionaltype",
-    component: _e5950784,
+    component: _290d0ea4,
     name: "admin-professionaltype"
   }, {
     path: "/admin/specialists",
-    component: _1520f153,
+    component: _718ceee3,
     name: "admin-specialists"
   }, {
     path: "/auth/login",
-    component: _0ee48b95,
+    component: _15cc8525,
     name: "auth-login"
   }, {
-    path: "/profissionalSaude/addPacient",
-    component: _8467c3a8,
-    name: "profissionalSaude-addPacient"
+    path: "/healthcareProfessional/addPacient",
+    component: _1925f713,
+    name: "healthcareProfessional-addPacient"
   }, {
-    path: "/profissionalSaude/createPacient",
-    component: _1efd504f,
-    name: "profissionalSaude-createPacient"
+    path: "/healthcareProfessional/createPacient",
+    component: _88c50bf0,
+    name: "healthcareProfessional-createPacient"
   }, {
-    path: "/profissionalSaude/createPrc",
-    component: _1d903b08,
-    name: "profissionalSaude-createPrc"
+    path: "/healthcareProfessional/createPrc",
+    component: _8b485e96,
+    name: "healthcareProfessional-createPrc"
   }, {
-    path: "/profissionalSaude/managePrescriptions",
-    component: _e4ec032a,
-    name: "profissionalSaude-managePrescriptions"
+    path: "/healthcareProfessional/managePrescriptions",
+    component: _4c083964,
+    name: "healthcareProfessional-managePrescriptions"
   }, {
-    path: "/profissionalSaude/pacientManagement",
-    component: _5b15214e,
-    name: "profissionalSaude-pacientManagement"
+    path: "/healthcareProfessional/patientManagement",
+    component: _c80f7750,
+    name: "healthcareProfessional-patientManagement"
   }, {
-    path: "/profissionalSaude/pacientsManagement",
-    component: _25ac4f3b,
-    name: "profissionalSaude-pacientsManagement"
+    path: "/healthcareProfessional/patientsManagement",
+    component: _012d8d71,
+    name: "healthcareProfessional-patientsManagement"
   }, {
-    path: "/utente/biometricdata",
-    component: _7535eec5,
-    name: "utente-biometricdata"
+    path: "/patient/biometricdata",
+    component: _b23e134e,
+    name: "patient-biometricdata"
   }, {
-    path: "/utente/prescritions",
-    component: _5bdce638,
-    name: "utente-prescritions"
+    path: "/patient/prescritions",
+    component: _23a89c24,
+    name: "patient-prescritions"
   }, {
-    path: "/utente/profile",
-    component: _4403b644,
-    name: "utente-profile"
+    path: "/patient/profile",
+    component: _501b6b72,
+    name: "patient-profile"
   }, {
     path: "/admin/admins/changepassword",
-    component: _063ee11c,
+    component: _20f34502,
     name: "admin-admins-changepassword"
   }, {
     path: "/admin/admins/create",
-    component: _7751d0a3,
+    component: _7bfb1633,
     name: "admin-admins-create"
   }, {
     path: "/admin/biometricdata/create",
-    component: _0fb424ea,
+    component: _331e45fb,
     name: "admin-biometricdata-create"
   }, {
     path: "/admin/professionaltype/create",
-    component: _412e5640,
+    component: _a92c3060,
     name: "admin-professionaltype-create"
   }, {
     path: "/admin/specialists/create",
-    component: _929cf86a,
+    component: _30758f8a,
     name: "admin-specialists-create"
   }, {
-    path: "/utente/biometricdata/create",
-    component: _593c3499,
-    name: "utente-biometricdata-create"
+    path: "/patient/biometricdata/create",
+    component: _5cf21f85,
+    name: "patient-biometricdata-create"
   }, {
     path: "/admin/biometricdata/:name",
-    component: _25d44e2b,
+    component: _173727bb,
     name: "admin-biometricdata-name"
   }, {
     path: "/admin/patients/:email",
-    component: _a45301e4,
+    component: _2d44a09e,
     name: "admin-patients-email"
   }, {
     path: "/admin/specialists/:email",
-    component: _ea8e4e28,
+    component: _8866e548,
     name: "admin-specialists-email"
   }, {
-    path: "/utente/prescritions/:id",
-    component: _f141d2c0,
-    name: "utente-prescritions-id"
+    path: "/patient/prescritions/:id",
+    component: _2437578c,
+    name: "patient-prescritions-id"
   }, {
     path: "/",
-    component: _d23950b4,
+    component: _0369bd36,
     name: "index"
   }],
 

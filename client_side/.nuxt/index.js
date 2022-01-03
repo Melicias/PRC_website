@@ -13,6 +13,7 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
+
 import nuxt_plugin_plugin_47eec38b from 'nuxt_plugin_plugin_47eec38b' // Source: .\\components\\plugin.js (mode: 'all')
 import nuxt_plugin_bootstrapvue_15d3c05d from 'nuxt_plugin_bootstrapvue_15d3c05d' // Source: .\\bootstrap-vue.js (mode: 'all')
 import nuxt_plugin_toast_a7e18646 from 'nuxt_plugin_toast_a7e18646' // Source: .\\toast.js (mode: 'client')

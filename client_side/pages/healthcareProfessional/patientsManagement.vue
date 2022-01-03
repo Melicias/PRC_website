@@ -3,7 +3,7 @@
         <b-container>
           <h1>My Patients (total {{ utentes.length }})</h1>
           <div class="btnStyle">
-            <b-button variant="primary" to="/profissionalSaude/">Back</b-button>
+            <b-button variant="primary" to="/healthcareProfessional/">Back</b-button>
           </div>
           <b-card class="mt-3 margin" header="Find for a Patient">
               <b-form-group
@@ -68,7 +68,7 @@ export default {
       if(pacient != null){
         this.$store.commit('getPacientEmail', pacient.email)
       }
-      this.$router.push({path: 'pacientManagement'});
+      this.$router.push({path: 'patientManagement'});
     },
     blockUtente(email) {
       this.$axios.put(`/api/utente/block/${email}`)
@@ -89,6 +89,9 @@ export default {
     }
   },
   created () {
+    if (!this.$auth.user.groups.includes('ProfissionalSaude')) {
+      this.$router.push('nuxt-error')
+    }
     this.fetchUtente()
   },
 }
