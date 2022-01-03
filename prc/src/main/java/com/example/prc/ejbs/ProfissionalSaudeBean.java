@@ -29,10 +29,13 @@ public class ProfissionalSaudeBean {
     public void create(String password, String name, String email, int idTipoProfissional)
             throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException {
         ProfissionalSaude profissionalSaude=em.find(ProfissionalSaude.class,email);
-        if(profissionalSaude!=null) throw new MyEntityExistsException("Profissional with email: "+email+" already exist");
+        if(profissionalSaude!=null)
+            throw new MyEntityExistsException("Profissional with email: "+email+" already exist");
 
         TipoProfissional tipoProfissional = em.find(TipoProfissional.class,idTipoProfissional);
-        if(tipoProfissional==null) throw new MyEntityNotFoundException("Tipo Profissional with the code: "+idTipoProfissional+ " not found");
+        if(tipoProfissional==null)
+            throw new MyEntityNotFoundException("Tipo Profissional with the code: "+idTipoProfissional+ " not found");
+
         try {
             ProfissionalSaude newprofissional= new ProfissionalSaude(password,name,email,tipoProfissional);
             tipoProfissional.addProfissionaisSaude(newprofissional);
@@ -79,9 +82,11 @@ public class ProfissionalSaudeBean {
         TipoProfissional tipoProfissional = em.find(TipoProfissional.class, idTipoProfissional);
         if(tipoProfissional == null)
             throw new MyEntityNotFoundException("The specialist type was not found, try with other.");
+
         ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class,email);
         if(profissionalSaude == null)
             throw new MyEntityNotFoundException("The Healthcare specialist was not found..");
+
         try {
             em.lock(profissionalSaude, LockModeType.OPTIMISTIC);
             if(profissionalSaude.getTipoProfissional().getId() != idTipoProfissional){
@@ -105,6 +110,7 @@ public class ProfissionalSaudeBean {
         ProfissionalSaude ps = em.find(ProfissionalSaude.class,email);
         if(ps == null)
             throw new MyEntityNotFoundException("Patient with this email not found");
+
         if(ps.getUtentes().isEmpty() && ps.getPrcs().isEmpty()){
             em.remove(ps);
             em.flush();
@@ -120,17 +126,19 @@ public class ProfissionalSaudeBean {
         return ps;
     }
 
-    public ProfissionalSaude blockProfissionalSaude(String email){
+    public ProfissionalSaude blockProfissionalSaude(String email) throws MyEntityNotFoundException{
         ProfissionalSaude ps = em.find(ProfissionalSaude.class,email);
-        if(ps != null){
-            if(ps.getBlocked() == 0){
-                ps.setBlocked(1);
-            }else{
-                ps.setBlocked(0);
-            }
-            em.persist(ps);
-            em.flush();
+        if(ps == null)
+            throw new MyEntityNotFoundException("The Healthcare specialist was not found.");
+
+        if(ps.getBlocked() == 0){
+            ps.setBlocked(1);
+        }else{
+            ps.setBlocked(0);
         }
+        em.persist(ps);
+        em.flush();
+
         return ps;
     }
 
@@ -138,10 +146,10 @@ public class ProfissionalSaudeBean {
             throws MyEntityNotFoundException, MyConstraintViolationException, MyEntityExistsException {
         ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class,emailprofissional);
         if(profissionalSaude == null)
-            throw new MyEntityNotFoundException("The Healthcare specialist was not found..");
+            throw new MyEntityNotFoundException("The Healthcare specialist was not found.");
         Utente utente = em.find(Utente.class, emailUtente);
         if(utente == null)
-            throw new MyEntityNotFoundException("The Pacient was not found..");
+            throw new MyEntityNotFoundException("The Patient was not found.");
         List<ProfissionalSaude> ps = utente.getProfissionalSaude();
         for(int i = 0; i <ps.size();i++){
             if(ps.get(i).getEmail() == emailprofissional){
