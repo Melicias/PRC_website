@@ -22,6 +22,7 @@ public class PrescricaoBean {
         TipoPrescricao tipoPrescricao = em.find(TipoPrescricao.class, idTipoPrescricao);
         if(tipoPrescricao == null)
             throw new MyEntityNotFoundException("TipoPrescricao with code: " + idTipoPrescricao + " not found.");
+
         try {
             Prescricao prescricao = new Prescricao(descricao,name,tipoPrescricao);
             em.persist(prescricao);
@@ -35,10 +36,12 @@ public class PrescricaoBean {
             throws MyEntityNotFoundException, MyConstraintViolationException {
         Prescricao prescricao = em.find(Prescricao.class, idPrescricao);
         if(prescricao == null)
-            throw new MyEntityNotFoundException("Prescription not found");
+            throw new MyEntityNotFoundException("Prescription was not found");
+
         TipoPrescricao tipoPrescricao = em.find(TipoPrescricao.class, idTipoPrescricao);
         if(tipoPrescricao == null)
-            throw new MyEntityNotFoundException("TipoPrescricao with code: " + idTipoPrescricao + " not found.");
+            throw new MyEntityNotFoundException("Prescription type with code: " + idTipoPrescricao + " was not found.");
+
         try {
             if (name != null)
                 prescricao.setName(name);
@@ -77,28 +80,19 @@ public class PrescricaoBean {
         return (List<Prescricao>) em.createNamedQuery("getAllPrescricoes").getResultList();
     }
 
-    public List<Prescricao> getPrescricoesComUmPrc(int idPrc)
-            throws MyEntityNotFoundException {
-        try{
-            Prc prc = em.find(Prc.class, idPrc);
-            if(prc == null)
-                throw new MyEntityNotFoundException();
-            return (List<Prescricao>) em.createNamedQuery("getPrescricoesComUmPrc").setParameter("idPrc", idPrc).getResultList();
-        }catch (Exception e){
-            return null;
-        }
+    public List<Prescricao> getPrescricoesComUmPrc(int idPrc) throws MyEntityNotFoundException {
+        Prc prc = em.find(Prc.class, idPrc);
+        if(prc == null)
+            throw new MyEntityNotFoundException("The PRC was not found.");
+        return (List<Prescricao>) em.createNamedQuery("getPrescricoesComUmPrc").setParameter("idPrc", idPrc).getResultList();
     }
 
     public List<Prescricao> getPrescricoesSemUmPrc(int idPrc)
             throws MyEntityNotFoundException {
-        try{
-            Prc prc = em.find(Prc.class, idPrc);
-            if(prc == null)
-                throw new MyEntityNotFoundException();
-            return (List<Prescricao>) em.createNamedQuery("getPrescricoesSemUmPrc").setParameter("idPrc", idPrc).getResultList();
-        }catch (Exception e){
-            return null;
-        }
+        Prc prc = em.find(Prc.class, idPrc);
+        if(prc == null)
+            throw new MyEntityNotFoundException();
+        return (List<Prescricao>) em.createNamedQuery("getPrescricoesSemUmPrc").setParameter("idPrc", idPrc).getResultList();
     }
 
 }

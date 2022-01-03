@@ -15,6 +15,10 @@ import java.util.List;
                 query = "SELECT tdb FROM TipoDadosBiometricos tdb ORDER BY tdb.name" // JPQL
         ),
         @NamedQuery(
+                name = "getAllTipoDadosBiometricosNotDeleted",
+                query = "SELECT tdb FROM TipoDadosBiometricos tdb where tdb.deleted_at is null ORDER BY tdb.name" // JPQL
+        ),
+        @NamedQuery(
                 name = "getTipoDadosBiometricosByName",
                 query = "SELECT tdb FROM TipoDadosBiometricos tdb where tdb.name = :name" // JPQL
         )

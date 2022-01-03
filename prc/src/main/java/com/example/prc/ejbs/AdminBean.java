@@ -36,7 +36,6 @@ public class AdminBean {
         return (List<Admin>) em.createNamedQuery("getAllAdmins").getResultList();
     }
 
-    //https://www.javatpoint.com/how-to-encrypt-password-in-java
     public void create(String password, String name, String email)
             throws MyEntityExistsException, MyConstraintViolationException {
         Admin admin = em.find(Admin.class, email);
@@ -54,9 +53,8 @@ public class AdminBean {
     public void update(String password, String name, String email)
             throws MyEntityNotFoundException, MyConstraintViolationException {
         Admin admin = em.find(Admin.class, email);
-        if(admin == null){
+        if(admin == null)
             throw new MyEntityNotFoundException("No admin found with the email: " + email);
-        }
 
         try {
             em.lock(admin, LockModeType.OPTIMISTIC);
@@ -87,17 +85,11 @@ public class AdminBean {
         }
     }
 
-    public Admin findAdmin(String email)
-            throws MyEntityNotFoundException{
+    public Admin findAdmin(String email) throws MyEntityNotFoundException{
         Admin admin = em.find(Admin.class, email);
         if(admin == null)
             throw new MyEntityNotFoundException();
         return admin;
-    }
-
-    public void remove(Admin admin) {
-        Admin adminMerged = em.merge(admin);
-        em.remove(adminMerged);
     }
 
     public Response getStatistics(List<Utente> utentes, List<ProfissionalSaude> ps){
@@ -119,9 +111,7 @@ public class AdminBean {
                     PSBloqueados++;
             }
 
-
             JSONObject jsonObj = new JSONObject();
-
             jsonObj.put("nrUtentes", utentes.size());
             jsonObj.put("utentesBloqueados", utentesBloqueados);
             jsonObj.put("utentesApagados", utentesApagados);
