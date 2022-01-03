@@ -204,7 +204,7 @@ export default {
             this.utente.deleted_at = msg.deleted_at;
           })
           .catch(error => {
-            this.$toast.error('error while deleting').goAway(3000)
+            this.$toast.error(error.response.data).goAway(3000)
           })
     },
     blockUtente() {
@@ -214,7 +214,7 @@ export default {
             this.utente.blocked = msg.data.blocked
           })
           .catch(error => {
-            this.$toast.error('error while deleting').goAway(3000)
+            this.$toast.error(error.response.data).goAway(3000)
           })
     }
   }
