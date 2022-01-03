@@ -1,7 +1,7 @@
 <template>
     <div>
         <b-container>
-          <h1>My Patients</h1>
+          <h1>My Patients (total {{ utentes.length }})</h1>
           <div class="btnStyle">
             <b-button variant="primary" to="/profissionalSaude/">Back</b-button>
           </div>
