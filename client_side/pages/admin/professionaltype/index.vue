@@ -33,6 +33,9 @@ export default {
     }
   },
   created () {
+    if (!this.$auth.user.groups.includes('Admin')) {
+      this.$router.push('nuxt-error')
+    }
     this.$axios.$get('/api/tipoprofissional')
       .then((tipoprofissional) => {
         this.tipoprofissional = tipoprofissional

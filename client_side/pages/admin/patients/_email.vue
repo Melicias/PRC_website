@@ -113,6 +113,9 @@ export default {
     },
   },
   created() {
+    if (!this.$auth.user.groups.includes('Admin')) {
+      this.$router.push('nuxt-error')
+    }
     this.$axios.$get(`/api/utente/${this.email}`)
       .then((utente) => {
         if(!utente.hasOwnProperty("deleted_at"))
