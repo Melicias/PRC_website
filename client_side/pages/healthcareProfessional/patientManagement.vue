@@ -136,6 +136,7 @@
             </b-container>
             <b-container v-if="tab == 2">
               <p v-if="utente.dadosBiometricos">Biometrics total: {{ utente.dadosBiometricos.length }}</p>
+              <b-button class="marginBottom" variant="primary" to="/healthcareProfessional/createBiometrics">Add Biometric Data</b-button>
               <b-table  striped hover sticky-header :items="utente.dadosBiometricos" :fields="fieldsBiometricData">
                 <template v-slot:cell(BiometricDataType)="data">
                   <p>

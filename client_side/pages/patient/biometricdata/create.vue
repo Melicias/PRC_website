@@ -11,7 +11,7 @@
             required
           ></b-form-select>
         </b-form-group>
-        <b-form-group id="input-group-1" label="Value: " label-for="input-1">
+        <b-form-group id="input-group-1" label="Value:" label-for="input-1">
           <b-form-input
             id="input-1"
             v-model="form.valor"
@@ -77,16 +77,18 @@ export default {
             utenteEmail:this.utente.email,
             data_observacao: new Date().toISOString(),
             valor:this.form.valor
-          }) .then(msg => {
-          this.$toast.success("Added Biometric Data with success! Your result is "+msg.avaliacao).goAway(3000)
-          this.form.tipoDadosBiometricos=this.types[0]
-          this.form.valor=''
+          }) 
+          .then(msg => {
+            this.$toast.success("Added Biometric Data with success! Your result is "+msg).goAway(3000)
+            this.form.tipoDadosBiometricos = this.types[0]
+            this.form.valor=''
           })
           .catch(error => {
-                this.$toast.error(error.response.data).goAway(3000)
-                this.form.tipoDadosBiometricos=this.types[0]
-                this.form.valor=''
-              })
-        }}
+            this.$toast.error(error.response.data).goAway(3000)
+            this.form.tipoDadosBiometricos=this.types[0]
+            this.form.valor=''
+          })
+      }
+    }
 }
 </script>
