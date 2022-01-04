@@ -124,11 +124,11 @@ public class ConfigBean {
             utenteBean.create("teste123","Jordi Greene", "utente22@utente.com", new Date("20/10/1990"));
 
             prcBean.create("utente@utente.com", "profissional@profissional.com", "Doença", new Date("2022/12/29"), 1,true);
-            prcBean.create("utente@utente.com", "profissional2@profissional.com", "Doença 1", new Date("2022/12/22"), 1,true);
+            prcBean.create("utente@utente.com", "profissional2@profissional.com", "Doença 1", new Date("2022/12/22"), 3,true);
             prcBean.create("utente@utente.com", "profissional1@profissional.com", "Doença 2", new Date("2022/12/27"), 1,true);
-            prcBean.create("utente@utente.com", "profissional9@profissional.com", "Doença 3", new Date("2022/12/29"), 1,true);
+            prcBean.create("utente@utente.com", "profissional9@profissional.com", "Doença 3", new Date("2022/12/29"), 2,true);
             prcBean.create("utente@utente.com", "profissional5@profissional.com", "Doença 4", new Date("2022/12/29"), 1,true);
-            prcBean.create("utente@utente.com", "profissional1@profissional.com", "Doença 5", new Date("2022/12/30"), 1,true);
+            prcBean.create("utente@utente.com", "profissional1@profissional.com", "Doença 5", new Date("2022/12/30"), 3,true);
             prcBean.create("utente2@utente.com", "profissional2@profissional.com", "Doença rara", new Date("2022/01/05"), 6,true);
             prcBean.create("utente5@utente.com", "profissional1@profissional.com", "Doença teste", new Date("2022/02/10"), 1,true);
             prcBean.create("utente3@utente.com", "profissional1@profissional.com", "Doença teste 2.0", new Date("2022/02/01"), 7,true);

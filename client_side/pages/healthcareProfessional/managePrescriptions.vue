@@ -1,8 +1,8 @@
 <template>
-    <div> 
+    <div>
         <b-container>
           <h1>Prescription Management</h1>
-          <b-button variant="primary" to="/healthcareProfessional/">Back</b-button> 
+          <b-button variant="primary" to="/healthcareProfessional/">Back</b-button>
           <b-card class="mt-3 margin" header="Create a Prescription">
             <b-form @submit="onSubmit" @reset="onReset" v-if="show">
               <b-form-group
@@ -32,16 +32,16 @@
               <b-form-group id="input-group-2" label="Prescription Type:" label-for="input-2">
                   <b-form-select v-model="selectTipoPrescription">
                     <b-form-select-option :value="null">Please select an option</b-form-select-option>
-                    <b-form-select-option  
-                    v-for="tipoPrescricao in tiposPrescricao" 
+                    <b-form-select-option
+                    v-for="tipoPrescricao in tiposPrescricao"
                     :key="tipoPrescricao.id"
                     v-bind:value="tipoPrescricao.id"
                     >
                     {{ tipoPrescricao.name }}
                     </b-form-select-option>
                   </b-form-select>
-              </b-form-group>           
-              <b-button type="submit" variant="primary">Submit</b-button>
+              </b-form-group>
+              <b-button type="submit" variant="primary">Create</b-button>
               <b-button type="reset" variant="danger">Reset</b-button>
             </b-form>
           </b-card>
@@ -75,16 +75,16 @@
                 <b-form-group id="input-group-2" label="Prescription Type:" label-for="input-2">
                     <b-form-select v-model="selectTipoPrescriptionUpdate">
                       <b-form-select-option :value="null">Please select an option</b-form-select-option>
-                      <b-form-select-option  
-                      v-for="tipoPrescricao in tiposPrescricao" 
+                      <b-form-select-option
+                      v-for="tipoPrescricao in tiposPrescricao"
                       :key="tipoPrescricao.id"
                       v-bind:value="tipoPrescricao.id"
                       >
                       {{ tipoPrescricao.name }}
                       </b-form-select-option>
                     </b-form-select>
-                </b-form-group>    
-                <b-button @click="updatePrescription = false" variant="primary">Cancel</b-button>       
+                </b-form-group>
+                <b-button @click="updatePrescription = false" variant="primary">Cancel</b-button>
                 <b-button @click="prescriptionUpdate" variant="primary">Update</b-button>
                 <b-button type="reset" variant="danger">Reset</b-button>
               </b-form>
@@ -106,7 +106,7 @@
               </template>
             </b-table>
           </b-card>
-        </b-container>  
+        </b-container>
     </div>
 </template>
 <script>
@@ -226,7 +226,7 @@ export default {
           this.tiposPrescricao = response
         })
       this.fetchPrecriptions()
-    } 
+    }
 }
 </script>
 <style scoped>
