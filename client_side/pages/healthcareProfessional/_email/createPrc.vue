@@ -88,7 +88,7 @@
                       </b-form>
                   </b-container>
                 </b-form-group>     
-                <b-button variant="primary" to="/healthcareProfessional/patientManagement">Back</b-button> 
+                <b-button variant="primary" :to="`/healthcareProfessional/${email}/patientManagement`">Back</b-button> 
                 <b-button type="submit" variant="primary" >Submit</b-button>
                 <b-button type="reset" variant="danger">Reset</b-button>
             </b-form>
@@ -116,6 +116,11 @@ export default {
         tiposPrescricao: [],
         show: true
       }
+    },
+    computed: {
+      email() {
+        return this.$route.params.email
+      },
     },  
     methods: {
         onSubmit(event) {
@@ -124,7 +129,7 @@ export default {
             doenca: this.form.doenca,
             validade: new Date(this.form.validade).toISOString(),
             ...(this.selectPrescription != null ? { idPrescricao: this.selectPrescription } : { idPrescricao: 0 }),
-            emailUtente: this.$store.state.pacientEmail,
+            emailUtente: this.email,
             emailProfissionalSaude: this.$auth.user.sub
           })
             .then(msg => {
@@ -186,7 +191,7 @@ export default {
           })
       },
       sendEmail(){
-        this.$axios.$post(`/api/utente/${this.$store.state.pacientEmail}/send`, {
+        this.$axios.$post(`/api/utente/${this.email}/send`, {
           subject: "You have a bew PRC created by the Healthcare: " + this.$auth.user.sub + "!",
           message: "Dear " + this.$store.state.pacientName + ", checkout your account and keep active on our platform please, you have a new PRC created by the healthcare: " + this.$auth.user.sub + "!"
         })

@@ -68,7 +68,7 @@ export default {
       if(pacient != null){
         this.$store.commit('getPacientEmail', pacient.email)
       }
-      this.$router.push({path: 'patientManagement'});
+      this.$router.push({path: `${pacient.email}/patientManagement`});
     },
     blockUtente(email) {
       this.$axios.put(`/api/utente/block/${email}`)

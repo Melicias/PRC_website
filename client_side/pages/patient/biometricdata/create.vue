@@ -40,9 +40,7 @@ export default {
        tipoDadosBiometrico:null
       },
       types: [{ text: 'Select One', value: null }],
-      tipoDadosBiometricos:[],
-      selected: null,
-      tipoDadoBiometrico:[]
+      tipoDadosBiometricos:[]
     }
   },
  computed: {
@@ -80,13 +78,13 @@ export default {
           }) 
           .then(msg => {
             this.$toast.success("Added Biometric Data with success! Your result is "+msg).goAway(3000)
-            this.form.tipoDadosBiometricos = this.types[0]
-            this.form.valor=''
+            this.form.tipoDadosBiometrico = null
+            this.form.valor = ''
           })
           .catch(error => {
             this.$toast.error(error.response.data).goAway(3000)
-            this.form.tipoDadosBiometricos=this.types[0]
-            this.form.valor=''
+            this.form.tipoDadosBiometrico = null
+            this.form.valor = ''
           })
       }
     }

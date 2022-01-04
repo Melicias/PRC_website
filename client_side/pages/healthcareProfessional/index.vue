@@ -27,12 +27,6 @@
                   <p>Add/Remove Patient</p>
                 </div>
               </b-button>
-              <b-button variant="light" to="/healthcareProfessional/addPacient">
-                <div class="img-with-text">
-                  <img width="100" height="100" src="../../img/addPatient.png" alt="Image not loaded" />
-                  <p>Add/Remove Patient</p>
-                </div>
-              </b-button>
               <b-button variant="light" @click="changePassword = true">Change My Password</b-button>
             </div>
             <div v-show="changePassword">

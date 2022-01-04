@@ -15,11 +15,8 @@ const _290d0ea4 = () => interopDefault(import('..\\pages\\admin\\professionaltyp
 const _718ceee3 = () => interopDefault(import('..\\pages\\admin\\specialists\\index.vue' /* webpackChunkName: "pages/admin/specialists/index" */))
 const _15cc8525 = () => interopDefault(import('..\\pages\\auth\\login.vue' /* webpackChunkName: "pages/auth/login" */))
 const _1925f713 = () => interopDefault(import('..\\pages\\healthcareProfessional\\addPacient.vue' /* webpackChunkName: "pages/healthcareProfessional/addPacient" */))
-const _7ee21057 = () => interopDefault(import('..\\pages\\healthcareProfessional\\createBiometrics.vue' /* webpackChunkName: "pages/healthcareProfessional/createBiometrics" */))
 const _88c50bf0 = () => interopDefault(import('..\\pages\\healthcareProfessional\\createPacient.vue' /* webpackChunkName: "pages/healthcareProfessional/createPacient" */))
-const _8b485e96 = () => interopDefault(import('..\\pages\\healthcareProfessional\\createPrc.vue' /* webpackChunkName: "pages/healthcareProfessional/createPrc" */))
 const _4c083964 = () => interopDefault(import('..\\pages\\healthcareProfessional\\managePrescriptions.vue' /* webpackChunkName: "pages/healthcareProfessional/managePrescriptions" */))
-const _c80f7750 = () => interopDefault(import('..\\pages\\healthcareProfessional\\patientManagement.vue' /* webpackChunkName: "pages/healthcareProfessional/patientManagement" */))
 const _012d8d71 = () => interopDefault(import('..\\pages\\healthcareProfessional\\patientsManagement.vue' /* webpackChunkName: "pages/healthcareProfessional/patientsManagement" */))
 const _b23e134e = () => interopDefault(import('..\\pages\\patient\\biometricdata\\index.vue' /* webpackChunkName: "pages/patient/biometricdata/index" */))
 const _23a89c24 = () => interopDefault(import('..\\pages\\patient\\prescritions\\index.vue' /* webpackChunkName: "pages/patient/prescritions/index" */))
@@ -34,6 +31,9 @@ const _173727bb = () => interopDefault(import('..\\pages\\admin\\biometricdata\\
 const _2d44a09e = () => interopDefault(import('..\\pages\\admin\\patients\\_email.vue' /* webpackChunkName: "pages/admin/patients/_email" */))
 const _8866e548 = () => interopDefault(import('..\\pages\\admin\\specialists\\_email.vue' /* webpackChunkName: "pages/admin/specialists/_email" */))
 const _2437578c = () => interopDefault(import('..\\pages\\patient\\prescritions\\_id.vue' /* webpackChunkName: "pages/patient/prescritions/_id" */))
+const _b974c298 = () => interopDefault(import('..\\pages\\healthcareProfessional\\_email\\createBiometrics.vue' /* webpackChunkName: "pages/healthcareProfessional/_email/createBiometrics" */))
+const _b69dfe10 = () => interopDefault(import('..\\pages\\healthcareProfessional\\_email\\createPrc.vue' /* webpackChunkName: "pages/healthcareProfessional/_email/createPrc" */))
+const _0406819b = () => interopDefault(import('..\\pages\\healthcareProfessional\\_email\\patientManagement.vue' /* webpackChunkName: "pages/healthcareProfessional/_email/patientManagement" */))
 const _0369bd36 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
@@ -92,25 +92,13 @@ export const routerOptions = {
     component: _1925f713,
     name: "healthcareProfessional-addPacient"
   }, {
-    path: "/healthcareProfessional/createBiometrics",
-    component: _7ee21057,
-    name: "healthcareProfessional-createBiometrics"
-  }, {
     path: "/healthcareProfessional/createPacient",
     component: _88c50bf0,
     name: "healthcareProfessional-createPacient"
   }, {
-    path: "/healthcareProfessional/createPrc",
-    component: _8b485e96,
-    name: "healthcareProfessional-createPrc"
-  }, {
     path: "/healthcareProfessional/managePrescriptions",
     component: _4c083964,
     name: "healthcareProfessional-managePrescriptions"
-  }, {
-    path: "/healthcareProfessional/patientManagement",
-    component: _c80f7750,
-    name: "healthcareProfessional-patientManagement"
   }, {
     path: "/healthcareProfessional/patientsManagement",
     component: _012d8d71,
@@ -167,6 +155,18 @@ export const routerOptions = {
     path: "/patient/prescritions/:id",
     component: _2437578c,
     name: "patient-prescritions-id"
+  }, {
+    path: "/healthcareProfessional/:email/createBiometrics",
+    component: _b974c298,
+    name: "healthcareProfessional-email-createBiometrics"
+  }, {
+    path: "/healthcareProfessional/:email/createPrc",
+    component: _b69dfe10,
+    name: "healthcareProfessional-email-createPrc"
+  }, {
+    path: "/healthcareProfessional/:email/patientManagement",
+    component: _0406819b,
+    name: "healthcareProfessional-email-patientManagement"
   }, {
     path: "/",
     component: _0369bd36,
