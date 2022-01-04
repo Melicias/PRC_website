@@ -9,7 +9,7 @@
           {{row.item.doenca}}
         </template>
          <template v-slot:cell(Doctor)="row">
-          {{row.item.profissionalSaude.name}}
+          {{row.item.profissionalSaude.name + " (" + row.item.profissionalSaude.tipoProfissional.name + ")"}}
         </template>
          <template v-slot:cell(Until)="row">
           {{row.item.validade.split('T')[0]}}
@@ -31,7 +31,7 @@
           {{row.item.doenca}}
         </template>
          <template v-slot:cell(Doctor)="row">
-          {{row.item.profissionalSaude.name}}
+           {{row.item.profissionalSaude.name + " (" + row.item.profissionalSaude.tipoProfissional.name + ")"}}
         </template>
          <template v-slot:cell(Until)="row">
           {{row.item.validade.split('T')[0]}}
@@ -73,10 +73,8 @@ export default {
     this.$axios.$get(`/api/utente/${this.email}`)
       .then((utente) => {
         this.utente = utente || {}
-       
         this.prescritions = utente.prcs;
-       
-       this.prescritions.forEach(element => {
+        this.prescritions.forEach(element => {
          var date= new Date();
          var validade=new Date(element.validade)
          if(date<validade){
@@ -85,9 +83,7 @@ export default {
            this.prescritionsold.push(element)
          }
         });
-        
       })
-      
     }
 }
 </script>

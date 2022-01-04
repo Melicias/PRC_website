@@ -1,4 +1,3 @@
-
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/ejbs/ProfissionalSaudeBean.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/dtos/TipoProfissionalDTO.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/dtos/TipoDadosBiometricosDTO.java
@@ -56,4 +55,3 @@
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/ejbs/AdminBean.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/exceptions/MyConstraintViolationException.java
 /Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/prc/src/main/java/com/example/prc/ejbs/TipoPrescricaoBean.java
-
