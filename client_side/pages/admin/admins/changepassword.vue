@@ -74,6 +74,11 @@ export default {
           this.$toast.error(error.response.data).goAway(3000)
         })
     }
+  },
+  created(){
+    if (!this.$auth.user.groups.includes('Admin')) {
+      this.$router.push('not-found')
+    }
   }
 }
 </script>

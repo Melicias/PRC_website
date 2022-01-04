@@ -88,7 +88,7 @@
                       </b-form>
                   </b-container>
                 </b-form-group>     
-                <b-button variant="primary" to="/profissionalSaude/pacientManagement">Back</b-button> 
+                <b-button variant="primary" to="/healthcareProfessional/patientManagement">Back</b-button> 
                 <b-button type="submit" variant="primary" >Submit</b-button>
                 <b-button type="reset" variant="danger">Reset</b-button>
             </b-form>
@@ -137,7 +137,7 @@ export default {
               this.$nextTick(() => {
                 this.show = true
               })
-              this.$router.push({path: 'pacientManagement'});
+              this.$router.push({path: 'patientManagement'});
             })
             .catch(error => {
               console.log(error.response.data)
@@ -200,6 +200,9 @@ export default {
       }
     },
     created (){
+      if (!this.$auth.user.groups.includes('ProfissionalSaude')) {
+        this.$router.push('not-found')
+      }
       this.$axios.$get('/api/tipoPrescricao')
         .then(response => {
           this.tiposPrescricao = response

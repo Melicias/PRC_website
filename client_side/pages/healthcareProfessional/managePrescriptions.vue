@@ -2,7 +2,7 @@
     <div> 
         <b-container>
           <h1>Prescription Management</h1>
-          <b-button variant="primary" to="/profissionalSaude/">Back</b-button> 
+          <b-button variant="primary" to="/healthcareProfessional/">Back</b-button> 
           <b-card class="mt-3 margin" header="Create a Prescription">
             <b-form @submit="onSubmit" @reset="onReset" v-if="show">
               <b-form-group
@@ -219,6 +219,9 @@ export default {
       }
     },
     created (){
+      if (!this.$auth.user.groups.includes('ProfissionalSaude')) {
+        this.$router.push('not-found')
+      }
       this.$axios.$get('/api/tipoPrescricao')
         .then(response => {
           this.tiposPrescricao = response

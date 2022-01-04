@@ -12,7 +12,7 @@
     </b-card>
     <br>
     <br>
-    <b-button v-b-toggle.collapse-1 variant="primary" href="/utente/prescritions ">Back</b-button>
+    <b-button v-b-toggle.collapse-1 variant="primary" href="/patient/prescritions ">Back</b-button>
   </b-container>
 </template>
 <script>
@@ -32,6 +32,9 @@ export default {
     },
   },
   created() {
+    if (!this.$auth.user.groups.includes('Utente')) {
+      this.$router.push('not-found')
+    }
     this.$axios.$get(`/api/utente/${this.email}`)
       .then((utente) => {
         this.utente = utente || {}

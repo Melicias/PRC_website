@@ -50,7 +50,7 @@
       </b-table>
     </b-card>
     <br>
-    <b-button v-b-toggle.collapse-1 variant="primary" href="/utente">Back</b-button>
+    <b-button v-b-toggle.collapse-1 variant="primary" href="/patient">Back</b-button>
   </b-container>
 </template>
 <script>
@@ -75,6 +75,9 @@ export default {
     },
   },
   created() {
+    if (!this.$auth.user.groups.includes('Utente')) {
+      this.$router.push('not-found')
+    }
     console.log(this.email);
     this.$axios.$get(`/api/utente/${this.email}`)
       .then((utente) => {
@@ -84,19 +87,24 @@ export default {
         console.log(this.utente)
         this.form.name = this.utente.name
         this.form.dataNasc = this.utente.dataNasc != null ? this.utente.dataNasc.split('T')[0] : ""
-
       })
     },
      methods: {
-   
         onSubmit(event) {
           event.preventDefault()
           this.$axios.$put('/api/utente', {
             email: this.email,
-        dataNasc: new Date(this.form.dataNasc).toISOString(),
-        name: this.form.name,
-        password: this.form.password.length == 0 ? null : this.form.password,
+            dataNasc: new Date(this.form.dataNasc).toISOString(),
+            name: this.form.name,
+            password: this.form.password.length == 0 ? null : this.form.password,
           })
-        }}
+          .then(msg => {
+            this.$toast.success("Profile updated with success").goAway(1500)
+          })
+          .catch(error => {
+            this.$toast.error(error.response.data).goAway(3000)
+          })
+        }
+      }
 }
 </script>

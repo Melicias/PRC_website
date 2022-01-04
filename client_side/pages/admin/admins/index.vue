@@ -32,12 +32,14 @@ export default {
     }
   },
   created () {
+    if (!this.$auth.user.groups.includes('Admin')) {
+      this.$router.push('not-found')
+    }
     this.$axios.$get('/api/admin')
       .then((admins) => {
         this.admins = admins
       })
-  }
-  ,
+  },
   methods: {
     blockAdmin(email, index) {
       this.$axios.put(`/api/admin/block/${email}`)

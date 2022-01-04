@@ -2,7 +2,7 @@
     <div>
         <b-container>
           <h2 v-if="utente">Managing: {{ utente.name }}</h2>
-          <b-button variant="primary" to="/profissionalSaude/pacientsManagement">Back</b-button>
+          <b-button variant="primary" to="/healthcareProfessional/patientsManagement">Back</b-button>
           <b-card class="mt-3" header="Patient Data">
             <b-card-group deck class="mb-3">
               <b-card border-variant="light" header="Name:" class="text-center">
@@ -29,12 +29,12 @@
                   </div>
                   <div v-else>
                     <p>Yes</p>
-                  </div>  
+                  </div>
                 </b-card-text>
               </b-card>
-            </b-card-group>       
+            </b-card-group>
           </b-card>
-          <b-card header-tag="nav">          
+          <b-card header-tag="nav">
             <template #header>
               <b-nav card-header tabs>
                 <b-nav-item :active="tab === 1" @click="tab = 1">PRC's</b-nav-item>
@@ -44,7 +44,7 @@
             </template>
             <b-container v-if="tab == 1">
               <p v-if="utente.prcs">PRC's total: {{ utente.prcs.length }}</p>
-              <b-button class="marginBottom" variant="primary" to="/profissionalSaude/createPrc">Create PRC</b-button>
+              <b-button class="marginBottom" variant="primary" to="/healthcareProfessional/createPrc">Create PRC</b-button>
               <b-card v-if="updatePrc" class="mt-3 margin" header="Update Prc">
                 <b-form @reset="onReset">
                   <b-form-group
@@ -73,8 +73,8 @@
                   <b-form-group id="input-group-2" label="Add Prescription:" label-for="input-2">
                     <b-form-select v-model="selectPrescriptionToAdd">
                       <b-form-select-option :value="null">To add select a prescription</b-form-select-option>
-                      <b-form-select-option  
-                      v-for="prescriptionWithoutPrc in prescriptionsWithoutPrc" 
+                      <b-form-select-option
+                      v-for="prescriptionWithoutPrc in prescriptionsWithoutPrc"
                       :key="prescriptionWithoutPrc.id"
                       v-bind:value="prescriptionWithoutPrc.id"
                       >
@@ -88,8 +88,8 @@
                   <b-form-group id="input-group-2" label="Remove Prescription:" label-for="input-2">
                     <b-form-select v-model="selectPrescriptionToRemove">
                       <b-form-select-option :value="null">To remove select a prescription</b-form-select-option>
-                      <b-form-select-option  
-                      v-for="prescriptionWithPrc in prescriptionsWithPrc" 
+                      <b-form-select-option
+                      v-for="prescriptionWithPrc in prescriptionsWithPrc"
                       :key="prescriptionWithPrc.id"
                       v-bind:value="prescriptionWithPrc.id"
                       >
@@ -101,8 +101,8 @@
                   <b-button class="marginBottom" @click="removePrescriptionFromPrc" variant="danger">Remove</b-button>
                   <div>
                     <b-button @click="updatePrc = false" variant="primary">Cancel</b-button>
-                    <b-button @click="prcUpdate" variant="primary">Update</b-button>   
-                    <b-button type="reset" variant="danger">Reset</b-button> 
+                    <b-button @click="prcUpdate" variant="primary">Update</b-button>
+                    <b-button type="reset" variant="danger">Reset</b-button>
                   </div>
 
                 </b-form>
@@ -132,7 +132,7 @@
                   <b-button variant="primary" @click="openUpdate(data.item)">Update</b-button>
                   <b-button :variant="data.item.deleted_at == null ? 'danger' : 'success'" @click="deletePrc(data.item.id)">{{data.item.deleted_at == null ? "Delete" : "Undo"}}</b-button>
                 </template>
-              </b-table>  
+              </b-table>
             </b-container>
             <b-container v-if="tab == 2">
               <p v-if="utente.dadosBiometricos">Biometrics total: {{ utente.dadosBiometricos.length }}</p>
@@ -147,6 +147,11 @@
                     {{data.item.valor}}
                   </p>
                 </template>
+                <template v-slot:cell(Appraisal)="data">
+                  <p>
+                    {{data.item.avaliacao}}
+                  </p>
+                </template>
                 <template v-slot:cell(CreationDate)="data">
                   <p v-if="data.item.created_at">
                     {{data.item.created_at.split('T')[0]}}
@@ -157,12 +162,12 @@
                     {{data.item.data_observacao.split('T')[0]}}
                   </p>
                 </template>
-              </b-table>  
+              </b-table>
             </b-container>
             <b-container v-if="tab == 3">
               <p v-if="utente.profissionalSaude">Biometrics total: {{ utente.profissionalSaude.length }}</p>
               <b-table  striped hover sticky-header :items="utente.profissionalSaude" :fields="fieldsSpecialists">
-              </b-table>  
+              </b-table>
             </b-container>
           </b-card>
         </b-container>
@@ -175,7 +180,7 @@ export default {
       utente: [],
       tab: 1,
       fieldsPrcs: ['Desease', 'CreatedAt', 'Until', 'Prescriptions', 'Actions'],
-      fieldsBiometricData: ['BiometricDataType', 'Value', 'CreationDate', 'ObservationDate'],
+      fieldsBiometricData: ['BiometricDataType', 'Value', 'Appraisal', 'CreationDate', 'ObservationDate'],
       fieldsSpecialists: ['name', 'email'],
       formUpdate: {
         doenca: '',
@@ -209,7 +214,6 @@ export default {
           this.fetchPacientProfile(this.utente.email)
         })
         .catch(error => {
-          console.log(error.response.data)
           this.$toast.error(error.response.data).goAway(3000)
         })
     },
@@ -295,10 +299,13 @@ export default {
     }
   },
   created () {
+    if (!this.$auth.user.groups.includes('ProfissionalSaude')) {
+      this.$router.push('not-found')
+    }
     if(this.$store.state.pacientEmail != null){
       this.fetchPacientProfile(this.$store.state.pacientEmail)
-    } 
-  } 
+    }
+  }
 }
 </script>
 <style scoped>

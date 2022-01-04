@@ -26,7 +26,7 @@
       <br>
      </b-form>
     <br><br>
-      <b-button v-b-toggle.collapse-1 variant="primary" href="/utente/biometricdata">Back</b-button>
+      <b-button v-b-toggle.collapse-1 variant="primary" href="/patient/biometricdata">Back</b-button>
     </b-card>
 
     <br>
@@ -53,6 +53,9 @@ export default {
     },
   },
   created() {
+    if (!this.$auth.user.groups.includes('Utente')) {
+      this.$router.push('not-found')
+    }
     console.log(this.email);
     this.$axios.$get(`/api/utente/${this.email}`)
       .then((utente) => {

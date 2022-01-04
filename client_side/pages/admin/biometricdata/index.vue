@@ -44,10 +44,12 @@ export default {
     }
   },
   created () {
+    if (!this.$auth.user.groups.includes('Admin')) {
+      this.$router.push('not-found')
+    }
     this.$axios.$get('/api/tipoDadosBiometricos')
       .then((tipoDadosBiometricos) => {
         this.tipoDadosBiometricos = tipoDadosBiometricos
-        console.log(this.tipoDadosBiometricos)
       })
   },
   methods: {
@@ -57,7 +59,10 @@ export default {
         .then(msg => {
           this.$toast.success("Biometric data deleted with success").goAway(1500)
           if(msg === ''){
-            location.reload();
+            this.$axios.$get('/api/tipoDadosBiometricos')
+              .then((tipoDadosBiometricos) => {
+                this.tipoDadosBiometricos = tipoDadosBiometricos
+              })
           }
           this.tipoDadosBiometricos[index].deleted_at = msg.deleted_at;
           this.$refs.table.refresh();

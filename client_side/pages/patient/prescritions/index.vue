@@ -25,7 +25,7 @@
     </b-card>
     <br>
     <br>
-    <b-button v-b-toggle.collapse-1 variant="primary" href="/utente">Back</b-button>
+    <b-button v-b-toggle.collapse-1 variant="primary" href="/patient">Back</b-button>
   </b-container>
 </template>
 <script>
@@ -44,6 +44,9 @@ export default {
     },
   },
   created() {
+    if (!this.$auth.user.groups.includes('Utente')) {
+      this.$router.push('not-found')
+    }
     this.$axios.$get(`/api/utente/${this.email}`)
       .then((utente) => {
         this.utente = utente || {}
@@ -57,6 +60,10 @@ export default {
            this.prescritionsValidat.push(element)
          }
         });
+        console.log(this.prescritionsValidat)
+      })
+      .catch(error => {
+        console.log(error)
       })
     }
 }

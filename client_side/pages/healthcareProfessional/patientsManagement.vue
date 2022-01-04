@@ -3,7 +3,7 @@
         <b-container>
           <h1>My Patients (total {{ utentes.length }})</h1>
           <div class="btnStyle">
-            <b-button variant="primary" to="/profissionalSaude/">Back</b-button>
+            <b-button variant="primary" to="/healthcareProfessional/">Back</b-button>
           </div>
           <b-card class="mt-3 margin" header="Find for a Patient">
               <b-form-group
@@ -44,11 +44,11 @@
               <div v-else>
                 <p>Yes</p>
               </div>
-            </template> 
+            </template>
             <template #cell(Actions)="data">
               <b-button :variant="data.item.blocked == 0 ? 'danger' : 'success'" @click="blockUtente(data.item.email)">{{data.item.blocked == 0 ? "Block" : "Unblock"}}</b-button>
-            </template> 
-          </b-table>  
+            </template>
+          </b-table>
       </b-container>
     </div>
 </template>
@@ -68,7 +68,7 @@ export default {
       if(pacient != null){
         this.$store.commit('getPacientEmail', pacient.email)
       }
-      this.$router.push({path: 'pacientManagement'});
+      this.$router.push({path: 'patientManagement'});
     },
     blockUtente(email) {
       this.$axios.put(`/api/utente/block/${email}`)
@@ -77,7 +77,7 @@ export default {
           this.fetchUtente()
         })
         .catch(error => {
-          this.$toast.error('error while deleting').goAway(3000)
+          this.$toast.error(error.response.data).goAway(3000)
         })
     },
     fetchUtente(){
@@ -89,6 +89,9 @@ export default {
     }
   },
   created () {
+    if (!this.$auth.user.groups.includes('ProfissionalSaude')) {
+      this.$router.push('not-found')
+    }
     this.fetchUtente()
   },
 }
