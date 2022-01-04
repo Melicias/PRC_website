@@ -54,7 +54,6 @@ export default {
   },
   methods: {
     deleteTipo(id, index) {
-      console.log(id);
       this.$axios.$delete(`/api/tipoDadosBiometricos/${id}`)
         .then(msg => {
           this.$toast.success("Biometric data deleted with success").goAway(1500)

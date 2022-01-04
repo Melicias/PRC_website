@@ -142,7 +142,6 @@ export default {
           {min: this.quantitativo.min4 == null ? 0 : this.quantitativo.min4, max: this.quantitativo.max4 == null ? 0 : this.quantitativo.max4, name: this.quantitativo.name4},
           {min: this.quantitativo.min5 == null ? 0 : this.quantitativo.min5, max: this.quantitativo.max5 == null ? 0 : this.quantitativo.max5, name: this.quantitativo.name5},
           {min: this.quantitativo.min6 , max: -1, name: this.quantitativo.name6}]
-        console.log(this.sendQuant);
       }
       this.$axios.$post('/api/tipoDadosBiometricos', {
         name: this.form.name,

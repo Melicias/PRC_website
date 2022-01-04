@@ -51,11 +51,11 @@
                     ></b-form-input>
                 </b-form-group>
                 <b-form-group
-                    id="input-group-1"
+                    id="input-group-2"
                     label="New Password:"
-                    label-for="input-1">
+                    label-for="input-2">
                     <b-form-input
-                    id="input-1"
+                    id="input-2"
                     v-model="newPassword"
                     type="password"
                     placeholder="Enter new password"
@@ -63,11 +63,11 @@
                     ></b-form-input>
                 </b-form-group>
                 <b-form-group
-                    id="input-group-1"
+                    id="input-group-3"
                     label="Confirm The New Password:"
-                    label-for="input-1">
+                    label-for="input-3">
                     <b-form-input
-                    id="input-1"
+                    id="input-3"
                     v-model="confirmPassword"
                     type="password"
                     placeholder="Enter confirm password"
@@ -113,7 +113,7 @@ export default {
     if (!this.$auth.user.groups.includes('ProfissionalSaude')) {
       this.$router.push('not-found')
     }
-  } 
+  }
 }
 </script>
 <style scoped>

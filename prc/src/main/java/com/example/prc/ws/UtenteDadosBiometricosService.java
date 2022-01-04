@@ -11,6 +11,7 @@ import com.example.prc.exceptions.MyConstraintViolationException;
 import com.example.prc.exceptions.MyEntityExistsException;
 import com.example.prc.exceptions.MyEntityNotFoundException;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -27,6 +28,7 @@ public class UtenteDadosBiometricosService {
 
     @POST
     @Path("/")
+    @RolesAllowed({"ProfissionalSaude","Utente"})
     public Response CreateDadosBiometricos(UtenteDadosBiometricosDTO utenteDadosBiometricosDTO)
             throws MyEntityExistsException, MyConstraintViolationException {
         try{
@@ -40,12 +42,12 @@ public class UtenteDadosBiometricosService {
 
 
 
-@GET
-@Path("{email}")
-public  List<UtenteDadosBiometricosDTO> DadosBiometricos(@PathParam("email") String email) throws MyEntityNotFoundException {
+    @GET
+    @Path("{email}")
+    @RolesAllowed({"ProfissionalSaude","Utente"})
+    public  List<UtenteDadosBiometricosDTO> DadosBiometricos(@PathParam("email") String email) throws MyEntityNotFoundException {
            return toDtos(utenteDadosBiometricosBean.find(email));
-}
-
+    }
 
     public UtenteDadosBiometricosDTO toDto(UtenteDadosBiometricos utenteDadosBiometricos) {
         UtenteDadosBiometricosDTO utenteDadosBiometricosDTO = new UtenteDadosBiometricosDTO(

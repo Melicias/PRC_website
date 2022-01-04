@@ -5,6 +5,7 @@ import com.example.prc.ejbs.*;
 import com.example.prc.entities.*;
 import com.example.prc.exceptions.MyEntityNotFoundException;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.mail.MessagingException;
 import javax.ws.rs.*;
@@ -29,12 +30,14 @@ public class UtenteService {
 
     @GET
     @Path("/")
+    @RolesAllowed({"Admin","ProfissionalSaude"})
     public List<UtenteDTO> getAllUtentes() {
         return toDTOs(utenteBean.getAllUtentes());
     }
 
     @POST
     @Path("/")
+    @RolesAllowed({"Admin","ProfissionalSaude"})
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createUtente(UtenteDTO utenteDTO) {
@@ -52,6 +55,7 @@ public class UtenteService {
 
     @PUT
     @Path("/")
+    @RolesAllowed({"Admin","ProfissionalSaude","Utente"})
     public Response updateUtente(UtenteDTO utenteDTO) {
         try {
             utenteBean.updateUtente(
@@ -67,6 +71,7 @@ public class UtenteService {
 
     @POST
     @Path("/addprofissionalsaude")
+    @RolesAllowed({"Admin","ProfissionalSaude"})
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addProfissionalSaudeToUtente(UtenteDTO utenteDTO){
@@ -80,6 +85,7 @@ public class UtenteService {
 
     @POST
     @Path("/removeprofissionalsaude")
+    @RolesAllowed({"Admin","ProfissionalSaude"})
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response removeProfissionalSaudeToUtente(UtenteDTO utenteDTO){
@@ -93,6 +99,7 @@ public class UtenteService {
 
     @GET
     @Path("{email}")
+    @RolesAllowed({"Admin","ProfissionalSaude","Utente"})
     public  Response getUtente(@PathParam("email") String email){
         Utente utente= utenteBean.findUtente(email);
         if(utente == null)
@@ -103,6 +110,7 @@ public class UtenteService {
 
     @GET
     @Path("/semprofissional/{profissionalEmail}")
+    @RolesAllowed({"Admin","ProfissionalSaude"})
     public Response getUtenteSemProfissionalSaude(@PathParam("profissionalEmail") String profissionalEmail) throws MyEntityNotFoundException {
         try{
             List<Utente> utentes = utenteBean.getUtentesSemProfissionalSaude(profissionalEmail);
@@ -115,6 +123,7 @@ public class UtenteService {
 
     @GET
     @Path("/comprofissional/{profissionalEmail}")
+    @RolesAllowed({"Admin","ProfissionalSaude"})
     public Response getUtenteComProfissionalSaude(@PathParam("profissionalEmail") String profissionalEmail) throws MyEntityNotFoundException {
         try{
             List<Utente> utentes = utenteBean.getUtentesComProfissionalSaude(profissionalEmail);
@@ -126,6 +135,7 @@ public class UtenteService {
 
     @PUT
     @Path("/block/{email}")
+    @RolesAllowed({"Admin","ProfissionalSaude"})
     public Response blockUtente(@PathParam("email") String email)
             throws MyEntityNotFoundException {
         try{
@@ -137,6 +147,7 @@ public class UtenteService {
     }
 
     @DELETE
+    @RolesAllowed({"Admin","ProfissionalSaude"})
     @Path("{email}")
     public Response deleteUtente(@PathParam("email") String email) throws MyEntityNotFoundException {
         try{
@@ -151,6 +162,7 @@ public class UtenteService {
 
     @POST
     @Path("/{email}/send")
+    @RolesAllowed({"Admin","ProfissionalSaude","Utente"})
     public Response sendEmail(@PathParam("email") String utenteEmail, EmailDTO email)
             throws MyEntityNotFoundException, MessagingException {
         Utente utente = utenteBean.findUtente(utenteEmail);

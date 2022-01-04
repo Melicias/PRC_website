@@ -5,6 +5,7 @@ import com.example.prc.ejbs.PrcBean;
 import com.example.prc.entities.*;
 import com.example.prc.exceptions.MyEntityNotFoundException;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -20,12 +21,14 @@ public class PrcService {
     PrcBean prcBean;
 
     @GET
+    @RolesAllowed({"Admin","ProfissionalSaude"})
     @Path("/")
     public List<PrcDTO> getAllPrcs() {
         return toDTOs(prcBean.getAllPrcs());
     }
 
     @GET
+    @RolesAllowed({"Admin","ProfissionalSaude","Utente"})
     @Path("{emailUtente}")
     public List<PrcDTO> getAllPrcsByUtente(@PathParam("emailUtente") String emailUtente) {
         try{
@@ -37,6 +40,7 @@ public class PrcService {
 
     @POST
     @Path("/")
+    @RolesAllowed({"Admin","ProfissionalSaude"})
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createPrc(PrcDTO prcDTO) {
@@ -57,6 +61,7 @@ public class PrcService {
 
     @PUT
     @Path("/")
+    @RolesAllowed({"Admin","ProfissionalSaude"})
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response updatePrc(PrcDTO prcDTO) {
@@ -74,6 +79,7 @@ public class PrcService {
 
     @DELETE
     @Path("{id}")
+    @RolesAllowed({"Admin","ProfissionalSaude"})
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response deletePrc(@PathParam("id") int id) throws MyEntityNotFoundException {
@@ -86,6 +92,7 @@ public class PrcService {
     }
 
     @POST
+    @RolesAllowed({"Admin","ProfissionalSaude"})
     @Path("/addPrescription")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -100,6 +107,7 @@ public class PrcService {
 
     @POST
     @Path("/removePrescription")
+    @RolesAllowed({"Admin","ProfissionalSaude"})
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response removePrescriptionFromToPrc(PrcDTO prcDTO){
