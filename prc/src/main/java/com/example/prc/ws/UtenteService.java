@@ -166,11 +166,15 @@ public class UtenteService {
     public Response sendEmail(@PathParam("email") String utenteEmail, EmailDTO email)
             throws MyEntityNotFoundException, MessagingException {
         Utente utente = utenteBean.findUtente(utenteEmail);
-        if (utente == null) {
+        if (utente == null)
             throw new MyEntityNotFoundException("Utente with email '" + utenteEmail + "' not found in our records.");
+        try{
+            emailBean.send(utenteEmail, email.getSubject(), email.getMessage());
+            return Response.status(Response.Status.OK).entity("E-mail sent").build();
+        }catch (Exception e){
+            return Response.status(403).entity(e.getMessage()).build();
         }
-        emailBean.send(utenteEmail, email.getSubject(), email.getMessage());
-        return Response.status(Response.Status.OK).entity("E-mail sent").build();
+
     }
 
     public UtenteDTO toDTO(Utente utente) {
