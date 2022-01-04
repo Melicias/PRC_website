@@ -47,29 +47,29 @@ public class ConfigBean {
 
         try{
 
-            tipoPrescricao.create("Mediquentosa");
-            tipoPrescricao.create("Dieta");
-            tipoPrescricao.create("Exercicio fisico");
+            tipoPrescricao.create("Drugged");
+            tipoPrescricao.create("Diet");
+            tipoPrescricao.create("Physical exercise");
 
-            tipoProfissional.create("Cardiologista");
-            tipoProfissional.create("Cirurgião");
-            tipoProfissional.create("Clínico geral");
-            tipoProfissional.create("Oftalmologia");
-            tipoProfissional.create("Dermatologista");
-            tipoProfissional.create("Genecologista");
-            tipoProfissional.create("Urologista");
+            tipoProfissional.create("Cardiologist");
+            tipoProfissional.create("Surgeon");
+            tipoProfissional.create("General practitioner");
+            tipoProfissional.create("Ophthalmology");
+            tipoProfissional.create("Dermatologist");
+            tipoProfissional.create("Gynecologist");
+            tipoProfissional.create("Urologist");
 
-            tipoDadosBiometricos.create("bpm",60,100,true,new ArrayList<>());
-            tipoDadosBiometricos.create("Oxigenio no sangue",95,100,true,new ArrayList<>());
-            tipoDadosBiometricos.create("colestrol",5,10,true,new ArrayList<>());
+            tipoDadosBiometricos.create("Bpm",60,100,true,new ArrayList<>());
+            tipoDadosBiometricos.create("Oxygen saturation",95,100,true,new ArrayList<>());
+            tipoDadosBiometricos.create("Cholesterol",5,10,true,new ArrayList<>());
             tipoDadosBiometricos.create("IMC",0, 0,false,new ArrayList<>());
-            tipoDadosBiometricos.create("Tensão arterial",0,0,false,new ArrayList<>());
-            tipoDadosBiometricosQuantitativo.create("Otima",0,119.9,5);
+            tipoDadosBiometricos.create("Blood pressure",0,0,false,new ArrayList<>());
+            tipoDadosBiometricosQuantitativo.create("Great",0,119.9,5);
             tipoDadosBiometricosQuantitativo.create("Normal",120,129.9,5);
-            tipoDadosBiometricosQuantitativo.create("Normal Alta",130,139.9,5);
-            tipoDadosBiometricosQuantitativo.create("Hipertensão grau I",140,159.9,5);
-            tipoDadosBiometricosQuantitativo.create("Hipertensão grau II",160,179.9,5);
-            tipoDadosBiometricosQuantitativo.create("Hipertensão grau III",180,0,5);
+            tipoDadosBiometricosQuantitativo.create("Normal High",130,139.9,5);
+            tipoDadosBiometricosQuantitativo.create("Hypertension level I",140,159.9,5);
+            tipoDadosBiometricosQuantitativo.create("Hypertension level II",160,179.9,5);
+            tipoDadosBiometricosQuantitativo.create("Hypertension level III",180,0,5);
             tipoDadosBiometricosQuantitativo.create("Lower",0,18.5,4);
             tipoDadosBiometricosQuantitativo.create("Normal",18.5,24.9,4);
             tipoDadosBiometricosQuantitativo.create("Overweight",25,29.9,4);
@@ -78,13 +78,13 @@ public class ConfigBean {
             tipoDadosBiometricosQuantitativo.create("Obesity III",40,0,4);
 
 
-            prescricaoBean.create("Tomar os medicamentos todos os dias","Prescricao medicamentos diario",1);
-            prescricaoBean.create("Tomar os medicamentos a noite","Prescricao medicamentos noturnos",1);
-            prescricaoBean.create("Cuidado com a alimentação, apenas comer arroz e carnes","Prescricao de arroz e carnes",2);
-            prescricaoBean.create("Não comer carnes vermelhas","Prescricao evitar carnes vermelhas",2);
-            prescricaoBean.create("Apenas comer comidas não processadas","Prescricao de cuidado com processados",2);
-            prescricaoBean.create("Fazer cardio pelo menos 1 vez por dia","Prescricao cardio diario",3);
-            prescricaoBean.create("Fazer Levantamento de pesos","Prescricao ginasio",3);
+            prescricaoBean.create("Taking medicines every day","Prescribe daily medications",1);
+            prescricaoBean.create("Take the medications at night","Prescribe night medications",1);
+            prescricaoBean.create("Be careful with your food, just eat rice and meat","Rice and meat prescription",2);
+            prescricaoBean.create("Do not eat red meat","Prescription avoid red meat",2);
+            prescricaoBean.create("Only eat unprocessed food","Prescription of care with processed products",2);
+            prescricaoBean.create("Do cardio at least once a day","Prescription daily cardio",3);
+            prescricaoBean.create("Weight lifting","Prescription gym",3);
 
             adminBean.create("teste123","admin teste", "admin@admin.com");
           
@@ -123,42 +123,42 @@ public class ConfigBean {
             utenteBean.create("teste123","Adele Farmer", "utente21@utente.com", new Date("22/05/1980"),"profissional10@profissional.com");
             utenteBean.create("teste123","Jordi Greene", "utente22@utente.com", new Date("20/10/1990"));
 
-            prcBean.create("utente@utente.com", "profissional@profissional.com", "Doença", new Date("2021/12/29"), 1,true);
-            prcBean.create("utente@utente.com", "profissional2@profissional.com", "Doença 1", new Date("2021/12/22"), 1,true);
-            prcBean.create("utente@utente.com", "profissional1@profissional.com", "Doença 2", new Date("2021/12/27"), 1,true);
-            prcBean.create("utente@utente.com", "profissional9@profissional.com", "Doença 3", new Date("2021/12/29"), 1,true);
-            prcBean.create("utente@utente.com", "profissional5@profissional.com", "Doença 4", new Date("2021/12/29"), 1,true);
-            prcBean.create("utente@utente.com", "profissional1@profissional.com", "Doença 5", new Date("2021/12/30"), 1,true);
+            prcBean.create("utente@utente.com", "profissional@profissional.com", "Doença", new Date("2022/12/29"), 1,true);
+            prcBean.create("utente@utente.com", "profissional2@profissional.com", "Doença 1", new Date("2022/12/22"), 1,true);
+            prcBean.create("utente@utente.com", "profissional1@profissional.com", "Doença 2", new Date("2022/12/27"), 1,true);
+            prcBean.create("utente@utente.com", "profissional9@profissional.com", "Doença 3", new Date("2022/12/29"), 1,true);
+            prcBean.create("utente@utente.com", "profissional5@profissional.com", "Doença 4", new Date("2022/12/29"), 1,true);
+            prcBean.create("utente@utente.com", "profissional1@profissional.com", "Doença 5", new Date("2022/12/30"), 1,true);
             prcBean.create("utente2@utente.com", "profissional2@profissional.com", "Doença rara", new Date("2022/01/05"), 6,true);
             prcBean.create("utente5@utente.com", "profissional1@profissional.com", "Doença teste", new Date("2022/02/10"), 1,true);
             prcBean.create("utente3@utente.com", "profissional1@profissional.com", "Doença teste 2.0", new Date("2022/02/01"), 7,true);
             prcBean.create("utente6@utente.com", "profissional1@profissional.com", "Doença random", new Date("2022/12/10"), 2,true);
             prcBean.create("utente9@utente.com", "profissional1@profissional.com", "Doença que nao se sabe", new Date("2022/01/10"), 4,true);
 
-            dadosBiometricosBean.create(1,new Date("01/01/2022"),70,"utente@utente.com");
-            dadosBiometricosBean.create(3,new Date("01/01/2022"),94,"utente@utente.com");
-            dadosBiometricosBean.create(3,new Date("03/01/2022"),95,"utente@utente.com");
-            dadosBiometricosBean.create(4,new Date("20/10/2021"),20,"utente@utente.com");
-            dadosBiometricosBean.create(5,new Date("20/10/2021"),119,"utente@utente.com");
-            dadosBiometricosBean.create(2,new Date("03/01/2022"),60,"utente@utente.com");
-            dadosBiometricosBean.create(5,new Date("03/01/2022"),140,"utente@utente.com");
-            dadosBiometricosBean.create(1,new Date("22/12/2021"),75,"utente@utente.com");
-            dadosBiometricosBean.create(4,new Date("21/12/2021"),25,"utente@utente.com");
-            dadosBiometricosBean.create(1,new Date("21/10/2021"),74,"utente@utente.com");
-            dadosBiometricosBean.create(1,new Date("04/01/2022"),85,"utente@utente.com");
-            dadosBiometricosBean.create(4,new Date("20/12/2021"),30,"utente21@utente.com");
-            dadosBiometricosBean.create(1,new Date("25/12/2021"),80,"utente21@utente.com");
-            dadosBiometricosBean.create(2,new Date("26/11/2021"),70,"utente21@utente.com");
-            dadosBiometricosBean.create(1,new Date("03/01/2022"),75,"utente21@utente.com");
-            dadosBiometricosBean.create(4,new Date("28/11/2021"),27.5,"utente21@utente.com");
-            dadosBiometricosBean.create(2,new Date("05/12/2021"),70,"utente21@utente.com");
-            dadosBiometricosBean.create(5,new Date("05/12/2021"),125,"utente21@utente.com");
-            dadosBiometricosBean.create(1,new Date("14/12/2021"),60,"utente21@utente.com");
-            dadosBiometricosBean.create(1,new Date("22/12/2021"),70,"utente21@utente.com");
-            dadosBiometricosBean.create(4,new Date("26/12/2021"),29,"utente21@utente.com");
-            dadosBiometricosBean.create(1,new Date("04/01/2022"),59,"utente21@utente.com");
-            dadosBiometricosBean.create(2,new Date("02/01/2022"),70,"utente21@utente.com");
-            dadosBiometricosBean.create(2,new Date("27/12/2021"),70,"utente21@utente.com");
+            dadosBiometricosBean.create(1,new Date("2022/01/01"),70,"utente@utente.com");
+            dadosBiometricosBean.create(3,new Date("2020/12/22"),94,"utente@utente.com");
+            dadosBiometricosBean.create(3,new Date("2021/12/28"),95,"utente@utente.com");
+            dadosBiometricosBean.create(4,new Date("2022/01/03"),20,"utente@utente.com");
+            dadosBiometricosBean.create(5,new Date("2021/12/15"),119,"utente@utente.com");
+            dadosBiometricosBean.create(2,new Date("2020/12/30"),60,"utente@utente.com");
+            dadosBiometricosBean.create(5,new Date("2021/12/25"),140,"utente@utente.com");
+            dadosBiometricosBean.create(1,new Date("2022/01/04"),75,"utente@utente.com");
+            dadosBiometricosBean.create(4,new Date("2021/12/24"),25,"utente@utente.com");
+            dadosBiometricosBean.create(1,new Date("2020/12/31"),74,"utente@utente.com");
+            dadosBiometricosBean.create(1,new Date("2021/12/29"),85,"utente@utente.com");
+            dadosBiometricosBean.create(4,new Date("2020/12/23"),30,"utente21@utente.com");
+            dadosBiometricosBean.create(1,new Date("2022/01/03"),80,"utente21@utente.com");
+            dadosBiometricosBean.create(2,new Date("2021/12/28"),70,"utente21@utente.com");
+            dadosBiometricosBean.create(1,new Date("2021/12/27"),75,"utente21@utente.com");
+            dadosBiometricosBean.create(4,new Date("2021/12/13"),27.5,"utente21@utente.com");
+            dadosBiometricosBean.create(2,new Date("2021/12/25"),70,"utente21@utente.com");
+            dadosBiometricosBean.create(5,new Date("2021/11/29"),125,"utente21@utente.com");
+            dadosBiometricosBean.create(1,new Date("2022/01/04"),60,"utente21@utente.com");
+            dadosBiometricosBean.create(1,new Date("2021/12/05"),70,"utente21@utente.com");
+            dadosBiometricosBean.create(4,new Date("2021/12/24"),29,"utente21@utente.com");
+            dadosBiometricosBean.create(1,new Date("2022/12/29"),59,"utente21@utente.com");
+            dadosBiometricosBean.create(2,new Date("2021/11/11"),70,"utente21@utente.com");
+            dadosBiometricosBean.create(2,new Date("2021/12/17"),70,"utente21@utente.com");
 
 
         } catch (Exception e) {

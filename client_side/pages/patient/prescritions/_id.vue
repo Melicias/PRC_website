@@ -38,7 +38,7 @@ export default {
     this.$axios.$get(`/api/utente/${this.email}`)
       .then((utente) => {
         this.utente = utente || {}
-        this.prescritions = this.utente.prescricoes[this.id-1].prescricoes
+        this.prescritions = this.utente.prcs[this.id-1].prescricoes
         console.log(this.prescritions)
       })
   },
