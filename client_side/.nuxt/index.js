@@ -5,14 +5,13 @@ import ClientOnly from 'vue-client-only'
 import NoSsr from 'vue-no-ssr'
 import { createRouter } from './router.js'
 import NuxtChild from './components/nuxt-child.js'
-import NuxtError from '..\\layouts\\error.vue'
+import NuxtError from '../layouts/error.vue'
 import Nuxt from './components/nuxt.js'
 import App from './App.js'
 import { setContext, getLocation, getRouteData, normalizeError } from './utils'
 import { createStore } from './store.js'
 
 /* Plugins */
-
 
 import nuxt_plugin_plugin_2b3a7a9a from 'nuxt_plugin_plugin_2b3a7a9a' // Source: ./components/plugin.js (mode: 'all')
 import nuxt_plugin_bootstrapvue_0400b110 from 'nuxt_plugin_bootstrapvue_0400b110' // Source: ./bootstrap-vue.js (mode: 'all')
@@ -212,7 +211,6 @@ async function createApp(ssrContext, config = {}) {
   }
   // Plugin execution
 
-
   if (typeof nuxt_plugin_plugin_2b3a7a9a === 'function') {
     await nuxt_plugin_plugin_2b3a7a9a(app.context, inject)
   }
@@ -231,7 +229,6 @@ async function createApp(ssrContext, config = {}) {
 
   if (typeof nuxt_plugin_plugin_b99cd676 === 'function') {
     await nuxt_plugin_plugin_b99cd676(app.context, inject)
-
   }
 
   // Lock enablePreview in context

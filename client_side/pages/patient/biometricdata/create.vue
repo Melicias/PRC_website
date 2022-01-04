@@ -20,7 +20,6 @@
             required
           ></b-form-input>
         </b-form-group>
-
     <br>
         <b-button type="submit" variant="primary">Add Biometric Data</b-button>
       <br>
@@ -28,7 +27,6 @@
     <br><br>
       <b-button v-b-toggle.collapse-1 variant="primary" href="/patient/biometricdata">Back</b-button>
     </b-card>
-
     <br>
   </b-container>
 </template>
@@ -42,9 +40,9 @@ export default {
        tipoDadosBiometrico:null
       },
       types: [{ text: 'Select One', value: null }],
-        tipoDadosBiometricos:[],
-        selected: null,
-        tipoDadoBiometrico:[]
+      tipoDadosBiometricos:[],
+      selected: null,
+      tipoDadoBiometrico:[]
     }
   },
  computed: {
@@ -71,17 +69,16 @@ export default {
         }
       })
     },
-     methods: {
-
-        onSubmit(event) {
-       event.preventDefault()
+   methods: {
+      onSubmit(event) {
+        event.preventDefault()
           this.$axios.$post('/api/biometricdata/',{
             tipodadosBiometricos_id:this.form.tipoDadosBiometrico,
             utenteEmail:this.utente.email,
             data_observacao: new Date().toISOString(),
             valor:this.form.valor
           }) .then(msg => {
-          this.$toast.success("Add Biometric Data with success, your "+this.form.tipoDadosBiometricos+" is "+msg).goAway(1500)
+          this.$toast.success("Added Biometric Data with success! Your result is "+msg).goAway(3000)
           this.form.tipoDadosBiometricos=this.types[0]
           this.form.valor=''
           })

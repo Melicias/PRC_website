@@ -1,5 +1,49 @@
 <template>
   <b-container>
+    <b-card class="mt-3 margin" header="Prc detail">
+      <b-form>
+        <b-form-group
+          id="input-group-1"
+          label="Decease:"
+          label-for="input-1">
+          <b-form-input
+            id="input-1"
+            v-model="prc.doenca"
+            type="text"
+            placeholder="Enter decease"
+            required
+            :disabled=true
+          ></b-form-input>
+        </b-form-group>
+        <b-form-group
+          id="input-group-1"
+          label="Healthcare Specialists:"
+          label-for="input-1">
+          <b-form-input
+            id="input-1"
+            v-model="prc.profissionalSaude.name"
+            type="text"
+            placeholder="Enter decease"
+            required
+            :disabled=true
+          ></b-form-input>
+        </b-form-group>
+        <b-form-group
+          id="input-group-1"
+          label="Type of Healthcare Specialists:"
+          label-for="input-1">
+          <b-form-input
+            id="input-1"
+            v-model="prc.profissionalSaude.tipoProfissional.name"
+            type="text"
+            placeholder="Enter decease"
+            required
+            :disabled=true
+          ></b-form-input>
+        </b-form-group>
+      </b-form>
+    </b-card>
+    <br><br>
     <b-card header="Precriptions Details">
       <b-table striped over sticky-header :items="prescritions" :fields="fields" ref="tableCom">
            <template v-slot:cell(Description)="row">
@@ -21,6 +65,7 @@ export default {
     return {
       prescritions:[],
       fields: ['Description', 'TypeOfPrescritions'],
+      prc: {doenca: "", profissionalSaude: {name: "", tipoProfissional: {name:""}}},
     }
   },
   computed: {
@@ -39,7 +84,8 @@ export default {
       .then((utente) => {
         this.utente = utente || {}
         this.prescritions = this.utente.prcs[this.id-1].prescricoes
-     
+        this.prc = this.utente.prcs[this.id-1]
+        console.log(this.prc);
       })
   },
 }

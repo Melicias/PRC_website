@@ -4,7 +4,6 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-
 const _01017896 = () => interopDefault(import('../pages/admin/index.vue' /* webpackChunkName: "pages/admin/index" */))
 const _14f5a3a4 = () => interopDefault(import('../pages/healthcareProfessional/index.vue' /* webpackChunkName: "pages/healthcareProfessional/index" */))
 const _38f3a92b = () => interopDefault(import('../pages/patient/index.vue' /* webpackChunkName: "pages/patient/index" */))
@@ -36,7 +35,6 @@ const _9f4cb3d2 = () => interopDefault(import('../pages/admin/specialists/_email
 const _a115a352 = () => interopDefault(import('../pages/patient/prescritions/_id.vue' /* webpackChunkName: "pages/patient/prescritions/_id" */))
 const _319db6b5 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
-
 const emptyFn = () => {}
 
 Vue.use(Router)
@@ -50,7 +48,6 @@ export const routerOptions = {
 
   routes: [{
     path: "/admin",
-
     component: _01017896,
     name: "admin"
   }, {
@@ -168,7 +165,6 @@ export const routerOptions = {
   }, {
     path: "/",
     component: _319db6b5,
-
     name: "index"
   }],
 
