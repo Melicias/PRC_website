@@ -186,7 +186,7 @@ export default {
           })
       },
       sendEmail(){
-        this.$axios.$post(`/api/utente/${this.userEmail}/send`, {
+        this.$axios.$post(`/api/utente/${this.$store.state.pacientEmail}/send`, {
           subject: "You have a bew PRC created by the Healthcare: " + this.$auth.user.sub + "!",
           message: "Dear " + this.$store.state.pacientName + ", checkout your account and keep active on our platform please, you have a new PRC created by the healthcare: " + this.$auth.user.sub + "!"
         })
