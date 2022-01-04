@@ -10,6 +10,7 @@ import com.example.prc.exceptions.MyConstraintViolationException;
 import com.example.prc.exceptions.MyEntityExistsException;
 import com.example.prc.exceptions.MyEntityNotFoundException;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -25,6 +26,7 @@ public class TipoDadosBiometricosService {
     private TipoDadosBiometricosBean tipoDadosBiometricosBean;
 
     @GET
+    @RolesAllowed({"Admin"})
     @Path("/")
     public List<TipoDadosBiometricosDTO> getTipoProfissionalWS() {
         return toDTOs(tipoDadosBiometricosBean.getAllTipoDadosBiometricos());
@@ -76,6 +78,7 @@ public class TipoDadosBiometricosService {
 
 
     @POST
+    @RolesAllowed({"Admin"})
     @Path("/")
     public Response createNewTipoDadoBiometrico (TipoDadosBiometricosDTO tipoDadosBiometricosDTO)
             throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException {
@@ -93,6 +96,7 @@ public class TipoDadosBiometricosService {
     }
 
     @PUT
+    @RolesAllowed({"Admin"})
     @Path("/")
     public Response putTipoDadoBiometrico (TipoDadosBiometricosDTO tipoDadosBiometricosDTO)
             throws MyEntityNotFoundException, MyConstraintViolationException {
@@ -115,6 +119,7 @@ public class TipoDadosBiometricosService {
     }
 
     @DELETE
+    @RolesAllowed({"Admin"})
     @Path("{id}")
     public Response deleteTipoDadoBiometrico(@PathParam("id") int id) throws MyEntityExistsException, MyEntityNotFoundException {
         try{

@@ -8,6 +8,7 @@ import com.example.prc.exceptions.MyConstraintViolationException;
 import com.example.prc.exceptions.MyEntityExistsException;
 import com.example.prc.exceptions.MyEntityNotFoundException;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -42,6 +43,7 @@ public class TipoProfissionalService {
     }
 
     @POST
+    @RolesAllowed({"Admin"})
     @Path("/")
     public Response createNewTipoProfissional (TipoProfissionalDTO tipoProfissionalDTO)
             throws MyEntityExistsException, MyConstraintViolationException {
@@ -56,6 +58,7 @@ public class TipoProfissionalService {
     }
 
     @DELETE
+    @RolesAllowed({"Admin"})
     @Path("{id}")
     public Response deleteTipoProfissional(@PathParam("id") int id) throws MyEntityExistsException, MyEntityNotFoundException {
         try{
