@@ -52,8 +52,8 @@ export default {
     this.$axios.$get('/api/utente/'+this.email)
       .then((utente) => {
         this.utente = utente
-        console.log(utente)
-      })
+       
+      }) 
       
     }
 }

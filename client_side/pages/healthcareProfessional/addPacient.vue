@@ -95,7 +95,7 @@ export default {
           this.fetchUtenteComProfissional()
         })
         .catch(error => {
-          console.log(error.response.data)
+      
           this.$toast.error(error.response.data).goAway(3000)
         })
     },
@@ -111,7 +111,7 @@ export default {
           this.fetchUtenteComProfissional()
         })
         .catch(error => {
-          console.log(error.response.data)
+     
           this.$toast.error(error.response.data).goAway(3000)
         })
     },
@@ -127,7 +127,7 @@ export default {
           this.fetchUtenteComProfissional()
         })
         .catch(error => {
-          console.log(error.response.data)
+         
           this.$toast.error(error.response.data).goAway(3000)
         })
     },
@@ -142,7 +142,7 @@ export default {
           this.fecthUtentes()
         })
         .catch(error => {
-          console.log(error.response.data)
+        
           this.$toast.error(error.response.data).goAway(3000)
         })
     },
@@ -155,7 +155,7 @@ export default {
     fetchUtenteComProfissional(){
       this.$axios.$get('/api/utente/comprofissional/'+this.$auth.user.sub)
       .then((utentes) => {
-        console.log(utentes)
+    
         this.utentesComProfissional = utentes
       })
     },

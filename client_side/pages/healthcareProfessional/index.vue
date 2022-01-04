@@ -105,7 +105,6 @@ export default {
           this.confirmPassword = ''
         })
         .catch(error => {
-          console.log(error.response.data)
           this.$toast.error(error.response.data).goAway(3000)
         })
     }

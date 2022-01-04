@@ -39,7 +39,7 @@ export default {
       .then((utente) => {
         this.utente = utente || {}
         this.prescritions = this.utente.prcs[this.id-1].prescricoes
-        console.log(this.prescritions)
+     
       })
   },
 }

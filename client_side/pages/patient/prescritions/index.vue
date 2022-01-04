@@ -50,9 +50,9 @@ export default {
     this.$axios.$get(`/api/utente/${this.email}`)
       .then((utente) => {
         this.utente = utente || {}
-        console.log(utente)
+       
         this.prescritions = utente.prcs;
-        console.log(this.prescritions)
+       
        this.prescritions.forEach(element => {
          var date= new Date();
          var validade=new Date(element.validade)
@@ -60,11 +60,9 @@ export default {
            this.prescritionsValidat.push(element)
          }
         });
-        console.log(this.prescritionsValidat)
+        
       })
-      .catch(error => {
-        console.log(error)
-      })
+      
     }
 }
 </script>
