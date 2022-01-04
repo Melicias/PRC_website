@@ -2,7 +2,7 @@
   <b-container>
     <h1>Professional type data Management</h1>
     <br><br>
-      <b-card class="mt-3" header="Create new Professional type data Management">
+      <b-card class="mt-3" header="Create new Professional type">
         <b-form @submit="onSubmit" @reset="onReset" v-if="show">
           <b-form-group id="input-group-1" label="Name: " label-for="input-1">
             <b-form-input

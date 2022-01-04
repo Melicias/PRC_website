@@ -97,6 +97,7 @@ export default {
           })
           .then(msg => {
             this.$toast.success("Profile updated with success").goAway(1500)
+            this.form.password = ""
           })
           .catch(error => {
             this.$toast.error(error.response.data).goAway(3000)

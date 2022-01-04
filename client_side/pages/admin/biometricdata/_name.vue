@@ -96,7 +96,6 @@ export default {
           this.form.min = this.tipoDadoBiometrico.min;
           this.form.max = this.tipoDadoBiometrico.max;
         }
-        console.log(this.tipoDadoBiometrico)
       })
   },
   methods: {

@@ -7,6 +7,7 @@ import com.example.prc.entities.Prescricao;
 import com.example.prc.entities.TipoPrescricao;
 import com.example.prc.exceptions.MyEntityNotFoundException;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -23,12 +24,14 @@ public class PrescricaoService {
 
     @GET
     @Path("/")
+    @RolesAllowed({"Admin","ProfissionalSaude"})
     public List<PrescricaoDTO> getAllPrescricoes() {
         return toDTOs(prescricaoBean.getAllPrescricoes());
     }
 
     @GET
     @Path("/comUmPrc/{idPrc}")
+    @RolesAllowed({"Admin","ProfissionalSaude"})
     public Response getAllPrescricoesComUmPrc(@PathParam("idPrc") int idPrc) {
         try{
             List<Prescricao> prescricoes = prescricaoBean.getPrescricoesComUmPrc(idPrc);
@@ -40,6 +43,7 @@ public class PrescricaoService {
 
     @GET
     @Path("/semUmPrc/{idPrc}")
+    @RolesAllowed({"Admin","ProfissionalSaude"})
     public Response getAllPrescricoesSemUmPrc(@PathParam("idPrc") int idPrc) {
         try{
             List<Prescricao> prescricoes = prescricaoBean.getPrescricoesSemUmPrc(idPrc);
@@ -51,6 +55,7 @@ public class PrescricaoService {
 
     @POST
     @Path("/")
+    @RolesAllowed({"Admin","ProfissionalSaude"})
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createPrescricao(PrescricaoDTO prescricaoDTO) {
@@ -68,6 +73,7 @@ public class PrescricaoService {
 
     @PUT
     @Path("/")
+    @RolesAllowed({"Admin","ProfissionalSaude"})
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response updatePrescricao(PrescricaoDTO prescricaoDTO) {
@@ -86,6 +92,7 @@ public class PrescricaoService {
 
     @DELETE
     @Path("{id}")
+    @RolesAllowed({"Admin","ProfissionalSaude"})
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response deletePrescricao(@PathParam("id") int id) throws MyEntityNotFoundException {

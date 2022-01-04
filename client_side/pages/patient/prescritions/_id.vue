@@ -85,7 +85,6 @@ export default {
         this.utente = utente || {}
         this.prescritions = this.utente.prcs[this.id-1].prescricoes
         this.prc = this.utente.prcs[this.id-1]
-        console.log(this.prc);
       })
   },
 }
