@@ -231,7 +231,7 @@ export default {
           this.selectPrescriptionToRemove = 'null'
         })
         .catch(error => {
-          console.log(error.response.data)
+         
           this.$toast.error(error.response.data).goAway(3000)
         })
     },
@@ -249,7 +249,7 @@ export default {
           this.selectPrescriptionToRemove = 'null'
         })
         .catch(error => {
-          console.log(error.response.data)
+          
           this.$toast.error(error.response.data).goAway(3000)
         })
     },
@@ -260,33 +260,33 @@ export default {
           this.fetchPacientProfile(this.utente.email)
         })
         .catch(error => {
-          console.log(error.response.data)
+        
           this.$toast.error(error.response.data).goAway(3000)
         })
     },
     fetchPacientProfile(pacientEmail){
       this.$axios.get("/api/utente/" + pacientEmail)
       .then((response) => {
-        console.log(response)
+        
         this.utente = response.data
         this.$store.commit('getPacientName', this.utente.name)
-        console.log(this.utente)
+        
       })
     },
     fetchPrescriptionWithoutPrc(idPrc){
       this.$axios.get("/api/prescricao/semUmPrc/" + idPrc)
       .then((response) => {
-        console.log(response)
+       
         this.prescriptionsWithoutPrc = response.data
-        console.log(this.utente)
+        
       })
     },
     fetchPrescriptionWithPrc(idPrc){
       this.$axios.get("/api/prescricao/comUmPrc/" + idPrc)
       .then((response) => {
-        console.log(response)
+        
         this.prescriptionsWithPrc = response.data
-        console.log(this.utente)
+       
       })
     },
     openUpdate(prc){

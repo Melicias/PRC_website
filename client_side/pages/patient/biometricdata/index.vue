@@ -70,13 +70,13 @@ export default {
          this.$axios.$get(`/api/biometricdata/${this.email}`)
       .then((dadosBiometricos) => {
           this.biometricData=dadosBiometricos
-         console.log(this.biometricDataMax)
+        
       });
         });
       this.$axios.$get('/api/tipoDadosBiometricos/utente')
       .then((tipoDadosBiometricos) => {
         this.tipoDadosBiometricos = tipoDadosBiometricos
-        console.log(this.tipoDadosBiometricos)
+     
       })
 
       }

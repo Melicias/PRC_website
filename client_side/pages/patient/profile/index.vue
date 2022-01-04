@@ -78,13 +78,10 @@ export default {
     if (!this.$auth.user.groups.includes('Utente')) {
       this.$router.push('not-found')
     }
-    console.log(this.email);
     this.$axios.$get(`/api/utente/${this.email}`)
       .then((utente) => {
         this.utente = utente || {}
         this.profissionaisUtente = this.utente.profissionalSaude;
-        console.log(this.profissionaisUtente)
-        console.log(this.utente)
         this.form.name = this.utente.name
         this.form.dataNasc = this.utente.dataNasc != null ? this.utente.dataNasc.split('T')[0] : ""
       })

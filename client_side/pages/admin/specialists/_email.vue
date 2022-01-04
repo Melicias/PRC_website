@@ -207,7 +207,7 @@ export default {
       this.$axios.$delete(`/api/profissionalsaude/${this.email}`)
         .then(msg => {
           this.$toast.success("Specialist deleted with success").goAway(1500)
-          console.log(msg)
+        
           if(msg === ''){
             this.$router.push("/admin/specialists")
           }

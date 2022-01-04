@@ -83,7 +83,7 @@ export default {
     fetchUtente(){
       this.$axios.$get('/api/utente/comprofissional/'+this.$auth.user.sub)
       .then((utentes) => {
-        console.log(utentes)
+       
         this.utentes = utentes
       })
     }

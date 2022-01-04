@@ -56,7 +56,7 @@ export default {
     if (!this.$auth.user.groups.includes('Utente')) {
       this.$router.push('not-found')
     }
-    console.log(this.email);
+
     this.$axios.$get(`/api/utente/${this.email}`)
       .then((utente) => {
         this.utente = utente || {}
@@ -83,6 +83,9 @@ export default {
           }) .then(msg => {
           this.$toast.success("Add Biometric Data with success").goAway(1500)
           })
+          .catch(error => {
+                this.$toast.error(error.response.data).goAway(3000)
+              })
         }}
 }
 </script>
