@@ -81,10 +81,14 @@ export default {
             data_observacao: new Date().toISOString(),
             valor:this.form.valor
           }) .then(msg => {
-          this.$toast.success("Add Biometric Data with success").goAway(1500)
+          this.$toast.success("Add Biometric Data with success, your "+this.form.tipoDadosBiometricos+" is "+msg).goAway(1500)
+          this.form.tipoDadosBiometricos=this.types[0]
+          this.form.valor=''
           })
           .catch(error => {
                 this.$toast.error(error.response.data).goAway(3000)
+                this.form.tipoDadosBiometricos=this.types[0]
+                this.form.valor=''
               })
         }}
 }
