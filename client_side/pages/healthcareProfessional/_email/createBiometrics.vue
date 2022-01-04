@@ -21,7 +21,7 @@
                     required
                 ></b-form-input>
                 </b-form-group>
-                <b-button variant="primary" to="/healthcareProfessional/patientManagement">Back</b-button> 
+                <b-button variant="primary" :to="`/healthcareProfessional/${email}/patientManagement`">Back</b-button> 
                 <b-button type="submit" variant="primary">Add Biometric Data</b-button>
             </b-form>         
         </b-container>
@@ -38,29 +38,34 @@ export default {
         types: [{ text: 'Select One', value: null }],
         tipoDadosBiometricos:[]
       }
+    },
+    computed: {
+      email() {
+        return this.$route.params.email
+      },
     },  
     methods: {
         onSubmit(event) {
           event.preventDefault()
           this.$axios.$post('/api/biometricdata/',{
             tipodadosBiometricos_id: this.form.tipoDadosBiometrico,
-            utenteEmail: this.$store.state.pacientEmail,
+            utenteEmail: this.email,
             data_observacao: new Date().toISOString(),
             valor: this.form.valor
           }) 
           .then(msg => {
             this.$toast.success("Added Biometric Data with success! Pacient data result is " + msg).goAway(3000)
-            this.form.tipoDadosBiometrico = this.types[0]
+            this.form.tipoDadosBiometrico = null
             this.form.valor = ''
           })
           .catch(error => {
             this.$toast.error(error.response.data).goAway(3000)
-            this.form.tipoDadosBiometrico = this.types[0]
+            this.form.tipoDadosBiometrico = null
             this.form.valor = ''
           })
         },
       sendEmail(){
-        this.$axios.$post(`/api/utente/${this.$store.state.pacientEmail}/send`, {
+        this.$axios.$post(`/api/utente/${this.email}/send`, {
           subject: "You have a new Biometric Data added by the Healthcare: " + this.$auth.user.sub + "!",
           message: "Dear " + this.$store.state.pacientName + ", checkout your account and keep active on our platform please, you have a new Biometric added by the healthcare: " + this.$auth.user.sub + "!"
         })

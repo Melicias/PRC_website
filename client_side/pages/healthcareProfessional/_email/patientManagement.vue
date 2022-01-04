@@ -44,7 +44,7 @@
             </template>
             <b-container v-if="tab == 1">
               <p v-if="utente.prcs">PRC's total: {{ utente.prcs.length }}</p>
-              <b-button class="marginBottom" variant="primary" to="/healthcareProfessional/createPrc">Create PRC</b-button>
+              <b-button class="marginBottom" variant="primary" :to="`/healthcareProfessional/${email}/createPrc`">Create PRC</b-button>
               <b-card v-if="updatePrc" class="mt-3 margin" header="Update Prc">
                 <b-form @reset="onReset">
                   <b-form-group
@@ -136,7 +136,7 @@
             </b-container>
             <b-container v-if="tab == 2">
               <p v-if="utente.dadosBiometricos">Biometrics total: {{ utente.dadosBiometricos.length }}</p>
-              <b-button class="marginBottom" variant="primary" to="/healthcareProfessional/createBiometrics">Add Biometric Data</b-button>
+              <b-button class="marginBottom" variant="primary" :to="`/healthcareProfessional/${email}/createBiometrics`">Add Biometric Data</b-button>
               <b-table  striped hover sticky-header :items="utente.dadosBiometricos" :fields="fieldsBiometricData">
                 <template v-slot:cell(BiometricDataType)="data">
                   <p>
@@ -194,6 +194,11 @@ export default {
       selectPrescriptionToRemove: 'null',
       updatePrc: false
     }
+  },
+  computed: {
+    email() {
+      return this.$route.params.email
+    },
   },
   methods: {
     onReset(event) {
@@ -303,9 +308,7 @@ export default {
     if (!this.$auth.user.groups.includes('ProfissionalSaude')) {
       this.$router.push('not-found')
     }
-    if(this.$store.state.pacientEmail != null){
-      this.fetchPacientProfile(this.$store.state.pacientEmail)
-    }
+    this.fetchPacientProfile(this.email)
   }
 }
 </script>
