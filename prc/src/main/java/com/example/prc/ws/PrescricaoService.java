@@ -2,18 +2,15 @@ package com.example.prc.ws;
 
 import com.example.prc.dtos.PrescricaoDTO;
 import com.example.prc.dtos.TipoPrescricaoDTO;
-import com.example.prc.dtos.UtenteDTO;
 import com.example.prc.ejbs.PrescricaoBean;
 import com.example.prc.entities.Prescricao;
 import com.example.prc.entities.TipoPrescricao;
-import com.example.prc.entities.Utente;
 import com.example.prc.exceptions.MyEntityNotFoundException;
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,25 +30,23 @@ public class PrescricaoService {
     @GET
     @Path("/comUmPrc/{idPrc}")
     public Response getAllPrescricoesComUmPrc(@PathParam("idPrc") int idPrc) {
-        List<Prescricao> prescricoes;
         try{
-            prescricoes = prescricaoBean.getPrescricoesComUmPrc(idPrc);
+            List<Prescricao> prescricoes = prescricaoBean.getPrescricoesComUmPrc(idPrc);
+            return Response.ok(toDTOs(prescricoes)).build();
         }catch (Exception e){
             return Response.status(400).entity(e.getMessage()).build();
         }
-        return Response.ok(toDTOs(prescricoes)).build();
     }
 
     @GET
     @Path("/semUmPrc/{idPrc}")
     public Response getAllPrescricoesSemUmPrc(@PathParam("idPrc") int idPrc) {
-        List<Prescricao> prescricoes;
         try{
-            prescricoes = prescricaoBean.getPrescricoesSemUmPrc(idPrc);
+            List<Prescricao> prescricoes = prescricaoBean.getPrescricoesSemUmPrc(idPrc);
+            return Response.ok(toDTOs(prescricoes)).build();
         }catch (Exception e){
             return Response.status(400).entity(e.getMessage()).build();
         }
-        return Response.ok(toDTOs(prescricoes)).build();
     }
 
     @POST

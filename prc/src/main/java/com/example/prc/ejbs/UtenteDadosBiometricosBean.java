@@ -34,6 +34,7 @@ public class UtenteDadosBiometricosBean {
 
         try{
 
+
             UtenteDadosBiometricos newutenteDadosBiometricos = new UtenteDadosBiometricos(tipoDadosBiometricos,data_observacao,valor, utente);
             utente.addDadosBiometricos(newutenteDadosBiometricos);
             if(newutenteDadosBiometricos.getTipoDadosBiometricos().getType()==2){

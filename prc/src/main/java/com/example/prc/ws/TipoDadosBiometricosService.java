@@ -3,12 +3,9 @@ package com.example.prc.ws;
 
 import com.example.prc.dtos.TipoDadosBiometricosDTO;
 import com.example.prc.dtos.TipoDadosBiometricosQuantitativoDTO;
-import com.example.prc.dtos.TipoProfissionalDTO;
 import com.example.prc.ejbs.TipoDadosBiometricosBean;
-import com.example.prc.ejbs.TipoProfissionalBean;
 import com.example.prc.entities.TipoDadosBiometricos;
 import com.example.prc.entities.TipoDadosBiometricosQuantitativo;
-import com.example.prc.entities.TipoProfissional;
 import com.example.prc.exceptions.MyConstraintViolationException;
 import com.example.prc.exceptions.MyEntityExistsException;
 import com.example.prc.exceptions.MyEntityNotFoundException;
@@ -18,8 +15,6 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
-import java.util.Locale;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 @Path("tipoDadosBiometricos")
@@ -29,13 +24,16 @@ public class TipoDadosBiometricosService {
     @EJB
     private TipoDadosBiometricosBean tipoDadosBiometricosBean;
 
-    private static final Logger log =
-            Logger.getLogger(LoginService.class.getName());
-
     @GET
     @Path("/")
     public List<TipoDadosBiometricosDTO> getTipoProfissionalWS() {
         return toDTOs(tipoDadosBiometricosBean.getAllTipoDadosBiometricos());
+    }
+
+    @GET
+    @Path("/utente")
+    public List<TipoDadosBiometricosDTO> getTipoProfissionalUtenteWS() {
+        return toDTOs(tipoDadosBiometricosBean.getAllTipoDadosBiometricosNotDeleted());
     }
 
     public TipoDadosBiometricosDTO toDTO(TipoDadosBiometricos tipoDadosBiometricos) {
@@ -123,10 +121,10 @@ public class TipoDadosBiometricosService {
             TipoDadosBiometricos tipoDadosBiometricos = tipoDadosBiometricosBean.deleteTipoDadoBiometrico(id);
             if(tipoDadosBiometricos == null)
                 return Response.ok(null).build();
+
             return Response.ok(toDTO(tipoDadosBiometricos)).build();
         }catch (Exception e){
             return Response.status(400).entity(e.getMessage()).build();
         }
-
     }
 }

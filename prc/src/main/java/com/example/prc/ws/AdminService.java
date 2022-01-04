@@ -1,25 +1,19 @@
 package com.example.prc.ws;
 
 import com.example.prc.dtos.AdminDTO;
-import com.example.prc.dtos.ProfissionalSaudeDTO;
-import com.example.prc.dtos.TipoPrescricaoDTO;
-import com.example.prc.dtos.UtenteDTO;
 import com.example.prc.ejbs.AdminBean;
-import com.example.prc.ejbs.PrescricaoBean;
 import com.example.prc.ejbs.ProfissionalSaudeBean;
 import com.example.prc.ejbs.UtenteBean;
 import com.example.prc.entities.*;
 import com.example.prc.exceptions.MyConstraintViolationException;
 import com.example.prc.exceptions.MyEntityExistsException;
 import com.example.prc.exceptions.MyEntityNotFoundException;
-import com.nimbusds.jose.shaded.json.JSONObject;
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 @Path("admin")
@@ -33,8 +27,6 @@ public class AdminService {
     UtenteBean utenteBean;
     @EJB
     ProfissionalSaudeBean profissionalSaudeBean;
-    private static final Logger log =
-            Logger.getLogger(AdminService.class.getName());
 
     @GET
     @Path("statistics")
@@ -65,8 +57,7 @@ public class AdminService {
 
     @PUT
     @Path("/block/{email}")
-    public Response blockProfissionalSaude(@PathParam("email") String email)
-            throws MyEntityNotFoundException {
+    public Response blockProfissionalSaude(@PathParam("email") String email){
         try{
             Admin admin = adminBean.blockAdmin(email);
             return Response.ok(toDTO(admin)).build();
