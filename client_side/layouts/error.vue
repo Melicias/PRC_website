@@ -47,6 +47,8 @@ export default {
   },
   methods: {
         backToMain(){
+          console.log(this.$auth.user)
+          if(this.$auth.user != null){
             if (this.$auth.user.groups.includes('Utente')) {
                 this.$router.push('patient')
             } else if(this.$auth.user.groups.includes('ProfissionalSaude')){
@@ -54,6 +56,9 @@ export default {
             } else if(this.$auth.user.groups.includes('Admin')){
                 this.$router.push('admin')
             }
+          } else {
+            this.$router.push('login')
+          }  
         }
       }
 }
