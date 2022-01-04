@@ -78,7 +78,7 @@ export default {
             data_observacao: new Date().toISOString(),
             valor:this.form.valor
           }) .then(msg => {
-          this.$toast.success("Added Biometric Data with success! Your result is "+msg).goAway(3000)
+          this.$toast.success("Added Biometric Data with success! Your result is "+msg.avaliacao).goAway(3000)
           this.form.tipoDadosBiometricos=this.types[0]
           this.form.valor=''
           })
