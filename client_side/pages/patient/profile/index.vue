@@ -66,7 +66,7 @@ export default {
       },
       profissionaisUtente: [],
       profissionaisNaoLigadosUtente: [],
-      fields: ['name', 'email', 'speciality', 'actions'],
+      fields: ['name', 'email', 'speciality'],
     }
   },
  computed: {

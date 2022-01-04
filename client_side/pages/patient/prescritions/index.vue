@@ -11,7 +11,29 @@
          <template v-slot:cell(Doctor)="row">
           {{row.item.profissionalSaude.name}}
         </template>
-         <template v-slot:cell(validity)="row">
+         <template v-slot:cell(Until)="row">
+          {{row.item.validade.split('T')[0]}}
+        </template>
+          <template v-slot:cell(actions)="row">
+        <nuxt-link
+          tag="img" style="cursor: pointer"
+          :src="require('~/img/view-details.png')"
+          :to="`prescritions/${row.item.id}`">
+        </nuxt-link>
+      </template>
+      </b-table>
+    </b-card>
+  <br>
+  <br>
+    <b-card header="My older Prescritions">
+       <b-table striped over sticky-header :items="prescritionsold" :fields="fields" ref="tableCom">
+        <template v-slot:cell(disease)="row">
+          {{row.item.doenca}}
+        </template>
+         <template v-slot:cell(Doctor)="row">
+          {{row.item.profissionalSaude.name}}
+        </template>
+         <template v-slot:cell(Until)="row">
           {{row.item.validade.split('T')[0]}}
         </template>
           <template v-slot:cell(actions)="row">
@@ -35,7 +57,8 @@ export default {
        utente: {},
       prescritions:[],
       prescritionsValidat:[],
-      fields: ['disease', 'Doctor', 'validity','actions'],
+      prescritionsold:[],
+      fields: ['disease', 'Doctor', 'Until','actions'],
     }
   },
  computed: {
@@ -58,6 +81,8 @@ export default {
          var validade=new Date(element.validade)
          if(date<validade){
            this.prescritionsValidat.push(element)
+         }else{
+           this.prescritionsold.push(element)
          }
         });
         
