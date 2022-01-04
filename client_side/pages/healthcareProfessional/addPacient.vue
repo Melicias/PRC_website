@@ -126,8 +126,7 @@ export default {
           this.fecthUtentes()
           this.fetchUtenteComProfissional()
         })
-        .catch(error => {
-         
+        .catch(error => {         
           this.$toast.error(error.response.data).goAway(3000)
         })
     },
@@ -142,7 +141,6 @@ export default {
           this.fecthUtentes()
         })
         .catch(error => {
-        
           this.$toast.error(error.response.data).goAway(3000)
         })
     },
