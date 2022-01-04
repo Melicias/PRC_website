@@ -117,7 +117,7 @@ public class ProfissionalSaudeService {
     @POST
     @RolesAllowed({"Admin","ProfissionalSaude"})
     @Path("/addUtente/{emailprofissional}")
-    public Response addUtenteToProfissionalSaude (@PathParam("emailprofissional") String emailprofissional,UtenteDTO utenteDTO)
+    public Response addUtenteToProfissionalSaude (@PathParam("emailprofissional") String emailprofissional, UtenteDTO utenteDTO)
             throws MyEntityNotFoundException, MyConstraintViolationException {
         try{
             Utente utente = profissionalSaudeBean.addUtente(emailprofissional, utenteDTO.getEmail());
@@ -130,7 +130,7 @@ public class ProfissionalSaudeService {
     @POST
     @RolesAllowed({"Admin","ProfissionalSaude"})
     @Path("/removeUtente/{emailprofissional}")
-    public Response removeUtenteToProfissionalSaude (@PathParam("emailprofissional") String emailprofissional,UtenteDTO utenteDTO)
+    public Response removeUtenteToProfissionalSaude (@PathParam("emailprofissional") String emailprofissional, UtenteDTO utenteDTO)
             throws MyEntityNotFoundException, MyConstraintViolationException {
         try{
             Utente utente = profissionalSaudeBean.removeUtente(emailprofissional, utenteDTO.getEmail());

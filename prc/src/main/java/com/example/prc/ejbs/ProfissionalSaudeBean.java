@@ -179,21 +179,27 @@ public class ProfissionalSaudeBean {
         if(profissionalSaude == null)
             throw new MyEntityNotFoundException("The Healthcare specialist was not found.");
 
-        Utente utente = em.find(Utente.class,emailUtente);
+        Utente utente = em.find(Utente.class, emailUtente);
         if(utente == null)
             throw new MyEntityNotFoundException("The Patient was not found.");
 
+        boolean isConnected = false;
         List<ProfissionalSaude> ps = utente.getProfissionalSaude();
         for (ProfissionalSaude p : ps) {
-            if (!p.getEmail().equals(emailprofissional)) {
-                throw new MyEntityExistsException("This connection doesnt exists already.");
+            if (p.getEmail().equals(emailprofissional)) {
+                isConnected = true;
+                break;
             }
         }
 
+        if (!isConnected) {
+            throw new MyEntityExistsException("This connection doesnt exists already.");
+        }
+
         List<Prc> prcs = utente.getPrcs();
-        for(int i = 0;i <prcs.size();i++){
-            if(prcs.get(i).getProfissionalSaude().getEmail() == profissionalSaude.getEmail()){
-                if (prcs.get(i).getValidade().after(new Date())) {
+        for (Prc prc : prcs) {
+            if (prc.getProfissionalSaude().getEmail().equals(profissionalSaude.getEmail())) {
+                if (prc.getValidade().after(new Date())) {
                     throw new MyIllegalArgumentException("There is Prcs not finished.");
                 }
             }
