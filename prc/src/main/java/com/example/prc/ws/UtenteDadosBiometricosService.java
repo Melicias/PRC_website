@@ -35,7 +35,7 @@ public class UtenteDadosBiometricosService {
         }catch (Exception e){
             return Response.status(400).entity(e.getMessage()).build();
         }
-        return Response.ok(utenteDadosBiometricosDTO).build();
+        return Response.ok().build();
     }
 
 
