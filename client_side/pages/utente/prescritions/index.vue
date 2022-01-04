@@ -33,7 +33,7 @@ export default {
   data() {
     return {
        utente: {},
-      prescritions: [],
+      prescritions:[],
       prescritionsValidat:[],
       fields: ['disease', 'Doctor', 'validity','actions'],
     }
@@ -47,7 +47,9 @@ export default {
     this.$axios.$get(`/api/utente/${this.email}`)
       .then((utente) => {
         this.utente = utente || {}
-        this.prescritions = this.utente.prescricoes;
+        console.log(utente)
+        this.prescritions = utente.prcs;
+        console.log(this.prescritions)
        this.prescritions.forEach(element => {
          var date= new Date();
          var validade=new Date(element.validade)
