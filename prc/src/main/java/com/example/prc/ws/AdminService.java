@@ -9,6 +9,7 @@ import com.example.prc.exceptions.MyConstraintViolationException;
 import com.example.prc.exceptions.MyEntityExistsException;
 import com.example.prc.exceptions.MyEntityNotFoundException;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -29,18 +30,21 @@ public class AdminService {
     ProfissionalSaudeBean profissionalSaudeBean;
 
     @GET
+    @RolesAllowed({"Admin"})
     @Path("statistics")
     public Response getStatisticsAdmin() {
         return adminBean.getStatistics(utenteBean.getAllUtentes(), profissionalSaudeBean.getAllProfissionalSaude());
     }
 
     @GET
+    @RolesAllowed({"Admin"})
     @Path("/")
     public List<AdminDTO> getAdmins() {
         return toDTOs(adminBean.getAllAdmins());
     }
 
     @POST
+    @RolesAllowed({"Admin"})
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -56,6 +60,7 @@ public class AdminService {
     }
 
     @PUT
+    @RolesAllowed({"Admin"})
     @Path("/block/{email}")
     public Response blockProfissionalSaude(@PathParam("email") String email){
         try{
@@ -67,6 +72,7 @@ public class AdminService {
     }
 
     @PUT
+    @RolesAllowed({"Admin"})
     @Path("{emailadmin}")
     public Response updateProfissionalSaudePassword (@PathParam("emailadmin") String emailadmin, AdminDTO adminDTO)
             throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException {

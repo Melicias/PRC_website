@@ -165,7 +165,7 @@
               </b-table>
             </b-container>
             <b-container v-if="tab == 3">
-              <p v-if="utente.profissionalSaude">Biometrics total: {{ utente.profissionalSaude.length }}</p>
+              <p v-if="utente.profissionalSaude">Specialists total: {{ utente.profissionalSaude.length }}</p>
               <b-table  striped hover sticky-header :items="utente.profissionalSaude" :fields="fieldsSpecialists">
               </b-table>
             </b-container>

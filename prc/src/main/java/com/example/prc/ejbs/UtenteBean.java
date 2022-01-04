@@ -105,10 +105,13 @@ public class UtenteBean {
 
 
     public void updateUtente(String email,String name, String password, Date birthDate)
-            throws MyEntityNotFoundException, MyConstraintViolationException {
+            throws MyEntityNotFoundException, MyConstraintViolationException, MyIllegalArgumentException {
         Utente utente = em.find(Utente.class, email);
         if(utente == null)
             throw new MyEntityNotFoundException("Patient with this email not found");
+
+        if(birthDate.after(new Date()))
+            throw new MyIllegalArgumentException("The birthday date is invalid.");
 
         try {
             em.lock(utente, LockModeType.OPTIMISTIC);

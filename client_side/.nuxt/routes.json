@@ -156,16 +156,18 @@
   {
     "name": "admin-professionaltype-create",
     "path": "/admin/professionaltype/create",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\admin\\\\professionaltype\\\\create.vue",
-    "chunkName": "pages/admin/professionaltype/create",
-    "_name": "_412e5640"
+
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/professionaltype/create.vue",
+    "chunkName": "pages/admin/professionaltype/create"
+
   },
   {
     "name": "admin-specialists-create",
     "path": "/admin/specialists/create",
-    "component": "C:\\\\Projetos\\\\DAE\\\\client_side\\\\pages\\\\admin\\\\specialists\\\\create.vue",
-    "chunkName": "pages/admin/specialists/create",
-    "_name": "_929cf86a"
+
+    "component": "/Users/franciscomelicias/Documents/ei_2021_s1_proj/dae/prc/client_side/pages/admin/specialists/create.vue",
+    "chunkName": "pages/admin/specialists/create"
+
   },
   {
     "name": "patient-biometricdata-create",

@@ -16,7 +16,7 @@
                     required
                     ></b-form-input>
                 </b-form-group>
-                <b-button @click="onSubmit" variant="primary">Submit</b-button>
+                <b-button @click="onSubmit" variant="primary">Add</b-button>
             </b-card>
             <b-card class="mt-3 margin" header="All Not Followed Patients">
                 <b-table striped hover sticky-header :items="utentesSemProfissional" :fields="fields">
@@ -33,7 +33,7 @@
                     <template v-slot:cell(Actions)="data">
                         <b-button variant="success" @click="addPacient(data.item.email)">Add</b-button>
                     </template>
-                </b-table>  
+                </b-table>
             </b-card>
             <b-card class="mt-3 margin" header="Remove Patient">
                 <b-form-group
@@ -48,7 +48,7 @@
                     required
                     ></b-form-input>
                 </b-form-group>
-                <b-button @click="onSubmitRemove" variant="primary">Submit</b-button>
+                <b-button @click="onSubmitRemove" variant="primary">Remove</b-button>
             </b-card>
             <b-card class="mt-3 margin" header="All Followed Patients">
                 <b-table striped hover sticky-header :items="utentesComProfissional" :fields="fields">
@@ -65,7 +65,7 @@
                     <template v-slot:cell(Actions)="data">
                         <b-button variant="danger" @click="removePacient(data.item.email)">Remove</b-button>
                     </template>
-                </b-table>  
+                </b-table>
             </b-card>
         </b-container>
     </div>
@@ -178,7 +178,7 @@ export default {
     }
     this.fecthUtentes()
     this.fetchUtenteComProfissional()
-  } 
+  }
 }
 </script>
 <style scoped>

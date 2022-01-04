@@ -7,6 +7,7 @@ import com.example.prc.exceptions.MyConstraintViolationException;
 import com.example.prc.exceptions.MyEntityExistsException;
 import com.example.prc.exceptions.MyEntityNotFoundException;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -35,6 +36,7 @@ public class ProfissionalSaudeService {
     }
 
     @DELETE
+    @RolesAllowed({"Admin"})
     @Path("{email}")
     public Response deleteTipoProfissional(@PathParam("email") String email) throws MyEntityNotFoundException {
         try{
@@ -49,6 +51,7 @@ public class ProfissionalSaudeService {
     }
 
     @PUT
+    @RolesAllowed({"Admin"})
     @Path("/")
     public Response putProfissionalSaude(ProfissionalSaudeDTO profissionalSaudeDTO)
             throws MyEntityNotFoundException, MyConstraintViolationException {
@@ -65,6 +68,7 @@ public class ProfissionalSaudeService {
     }
 
     @PUT
+    @RolesAllowed({"Admin"})
     @Path("/block/{email}")
     public Response blockProfissionalSaude(@PathParam("email") String email)
             throws MyEntityNotFoundException {
@@ -77,6 +81,7 @@ public class ProfissionalSaudeService {
     }
 
     @POST
+    @RolesAllowed({"Admin"})
     @Path("/")
     public Response createProfissionalSaude (ProfissionalSaudeDTO profissionalSaude)
             throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException {
@@ -93,6 +98,7 @@ public class ProfissionalSaudeService {
     }
 
     @PUT
+    @RolesAllowed({"Admin","ProfissionalSaude"})
     @Path("{emailprofissional}")
     public Response updateProfissionalSaudePassword (@PathParam("emailprofissional") String emailprofissional, ProfissionalSaudeDTO profissionalSaude)
             throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException {
@@ -109,6 +115,7 @@ public class ProfissionalSaudeService {
     }
 
     @POST
+    @RolesAllowed({"Admin","ProfissionalSaude"})
     @Path("/addUtente/{emailprofissional}")
     public Response addUtenteToProfissionalSaude (@PathParam("emailprofissional") String emailprofissional,UtenteDTO utenteDTO)
             throws MyEntityNotFoundException, MyConstraintViolationException {
@@ -121,6 +128,7 @@ public class ProfissionalSaudeService {
     }
 
     @POST
+    @RolesAllowed({"Admin","ProfissionalSaude"})
     @Path("/removeUtente/{emailprofissional}")
     public Response removeUtenteToProfissionalSaude (@PathParam("emailprofissional") String emailprofissional,UtenteDTO utenteDTO)
             throws MyEntityNotFoundException, MyConstraintViolationException {
@@ -133,6 +141,7 @@ public class ProfissionalSaudeService {
     }
 
     @GET
+    @RolesAllowed({"Admin","ProfissionalSaude"})
     @Path("/profissionaissemutente/{utenteemail}")
     public Response getProfissionaSemUtente(@PathParam("utenteemail") String utenteemail) throws MyEntityNotFoundException {
         try{

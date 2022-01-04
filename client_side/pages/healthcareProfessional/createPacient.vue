@@ -45,7 +45,7 @@
                     ></b-form-input>
                 </b-form-group>
                 <b-button variant="primary" to="/healthcareProfessional/">Back</b-button>
-                <b-button type="submit" variant="primary">Submit</b-button>
+                <b-button type="submit" variant="primary">Create</b-button>
                 <b-button type="reset" variant="danger">Reset</b-button>
             </b-form>
 
