@@ -4,36 +4,36 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _01017896 = () => interopDefault(import('../pages/admin/index.vue' /* webpackChunkName: "pages/admin/index" */))
-const _14f5a3a4 = () => interopDefault(import('../pages/healthcareProfessional/index.vue' /* webpackChunkName: "pages/healthcareProfessional/index" */))
-const _38f3a92b = () => interopDefault(import('../pages/patient/index.vue' /* webpackChunkName: "pages/patient/index" */))
-const _7b685732 = () => interopDefault(import('../pages/tipoProfissional/index.vue' /* webpackChunkName: "pages/tipoProfissional/index" */))
-const _05503d74 = () => interopDefault(import('../pages/admin/admins/index.vue' /* webpackChunkName: "pages/admin/admins/index" */))
-const _b0c991f0 = () => interopDefault(import('../pages/admin/biometricdata/index.vue' /* webpackChunkName: "pages/admin/biometricdata/index" */))
-const _b7807284 = () => interopDefault(import('../pages/admin/patients/index.vue' /* webpackChunkName: "pages/admin/patients/index" */))
-const _1343c1d1 = () => interopDefault(import('../pages/admin/professionaltype/index.vue' /* webpackChunkName: "pages/admin/professionaltype/index" */))
-const _68ec52c8 = () => interopDefault(import('../pages/admin/specialists/index.vue' /* webpackChunkName: "pages/admin/specialists/index" */))
-const _50aad86f = () => interopDefault(import('../pages/auth/login.vue' /* webpackChunkName: "pages/auth/login" */))
-const _b890d09e = () => interopDefault(import('../pages/healthcareProfessional/addPacient.vue' /* webpackChunkName: "pages/healthcareProfessional/addPacient" */))
-const _246facaa = () => interopDefault(import('../pages/healthcareProfessional/createPacient.vue' /* webpackChunkName: "pages/healthcareProfessional/createPacient" */))
-const _00e4a457 = () => interopDefault(import('../pages/healthcareProfessional/createPrc.vue' /* webpackChunkName: "pages/healthcareProfessional/createPrc" */))
-const _7ec32af4 = () => interopDefault(import('../pages/healthcareProfessional/managePrescriptions.vue' /* webpackChunkName: "pages/healthcareProfessional/managePrescriptions" */))
-const _154c55fa = () => interopDefault(import('../pages/healthcareProfessional/patientManagement.vue' /* webpackChunkName: "pages/healthcareProfessional/patientManagement" */))
-const _9b489fe2 = () => interopDefault(import('../pages/healthcareProfessional/patientsManagement.vue' /* webpackChunkName: "pages/healthcareProfessional/patientsManagement" */))
-const _421dd5fe = () => interopDefault(import('../pages/patient/biometricdata/index.vue' /* webpackChunkName: "pages/patient/biometricdata/index" */))
-const _526827a2 = () => interopDefault(import('../pages/patient/prescritions/index.vue' /* webpackChunkName: "pages/patient/prescritions/index" */))
-const _ae5b3176 = () => interopDefault(import('../pages/patient/profile/index.vue' /* webpackChunkName: "pages/patient/profile/index" */))
-const _dd6738ce = () => interopDefault(import('../pages/admin/admins/changepassword.vue' /* webpackChunkName: "pages/admin/admins/changepassword" */))
-const _6728886c = () => interopDefault(import('../pages/admin/admins/create.vue' /* webpackChunkName: "pages/admin/admins/create" */))
-const _737ff4b6 = () => interopDefault(import('../pages/admin/biometricdata/create.vue' /* webpackChunkName: "pages/admin/biometricdata/create" */))
-const _7ce8c30d = () => interopDefault(import('../pages/admin/professionaltype/create.vue' /* webpackChunkName: "pages/admin/professionaltype/create" */))
-const _475b5e14 = () => interopDefault(import('../pages/admin/specialists/create.vue' /* webpackChunkName: "pages/admin/specialists/create" */))
-const _29513480 = () => interopDefault(import('../pages/patient/biometricdata/create.vue' /* webpackChunkName: "pages/patient/biometricdata/create" */))
-const _4ad735a0 = () => interopDefault(import('../pages/admin/biometricdata/_name.vue' /* webpackChunkName: "pages/admin/biometricdata/_name" */))
-const _41169e3e = () => interopDefault(import('../pages/admin/patients/_email.vue' /* webpackChunkName: "pages/admin/patients/_email" */))
-const _9f4cb3d2 = () => interopDefault(import('../pages/admin/specialists/_email.vue' /* webpackChunkName: "pages/admin/specialists/_email" */))
-const _a115a352 = () => interopDefault(import('../pages/patient/prescritions/_id.vue' /* webpackChunkName: "pages/patient/prescritions/_id" */))
-const _319db6b5 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _059fd822 = () => interopDefault(import('..\\pages\\admin\\index.vue' /* webpackChunkName: "pages/admin/index" */))
+const _123daf02 = () => interopDefault(import('..\\pages\\healthcareProfessional\\index.vue' /* webpackChunkName: "pages/healthcareProfessional/index" */))
+const _71277d0e = () => interopDefault(import('..\\pages\\patient\\index.vue' /* webpackChunkName: "pages/patient/index" */))
+const _3bae8b5f = () => interopDefault(import('..\\pages\\tipoProfissional\\index.vue' /* webpackChunkName: "pages/tipoProfissional/index" */))
+const _7eb11c2a = () => interopDefault(import('..\\pages\\admin\\admins\\index.vue' /* webpackChunkName: "pages/admin/admins/index" */))
+const _73fb2923 = () => interopDefault(import('..\\pages\\admin\\biometricdata\\index.vue' /* webpackChunkName: "pages/admin/biometricdata/index" */))
+const _a1f7293e = () => interopDefault(import('..\\pages\\admin\\patients\\index.vue' /* webpackChunkName: "pages/admin/patients/index" */))
+const _290d0ea4 = () => interopDefault(import('..\\pages\\admin\\professionaltype\\index.vue' /* webpackChunkName: "pages/admin/professionaltype/index" */))
+const _718ceee3 = () => interopDefault(import('..\\pages\\admin\\specialists\\index.vue' /* webpackChunkName: "pages/admin/specialists/index" */))
+const _15cc8525 = () => interopDefault(import('..\\pages\\auth\\login.vue' /* webpackChunkName: "pages/auth/login" */))
+const _1925f713 = () => interopDefault(import('..\\pages\\healthcareProfessional\\addPacient.vue' /* webpackChunkName: "pages/healthcareProfessional/addPacient" */))
+const _88c50bf0 = () => interopDefault(import('..\\pages\\healthcareProfessional\\createPacient.vue' /* webpackChunkName: "pages/healthcareProfessional/createPacient" */))
+const _8b485e96 = () => interopDefault(import('..\\pages\\healthcareProfessional\\createPrc.vue' /* webpackChunkName: "pages/healthcareProfessional/createPrc" */))
+const _4c083964 = () => interopDefault(import('..\\pages\\healthcareProfessional\\managePrescriptions.vue' /* webpackChunkName: "pages/healthcareProfessional/managePrescriptions" */))
+const _c80f7750 = () => interopDefault(import('..\\pages\\healthcareProfessional\\patientManagement.vue' /* webpackChunkName: "pages/healthcareProfessional/patientManagement" */))
+const _012d8d71 = () => interopDefault(import('..\\pages\\healthcareProfessional\\patientsManagement.vue' /* webpackChunkName: "pages/healthcareProfessional/patientsManagement" */))
+const _b23e134e = () => interopDefault(import('..\\pages\\patient\\biometricdata\\index.vue' /* webpackChunkName: "pages/patient/biometricdata/index" */))
+const _23a89c24 = () => interopDefault(import('..\\pages\\patient\\prescritions\\index.vue' /* webpackChunkName: "pages/patient/prescritions/index" */))
+const _501b6b72 = () => interopDefault(import('..\\pages\\patient\\profile\\index.vue' /* webpackChunkName: "pages/patient/profile/index" */))
+const _20f34502 = () => interopDefault(import('..\\pages\\admin\\admins\\changepassword.vue' /* webpackChunkName: "pages/admin/admins/changepassword" */))
+const _7bfb1633 = () => interopDefault(import('..\\pages\\admin\\admins\\create.vue' /* webpackChunkName: "pages/admin/admins/create" */))
+const _331e45fb = () => interopDefault(import('..\\pages\\admin\\biometricdata\\create.vue' /* webpackChunkName: "pages/admin/biometricdata/create" */))
+const _a92c3060 = () => interopDefault(import('..\\pages\\admin\\professionaltype\\create.vue' /* webpackChunkName: "pages/admin/professionaltype/create" */))
+const _30758f8a = () => interopDefault(import('..\\pages\\admin\\specialists\\create.vue' /* webpackChunkName: "pages/admin/specialists/create" */))
+const _5cf21f85 = () => interopDefault(import('..\\pages\\patient\\biometricdata\\create.vue' /* webpackChunkName: "pages/patient/biometricdata/create" */))
+const _173727bb = () => interopDefault(import('..\\pages\\admin\\biometricdata\\_name.vue' /* webpackChunkName: "pages/admin/biometricdata/_name" */))
+const _2d44a09e = () => interopDefault(import('..\\pages\\admin\\patients\\_email.vue' /* webpackChunkName: "pages/admin/patients/_email" */))
+const _8866e548 = () => interopDefault(import('..\\pages\\admin\\specialists\\_email.vue' /* webpackChunkName: "pages/admin/specialists/_email" */))
+const _2437578c = () => interopDefault(import('..\\pages\\patient\\prescritions\\_id.vue' /* webpackChunkName: "pages/patient/prescritions/_id" */))
+const _0369bd36 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
 
@@ -48,123 +48,123 @@ export const routerOptions = {
 
   routes: [{
     path: "/admin",
-    component: _01017896,
+    component: _059fd822,
     name: "admin"
   }, {
     path: "/healthcareProfessional",
-    component: _14f5a3a4,
+    component: _123daf02,
     name: "healthcareProfessional"
   }, {
     path: "/patient",
-    component: _38f3a92b,
+    component: _71277d0e,
     name: "patient"
   }, {
     path: "/tipoProfissional",
-    component: _7b685732,
+    component: _3bae8b5f,
     name: "tipoProfissional"
   }, {
     path: "/admin/admins",
-    component: _05503d74,
+    component: _7eb11c2a,
     name: "admin-admins"
   }, {
     path: "/admin/biometricdata",
-    component: _b0c991f0,
+    component: _73fb2923,
     name: "admin-biometricdata"
   }, {
     path: "/admin/patients",
-    component: _b7807284,
+    component: _a1f7293e,
     name: "admin-patients"
   }, {
     path: "/admin/professionaltype",
-    component: _1343c1d1,
+    component: _290d0ea4,
     name: "admin-professionaltype"
   }, {
     path: "/admin/specialists",
-    component: _68ec52c8,
+    component: _718ceee3,
     name: "admin-specialists"
   }, {
     path: "/auth/login",
-    component: _50aad86f,
+    component: _15cc8525,
     name: "auth-login"
   }, {
     path: "/healthcareProfessional/addPacient",
-    component: _b890d09e,
+    component: _1925f713,
     name: "healthcareProfessional-addPacient"
   }, {
     path: "/healthcareProfessional/createPacient",
-    component: _246facaa,
+    component: _88c50bf0,
     name: "healthcareProfessional-createPacient"
   }, {
     path: "/healthcareProfessional/createPrc",
-    component: _00e4a457,
+    component: _8b485e96,
     name: "healthcareProfessional-createPrc"
   }, {
     path: "/healthcareProfessional/managePrescriptions",
-    component: _7ec32af4,
+    component: _4c083964,
     name: "healthcareProfessional-managePrescriptions"
   }, {
     path: "/healthcareProfessional/patientManagement",
-    component: _154c55fa,
+    component: _c80f7750,
     name: "healthcareProfessional-patientManagement"
   }, {
     path: "/healthcareProfessional/patientsManagement",
-    component: _9b489fe2,
+    component: _012d8d71,
     name: "healthcareProfessional-patientsManagement"
   }, {
     path: "/patient/biometricdata",
-    component: _421dd5fe,
+    component: _b23e134e,
     name: "patient-biometricdata"
   }, {
     path: "/patient/prescritions",
-    component: _526827a2,
+    component: _23a89c24,
     name: "patient-prescritions"
   }, {
     path: "/patient/profile",
-    component: _ae5b3176,
+    component: _501b6b72,
     name: "patient-profile"
   }, {
     path: "/admin/admins/changepassword",
-    component: _dd6738ce,
+    component: _20f34502,
     name: "admin-admins-changepassword"
   }, {
     path: "/admin/admins/create",
-    component: _6728886c,
+    component: _7bfb1633,
     name: "admin-admins-create"
   }, {
     path: "/admin/biometricdata/create",
-    component: _737ff4b6,
+    component: _331e45fb,
     name: "admin-biometricdata-create"
   }, {
     path: "/admin/professionaltype/create",
-    component: _7ce8c30d,
+    component: _a92c3060,
     name: "admin-professionaltype-create"
   }, {
     path: "/admin/specialists/create",
-    component: _475b5e14,
+    component: _30758f8a,
     name: "admin-specialists-create"
   }, {
     path: "/patient/biometricdata/create",
-    component: _29513480,
+    component: _5cf21f85,
     name: "patient-biometricdata-create"
   }, {
     path: "/admin/biometricdata/:name",
-    component: _4ad735a0,
+    component: _173727bb,
     name: "admin-biometricdata-name"
   }, {
     path: "/admin/patients/:email",
-    component: _41169e3e,
+    component: _2d44a09e,
     name: "admin-patients-email"
   }, {
     path: "/admin/specialists/:email",
-    component: _9f4cb3d2,
+    component: _8866e548,
     name: "admin-specialists-email"
   }, {
     path: "/patient/prescritions/:id",
-    component: _a115a352,
+    component: _2437578c,
     name: "patient-prescritions-id"
   }, {
     path: "/",
-    component: _319db6b5,
+    component: _0369bd36,
     name: "index"
   }],
 

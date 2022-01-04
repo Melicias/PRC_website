@@ -156,8 +156,8 @@ public class ProfissionalSaudeBean {
             throw new MyEntityNotFoundException("The Patient was not found.");
 
         List<ProfissionalSaude> ps = utente.getProfissionalSaude();
-        for(int i = 0; i <ps.size();i++){
-            if(ps.get(i).getEmail() == emailprofissional){
+        for (ProfissionalSaude p : ps) {
+            if (p.getEmail().equals(emailprofissional)) {
                 throw new MyEntityExistsException("This connection already exists.");
             }
         }
@@ -174,7 +174,7 @@ public class ProfissionalSaudeBean {
     }
 
     public Utente removeUtente(String emailprofissional, String emailUtente)
-            throws MyEntityNotFoundException, MyConstraintViolationException,MyIllegalArgumentException {
+            throws MyEntityNotFoundException, MyConstraintViolationException, MyIllegalArgumentException, MyEntityExistsException {
         ProfissionalSaude profissionalSaude = em.find(ProfissionalSaude.class,emailprofissional);
         if(profissionalSaude == null)
             throw new MyEntityNotFoundException("The Healthcare specialist was not found.");
@@ -182,6 +182,13 @@ public class ProfissionalSaudeBean {
         Utente utente = em.find(Utente.class,emailUtente);
         if(utente == null)
             throw new MyEntityNotFoundException("The Patient was not found.");
+
+        List<ProfissionalSaude> ps = utente.getProfissionalSaude();
+        for (ProfissionalSaude p : ps) {
+            if (!p.getEmail().equals(emailprofissional)) {
+                throw new MyEntityExistsException("This connection doesnt exists already.");
+            }
+        }
 
         List<Prc> prcs = utente.getPrcs();
         for(int i = 0;i <prcs.size();i++){
