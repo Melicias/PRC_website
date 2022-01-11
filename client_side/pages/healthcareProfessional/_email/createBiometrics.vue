@@ -54,7 +54,7 @@ export default {
             valor: this.form.valor
           }) 
           .then(msg => {
-            this.$toast.success("Added Biometric Data with success! Pacient data result is " + msg).goAway(3000)
+            this.$toast.success("Added Biometric Data with success! Pacient data result is " + msg.avaliacao).goAway(3000)
             this.sendEmail()
             this.form.tipoDadosBiometrico = null
             this.form.valor = ''
